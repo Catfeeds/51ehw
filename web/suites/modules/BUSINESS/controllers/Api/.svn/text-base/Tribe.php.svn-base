@@ -4242,7 +4242,7 @@ class Tribe extends Api_Controller {
 		}
 		
 		$parameter["update_at"] = $datetime;
-		$row = $this->tribe_mdl->save($tribe_id,$customer_id,$parameter);//更新部落
+		$row = $this->tribe_mdl->save($tribe_id,$parameter);//更新部落
 		if(!$row){
 			$return['responseMessage'] = array(
 					'messageType' => 'error',

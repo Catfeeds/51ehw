@@ -124,7 +124,6 @@ class Property extends Api_Controller {
         }
         print_r(json_encode($return));
     }
-    
     /**
      * 我的收益
      * @param unknown $url

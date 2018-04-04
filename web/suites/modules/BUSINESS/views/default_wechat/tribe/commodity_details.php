@@ -55,7 +55,7 @@
         		<?php 
             	foreach ($data as $image){
             	?>
-                <div>
+                <div class="commodity_details_img">
                     <img src="<?php echo IMAGE_URL.substr($image['img_path'],2);?>" alt="" onerror="this.src='images/default_img_b.jpg'">
                 </div>
                 <?php  }?>
@@ -136,11 +136,13 @@ function add () {
 	var stock = <?php echo $data['0']['stock'];?>;
 	var item_num = document.getElementById('item_num').value;
 	item_num = item_num * 1 +1;
+	document.getElementById('item_num').value = item_num;
 	if (item_num > stock) {
 		document.getElementById('item_num').value = stock;
+		var count = price * stock;
+	} else {
+		var count = price * item_num;
 	}
-	document.getElementById('item_num').value = item_num;
-	var count = price * item_num;
 	document.getElementById('total_price').innerText = count;
 	
 	
@@ -160,14 +162,24 @@ function reduce () {
 
 function modify () {
 	var stock = <?php echo $data['0']['stock'];?>;
+	var price = <?php echo $data['0']['price'];?>;
 	var item_num = document.getElementById('item_num').value;
-	if (item_num > stock) {
-		document.getElementById('item_num').value = stock;
-	}
-	var re = /^[1-9]+$/ ;
+	var re = /^\+?[1-9][0-9]*$/;
     if (re.test(item_num) == false) {
     	document.getElementById('item_num').value = 1;
     }
+    var pp = /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/;
+    if (pp.test(item_num) == true) {
+    	document.getElementById('item_num').value = parseInt(item_num);
+    	if (item_num > stock) {
+    		document.getElementById('item_num').value = stock;
+    	}
+    }
+    var item_num = document.getElementById('item_num').value;
+    var count = price * item_num;
+	document.getElementById('total_price').innerText = count;
+
+    
 }
 
 

@@ -716,18 +716,25 @@ class Info extends Front_Controller {
         $data_post['customer_id'] = $customer_id;
         $customer = json_decode($this->curl_post_result( $url,$data_post ),true);
         $data['customer'] = $customer;
-        if(!$customer["idcard"]){
-            //调用接口处理->查询支付账户
-            $url = $this->url_prefix.'Customer/load_pay_account';
-            $data_post['customer_id'] = $customer_id;
-            $pay = json_decode($this->curl_post_result( $url,$data_post ),true);
-            $is_passwd = $pay["pay_passwd"]?true:false;//是否设置支付密码
-            $data["is_passwd"] = $is_passwd;
-            $data["mobile"] = $mobile;
+        
+        //判断商品是否存在
+        if (!stristr($_SERVER['HTTP_USER_AGENT'], "Android") && !stristr($_SERVER['HTTP_USER_AGENT'], "iPhone") && !stristr($_SERVER['HTTP_USER_AGENT'], "wp")){//pc
             $view = "customer/verify_bank";
-        }else{
-            $view = "customer/verify_status";
+        }else{//h5
+            if(!$customer["idcard"]){
+                //调用接口处理->查询支付账户
+                $url = $this->url_prefix.'Customer/load_pay_account';
+                $data_post['customer_id'] = $customer_id;
+                $pay = json_decode($this->curl_post_result( $url,$data_post ),true);
+                $is_passwd = $pay["pay_passwd"]?true:false;//是否设置支付密码
+                $data["is_passwd"] = $is_passwd;
+                $data["mobile"] = $mobile;
+                $view = "customer/verify_bank";
+            }else{
+                $view = "customer/verify_status";
+            }
         }
+        
         
         
         $data["customer"] = $customer;
@@ -769,19 +776,20 @@ class Info extends Front_Controller {
         $idcard = $this->input->post("idcard");//身份证号码
         $bankcard = $this->input->post("bank");//银行卡号
         $vertify1 = $this->input->post("VerificationCode");//验证码
-        $bankmobile = $this->input->post("bankmobile");//手机号码
+        $bankmobile = $this->input->post("bankmobile");//预留手机号码
         $customer_id = $this->session->userdata("user_id");//用户id
+        $mobile = $this->session->userdata("mobile");//手机号码
       
         $this->load->helper("verification");//验证类
         $this->load->library("Certification");//京东万象接口
         
         $this->load->model("tribe_mdl");
-        
+       
         //验证数据
-        if( !isChineseName($real_name) || !checkIdCard($idcard) || !checkMobile($bankmobile) || !$vertify1){
+        if( !$real_name || !checkIdCard($idcard) || !checkMobile($bankmobile) || !$vertify1){
             $return = array(
                     "status" => "02",
-                    "msg" => "参数有问题"
+                    "msg" => "您提交实名认证有有误，请重新提交"
             );
             echo json_encode($return);exit;
         }
@@ -791,14 +799,6 @@ class Info extends Front_Controller {
         $mobile2 = $this->session->userdata('verfity_mobile_10');
         $set_time = $this->session->userdata('verfity_settime_10');
         
-        if ($vertify1 != $vertify2 || $bankmobile != $mobile2 ) {
-            $return = array(
-                    "status" => "03",
-                    "msg" => "验证码错误"
-            );
-            echo json_encode($return);exit;
-        }
-        
         // 验证码超时验证
         if(date('Y-m-d H:i:s', strtotime("-300 second")) > $set_time) {
             $return = array(
@@ -807,6 +807,16 @@ class Info extends Front_Controller {
             );
             echo json_encode($return);exit;
         }
+ 
+        if ($vertify1 != $vertify2 || $mobile != $mobile2 ) {
+            $return = array(
+                    "status" => "03",
+                    "msg" => "请输入正确的验证码"
+            );
+            echo json_encode($return);exit;
+        }
+        
+
 
         //调用接口处理->验证实名认证
         $url = $this->url_prefix.'Customer/load';
@@ -833,7 +843,7 @@ class Info extends Front_Controller {
         if($isidcard){
             $return = array(
                     "status" => "07",
-                    "msg" => "此身份已经被其他账号认证了"
+                    "msg" => "该身份已被占有，请提交其他身份信息"
             );
             echo json_encode($return);exit;
         }
@@ -846,10 +856,11 @@ class Info extends Front_Controller {
                 "cardPhone" => $bankmobile
         );
         $result = $this->certification->jdwx(1,$parameter);
+      
         if(empty($result["result"]["respCode"]) || $result["result"]["respCode"] != "000000"){
             $return = array(
-                    "status" => "08",
-                    "msg" => "验证不通过"
+                    "status" => "02",
+                    "msg" => "您提交实名认证有误，请重新提交"
             );
             echo json_encode($return);exit;
         }
@@ -866,7 +877,7 @@ class Info extends Front_Controller {
             $this->db->trans_rollback();//开启事务
             $return = array(
                     "status" => "01",
-                    "msg" => "绑定失败"
+                    "msg" => "实名认证失败"
             );
             echo json_encode($return);exit;
         }
@@ -885,13 +896,13 @@ class Info extends Front_Controller {
             $this->db->trans_commit();
             $return = array(
                     "status" => "00",
-                    "msg" => "绑定成功"
+                    "msg" => "实名认证成功"
             );
         }else{
             $this->db->trans_rollback();//开启事务
             $return = array(
                     "status" => "01",
-                    "msg" => "绑定失败"
+                    "msg" => "实名认证失败"
             );
         }
         echo json_encode($return);exit;

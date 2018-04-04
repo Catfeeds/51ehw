@@ -1428,6 +1428,7 @@ class Tribe extends Front_Controller
     public function shop($id=0, $label_id = '' ){
         
         $type = $this->input->get("type");
+        $navigate= $this->input->get("navigate");
         $customer_id = $this->session->userdata("user_id");//用户id
         $real_name = $this->session->userdata("real_name");//真实姓名
         $appid = $this->session->userdata("app_info")['id'];
@@ -1451,6 +1452,7 @@ class Tribe extends Front_Controller
                     $data['title'] = "部落商城";
                 }
                 
+                $data["navigate"] = $navigate;
                 $data["type"] = $type;
                 $data['label_id'] = $label_id;
                 $data['head_set'] = 2;
@@ -1468,6 +1470,8 @@ class Tribe extends Front_Controller
         }else{
             echo "<script>history.back(-1);alert('部落不存在');</script>";exit;
         }}
+        
+        
         
         // --------------------------------------------------------------------
         

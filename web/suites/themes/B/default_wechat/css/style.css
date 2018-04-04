@@ -5086,7 +5086,7 @@ color: #FFFFFF;}
     .qinshang_two_text {padding: 20% 20px 0 0px;}
     .qinshang_one_text {padding: 20% 0 0 20px;}
 }
-
+.commodity_details_img {padding-bottom: 5px;}
 /*实名认证协议*/
 .approve_protocol_title {text-align: center;padding: 20px 0 10px 0;}
 .approve_protocol_title span {font-size: 18px;font-weight: bold;}
@@ -5094,6 +5094,12 @@ color: #FFFFFF;}
 .approve_protocol_main p {font-size: 13px;line-height: 21px;color: #333;text-indent: 2em;}
 .approve_protocol_main p span {font-weight: bold;}
 .approve_protocol_main h2 {font-size: 14px;font-weight: bold;padding-top: 15px;}
+.approve_protocol_close {position: fixed;right: 2%;top: 20%;-webkit-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%);z-index: 9;}
+.approve_protocol_close img {width: 50%;}
+
+
+
+
 
 
 

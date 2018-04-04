@@ -31,15 +31,18 @@
 	.recommend {margin-bottom: 0;padding-bottom: 0;}
 	.page {padding-bottom: 0;}
   .search-header {background-color: #1A1A1A;height:50px;width:100%;position:fixed;top:0;left:0;z-index: 999;}
-  .essay_classify_main {margin: 0px;margin-top: -30px;}
+  .essay_classify_main {margin: 0px;margin-top: 50px;}
   .tribe_shop_footer {width: 100%;height: 50px;position: fixed;bottom: 0;background-color: #FEFEFE;border-top: 1px solid #ddd;}
-  .essay_preview_nav ul li {width: 50%;}
+  /*.essay_preview_nav ul li {width: 50%;}*/
   .cart_num1 {position: absolute;right: 20%;top: 5px;width: auto;min-width: 14px;}
   .tribe_goods_box {float: left;width: 49%;border: 1px solid #eee;box-sizing: border-box;margin-left: 1%;margin-top: 1px;background: #fff;margin-bottom: 1%;}
   .tribe_goods_box a {width: 100%;margin-left: 0;margin-bottom: 0;border: none;margin-top: 0;}
   .tribe_goods_box .good-text-bg {overflow: hidden;width: 100%;}
   .nav_search {position: relative;padding-top: 10px;margin-left:0px;}
   .tribe_sousuo {width: auto!important;color: #fff;position: absolute;right: 10%;top: 12px;font-size: 15px!important;padding-left: 0!important;}
+  .essay_preview_nav {position: fixed;top: 50px;width: 100%;bottom: auto;border-top: 0;z-index: 9;}
+  .head_top .icon-release {position: fixed;bottom: 35px;right: 15px;}
+  .dropload-down {height: 48px;}
 </style>
 <!-- 部落搜索 -->
 <div class="search-header">
@@ -67,32 +70,35 @@
 </div>
 <div style="height:50px;"></div>
 
-<div class="essay_preview" id="ceshi">
-  <!-- 导航 -->
-  <div class="tribal_new_nav"><!-- onclick="barnavigation(this,2);" -->
-    <a href="<?php echo $type == 2?"javascript:history.back(-1);":site_url('Tribe/shop/'.$tribe_id.'/'.$label_id);?>" id="tribal_new_nav_active1" class="<?php echo  $_GET['type'] == 1  ? 'tribal_new_nav_active' : '' ?>" >部落商城</a>
-    <a href="<?php echo site_url('Tribe/shop/'.$tribe_id.'/'.$label_id.'?type=2');?>" id="tribal_new_nav_active2"  class="<?php echo  $_GET['type'] == 2  ? 'tribal_new_nav_active' : '' ?>">企业展示</a>
-  </div>
-  <span id="Mall" >
-  <!-- 头部 -->
-  <div class="tribe_shop_head">
-        <img src="<?php echo IMAGE_URL.$tribe["shop_img"]?>" alt="" onerror="this.src='images/tribe_shop_default.png'">
-  </div>
-  <div class="tribe_shop_person">
-     <!-- 头像 -->
-     <img src="<?php echo IMAGE_URL.$tribe["logo"]?>" alt="" onerror="this.src='images/default_img_s.jpg'">
-     <span><?php echo $tribe["name"]?></span>
-     <a href="<?php echo site_url("tribe/home/$tribe_id/$label_id");?>" class="tribe_shop_a"><span class="icon-tribal_profile"></span></a>
-  </div>
-
   <!-- 头部导航 -->
   <div class="essay_preview_nav tribe_shop_nav">
     <ul>
         <li class="essay_classify"><a href="javascript:void(0);" onclick="navigation(this,1);" class="essay_active_a">商城</i></a></li>
         <li class="essay_sales"><a href="javascript:void(0);" onclick="navigation(this,2);">部落</a></li>
+        <li class="essay_sales"><a href="<?php echo site_url('Tribe/shop/'.$tribe_id.'/'.$label_id.'?type=2');?>">企业展示</a></li>
     </ul>
   </div>
 
+
+
+
+<div class="essay_preview" id="ceshi">
+  <!-- 导航 -->
+  <div class="tribal_new_nav" hidden><!-- onclick="barnavigation(this,2);" -->
+    <a href="<?php echo $type == 2?"javascript:history.back(-1);":site_url('Tribe/shop/'.$tribe_id.'/'.$label_id);?>" id="tribal_new_nav_active1" class="<?php echo  $_GET['type'] == 1  ? 'tribal_new_nav_active' : '' ?>" >部落商城</a>
+    <a href="<?php echo site_url('Tribe/shop/'.$tribe_id.'/'.$label_id.'?type=2');?>" id="tribal_new_nav_active2"  class="<?php echo  $_GET['type'] == 2  ? 'tribal_new_nav_active' : '' ?>">企业展示</a>
+  </div>
+  <span id="Mall" >
+  <!-- 头部 -->
+  <div class="tribe_shop_head" hidden>
+        <img src="<?php echo IMAGE_URL.$tribe["shop_img"]?>" alt="" onerror="this.src='images/tribe_shop_default.png'">
+  </div>
+  <div class="tribe_shop_person" hidden>
+     <!-- 头像 -->
+     <img src="<?php echo IMAGE_URL.$tribe["logo"]?>" alt="" onerror="this.src='images/default_img_s.jpg'">
+     <span><?php echo $tribe["name"]?></span>
+     <a href="<?php echo site_url("tribe/home/$tribe_id/$label_id");?>" class="tribe_shop_a"><span class="icon-tribal_profile"></span></a>
+  </div>
 
     <!-- 推荐商品内容 -->
     <div class="essay_classify_main" id="recommend" hidden>
@@ -149,14 +155,10 @@
     </div>
 </span>
 <div class="head_top" style="top:80px;display:none;">
-   <div class="head_top_nei">
-      <a href="javascript:history.back();" class=""><span class="icon-back"></span></a>
-	<div class="search_circh" id="yanse"></div>
         <a href="<?php echo site_url("Corporation_style/Add_Topic");?>" class="icon-release" id="suos3"></a>
-    </div>
-    </div>
+</div>
 <!-- 企业形象 -->
-<span id="corporationstyle" hidden>
+<span id="corporationstyle">
 <span id="topic_list"><!-- 企业形象内容 --></span></span>
 </div>
 
@@ -242,7 +244,7 @@ $(function () {
         	                if(types == 2){
             	                if (data['limit'] == 1) {
                 	                result += '<div class="tribe_goods_box">';
-            	                  	result += '<a href="<?php echo site_url("Goods/detail");?>/'+data["list"][i]["id"]+'">';
+            	                  	result += '<a href="<?php echo site_url('tribe/good_detail');?>/'+data["list"][i]["id"]+'">';
             	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div></a>';
             	                    result += '<div class="good-text-bg">';
             	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
@@ -251,14 +253,14 @@ $(function () {
             	                    result += '</div>';
             	                    
             	                } else {
-            	                	result += '<a href="<?php echo site_url("Goods/detail");?>/'+data["list"][i]["id"]+'">';
+            	                	result += '<a href="<?php echo site_url('tribe/good_detail');?>/'+data["list"][i]["id"]+'">';
             	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
             	                    result += '<div class="good-text-bg">';
             	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
             	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'货豆</span></div></a>';  
             	                }
         	                }else{
-        	                	result += '<a href="<?php echo site_url("Goods/detail");?>/'+data["list"][i]["id"]+'">';
+        	                	result += '<a href="<?php echo site_url('tribe/good_detail');?>/'+data["list"][i]["id"]+'">';
         	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
         	                    result += '<div class="good-text-bg">';
         	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
@@ -367,6 +369,8 @@ function barnavigation(obj,type){
 	}else{
 		$(".head_top").show();
 		$("#tribal_new_nav_active1").removeClass('tribal_new_nav_active');
+    $(".essay_preview_nav ul li").siblings().children('a').removeClass('essay_active_a');
+    $(".essay_preview_nav ul li").eq(2).children('a').addClass('essay_active_a');
 	}
 	$(obj).addClass('tribal_new_nav_active');
 	if(type == 1){

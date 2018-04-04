@@ -2051,19 +2051,17 @@ class  Tribe_mdl extends CI_Model {
             switch ($types) {
                 case "1":
                     $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
-                    left join  9thleaf_easy_order as b on a.id  = b.product_id 
-                    left join 9thleaf_easy_product_img as c on a.id = c.product_id 
-                    and c.type = 1 
-                    where a.product_name like '%$keyword%' and b.status in ('4','5')
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1 
+                    where a.product_name like '%".$this->db->escape_like_str($keyword)."%' 
                     group by a.id  order by volume asc limit $offest,$limit");
                     return $query->result_array();
                     break;
                 case "2":
                     $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
-                    left join  9thleaf_easy_order as b on a.id  = b.product_id 
-                    left join 9thleaf_easy_product_img as c on a.id = c.product_id 
-                    and  c.type = 1 
-                    where a.product_name like '%$keyword%' and b.status in ('4','5')
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id  and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1 
+                    where a.product_name like '%".$this->db->escape_like_str($keyword)."%' 
                     group by a.id  order by volume desc limit $offest,$limit");
                     return $query->result_array();
                     break;
@@ -2071,7 +2069,7 @@ class  Tribe_mdl extends CI_Model {
                     $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a 
                     left join 9thleaf_easy_product_img as b on a.id = b.product_id  
                     and type = 1 
-                    where product_name like '%$keyword%' 
+                    where product_name like '%".$this->db->escape_like_str($keyword)."%'
                     order by price ASC
                     limit $offest,$limit");
                     return $query->result_array();
@@ -2080,7 +2078,7 @@ class  Tribe_mdl extends CI_Model {
                     $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
                     left join 9thleaf_easy_product_img as b on a.id = b.product_id
                     and type = 1
-                    where product_name like '%$keyword%'
+                    where product_name like '%".$this->db->escape_like_str($keyword)."%'
                     order by price desc
                     limit $offest,$limit");
                     return $query->result_array();
@@ -2089,7 +2087,7 @@ class  Tribe_mdl extends CI_Model {
                     $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
                     left join 9thleaf_easy_product_img as b on a.id = b.product_id
                     and type = 1
-                    where product_name like '%$keyword%'
+                    where product_name like '%".$this->db->escape_like_str($keyword)."%'
                     limit $offest,$limit");
                     return $query->result_array();
                     break;
@@ -2106,17 +2104,17 @@ class  Tribe_mdl extends CI_Model {
             switch ($types) {
                 case "1":
                     $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
-                    left join  9thleaf_easy_order as b on a.id  = b.product_id 
-                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and  c.type = 1 
-                    where tribe_id = $tribe_id and a.product_name like '%$keyword%' and b.status in ('4','5')
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1 
+                    where a.tribe_id = $tribe_id and a.product_name like '%".$this->db->escape_like_str($keyword)."%'
                     group by a.id  order by volume asc limit $offest,$limit");
                     return $query->result_array();
                     break;
                 case "2":
                     $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
-                    left join  9thleaf_easy_order as b on a.id  = b.product_id 
-                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and  c.type = 1 
-                    where tribe_id = $tribe_id and a.product_name like '%$keyword%' and b.status in ('4','5')
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1 
+                    where a.tribe_id = $tribe_id and a.product_name like '%".$this->db->escape_like_str($keyword)."%'
                     group by a.id  order by volume desc limit $offest,$limit");
                     return $query->result_array();
                     break;
@@ -2124,7 +2122,7 @@ class  Tribe_mdl extends CI_Model {
                     $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
                     left join 9thleaf_easy_product_img as b on a.id = b.product_id
                     and type = 1
-                    where tribe_id = $tribe_id and product_name like '%$keyword%'
+                    where tribe_id = $tribe_id and product_name like '%".$this->db->escape_like_str($keyword)."%'
                     order by price ASC
                     limit $offest,$limit");
                     return $query->result_array();
@@ -2133,7 +2131,7 @@ class  Tribe_mdl extends CI_Model {
                     $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
                     left join 9thleaf_easy_product_img as b on a.id = b.product_id
                     and type = 1
-                    where tribe_id = $tribe_id and product_name like '%$keyword%'
+                    where tribe_id = $tribe_id and product_name like '%".$this->db->escape_like_str($keyword)."%'
                     order by price desc
                     limit $offest,$limit");
                     return $query->result_array();
@@ -2142,7 +2140,7 @@ class  Tribe_mdl extends CI_Model {
                     $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
                     left join 9thleaf_easy_product_img as b on a.id = b.product_id
                     and type = 1
-                    where tribe_id = $tribe_id and product_name like '%$keyword%'
+                    where tribe_id = $tribe_id and product_name like '%".$this->db->escape_like_str($keyword)."%'
                     limit $offest,$limit");
                     return $query->result_array();
                     break;
@@ -2160,6 +2158,21 @@ class  Tribe_mdl extends CI_Model {
     }
     
     
+
+    /*
+     * 
+     * 获取简易店商品的轮播图及数据
+     */
+    public function goods_img_detail ($id) {
+        $this->db->select('easy_product.*,easy_product_img.path as img_path');
+        $this->db->join('easy_product_img','easy_product_img.product_id = easy_product.id', 'left');
+        $this->db->where('easy_product.id',$id);
+//         $this->db->where('easy_product_img.type','0');
+        $this->db->from('easy_product');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     /**
      * @author JF
      * 2018年4月3日
@@ -2173,8 +2186,5 @@ class  Tribe_mdl extends CI_Model {
         $this->db->set($data);
         $this->db->where("customer_id",$customer_id);
         return $this->db->update("tribe_staff");
-    
     }
-    
-    
 }

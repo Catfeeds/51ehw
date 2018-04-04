@@ -216,7 +216,13 @@
                    <div class="tribe_people_list">
                      <a href="<?php echo $val['customer_id'] ? site_url("Tribe_social/Customer_Album/{$val['customer_id']}/{$tribe_id}"):'javascript:message(2)';?>">认识TA</a>
                      <a href="<?php echo  $val['customer_id'] ? site_url("Corporation_style/User_Topic/{$val['customer_id']}"):'javascript:message(2)';?>">了解TA的产品</a>
-                     <a href="<?php echo !empty($val['customer_id'] ) ?  'javascript:Is_Exists_Comment('.$val['customer_id'].')': 'javascript:message(1)';?>">聊两句</a>
+                     <?php if(!empty($val['customer_id']) && $val['customer_id'] == $this->session->userdata('user_id')){?>
+                         <a href="javascript:message(4)">聊两句</a>
+                     <?php }else{ ?>
+                        <a href="<?php echo !empty($val['customer_id']) ? site_url("Webim/Control/chat/{$tribe_id}/{$val['customer_id']}") : 'javascript:message(3)'; ?>">聊两句</a>
+                     <?php }?>
+                     
+                     <!-- <a href="<?php // echo !empty($val['customer_id'] ) ?  'javascript:Is_Exists_Comment('.$val['customer_id'].')': 'javascript:message(1)';?>">聊两句</a> -->
                   </div>
                </li>
               
@@ -411,6 +417,9 @@ $(".tribe_shop_footer ul li").css("width",(100/footer_nva_length)+"%");
     }else if (status == 3)
     { 
       message = '该族员未登录';
+    }else if (status == 4)
+    { 
+        message = '不能和自己聊天';
     }else if (status == 5)
     { 
       message = '您还没有开店，请联系客服协助 400-0029-777';
@@ -429,7 +438,10 @@ function Is_Exists_Comment( customer_id )
             { 
                 window.location.href = '<?php echo site_url('Tribe_social/comment')?>/'+customer_id
             }else{ 
-              message(3);
+            	$(".black_feds").text("您已经评价过了").show();
+                setTimeout("prompt();", 2000); 
+				return false;
+                
             }
           
         },

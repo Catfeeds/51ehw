@@ -3,7 +3,6 @@
 </style>
 <link rel="stylesheet" href="css/dropload.css"><!-- 下拉插件 -->
 <script type="text/javascript" src="js/dropload.min.js"></script><!-- 下拉插件 -->
-
 <!-- 我的发布 -->
 <div class="myrelease">
    <div class="myrelease_list">
@@ -13,14 +12,13 @@
    <!-- 备注 -->
    <div class="myrelease_remarks"><span>备注：商品只能发布到一个部落，需要发布到平台请请联系客服开通正式企业，客服电话：</span><a href="tel:400-002-9777">400-002-9777</a></div>
 </div>
-<div class="myrelease_get"><a href="javascript:void(0);">发布商品</a></div>
-
+<div class="myrelease_get"><a href="<?php echo site_url("Easyshop/product/ReleaseGoodsView/?tribe_id={$tribe_id}");?>">发布商品</a></div>
 <!-- 弹窗 -->
  <div class="tuichu_ball" hidden>
    <div class="tuichu_ball_box">
       <div class="tuichu_ball_main">
-         <div class="tuichu_ball_title"><span>提示</span></div>
-         <div class="tuichu_ball_text"><span>是否删除该产品？</span></div>
+         <div class="tuichu_ball_title"><span id="tuichu_ball_title">提示</span></div>
+         <div class="tuichu_ball_text"><span id="tuichu_ball_text">是否删除该产品？</span></div>
          <div class="tuichu_ball_button">
            <a href="javascript:cane(0);">取消</a>
            <a id = 'tuichu_sub' href="javascript:void();" >确定</a>
@@ -28,8 +26,6 @@
       </div>
    </div>
  </div> 
- 
- 
 <!--订单加载 -->
 <script type="text/javascript">
 var page = 1;//默认第一页
@@ -45,7 +41,7 @@ dropload = $('.myrelease').dropload({
 					  result += '<div class="myrelease_time">';
 					  result += '<span>创建时间：'+data['list'][i]['created_at']+'</span>';
 					  result += '</div>';
-    				  result += '<a href="<?php echo site_url("Easyshop/product/easyshop_product_detail");?>/'+data["list"][i]["id"]+'/?tribe_id='+data['tribe_id']+'">';
+    				  result += '<a href="<?php echo site_url("tribe/good_detail");?>/'+data["list"][i]["id"]+'">';
         	          result += '<div class="myrelease_list_left"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
         	          result += '<div class="myrelease_list_right">';
         	          result += '<div>';
@@ -79,6 +75,7 @@ dropload = $('.myrelease').dropload({
 	//提示框
     function quit(id){
     	$("#tuichu_sub").attr('onclick','quit_sub('+id+')')
+    	document.getElementById('tuichu_ball_text').innerText = '确认删除该商品？';
     	$(".tuichu_ball").show();
     }
     
@@ -128,7 +125,19 @@ dropload = $('.myrelease').dropload({
 			});
 	}
 
-	function down_up (obj) {
+	//提示框
+    function down_up(id){
+        var object = 'id'+id;
+    	$("#tuichu_sub").attr('onclick','down_up_goods('+id+')');
+    	var idtest = document.getElementById(object).innerText;
+    	if (idtest == '下架'){
+        	document.getElementById('tuichu_ball_text').innerText = '下架该商品将不会在商城展示，确认下架?';
+        } else {
+        	document.getElementById('tuichu_ball_text').innerText = '确认上架该商品？';
+        }
+    	$(".tuichu_ball").show();
+    }
+	function down_up_goods (obj) {
 		var id = 'id'+obj;
 		var  atext = document.getElementById(id);
 		var label_data = atext.innerHTML;
@@ -138,8 +147,6 @@ dropload = $('.myrelease').dropload({
 			dataType: 'json',
 			data: {'id': obj,label_data:label_data},
 			success: function (data) {
-				console.log(data['is_on_sale']);
-
 				if (data['is_on_sale'] == '0') {
 					var manager = '下架成功';
 				} else if (data['is_on_sale'] == '1') {

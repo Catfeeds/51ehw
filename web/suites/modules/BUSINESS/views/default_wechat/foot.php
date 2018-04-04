@@ -85,6 +85,14 @@ function menu2(){
         spaceBetween: 30,
         autoplay : 5000,
     });
+
+
+  setInterval(function(){
+  	$('#_embed_v3_dc').remove();
+  },1000)
+
+
+
 </script>
 
 	</body>

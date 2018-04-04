@@ -207,6 +207,9 @@ class Product extends Front_Controller {
                     }
                 }
             }
+            if ($images['0']) {
+                $images['0']['type'] = '1';
+            }
             
             //添加图片数据
             $id = $this->Easyshop_mdl->create_img( $images );

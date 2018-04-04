@@ -11,85 +11,54 @@
     <div class="page clearfix">
       <!-- 商品图片开始 -->
         <div class="swiper-container">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper">    
+            	<?php 
+            	foreach ($data as $image){
+            	        ?>
                 <div class="swiper-slide maximg_480">
-                    <img src="images/default_img_b.jpg" alt="" onerror="this.src='images/default_img_b.jpg'">
+                    <img src="<?php echo IMAGE_URL.substr($image['img_path'],2);?>" alt="" onerror="this.src='images/default_img_b.jpg'">
                 </div>
-              <div class="swiper-slide maximg_480">
-                    <img src="images/default_img_b.jpg" alt="" onerror="this.src='images/default_img_b.jpg'">
-                </div>
-                  <div class="swiper-slide maximg_480">
-                    <img src="images/default_img_b.jpg" alt="" onerror="this.src='images/default_img_b.jpg'">
-                </div>
-                   <div class="swiper-slide maximg_480">
-                    <img src="images/default_img_b.jpg" alt="" onerror="this.src='images/default_img_b.jpg'">
-                </div>
-                  <div class="swiper-slide maximg_480">
-                    <img src="images/default_img_b.jpg" alt="" onerror="this.src='images/default_img_b.jpg'">
-                </div>
-                            </div>
+                <?php  }?>
+              	
+           </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div><!--swiper-container end-->
         <!-- 商品图片结束 -->
         <div class="product">
-            <h1>西凤酒华山论剑 20年陈酿酒   52%vol 500ml  凤香型国产白酒</h1>
-            <h2>52%vol 西凤酒华山论剑20年陈酿酒是用大酒海珍藏20年的优质基酒特制而成。</h2>
+            <h1><?php echo $data['0']['product_name'];?></h1>
+            <h2><?php echo $data['0']['desc'];?></h2>
             
             <lable class="item" id="special_price_item" >特价&nbsp;&nbsp;
                 <span class="red" style="font-size: 15px;font-weight: bold;" id="special_price">
-               338.00元
+               <?php echo $data['0']['price'];?>元
                 </span>
             </lable>              
         <lable class="item">库存&nbsp;&nbsp;<!-- 共享服务分类104164 -->
-            <span id="stock" style="color: #333333;font-weight: bold;padding-left: 1px;">878</span>
+            <span id="stock" style="color: #333333;font-weight: bold;padding-left: 1px;"><?php echo $data['0']['stock'];?></span>
         </lable>    
         <lable class="item detail-itme-num" style="width:40px">数量</lable>
         <span class="add-del">
             <a href="javascript:void(0);" onclick="reduce();" class="btn-del num_oper num_min detail-jian-num"><span>－</span></a>
-            <input name="item_num" id="item_num" class="new-input" type="text" maxlength="6" value="1" onkeyup="modify();" />
+            <input name="item_num" id="item_num" class="new-input" type="text" maxlength="6" value="1" onblur="modify();" />
             <a href="javascript:void(0);" onclick="add();" class="btn-add num_oper num_plus"><span >+</span></a>
         </span>
         
         <lable class="item detail-xiaoji-num">合计
             <span class="red" id="total_price" style="font-size: 15px;font-weight: bold;padding-left:8px;">       
-            338.00元      
+            <?php echo $data['0']['price'];?></span><span> 元      
             </span>
-        </lable>     
-        <!-- 商品详情 猜你喜欢 导航 -->
-        <div class="goods-live-nav">
-            <ul>
-                <li class="active-line">商品详情</li>
-               <!--  <li>猜你喜欢</li> -->
-            </ul>
-        </div>
-        
-        
-        <!-- 商品详情 -->
-        <lable class="item">商品详情&nbsp;&nbsp;
-            <div class="line2 pt10"></div>
-             <ul class="item-ifo">
-                <li>产地：中国陕西</li>
-                <li>香型：凤香型白酒</li>
-                <li>酒精纯度：高度白酒（50%以上）</li>
-                <li>适用场景：商务宴请</li>
-                <li>特产品类：西凤酒</li>
-                <li>净含量：500ml</li>
-                <li>度数：52%vol</li>
-                <li> 厂名：陕西西凤酒集团股份有限公司</li>
-                <li> 厂址：陕西省凤翔县柳林镇</li>
-                <li> 配料表：水、高粱、大麦、小麦、豌豆</li>
-                <li>储藏方法：避光阴凉保存</li>
-                <li>保质期：可长期储存</li>
-                <li>食品添加剂：无</li>
-            </ul>
-        
         </lable>
-        
-
-        <!-- <div class="line"></div> -->
+      
+		 <!-- <div class="line"></div> -->
         <lable class="item">商品图片:</lable>
-        <div><img alt="" src="http://images.51ehw.com/B/uploads/fck/0/1452477744357.jpg"></div>
+        		<?php 
+            	foreach ($data as $image){
+            	?>
+                <div class="commodity_details_img">
+                    <img src="<?php echo IMAGE_URL.substr($image['img_path'],2);?>" alt="" onerror="this.src='images/default_img_b.jpg'">
+                </div>
+                <?php  }?>
         
         </div><!--product end-->
     
@@ -161,6 +130,61 @@ function check_item_num(mode){
         return false;
     }
 }
+
+function add () {
+	var price = <?php echo $data['0']['price'];?>;
+	var stock = <?php echo $data['0']['stock'];?>;
+	var item_num = document.getElementById('item_num').value;
+	item_num = item_num * 1 +1;
+	document.getElementById('item_num').value = item_num;
+	if (item_num > stock) {
+		document.getElementById('item_num').value = stock;
+		var count = price * stock;
+	} else {
+		var count = price * item_num;
+	}
+	document.getElementById('total_price').innerText = count;
+	
+	
+}
+
+function reduce () {
+	var price = <?php echo $data['0']['price'];?>;
+	var item_num = document.getElementById('item_num').value;
+	item_num = item_num * 1 -1;
+	if (item_num < 1) {
+		item_num = 1;
+	}
+	document.getElementById('item_num').value = item_num;
+	var count = price * item_num;
+	document.getElementById('total_price').innerText = count;
+}
+
+function modify () {
+	var stock = <?php echo $data['0']['stock'];?>;
+	var price = <?php echo $data['0']['price'];?>;
+	var item_num = document.getElementById('item_num').value;
+	var re = /^\+?[1-9][0-9]*$/;
+    if (re.test(item_num) == false) {
+    	document.getElementById('item_num').value = 1;
+    }
+    var pp = /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/;
+    if (pp.test(item_num) == true) {
+    	document.getElementById('item_num').value = parseInt(item_num);
+    	if (item_num > stock) {
+    		document.getElementById('item_num').value = stock;
+    	}
+    }
+    var item_num = document.getElementById('item_num').value;
+    var count = price * item_num;
+	document.getElementById('total_price').innerText = count;
+
+    
+}
+
+
+
+
 
 
 </script>
