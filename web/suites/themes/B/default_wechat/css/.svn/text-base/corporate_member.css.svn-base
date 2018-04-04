@@ -1,0 +1,135 @@
+
+/* corporate_member */
+.Box{
+	border:none;
+	background:none;
+	font-family:Microsoft YaHei;
+	}
+.cmLeft{
+	width:221px;
+	height:auto;
+	float:left;
+	
+	}
+.cmLeft .cmLeft-top,.cmLeft .cmLeft-down{
+	width:199px;
+	height:401px;
+	border:1px solid #fea33b;
+	padding:30px 0 0 20px;
+	background:url(../images/cmLeft01.jpg) no-repeat;
+	}
+.cmLeft .cmLeft-down{
+	height:438px;
+	margin:15px 0 0 0;
+	background:url(../images/cmLeft02.jpg) no-repeat;
+	}
+.cmLeft1{ 
+	font-size:18px; 
+	color:#3e3e3e;
+	font-family:Arial Regular;
+	}
+	
+.cmLeft2{
+	width:70px;
+	height:26px;
+	background:#6b6b6b url(../images/zuanshi.png) no-repeat 7px center;
+	border-radius:5px;
+	margin:15px 0 0 0;
+	color:#fff;
+	font-size:14px;
+	padding:0 0 0 37px;
+	line-height:26px;
+	}
+.cmLeft3{
+	width:98px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	background:#72c312;
+	border-radius:2px;
+	color:#fff;
+	margin:15px 0 0 0;
+	font-size:16px;
+	}
+.cmLeft-line{ 
+	width:173px;
+	height:1px;
+	background:#6f6f6f;
+	margin:15px 0 0 0;
+	}
+.cmLeft4,.cmLeft5{
+	width:173px;
+	height:42px;
+	background:#72c312;
+	margin:15px 0 10px 0;
+	border-radius:2px;
+	cursor:pointer;
+	font-size:18px;
+	color:#fff;
+	text-align:center;
+	line-height:42px;
+	}
+.cmLeft5{
+	margin:0 0 0 0;
+	}
+.cmRight{
+	width:969px;
+	height:auto;
+	float:right;
+	color:#555;
+	text-align:center;
+	font-size:16px;
+	}
+.cmRight .cmRight-top,.cmRight .cmRight-down{
+	width:969px;
+	height:419px;
+	border:1px solid #fea33b;
+
+	}
+.cmRight .cmRight-down{
+	margin:10px 0 0 0;
+	font-size:20px;
+	line-height:419px;
+	}
+
+table{
+	border:1px solid #fea33b;
+	border-left:none;
+	border-right:none;
+	}
+	
+table th{
+	 font-weight: normal;
+	 }
+table th ul{ 
+	width:190px;
+	height:44px;
+	background:red;
+	}
+table th li{ 
+	float:left;
+	width:85px;
+	height:44px;
+	}
+	
+.t1{
+	font-size:20px;
+	width:969px;
+	height:50px;
+	line-height:50px;
+	background:red;
+	}
+tr{
+	display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    }
+
+	
+	
+	
+	
+	
+	
+	
+	

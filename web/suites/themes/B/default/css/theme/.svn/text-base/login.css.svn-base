@@ -1,0 +1,93 @@
+
+/* login */
+.Box{  
+	background:none;
+	}
+.bTop ul li{ 
+	width:444px; 
+	height:88px; 
+	background:url(../images/geren_02.png) no-repeat 180px center; 
+	border-bottom:none; 
+	line-height:88px;
+	text-align:center;
+	}
+.bBox label{ 
+	width:268px; 
+	height:37px; 
+	float:right;
+	margin:20px 0 0 0; 
+	font-family:Microsoft YaHei; 
+	font-size:14px; 
+	}
+.bBox label .pp2{ 
+	width:80px; 
+	height:37px;  
+	text-align:right; 
+	line-height:37px;
+	margin:-10px 0 0 0;
+	}
+.bBox label .pp2 a{ color:#72c312;}
+.bBox{ 
+	width:400px; 
+	padding:0 400px;
+	}
+	
+.bBox .pp .p1{
+	width:400px;
+	}
+
+	
+.tips{
+	width: 400px;
+    height: 35px;
+	float:right;
+    margin: 0 auto;
+    overflow: hidden;
+    zoom: 1;
+    margin-top: 20px;
+	}
+.hline{
+	width: 175px;
+    height: 15px;
+    border-bottom: 1px solid #acacac;
+    overflow: hidden;
+    zoom: 1;
+	}
+.fl{ float:left;}
+.tiptext{
+	width: 50px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #787878;
+    font-size: 14px;
+	}
+.fr{ float:right;}
+.other{
+	width:400px;
+	height:44px;
+	margin-top:95px;
+	}
+.other .weixin,.other .pay{
+	width:109px;
+	height:44px;
+	background:#51b419 url(../images/weixin.png) no-repeat 28px center;
+	float:left;
+	line-height:44px;
+	padding: 0 0 0 70px;
+	cursor:pointer;
+	border-radius:2px;
+	}
+.other .weixin a,.other .pay a{
+	font-size:18px;
+	color:#fff;
+	}
+.other .pay{
+	float:right;
+	background:#00aaef url(../images/pay.png) no-repeat 25px center;
+
+	}
+	
+	
+	
+	

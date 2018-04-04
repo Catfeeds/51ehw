@@ -1,0 +1,128 @@
+*{ padding:0; margin:0;}
+a{ text-decoration:none;}
+ul,li{ list-style:none;}
+img{ border:none;}
+html, body { margin: 0; padding: 0; height: 100%; font-family: 'Helvetica', Arial, sans-serif; -webkit-font-smoothing: antialiased;  }
+/*全局开始*/
+#warp{ width:100%;min-width:1200px;margin:0px auto; height:100%;}
+/*头部开始*/
+.header{ width:100%; height:auto; margin-bottom:40px;}
+.header .tou{background:#2e93e9; height:60px;position:relative;}
+.header .tou a{color:#ffffff;}
+.header_tou{ width:100%; max-width:1200px; height:60px; line-height:60px; margin:0 auto; color:#ffffff; }
+.header_tou h4{ float:left; padding-left:10px; font-size:26px;}
+.header_tou h4 a{ color:#ffffff;}
+.header_tou_r{float:right;height:60px; }
+.header_tou_r1{  font-weight:bold;float:left; position:relative; width:104px;}
+.header_tou_r1 li{ float:left; font-size:18px;text-align:center; width:104px;}
+.header_tou_r1 li a{ display:block;}
+/*.header_tou_r1 li a:hover{ background:#fff; color:#2e93e9}
+.head_li_hover{ background:#fff; color:#2e93e9;}
+.header_tou_r1 dl{background:#62b0f2;position: absolute; float:left; font-size:14px; width:94px;padding:0 5px; display:none; z-index:9999}
+.header_tou_r1 dl dd a{ color:#b1dbff!important;border-bottom:1px solid #fff;}	
+.header_tou_r1 dl dd{ height:40px; line-height:40px;}
+.header_tou_r1 dl dd a:hover{ color:#fff!important; background:none}	*/
+.animenu_nav {background-color: #111;}
+.animenu_nav > li:hover > ul { opacity: 1; visibility: visible;margin: 0;}
+.animenu_nav > li:hover > a { color: #2e93e9; background:#fff;}
+.animenu_nav_child { width:104px;position: absolute;top: 100%;left: 0;z-index: 1; opacity: 0;visibility: hidden;background: #62b0f2;  transition: margin .15s, opacity .15s; overflow: hidden; display:block;}
+.animenu_nav_child > li {font-size:14px;height:38px; line-height:38px; }
+.animenu_nav_child > li >a{ color:#a3d3fc!important;border-bottom: 1px solid #fff; }
+.animenu_nav_child a:hover {color: #fff!important;background:none!important;}
+.header_tou_r .header_tou_r2{float:left; margin-left:30px;}
+.header_tou_r .header_tou_r2 .header_n{ float:left; height:60px; margin-top:14px; margin-right:10px;}
+.header_tou_r .header_tou_r2 .header_n p{ line-height:16px; height:16px; font-size:14px; text-align: right; margin-bottom:3px; font-weight: bold;}
+.header_tou_r .header_tou_r2 .header_n .zai{ background:url(../images/dianjj.png) no-repeat center left; float:right; width:36px;}
+.header_tou_r .header_tou_r2 span{ margin-top:-9px; display:block; font-weight:bold; font-size:14px;}
+.header_tou_r .header_tou_r2 .den{ position:absolute;}
+.header_tou_r .header_tou_r2 small{ width:48px; height:48px; float:right; display:block; font-size:48px; margin-top:6px;}
+/*登录开始*/
+.account{ width:1200px; margin:0px auto; min-height:600px;}
+.account1{ margin:0px auto;height:220px; width:492px; border:1px solid #4086dd;}
+.account_rigth{ width:445px; height:210px;margin:10px auto;}
+.account .account_rigth h5{ font-size:26px; border-bottom:2px solid #4086dd; margin-bottom:30px; padding-bottom:10px;}
+.account .account_rigth h5 a{ color:#4086dd;font-size:14px; float:right; margin-top:8px;}
+.suo{height: auto;margin-left:20px;}
+.suo .loginname{ padding-left:10px; padding-right:1px;}
+.suo #entry{ margin-left:23px;}  
+.suo .form-group{ margin-bottom:20px; height:25px; line-height:25px;}
+.suo .form-control{ font-size:12px; border:1px solid #d8d8d8; border-radius:5px;}
+.suo span{ float:left; font-size:12px; color:#000;}
+.suo .label{ margin-left:-10px;}
+.suo .btn-mcode{ margin-left:10px; font-size:12px; color:#888;}
+.form-group input{ width:211px; height:27px; float:left;}
+.suo .form-group .form-control{ padding-left:10px;}
+.suo .form-group a{ color:#446da0; font-size:12px; display:block; float:right; margin-right:230px;}
+.suo .login-btn{ width:224px; height:30px; line-height:30px; text-align:center; margin-left:59px; margin-bottom:20px; background:#4086dd; border-radius:5px;}
+.suo .login-btn a{ color:#ffffff; font-size:14px; display:block; font-weight:bolder;}
+/*登录结束*/
+/*注册开始*/
+.account_c{ width:492px; overflow:hidden;margin:0px auto; border:1px solid #4086dd;}
+.account .account_c_n{ width:445px; margin:20px auto;}
+.account .account_c_n h5{ font-size:26px; border-bottom:2px solid #4086dd; margin-bottom:30px; padding-bottom:10px; text-align:center;}
+.enter{ width:445px;}
+.rzhu .form_rzhu{ margin-bottom:15px; height:27px;line-height:27px;}
+.rzhu .form_rzhu span{ font-size:14px; text-align:right; vertical-align:inherit;}
+.rzhu .form_rzhu .tiao1{  font-size:12px;}
+.rzhu .form_rzhu .tiao2{ color:#fff; font-size:12px;background:#2e93e9; width:90px; height:25px; line-height:25px; text-align:center; padding:5px; border-radius:5px; }
+.rzhu .form_rzhu .biaod{ width:300px; height:25px; padding-left:10px; margin-right:10px;border:1px solid #d8d8d8; border-radius:5px;}
+.rzhu .form_rzhu .biaod1{ width:90px; height:25px; padding-left:10px; margin-right:10px;border:1px solid #d8d8d8; border-radius:5px;}
+.rzhu .form_rzhu .theme{ width:200px;-webkit-appearance: none;-moz-appearance: none;-ms-appearance: none; -o-appearance: none;appearance: none; height:26px;}
+.rzhu .zhu1{ margin-left:28px;}
+.rzhu .zhu2{ margin-left:10px;}
+.rzhu .zhu3{ margin-left:41px;}
+.rzhu .zhu4{ margin-left:18px;}
+.rzhu .zhu5{ margin-left:18px;}
+.rzhu .zhu6{ margin-left:46px;}
+.rzhu .zhu6 select{ line-height:26px; background:url(../images/dianj.png) no-repeat center right; padding-left:10px;border:1px solid #d8d8d8;border-radius:5px;}
+.rzhu .zhu7{ margin-left:10px;}
+.rzhu .zhu8{ margin-left:79px; font-size:14px;}
+.rzhu .zhu8 input{ margin-right:5px;}
+.rzhu .zhu8 a{ color:#50c734;}
+.rzhu .zhu11{ height:40px; line-height:40px;margin-left:78px;}
+.rzhu .form_rzhu .tiao3 a{ color:#ffffff; font-size:14px; width:270px; height:30px; border-radius:5px;  line-height:30px; display:block; float:left; text-align:center; font-weight:bold;background:#2e93e9; }
+/*注册结束*/
+ /*分成汇总查询开始*/
+.content{ width:1200px; margin:0px auto; overflow:hidden;}
+.content_tou{ overflow:hidden;border-bottom:1px solid #ccc; color:#333333; position: relative; margin-bottom:30px;}
+.content_tou h5{ font-size:26px; font-weight: bolder; padding-left:10px; margin-bottom:50px;}
+.content_tou_n .zhu6{ margin-left:50px;}
+.content_tou_n .zhu11{ margin-left:57px;}
+.content_tou_n .zhu6 span{ margin:0 5px;}
+.content_tou_n .zhu7{ margin-left:33px;}
+.form_rzhu{ float:left; margin-right:5px;}
+.content_tou_n .form_rzhu{ font-size:14px;color:#333333; font-weight:bolder;}
+.content_tou_n .form_rzhu .theme{ width:150px;-webkit-appearance: none;-moz-appearance: none;-ms-appearance: none; -o-appearance: none;appearance: none; height:26px;}
+.content_tou_n li{ float:left; margin-bottom:25px; width:1200px; height:26px; line-height:26px;}
+.content_tou_n select{ line-height:26px; background:url(../images/dianj.png) no-repeat center right; padding-left:10px;border:1px solid #d8d8d8;border-radius:5px;}
+.zijin1_1_con01_input01 {  width: 138px;text-indent: 3px;}
+.content_tou_n .zhu6 input{ line-height:26px; background:url(../images/dianj.png) no-repeat center right; padding-left:10px;border:1px solid #d8d8d8;border-radius:5px;}
+.content_tou_n .zhu11 keyword input{ width:15px; height:14px; margin-right:5px;}
+.content_tou_n .zhu11 keyword{ margin-right:30px;}
+.chaxun{ position:absolute; right:65px; top:108px;}
+.chaxun .tiao3 a{ display:block;width:162px; height:48px; line-height:48px; background:#2e93e9; text-align:center; color:#fff; border-radius:5px; font-size:24px; font-weight:bolder;}
+.table1.manage_b_table1 { border: 1px solid #ccc; background: #fff;border-collapse: collapse;border-top:3px solid #2e93e9;}
+.table1.manage_b_table1 th{font-size:16px; font-weight:normal; height:35px;}
+.manage_b_table2{ background:#ffffff;} 
+.manage_b_table3{ background:#f0f0f0 ;} 
+ .content_bo2{ margin-bottom:25px; overflow:hidden;}
+ .content_bo2 h5{ float:left; font-size:18px;}   
+.content_bo2 .form_rzhu .theme{ width:150px;-webkit-appearance: none;-moz-appearance: none;-ms-appearance: none; -o-appearance: none;appearance: none; height:26px;}
+.content_bo2 select{ line-height:26px; background:url(../images/dianj.png) no-repeat center right; padding-left:10px;border:1px solid #d8d8d8;border-radius:5px;}
+.content_bo2 .form_rzhu{ font-size:14px; font-weight:bolder;}
+.content_bo2 .content_bon{ float:right;}
+/*.content_bon .u-btn2{ width:100px; height:26px!important;} */
+.u-btn2{width:100px;height:26px;border:none;overflow:hidden;text-align:center;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px; background:#fff; border:1px solid #d8d8d8; outline: none;}
+.u-btn2:hover{background:#2e93e9;}
+ /*分成汇总查询结束*/
+ /*分成明细查询开始*/
+.content_tou_n li .zhu9{ margin-left:74px;}
+.content_tou_n li .zhu10{ margin-left:62px;}
+.content_tou_n li .zhu12{ margin-left:59px;}
+.content_tou_n li .zhu12 input{ width:139px; height:24px;border:1px solid #d8d8d8; border-radius:5px; padding-left:10px;}
+.content_tou_n .zhu10 span input{ width:280px; height:24px;font-size:12px; border:1px solid #d8d8d8; border-radius:5px; margin:0 20px;}
+.content_tou_n .zhu10 keyword input{ width:15px; height:14px; margin-right:5px;}
+.chaxun1{ position:absolute; right:65px; bottom:24px;}
+.chaxun1 .tiao4 a{ display:block;width:162px; height:48px; line-height:48px; background:#2e93e9; text-align:center; color:#fff; border-radius:5px; font-size:24px; font-weight:bolder;}
+.haudong{ width:1200px; overflow:hidden;overflow-y: hidden;overflow-x: auto; margin-bottom:30px;}
+ /*分成明细查询结束*/

@@ -1,0 +1,158 @@
+.m-top10{ margin-top:10px; }
+.m-top15{ margin-top:15px; }
+.m-top20{ margin-top:20px; }
+.ui-tasting,.ui-tonic{ width: 326px; height: 157px; margin-right:10px; display: inline }
+.ui-vip{ width: 308px; height: 157px; display: inline}
+
+/**/
+.ui-crumb {
+    width:980px; margin:10px auto 0; color:#666;
+    border-bottom: 1px dotted #9f9f9f; height: 25px; line-height: 25px;
+}
+.ui-crumb a { color:#666; }
+.ui-crumb a:hover { color:#666; text-decoration:underline; }
+.ui-crumb a.on { color:#666; font-weight:bold; }
+.ui-crumb span{ color: #999;}
+
+
+
+/*ui-history*/
+.ui-history{ overflow: hidden; border: 1px solid #dcdcdc;}
+.ui-history-title{ height: 35px; line-height: 35px; background: #f7f7f7; border-bottom:1px solid #dcdcdc; }
+.ui-history-title h3{ font-weight: bold; font-size: 14px; padding-left: 20px;}
+.ui-history-bd{  position: relative;}/*padding:15px 10px;*/
+.ui-history-bd .next,.ui-history-bd .pre{
+    width: 30px; height: 60px; display:block; cursor: pointer;
+    position: absolute; background: url(../images/next_bj.gif) no-repeat;
+}
+.ui-history-bd .next{right:5px;top:50%; margin-top: -60px; background-position: 0 -60px;}
+.ui-history-bd .pre{left:5px;top:50%; margin-top: -60px;}
+.ui-history-list{ width: 177px; float:left; margin:0 28px;}
+.ui-history-list .list-pic{
+    width: 175px; height: 210px; border: 1px solid #ccc;
+}
+.list-bgline{height: auto;
+    overflow: hidden;
+    /*padding: 4px 0 0 12px;*/
+	padding: 4px 0 0 6px;
+    width: 999999px;}
+.ui-history-list .list-info{margin:5px 0;}
+.ui-history-list .list-price{color: #C53F4C;font-weight: bold;    font-size: 14px;}
+.list-but{ margin: 5px 0;}
+a.history-but{
+    background: url(../images/but_bj.gif) no-repeat;
+    width: 72px; height: 22px; text-align: center; line-height: 22px;color: #666;
+}
+a.history-but:hover{ color: #333; text-decoration: none;}
+
+
+
+.ui-page { text-align: center; }
+.ui-page .prev, .ui-page .next {
+    border: 1px solid #aa998a; display: inline-block; font-size: 14px;
+    height: 28px; margin: 5px 10px 0 0; line-height: 28px; padding: 0 10px 0 25px;
+}
+.ui-page .prev { background: #f1ece6 url(../images/cat_r.gif) no-repeat 10px 9px; }
+.ui-page .next { background: #f1ece6 url(../images/cat_l.gif) no-repeat 12px 9px; }
+.ui-page a {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    border: solid 1px #AA998A;
+    font-size: 14px; color: #666;
+    padding: 0 12px;
+    background-color: #F7F5F2;
+    margin: 0 3px;
+}
+a.ui-paging-current, a.ui-paging-current:hover {
+    color: #FFF;
+    background: #9d0320;
+    border: 1px solid #9d0320;
+}
+.ui-online-share{
+    top: 160px;
+
+    z-index: 99;
+    width: 234px;
+   /* left:-198px;*/
+    position: absolute;
+}
+.ui-online-btn{
+    float: right;
+    margin: 86px 0 0;
+    display: inline;
+    width: 36px;
+    height:100px;
+    background: url(../images/online_share.gif) no-repeat;
+}
+.ui-online-left{
+    width: 178px; height: 252px;
+    background-color: #3f1c0b;
+    float: left; padding: 10px;
+    display: inline;
+    overflow: hidden;
+    zoom: 1;
+}
+.ui-info-bot{}
+.ui-share-title{
+    height:26px; line-height:26px; color: #ac9477;
+    background: url(../images/share_title_bj.gif)  repeat-x bottom;
+}
+.ui-share-info{
+
+    padding: 10px 0;
+}
+.ui-share-info li {
+     width: 47%;
+     height: 26px;
+     float: left;
+     margin: 2px;
+ }
+.ui-share-info li a {
+    background: url(../images/is.png) no-repeat;
+    height: auto!important; color: #ac9477;
+    text-indent: 2.3em;
+    display: block;padding: 4px 1px;
+}
+.ui-share-info li a:hover{
+    background-color: #5d2910; text-decoration: none;
+    border-radius: 2px;
+}
+.bds_mshare {
+    background-position: 0 -2070px!important;
+}
+.bds_qzone {
+    background-position: 0 -75px!important;
+}
+.bds_tsina {
+    background-position: 0 -115px!important;
+}
+.bds_renren {
+    background-position: 0 -195px!important;
+}
+.bds_tqq {
+    background-position: 0 -235px!important;
+}
+.bds_kaixin001 {
+    background-position: 0 -275px!important;
+}
+.bds_tieba {
+    background-position: 0 -595px!important;
+}
+.bds_tsohu {
+    background-position: 0 -435px!important;
+}
+.bds_douban {
+    background-position: 0 -395px!important;
+}
+.bds_more {
+    background-image: url(../images/is.png?cdnversion=20131219)!important;
+    background-position: 0 4px!important;
+}
+.ui-share-spread{ padding:6px 0;}
+.ui-share-spread .text6{ width: 130px; height: 23px; border: 1px solid #36180a; background: #61341e;}
+
+.ui-share-spread .btn-login{
+    width: 37px; height:23px;border: 1px solid #36180a; background: #61341e;
+    color: #ac9477; cursor: pointer;
+}

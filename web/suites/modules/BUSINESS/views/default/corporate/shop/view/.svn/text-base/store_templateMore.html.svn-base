@@ -1,0 +1,1661 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/fancymain.css">
+<link rel="stylesheet" type="text/css" href="css/fancybox.css">
+<link href="css/swiper3.08.min.css" rel="stylesheet" type="text/css">
+<link href="css/style_v2.css" rel="stylesheet" type="text/css">
+<link href="css/store.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.easie.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-1.3.1.pack.js"></script>
+
+
+<title>51易货网</title>
+</head>
+
+<body>
+	<!--页头编辑 开始-->
+    <div class="store_headEdit">
+    	<div class="store_headEdit_con">
+        	<div class="headEdit_btnLeft">
+            	<ul>
+        			<li><a href="#" class="btn_pageEdit">页面编辑</a><li>
+            		<li><a href="#" class="btn_templateSelect">模版选择</a></li>
+                </ul>
+            </div>
+            <div class="headEdit_btnRight">
+            	<ul>
+            		<li><a href="#" class="btn_pageSave">保存</a></li>
+            		<li><a href="#" class="btn_pagePreview">预览</a></li>
+                	<li><a href="#" class="btn_pageRelease">发布</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--页头编辑 结束-->
+ 	<!--页头开始-->
+    <div class="store_head">
+      <div class="store_head_con">
+        	<a href="http://www.51ehw.com/index.php" class="logo_set" title="51易货网"><img alt="51易货网" src="images/eh_logo.jpg"></a>       
+        	<span class="store_head_span">店铺名称</span>
+        	<span>旗舰店会员</span>
+        	<div class="store_head_search clearfix">
+                <div class="store_head_search01">
+                    <input class="store_head_input" type="text" placeholder="搜索内容">
+                    <a href="" class="search_total_station">搜全站</a>
+                </div>
+                <div class="store_head_search02"><a href="">搜本店</a></div>
+            </div>
+      </div>
+    </div>
+	<!--页头 结束-->
+    <!--店铺头部 开始-->
+    <div class="hover_it" style="position:relative;">
+	<div class="store_top">
+    	<div class="store_top_con"><img src="images/store_topBanner.png" alt=""/></div>
+        <!--编辑区 开始-->
+        <div class="editCon">
+            <div class="editBtnCon clearfix">
+            	<a href="javascript:;" class="editBtn">编辑</a>
+            </div>
+        </div>
+        <!--编辑区 结束-->
+	</div>
+    </div>
+    <!--店铺头部 结束-->
+	<!--头部导航条 开始 编辑往里面加hover_it 和style样式即可-->
+    <div class="eh_navbar clearfix hover_it" style="position: relative;">
+        <div class="macth_xv_navlist">
+            <div class="macth_xv_menu">
+               <!--左侧导航 start-->
+                <div class="macth_xv_categorys">
+                    <div class="macth_xv_cat_title">
+                        <h2 class="macth_cat_name"><a href="">全部分类<b class="icon-select"></b></a></h2>
+                    </div>
+                    
+                    <div class="macth_xv_cat_catlist ">
+                        <ul class="macth-dropdown-menu" data-bind="foreach:navData">
+                            <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" data-submenu-id="speedMenu517">
+                                <h3>
+                                    <span></span><span class="macth_xvh3_a"><a href="javascript:void(0)" data-bind="text:$data.title" class="">分类1</a></span><s style="display: block;"></s>
+                                </h3> 
+                            </li>
+                        
+                            <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" data-submenu-id="speedMenu496">
+                                <h3>
+                                    <span></span><span class="macth_xvh3_a"><a href="javascript:void(0)" data-bind="text:$data.title" class="">分类2</a></span><s style="display: block;"></s>
+                                </h3>
+                            </li>
+                        
+                            <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" data-submenu-id="speedMenu141">
+                                <h3>
+                                    <span></span><span class="macth_xvh3_a"><a href="javascript:void(0)" data-bind="text:$data.title" class="">分类3</a></span><s style="display: block;"></s>
+                                </h3>
+                            </li>
+                        
+                            <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" data-submenu-id="speedMenu931">
+                                <h3>
+                                    <span></span><span class="macth_xvh3_a"><a href="javascript:void(0)" data-bind="text:$data.title" class="">分类4</a></span><s style="display: block;"></s>
+                                </h3>
+                            </li>
+                             <li class="macth_xvitem" data-bind="attr:{'data-submenu-id':$data.id}" data-submenu-id="speedMenu931">
+                                <h3>
+                                    <span></span><span class="macth_xvh3_a"><a href="javascript:void(0)" data-bind="text:$data.title" class="">分类5</a></span><s style="display: block;"></s>
+                                </h3>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--左侧导航 end-->
+                <!--中间导航 start-->
+                <ul class="macth_xv_nav">
+                    <li class="macth_liactive"><a href="###">首页</a></li>
+                    <li><a href="">分类1</a></li>
+                    <li><a href="">分类2</a></li>
+                    <li><a href="">分类3</a></li>
+                    <li><a href="">分类4</a></li>
+                    <li><a href="">分类5</a></li>
+                </ul>
+                <!--中间导航 end-->
+            </div>
+        </div>
+        <!--编辑区 开始-->
+        <div class="editCon">
+            <div class="editBtnCon clearfix"><a href="javascript:;" class="editBtn" style="margin-top: 2px;">编辑</a></div>
+        </div>
+        <!--编辑区 结束-->
+    </div> 
+	<!--头部导航条 结束-->
+    <!--清除浮动 开始-->
+    <div class="clearfix">
+        <!--Banner内容 开始-->
+        <div class="carousel hover_it" style="position: relative;">
+            <ul class="imageslist">
+                <li><a href="#"><img src="images/store_banner.png" /></a></li>
+                <li><a href="#"><img src="images/store_banner.png" /></a></li>
+                <li><a href="#"><img src="images/store_banner.png" /></a></li>
+                <li><a href="#"><img src="images/store_banner.png" /></a></li>	 
+            </ul>
+            <div class="buttons">
+                <a class="leftBtn"></a>
+                <a class="rightBtn"></a>
+            </div>
+            <div class="bg"></div>
+            <div class="num">
+                <span class="cur"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!--编辑区 开始-->
+            <div class="editCon">
+                <div class="editBtnCon clearfix"><a href="javascript:;" class="editBtn">编辑</a></div>
+            </div>
+            <!--编辑区 结束-->
+        </div>
+        <script type="text/javascript" src="js/chuantong.js"></script>
+        <script type="text/javascript">
+            chuantong(300,4000,1200);
+        </script>
+        <!--Banner内容 结束-->
+        <!--热门专区内容 开始-->
+        <div class="store_hotzone clearfix">
+            <div class="hover_it" style="position:relative;">
+                <h3 class="productfloor_right_title">热门专区
+                    <div class="editCon">
+                        <a href="javascript:;" class="editBtn_little">编辑</a>
+                    </div>
+                </h3>
+            </div>
+            <div class="hotzone_left">
+                <ul>
+                    <li class="hover_it" style="position: relative;">
+                    	<a href=""><img src="images/store_hotzone01.png" width="328" height="478" alt=""/></a>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                           	<a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position: relative;">
+                    	<a href=""><img src="images/store_hotzone01.png" width="328" height="478" alt=""/></a>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                </ul>
+            </div>
+            <div class="hotzone_right">
+                <ul>
+                    <li class="hover_it" style="position: relative;">
+                    	<a href=""><img src="images/store_hotzone02.png" width="516" height="232" alt=""/></a>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li style="margin-bottom:0; position: relative;" class="hover_it">
+                    	<a href=""><img src="images/store_hotzone02.png" width="516" height="232" alt=""/></a>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--热门专区内容 结束--> 
+        <!--新品上市内容 结束-->
+        <div class="store_newarrival clearfix">
+          <div class="hover_it" style="position:relative;">
+                  <h3 class="productfloor_right_title">新品上市
+                      <div class="editCon">
+                          <a href="javascript:;" class="editBtn_little">编辑</a>
+                      </div>
+                  </h3>
+              </div>
+           <ul>
+              <li class="hover_it" style="position: relative;">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="#inline" class="editBtn">编辑</a>
+                </div>
+                <!--编辑区 结束-->
+              </li>
+              <li class="hover_it" style="position: relative;">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+                <!--编辑区 结束-->
+              </li>
+              <li class="hover_it" style="position: relative;">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+                <!--编辑区 结束-->
+              </li>
+              <li class="hover_it" style="position: relative; margin-right:0">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>                </div>
+                <!--编辑区 结束-->
+              </li>
+              <li class="hover_it" style="position: relative;">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+                <!--编辑区 结束-->
+              </li>
+              <li class="hover_it" style="position: relative;">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+                <!--编辑区 结束-->
+              </li>
+              <li class="hover_it" style="position: relative;">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+                <!--编辑区 结束-->
+              </li>
+              <li class="hover_it" style="position: relative; margin-right:0">
+              	<a href=""><img src="images/store_newarrival01.png" width="283" height="283" alt=""/></a>
+                <p><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州  </a></p>
+              	<span>M 69.00</span>
+                <!--编辑区 开始-->
+                <div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+                <!--编辑区 结束-->
+             </li>
+          </ul>
+        </div>
+        <!--新品上市内容 结束-->
+        <!--页面banner 开始-->
+        <div class="hover_it fancybox_midBanner" style="position: relative;">
+      	<div class="store_midBanner">
+        	<div class="store_midBanner_con"><a href=""><img src="images/store_midbanner.png"  alt=""/></a></div>
+            <!--编辑区 开始-->
+            <div class="editCon">
+                <div class="editBtnCon clearfix">
+                	<a href="javascript:;" class="hideBtn">隐藏</a>
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+            </div>
+            <!--编辑区 结束-->
+      	</div>
+        </div>
+        <!--页面banner 结束-->
+        <!--页面搜索 开始-->
+        <div class="store_storesearch hover_it" style="position: relative;">
+        	<span>本店搜索：</span>
+            <div class="storesearch_input01_bg">
+            	<input class="storesearch_input01" type="text" placeholder="输入关键字">
+            </div>
+            <div class="storesearch_input02_bg">
+            	<input class="storesearch_input02" type="text" placeholder="¥">
+            </div>
+            <span class="storesearch_span">—</span>
+            <div class="storesearch_input02_bg">
+            	<input class="storesearch_input02" type="text" placeholder="¥">
+            </div>
+            <div class="storesearch_btn"><a href="">搜索</a></div>
+            <!--编辑区 开始-->
+            <div class="editCon">
+                <div class="editBtnCon clearfix"><a href="javascript:;" class="hideBtn">隐藏</a></div>
+            </div>
+            <!--编辑区 结束-->
+        </div>
+        
+        <!--页面搜索 结束-->
+        <!--产品楼层 开始-->
+        <div class="store_productfloor clearfix">
+        <div class="clearfix">
+        <!--产品楼层左边内容 开始-->
+        <div class="productfloor_left">
+          <!--排行榜 开始-->
+          <div class="productfloor_left_rankingList">
+              <div class="rankingList_head">排行榜</div>
+              <div class="rankingList_top">
+                  <ul>
+                      <li class="rankingList_top_current"><a>收藏量</a></li>
+                      <li id="sales"><a>销售量</a></li>
+                  </ul>
+              </div>
+              <div class="rankingList_con" id="rankingList_one">
+                  <ul>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">我是收藏量</a></span><br>
+                          <span class="rankingList_price"><a href="">M 89.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 22358 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">M 89.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 22358 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">M 89.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 22358 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">M 89.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 22358 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">M 89.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 22358 </i>笔</span>
+                      </li>
+                  </ul>
+                  <span class="rankingList_more"><a href="">查看更多产品</a></span>
+              </div>
+              <div class="rankingList_con" id="rankingList_two" hidden>
+                  <ul>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">我是销售量</a></span><br>
+                          <span class="rankingList_price"><a href="">￥50.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 11111 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">￥50.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 11111 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">￥50.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 11111 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">￥1111.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 11111 </i>笔</span>
+                      </li>
+                      <li>
+                          <a href="" class="rankingList_img"><img src="images/rankingList_pic01.png" width="60" height="60" alt=""/></a>
+                          <span class="rankingList_title"><a href="">女童牛仔外套2童装3</a></span><br>
+                          <span class="rankingList_price"><a href="">￥50.00</a></span><br>
+                          <span class="rankingList_number">已售出<i> 11111 </i>笔</span>
+                      </li>
+                  </ul>
+                  <span class="rankingList_more"><a href="">查看更多产品</a></span>
+              </div>
+          </div>
+          <!--排行榜 结束-->  
+          <!--推荐 开始-->
+          <div class="productfloor_left_recommend">
+            <div class="rankingList_head">推荐</div>
+            <div class="recommend_con">
+                <ul>
+                    <li class="hover_it" style="position:relative;">
+                        <a href=""><img src="images/recommend_pic01.png" width="200" height="172" alt=""/></a>
+                        <span class="rankingList_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="rankingList_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                        <a href=""><img src="images/recommend_pic01.png" width="200" height="172" alt=""/></a>
+                        <span class="rankingList_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="rankingList_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                        <a href=""><img src="images/recommend_pic01.png" width="200" height="172" alt=""/></a>
+                        <span class="rankingList_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="rankingList_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                        <a href=""><img src="images/recommend_pic01.png" width="200" height="172" alt=""/></a>
+                        <span class="rankingList_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="rankingList_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                </ul>
+                <span class="rankingList_more"><a href="">查看更多产品</a></span>
+            </div>
+            <!--编辑区 开始-->
+            <div class="editCon">
+                <a href="javascript:;" class="editBtn">编辑</a>
+            </div>
+            <!--编辑区 结束-->
+            </div>
+          <!--推荐 结束-->    
+        </div>
+        <!--产品楼层左边内容 结束-->
+        <!--产品楼层右边内容 开始-->
+        <div class="productfloor_right">
+        	<!--热卖爆款 开始-->
+        	<div class="productfloor_right_hotSale productfloor00">
+                <div class="hover_it" style="position:relative;">
+                    <h3 class="productfloor_right_title">热卖爆款
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                    </h3>
+                </div>
+                <ul>
+                	<li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                </ul>
+            <!--编辑区 开始-->
+            <!--<div class="editCon">
+                <a href="javascript:;" class="editBtn">编辑</a>
+                <a href="javascript:;" class="deleteBtn">删除</a>
+            </div>-->
+            <!--编辑区 结束-->
+            </div>
+            <!--热卖爆款 结束-->
+            <!--F1 开始-->
+        	<div class="productfloor_right_hotSale">
+            	<div class="hover_it" style="position:relative;">
+                    <h3 class="productfloor_right_title">分类1
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                    </h3>
+                </div>
+                <ul>
+                	<li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                </ul>
+                <!--编辑区 开始-->
+                <!--<div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                    <a href="javascript:;" class="deleteBtn">删除</a>
+                </div>-->
+                <!--编辑区 结束-->
+            </div>
+            <!--F1 结束-->
+            <!--F2 开始-->
+        	<div class="productfloor_right_hotSale">
+            	<div class="hover_it" style="position:relative;">
+                    <h3 class="productfloor_right_title">分类2
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                    </h3>
+                </div>
+                <ul>
+                	<li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                </ul>
+                <!--编辑区 开始-->
+                <!--<div class="editCon">
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                    <a href="javascript:;" class="deleteBtn">删除</a>
+                </div>-->
+                <!--编辑区 结束-->
+            </div>
+            <!--F2 结束-->
+            <!--F3 开始-->
+        	<div class="productfloor_right_hotSale productfloor_f1">
+            	<div class="hover_it" style="position:relative;">
+                    <h3 class="productfloor_right_title">分类3
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn_little">编辑</a>
+                        </div>
+                    </h3>
+                </div>
+                <ul>
+                	<li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                    <li class="hover_it" style="position:relative;margin-right:0;">
+                    	<a href=""><img src="images/hotSale_pic1.png" width="304" height="304" alt=""/></a>
+                        <span class="hotSale_title"><a href="">热销甜品  派悦坊 空气感草莓蛋糕 北京/天津/上海/杭州/上海/杭州  </a></span><br>
+                        <span class="hotSale_price"><a href="">M 35.00</a></span>
+                        <!--编辑区 开始-->
+                        <div class="editCon">
+                            <a href="javascript:;" class="editBtn">编辑</a>
+                        </div>
+                        <!--编辑区 结束-->
+                    </li>
+                </ul>
+            </div>
+            <!--F3 结束--> 
+        </div>
+        <!--产品楼层右边内容 结束-->
+        </div>
+        <!--<div class="productfloor_addBtn"><a href="">添加楼层</a></div>--><!--此处点击后可以新增楼层-->
+        </div>
+        <!--产品楼层 结束-->
+    </div>
+    <!--清除浮动 结束-->
+    <!--页尾banner 开始-->
+    <div class="hover_it" style="position:relative">
+        <div class="store_endBanner">
+            <div class="store_endBanner_con"><a href=""><img src="images/store_endBanner.png" width="1920" height="250" alt=""/></a></div>
+            <!--编辑区 开始-->
+            <div class="editCon">
+                <div class="editBtnCon clearfix">
+                    <a href="javascript:;" class="hideBtn">隐藏</a>
+                    <a href="javascript:;" class="editBtn">编辑</a>
+                </div>
+            </div>
+            <!--编辑区 结束-->
+        </div>
+    </div>
+    <!--页尾banner 结束-->
+    
+ 	<!--弹出层 fancybox0 编辑轮播图banner 开始-->
+    <div class="fancybox0" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left:50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>轮播图片1：</li>
+                            <li>链接地址1：</li>
+                            <li>轮播图片2：</li>
+                            <li>链接地址2：</li>
+                            <li>轮播图片3：</li>
+                            <li>链接地址3：</li>
+                            <li>轮播图片4：</li>
+                            <li>链接地址4：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：1200X500</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：1200X500</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：1200X500</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：1200X500</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back0">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox0 编辑轮播图banner 结束-->
+    
+   <!--弹出层 fancybox1 编辑导航nav 开始-->
+    <div class="fancybox1" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑导航</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>选择导航分类1：</li>
+                            <li>选择导航分类2：</li>
+                            <li>选择导航分类3：</li>
+                            <li>选择导航分类4：</li>
+                            <li>选择导航分类5：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right clearfix">
+                        <ul>
+                            <li>
+                            	<!--分类下拉框-->
+                                <span class="fancybox_select">
+                                    <span class="fancybox_selectBg"></span>
+                                    <select class="fancybox_select01">
+                                        <option>全部分类</option>
+                                        <option>分类1</option>
+                                        <option>分类2</option>
+                                        <option>分类3</option>
+                                        <option>分类4</option>
+                                        <option>分类5</option>
+                                    </select>
+                                </span>
+                                <!--搜索-->
+                            </li>
+                            <li>
+                            	<!--分类下拉框-->
+                                <span class="fancybox_select">
+                                    <span class="fancybox_selectBg"></span>
+                                    <select class="fancybox_select01">
+                                        <option>全部分类</option>
+                                        <option>分类1</option>
+                                        <option>分类2</option>
+                                        <option>分类3</option>
+                                        <option>分类4</option>
+                                        <option>分类5</option>
+                                    </select>
+                                </span>
+                                <!--搜索-->
+                            </li>
+                            <li>
+                            	<!--分类下拉框-->
+                                <span class="fancybox_select">
+                                    <span class="fancybox_selectBg"></span>
+                                    <select class="fancybox_select01">
+                                        <option>全部分类</option>
+                                        <option>分类1</option>
+                                        <option>分类2</option>
+                                        <option>分类3</option>
+                                        <option>分类4</option>
+                                        <option>分类5</option>
+                                    </select>
+                                </span>
+                                <!--搜索-->
+                            </li>
+                            <li>
+                            	<!--分类下拉框-->
+                                <span class="fancybox_select">
+                                    <span class="fancybox_selectBg"></span>
+                                    <select class="fancybox_select01">
+                                        <option>全部分类</option>
+                                        <option>分类1</option>
+                                        <option>分类2</option>
+                                        <option>分类3</option>
+                                        <option>分类4</option>
+                                        <option>分类5</option>
+                                    </select>
+                                </span>
+                                <!--搜索-->
+                            </li>
+                            <li>
+                            	<!--分类下拉框-->
+                                <span class="fancybox_select">
+                                    <span class="fancybox_selectBg"></span>
+                                    <select class="fancybox_select01">
+                                        <option>全部分类</option>
+                                        <option>分类1</option>
+                                        <option>分类2</option>
+                                        <option>分类3</option>
+                                        <option>分类4</option>
+                                        <option>分类5</option>
+                                    </select>
+                                </span>
+                                <!--搜索-->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back1">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox1 编辑导航nav 结束--> 
+    
+    <!--弹出层 fancybox-304 编辑 开始-->
+    <div class="fancybox-304" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>编辑商品标题：</li>
+                            <li>编辑商品价格：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：304X304</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="儿童男女童宝宝羽绒棉马甲秋冬加厚韩国婴幼儿马甲保暖棉背心加绒"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="M 69.00"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--<a id="fancybox-close" style="display: inline;"></a>
+              <a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a>
+              <a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a>-->
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-304">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox-304 编辑 结束--> 
+    
+    <!--弹出层热门专区左边 fancybox-478 编辑 开始-->
+    <div class="fancybox-478" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>编辑商品标题：</li>
+                            <li>编辑商品价格：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：328X478</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="儿童男女童宝宝羽绒棉马甲秋冬加厚韩国婴幼儿马甲保暖棉背心加绒"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="M 69.00"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--<a id="fancybox-close" style="display: inline;"></a>
+              <a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a>
+              <a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a>-->
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-478">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层热门专区左边 fancybox-478 编辑 结束--> 
+    
+    <!--弹出层 fancybox-283 编辑 开始-->
+    <div class="fancybox-283" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>编辑商品标题：</li>
+                            <li>编辑商品价格：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：283X283</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="儿童男女童宝宝羽绒棉马甲秋冬加厚韩国婴幼儿马甲保暖棉背心加绒"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="M 69.00"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-283">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox-283 编辑 结束--> 
+    
+    <!--弹出层热门专区右边 fancybox-232 编辑 开始-->
+    <div class="fancybox-232" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>编辑商品标题：</li>
+                            <li>编辑商品价格：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：232X516</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="儿童男女童宝宝羽绒棉马甲秋冬加厚韩国婴幼儿马甲保暖棉背心加绒"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="M 69.00"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-232">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层热门专区右边 fancybox-232 编辑 结束--> 
+    
+    <!--弹出层 fancybox-200 编辑 开始-->
+    <div class="fancybox-200" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>编辑商品标题：</li>
+                            <li>编辑商品价格：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：200X172</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="儿童男女童宝宝羽绒棉马甲秋冬加厚韩国婴幼儿马甲保暖棉背心加绒"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="M 69.00"></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-200">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox-200 编辑 结束-->
+    
+    <!--弹出层 fancybox-top 编辑仅图片 开始-->
+    <div class="fancybox-top" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：1920X100</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-top">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox-top 编辑仅图片 结束--> 
+    
+    <!--弹出层 fancybox-mid 编辑仅图片 开始-->
+    <div class="fancybox-mid" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：1920X190</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-mid">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox-mid 编辑仅图片 结束--> 
+    
+    <!--弹出层 fancybox-end 编辑仅图片 开始-->
+    <div class="fancybox-end" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>上传商品图片：</li>
+                            <li>商品链接地址：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><a href="javascrip:;" class="fancybox-update">选择图片</a><span class="fancybox-singleSpan">图片尺寸：1920X250</span></li>
+                            <li><input class="fancybox-input" type="text" placeholder="http://www.51ehw.com"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back-end">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox-end 编辑仅图片 结束--> 
+    
+    <!--弹出层 fancybox4 编辑仅标题 开始-->
+    <div class="fancybox4" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">编辑商品</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <div class="fancybox-editCon-left">
+                        <ul>
+                            <li>分类标题：</li>
+                        </ul>
+                    </div>
+                    <div class="fancybox-editCon-right">
+                        <ul>
+                            <li><input class="fancybox-input" type="text" placeholder="热卖爆款"></li>
+                        </ul>
+                    </div>
+                </div>
+              </div></div></div>
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back4">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    <!--弹出层 fancybox4 编辑仅标题 结束--> 
+    
+    <!--弹出层 fancybox5 编辑删除 开始-->
+    <div class="fancybox5" style="display:none"> 
+        <div id="fancybox-loading" style="display: none;"><div></div></div>
+        <div id="fancybox-overlay" style="opacity: 0.3; display: block; background-color: rgb(102, 102, 102);"></div>
+        <div id="fancybox-wrap" class="fancybox-wrap1" style="width: 1100px; height: auto; position:fixed; top: 50px; left: 50%; margin-left:-550px; display: block;">
+            <!--弹窗头部 开始-->
+            <div class="fancybox-head">温馨提示</div>
+            <!--弹窗头部 结束-->
+            <div id="fancybox-outer">
+              <div id="fancybox-content" class="fancybox_con">
+              <div style="width:auto;height:auto;overflow: auto;position:relative;">
+              <div id="inline1" class="fancybox-inline1" >
+                <div class="fancybox-editCon clearfix">
+                    <p class="fancybox-delete">您真的要删除此内容吗？可以在新建楼层处重新添加喔！</p>
+              </div></div></div>
+              <!--<a id="fancybox-close" style="display: inline;"></a>
+              <a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a>
+              <a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a>-->
+              <!--弹窗尾部 开始-->
+              <div id="fancybox-title" class="fancybox-title-inside">
+                  <div id="fancybox-title-inside">
+                    <div class="fancybox-btn">
+                        <a href="javascript:;" class="fancybox_back fancybox_back5">取消</a>
+                        <a href="javascript:;" class="fancybox_okay">确定</a>
+                    </div>
+                  </div>
+              </div>
+              <!--弹窗尾部 结束-->
+          </div>
+        </div>
+    </div>
+    </div>
+    <!--弹出层 fancybox5 删除 结束--> 
+    
+    <!-- 结尾开始 -->
+    <div class="eh_footer_box">
+        <div class="eh_footer">
+            <div class="eh_footer_banner">
+                <img src="images/eh_footer_banner.jpg" alt="">
+            </div>
+            <div class="eh_footer_service clearfix">
+              <div class="w">
+                   <dl>
+                       <dt>新手上路</dt>
+                       <dd>
+                           <div><a target="_blank">免费注册</a></div>
+                           <div><a target="_blank">买家入门</a></div>
+                           <div><a target="_blank">卖家入门</a></div>
+                       </dd>
+                   </dl>
+                    <dl>
+                       <dt>推广套餐</dt>
+                       <dd>
+                           <div><a target="_blank">至尊版</a></div>
+                           <div><a target="_blank">经典版</a></div>
+                           <div><a target="_blank">超值版</a></div>
+                           <div><a target="_blank">精选版</a></div>
+                           <div><a target="_blank">抢购套餐</a></div>
+                       </dd>
+                   </dl>
+                   <dl>
+                       <dt>会员服务</dt>
+                       <dd>
+                           <div><a target="_blank">51易货网基础版</a></div>
+                           <div><a target="_blank">51易货高级版</a></div>
+                           <div><a target="_blank">加入51易货网</a></div>
+                       </dd>
+                   </dl>
+                   <dl>
+                       <dt>采购商服务</dt>
+                       <dd>
+                           <div><a target="_blank">找产品</a></div>
+                           <div><a target="_blank">发布求购信息</a></div>
+                           <div><a target="_blank">商机速递</a></div>
+                       </dd>
+                   </dl>
+                   <dl>
+                       <dt>供应商服务</dt>
+                       <dd>
+                           <div><a target="_blank">发布产品</a></div>
+                           <div><a target="_blank">找采购信息</a></div>
+                           <div><a target="_blank">大买家供应商</a></div>
+                       </dd>
+                   </dl>
+                   <dl>
+                       <dt>网商关注</dt>
+                       <dd>
+                           <div><a target="_blank">产品目录</a></div>
+                           <div><a target="_blank">公司黄页</a></div>
+                           <div><a target="_blank">产品供求信息</a></div>
+                           <div><a target="_blank">热门产品</a></div>
+                           <div><a target="_blank">热门商情</a></div>
+                       </dd>
+                   </dl>
+                </div>
+            </div>
+            <div class="eh_footer_about">
+               <div class="links">
+                   <a target="_blank">关于51易货网</a>|
+                   <a target="_blank">联系我们</a>|
+                   <a target="_blank">商家入驻</a>|
+                   <a target="_blank">营销中心</a>|
+                   <a target="_blank">手机易货</a>|
+                   <a target="_blank">友情链接</a>|
+                   <a target="_blank">销售联盟</a>|
+                   <a target="_blank">易货社区</a>|
+                   <a target="_blank">易货公益</a>
+               </div>
+            </div>
+            <div class="eh_footer_copyright">
+                <p><a href="http://www.miitbeian.gov.cn/">陕ICP备15009354号-1</a></p>
+            </div>
+            <div class="eh_footer_authentication">
+                <div class="links">
+                    <a target="_blank"><img src="images/eh_footer_1.png" alt=""></a>
+                    <a target="_blank"><img src="images/eh_footer_2.png" alt=""></a>
+                    <a target="_blank"><img src="images/eh_footer_3.png" alt=""></a>
+                    <a target="_blank"><img src="images/eh_footer_4.png" alt=""></a>
+                    <a target="_blank"><img src="images/eh_footer_5.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+	</div>
+    <!-- 结尾结束 -->  
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+	//收藏量与销售量切换内容js
+	$(".rankingList_top_current").mouseover(function(){
+		$(".rankingList_top_current").css("background","#ccc");
+		$("#sales").css("background","#fff");
+		$("#rankingList_one").show();
+		$("#rankingList_two").hide();
+	})
+	$("#sales").mouseover(function(){
+		$("#sales").css("background","#ccc");
+		$(".rankingList_top_current").css("background","#fff");
+		$("#rankingList_two").show();$("#rankingList_one").hide();
+	})
+	$(function(){
+		$('.hover_it').hover(function(e) {
+            $(this).children('div.editCon').show();
+        },function(){
+			$(this).children('div.editCon').hide();
+		});
+	});
+
+
+	//点击头部banner编辑按钮，弹出层仅编辑图片内容
+	$('.store_top .editBtn').click(function(){
+		$('.fancybox-top').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back-top').click(function(){
+		$('.fancybox-top').hide();
+	});
+	
+	//点击页面banner编辑按钮，弹出层仅编辑图片内容
+	$('.store_midBanner .editBtn').click(function(){
+		$('.fancybox-mid').show();
+	});
+	//点击取消fancybox_back-mid按钮，弹出层内容消失
+	$('.fancybox_back-mid').click(function(){
+		$('.fancybox-mid').hide();
+	});
+	
+	//点击页尾banner编辑按钮，弹出层仅编辑图片内容
+	$('.store_endBanner .editBtn').click(function(){
+		$('.fancybox-end').show();
+	});
+	//点击取消fancybox_back-mid按钮，弹出层内容消失
+	$('.fancybox_back-end').click(function(){
+		$('.fancybox-end').hide();
+	});
+	
+	
+	//点击导航nav编辑按钮，弹出层仅编辑导航分类内容
+	$('.eh_navbar .editBtn').click(function(){
+		$('.fancybox1').show();
+	});
+	//点击弹出层取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back1').click(function(){
+		$('.fancybox1').hide();
+	});
+	
+	
+	//点击轮播图banner编辑按钮，弹出层编辑轮播图内容
+	$('.carousel .editBtn').click(function(){
+		$('.fancybox0').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back0').click(function(){
+		$('.fancybox0').hide();
+	});
+
+
+	//点击新品上市编辑按钮，弹出层编辑图片标题价格链接内容
+	$('.productfloor_right .editBtn').click(function(){
+		$('.fancybox-304').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back-304').click(function(){
+		$('.fancybox-304').hide();
+	});
+	
+	//点击热门专区左边478编辑按钮，弹出层编辑图片标题价格链接内容
+	$('.hotzone_left .editBtn').click(function(){
+		$('.fancybox-478').show();
+	});
+	//点击取消fancybox_back-478按钮，弹出层内容消失
+	$('.fancybox_back-478').click(function(){
+		$('.fancybox-478').hide();
+	});
+	
+	//点击热门专区右边478编辑按钮，弹出层编辑图片标题价格链接内容
+	$('.hotzone_right .editBtn').click(function(){
+		$('.fancybox-232').show();
+	});
+	//点击取消fancybox_back-232按钮，弹出层内容消失
+	$('.fancybox_back-232').click(function(){
+		$('.fancybox-232').hide();
+	});
+	
+	//点击新品上市左边图片编辑按钮，弹出层编辑图片标题价格链接内容
+	$('.store_newarrival .editBtn').click(function(){
+		$('.fancybox-283').show();
+	});
+	//点击取消fancybox_back-283按钮，弹出层内容消失
+	$('.fancybox_back-283').click(function(){
+		$('.fancybox-283').hide();
+	});
+
+	
+	//点击啦楼层左边图片编辑按钮，弹出层编辑图片标题价格链接内容
+	$('.productfloor_left_recommend .editBtn_little').click(function(){
+		$('.fancybox-200').show();
+	});
+	//点击取消fancybox_back-370按钮，弹出层内容消失
+	$('.fancybox_back-200').click(function(){
+		$('.fancybox-200').hide();
+	});
+	
+	
+	//点击右侧删除按钮，弹出层删除温馨提示内容
+	$('.productfloor_right .deleteBtn').click(function(){
+		$('.fancybox5').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back5').click(function(){
+		$('.fancybox5').hide();
+	});
+	
+	
+	//点击右侧标题编辑按钮，弹出层仅编辑标题内容
+	$('.productfloor_right .editBtn_little,.fancybox_rankingTop_title .editBtn_little,.store_hotzone .editBtn_little,.store_newarrival .editBtn_little').click(function(){
+		$('.fancybox4').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back4').click(function(){
+		$('.fancybox4').hide();
+	});
+</script>
+</html>

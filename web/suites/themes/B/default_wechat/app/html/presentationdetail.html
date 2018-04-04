@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的存酒</title>
+<meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+	<div class="ui-produktdetail pd">
+        <div class="ui-produktdetail-title">
+            <div class="ui-produkt-btn clearfix">
+            	<ul class="ui-produkt-btn-ul">
+                	<li class="pos_rel">
+                    	<a href="#">
+                        <div class="red-ring-ordersnumber">20</div>
+                        我的存酒
+                        </a>
+                    </li>
+                    <li><a href="#">消费记录</a></li>
+                    <li><a href="#">赠送记录</a></li>
+                </ul>
+       		</div>
+       </div>
+       		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="20%">赠送对象：</td>
+                <td width="80%"><form action="" method="post">
+           		    <input name="" type="text" value="请填写联系电话" id="searchkey" class="ui-getrecords-bar"/>
+        			</form>
+                </td>
+              </tr>
+              <tr>
+                <td width="20%">赠送商品：</td>
+                <td width="80%"><form action="" method="post">
+           		    <input name="" type="text" value="" class="ui-getrecords-bar"/>
+        			</form></td>
+              </tr>
+              <tr>
+                <td width="20%">赠送数量：</td>
+                <td width="80%"><form action="" method="post">
+           		    <input name="" type="text" value="" class="ui-getrecords-bar"/>
+        			</form></td>
+              </tr>
+              <tr>
+                <td width="20%">&nbsp;</td>
+                <td width="80%"><div class="ui-produkt-btn"><a href="#">确定赠送</a>
+                </div></td>
+              </tr>
+            </table>
+
+    </div>
+</body> 
+<script type="text/javascript">
+$(document).ready(function(){
+	//focusblur
+	jQuery.focusblur = function(focusid) {
+		var focusblurid = $(focusid);
+		var defval = focusblurid.val();
+		focusblurid.focus(function(){
+			var thisval = $(this).val();
+			if(thisval==defval){
+				$(this).val("");
+			}
+		});
+		focusblurid.blur(function(){
+			var thisval = $(this).val();
+			if(thisval==""){
+				$(this).val(defval);
+			}
+		});
+		
+	};
+	/*下面是调用方法*/
+	$.focusblur("#searchkey");
+});
+</script>
+
+</html>

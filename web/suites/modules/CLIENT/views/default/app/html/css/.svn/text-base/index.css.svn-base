@@ -1,0 +1,54 @@
+@charset "utf-8";
+/*全局*/
+body { background: #ededf3; font-family:"微软雅黑"; color: #232323; font-size:12px;}
+
+
+/*按钮响应事件*/
+@media screen and (min-width:720px) and (max-width:1080px) {
+.ui-produkt-btn a{padding:10px 22px; background:#2e180d; border-radius:6px; color:#b9946b; font-size:14px;}
+}
+
+/*公共*/
+.padding34{padding:34px;}
+.left{float:left;}
+.right{float:right;}
+.pos_rel{position:relative;}
+.md10{margin-bottom:10px;}
+.md20{margin-bottom:20px;}
+.mt50{margin-top:50px;}
+.m0a{margin:0 auto; width:100%;}
+
+/*客户资料*/
+.ui-search-bar{ width:97%; background:#FFFFFF; border:1px solid #c8c7cc; border-radius:6px; height:100%;font-size:14px; padding:20px;}
+.btn_search{ position:absolute; right:50px; top:52px;}
+.cd table{margin:0 auto; width:100%;font-size:12px;}
+.cd table tr th{ background:#b9946b; padding:10px 0; text-align:center; color:#FFFFFF; border:1px solid #9d7951;}
+.cd table.stripe tr td{ height:20px; line-height:20px; text-align:center;background:#FFF;vertical-align:middle;border:1px solid #d9d7d0; padding:10px 0; color:#777777}/* 默认背景被白色 */
+.cd table.stripe tr.alt td { background:#f8f8f8;}/* 默认隔行背景颜色 */
+.cd table a{color:#ff1743;}
+
+/*产品详细*/
+.ui-produkt img{margin:0 auto; width:1080px; height:1080px; background:url(../images/default_bg.gif) no-repeat top center;}
+.ui-produkt-title{ margin:10px; border-bottom:1px solid #ababab; padding-bottom:20px;}
+.ui-produkt-title h1{margin:0 0 20px 0; font-size:14px;}
+.ui-produkt-promotions{color:#ff1743;}
+.ui-produkt-listenpreis{ text-decoration:line-through; float:right;}
+.ui-produkt-btn{padding:10px 5px;}
+.ui-produkt-btn a{padding:10px 14px; background:#2e180d; border-radius:6px; color:#b9946b; font-size:14px;}
+.ui-produkt-btn-ul {width:100%; margin:0 auto;}
+.ui-produkt-btn-ul li{ float:left; margin-right:10px;}
+
+.ui-produktdetail{padding:20px 10px;}
+.ui-produktdetail-title{  padding-bottom:20px;}
+
+.ui-produktdetail-ul li {background:#FFFFFF; padding:10px;border-left:1px solid #d9d7d0;border-right:1px solid #d9d7d0;font-size:14px;border-top:1px solid #d9d7d0;}
+.ui-produktdetail-ul li h1{color:#000000; font-weight:normal; width:50%; text-align:left;font-size:14px;}
+.ui-produktdetail-ul li h2{color:#b3b3b3; font-weight:normal;width:50%; text-align:right;font-size:14px;}
+.ui-produktdetail-ul li h3{color:#b3b3b3; font-weight:normal;width:50%; padding-left:110px; font-size:14px;}
+.border-rulur-top{border-top-left-radius:6px; border-top-right-radius:6px;}
+.border-rulur-bottom{border-bottom-left-radius:6px; border-bottom-right-radius:6px; border-bottom:1px solid #d9d7d0;}
+.ui-produktdetail-ul img{float:left;}
+.red-ring-winenumber {position:absolute; width:20px; height:20px; line-height:20px; text-align:center;border-radius:10px; background:#FF0004; color:#FFFFFF; left:100px;top:5px; font-size:14px;}
+.red-ring-ordersnumber {position:absolute; width:20px; height:20px; line-height:20px; text-align:center;border-radius:10px; background:#FF0004; color:#FFFFFF; left:70px;top:-16px; font-size:14px;}
+.icon-arrow-right{position:absolute; top:40px; right:5px;}
+.ui-getrecords-bar{background:#FFFFFF; border:1px solid #c8c7cc; border-radius:6px; height:100%;font-size:12px; padding:5px; margin-bottom:10px;}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的存酒</title>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+	<div class="ui-produktdetail pd">
+        <div class="ui-produktdetail-title">
+            <div class="ui-produkt-btn clearfix">
+            	<ul class="ui-produkt-btn-ul">
+                	<li class="pos_rel">
+                    	<a href="winestorage.html">
+                        <div class="red-ring-ordersnumber">20</div>
+                        我的存酒
+                        </a>
+                    </li>
+                    <li><a href="consumerrecords.html">消费记录</a></li>
+                    <li><a href="getrecords.html">赠送记录</a></li>
+                </ul>
+       		</div>
+       </div>
+       </div>
+       <div class="ui-customer-data cd">
+        <table width="100%" border="0" class="stripe" cellpadding="0" cellspacing="0">
+          <tr>
+            <th width="20%">赠送商品</th>
+            <th width="40%">赠送地址</th>
+            <th width="20%">赠送数量</th>
+            <th width="20%">时间</th>
+          </tr>
+          <tr>
+            <td width="20%">拉菲城堡干红葡萄酒2000</td>
+            <td width="40%">测试地址测试地址测试地址测试地址测试地址测试地址测试地址测试地址测试地址</td>
+            <td width="20%">100</td>
+            <td width="20%">2014-01-01<br>12：12：12</td>
+          </tr>
+          <tr>
+            <td width="20%">拉菲城堡干红葡萄酒2000</td>
+            <td width="40%">测试地址测试地址测试地址测试地址测试地址测试地址测试地址测试地址测试地址</td>
+            <td width="20%">100</td>
+            <td width="20%">2014-01-01<br>12：12：12</td>
+          </tr>
+          <tr>
+            <td width="20%">拉菲城堡干红葡萄酒2000</td>
+            <td width="40%">测试地址测试地址测试地址测试地址测试地址测试地址测试地址测试地址测试地址</td>
+            <td width="20%">100</td>
+            <td width="20%">2014-01-01<br>12：12：12</td>
+          </tr>	
+       </table>
+    </div>
+       <a href="getrecords.html">刷新</a>
+    
+</body> 
+<script language="javascript">
+$(document).ready(function(){ //这个就是传说的ready   
+	$(".stripe tr").mouseover(function(){   
+	   //如果鼠标移到class为stripe的表格的tr上时，执行函数   
+	  $(this).addClass("over");}).mouseout(function(){   
+			//给这行添加class值为over，并且当鼠标一出该行时执行函数   
+			$(this).removeClass("over");}) //移除该行的class   
+  $(".stripe tr:even").addClass("alt");   
+	//给class为stripe的表格的偶数行添加class值为alt
+  });   
+</script>  
+<script type="text/javascript">
+</html>

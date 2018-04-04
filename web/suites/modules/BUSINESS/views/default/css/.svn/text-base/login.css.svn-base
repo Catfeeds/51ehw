@@ -1,0 +1,59 @@
+
+.ui-login{ width:978px; border: 1px solid #cfcfcf;  margin: 20px 0;}
+.ui-login-title,.ui-registration-title{
+    height: 35px; background: #f7f7f7;
+    border: 1px solid #fff; border-bottom:1px solid #e5e5e5;
+}
+.ui-login-title h3,.ui-registration-title h3{
+    height: 18px; overflow: hidden; margin: 10px 0 0 20px;
+    font-size: 14px; font-weight: bold;color: #666;
+}
+.ui-registration-title h3 img{ margin-top: -18px;}
+.ui-login-bd{ border-top:1px solid #f6f6f6;padding: 40px 0 50px; }
+
+.ui-login-left { width: 500px; margin-left:60px; border-right: 1px dotted #cdcdcd }
+.ui-login-left .ui-login-button { width: 215px; padding-left: 106px }
+.ui-login-main .ui-title-login {
+    float: left; padding-right: 8px; width: 95px; display: inline;
+    line-height: 30px; text-align: right; font-size: 14px;
+}
+
+.ui-form-item .ui-title-login {
+    float: left;font-weight: bold;
+    padding-right: 8px;
+    width: 95px; color: #999;
+    display: inline;
+    line-height: 30px;
+    text-align: right;
+    font-size: 14px;
+}
+.ui-loginframe-label{margin-left:103px; width: 250px;  line-height: 30px; }
+.ui-loginframe-label .years{font-size: 12px;}
+.ui-loginframe-label a.ui-forget{
+    color: #333; vertical-align: middle; margin-left:30px; color: red;
+    text-decoration: none;
+}
+.ui-main-login-but{ margin-top:20px; padding-left:103px;}
+.btn-login{
+    width: 118px; height: 38px; border: none; float: left; text-indent: -9999px;
+    background: url(../images/login_but.png) no-repeat; cursor: pointer;}
+.btn-register{
+    width: 118px; height: 38px; border: none; float: left; text-indent: -9999px;
+    background: url(../images/login_but.png) no-repeat 0 -38px; cursor: pointer;
+}
+.ui-login-note{ float: left; padding: 85px 45px;line-height: 28px; font-size: 14px; font-weight: bold; color: #999;
+}
+.ui-login-note span{ vertical-align: middle;}
+a.ui-login-registration,a.ui-registration-login{
+    vertical-align: middle;
+    width: 92px; height: 28px;display: inline-block;
+    background: url(../images/login_but.png) no-repeat;
+}
+a.ui-login-registration{ background-position:0 -76px;}
+a.ui-registration-login{ background-position: 0 -104px;}
+
+.btn-determine{
+    width: 118px; height: 38px; border: none; float: left; text-indent: -9999px;
+    background: url(../images/login_but.png) no-repeat 0 -132px; cursor: pointer;
+}
+.ui-get-password{width: 500px; margin: 0 auto }

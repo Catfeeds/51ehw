@@ -1,0 +1,66 @@
+html, body { margin: 0; padding: 0; height: 100%; font-family: 'Helvetica', Arial, sans-serif; background: #ad0984; }
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  }
+input { -webkit-appearance: none; color: #666666; }
+input:focus { outline: none; }
+a { color: black; text-decoration: none; outline: none; }
+img { max-width: 100%; display: block; border: 0; margin: 0 auto; vertical-align: middle; }
+/*常用*/
+.fn-left { float: left !important; }
+.fn-right { float: right!important; }
+.text-center { text-align: center }
+.relative { position: relative; }
+.fn-30 { font-size: 30px!important; }
+.fn-28 { font-size: 28px!important; }
+.fn-26 { font-size: 26px!important; }
+.fn-24 { font-size: 24px!important; }
+.fn-22 { font-size: 22px!important; }
+.fn-20 { font-size: 20px!important; }
+.fn-18 { font-size: 18px!important; }
+.fn-16 { font-size: 16px!important; }
+.fn-14 { font-size: 14px!important; }
+.fn-12 { font-size: 12px!important; }
+.ml-10 { margin-left: 10px; }
+.ml-20 { margin-left: 20px; }
+.mr-20 { margin-right: 20px; }
+.ft-left { text-align: left; }
+.ft-right { text-align: right; }
+
+/*活动介绍*/
+.p1bg { margin: 0 auto; max-width: 640px; width: 640px; height: 775px; background: url(../images/p1-bg.jpg) no-repeat top center; }
+.info{margin: 0 auto; max-width: 640px; width: 640px;padding: 0 20px;}
+.info ul li{color: #fff;font-size: 1em; line-height: 20px;}
+.info ul li:first-child{font-size: 2em; line-height: 26px;}
+.info ul{margin-bottom: 20px;}
+.but {margin: 40px auto; max-width: 640px; width: 640px;padding: 0 20px;}
+.but li{display: inline-block; width: 30%;text-align: center; margin-bottom: 50px; margin-right: 17px;}
+.but li a{
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background-color: #7e009d;
+	-webkit-box-shadow: 0 2px 3px rgba(4,0,0,.49);
+	-moz-box-shadow: 0 2px 3px rgba(4,0,0,.49);
+	box-shadow: 0 2px 3px rgba(4,0,0,.49);
+    color: white;
+    
+	padding: 15px 45px;
+    
+	font-size: 2em;
+    cursor: pointer;
+}
+.but li:last:child{margin-right: 0;}
+
+/*轮盘抽奖*/
+.game { margin: 0 auto; max-width: 640px; width: 640px; height: 680px; background: url(../images/p2-bg.jpg) no-repeat top center; }
+.ly-plate { position: relative; width: 548px; height: 548px; margin: 0 auto; top: 100px; }
+.rotate-bg { width: 548px; height: 548px; background: url(../images/ly-plate.png); position: absolute; top: 0; left: 0 }
+.ly-plate div.lottery-star { width: 214px; height: 214px; position: absolute; top: 164px; left: 164px;outline: none }
+.ly-plate div.lottery-star #lotteryBtn { cursor: pointer; position: absolute; top: 0; left: 0;  *left:-107px
+}
+.game_info { padding: 0 20px; margin: 0 auto; max-width: 640px; width: 640px; color: white; }
+.game_info h1 { font-size: 32px; }
+.game-title { background: #7e009d; padding: 20px; font-size: 32px; text-align: center; margin: 10px 0; }
+.table th { background: #ededed; border: 1px solid #a4a4a4; color: #666666; font-size: 32px; padding: 10px; text-align: center; }
+.table td { background: #fff; border: 1px solid #a4a4a4; color: #666666; font-size: 32px; padding: 10px; text-align: center; }
+
+

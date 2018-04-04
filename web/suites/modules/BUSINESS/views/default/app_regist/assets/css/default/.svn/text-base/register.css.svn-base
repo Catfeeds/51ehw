@@ -1,0 +1,79 @@
+ol, ul {
+    list-style: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0; padding: 0;
+}
+body{ background: #ededf3;}
+.ui-page-theme-a .ui-header{ background: #69061a;}
+.ui-head-logo{ text-align: center;background: #69061a; padding:.8em;}
+.ui-head-logo img {width:12em; display: inline-block;}
+.ui-title{ font-family:"Microsoft Yahei"; text-align: center; color: #6d6d72; margin: 1em;}
+.ui-title h3{ font-size:1.5em; margin: 1.2em 0;}
+
+
+.content{ margin: 1em;}
+.ui-login-box{ border-radius:.5em; background: #fff; border: 1px solid #d4d3d7;}
+.ui-login-box ul{ margin: 0; padding: 0;}
+.ui-login-box ul li{ border-bottom:1px solid #d3d2d6 }
+.ui-login-box ul li.none{ border: none;}
+.ui-login-box ul li label{
+    height: 4em;line-height: 4em; font-family:"Microsoft Yahei"; color: #000; font-weight: bold;
+    width:25%;display: inline-block; text-align: right;margin-right:.6em;font-size:1.3em;
+}
+.ui-login-box ul li input{
+    width:65%; height: 3.8em; border: none; outline: none; font-size:1.3em;
+
+}
+.ui-login-box ul li span{ width:70%; height: 3.8em; color: red; font-weight: bold; font-size:1.3em;}
+.accept{ text-align: center; margin: 1em 0;}
+.accept input{width:1.2em; height:1.2em;}
+.accept .ui-prettyform-hidden,.accept span{ vertical-align: middle; color: #69061a; font-weight: bold;}
+
+.push-button{ text-align: center; margin-top: 2em;}
+.ui-button{
+    padding:1em 3.2em; background: #2e180d; border-radius:.5em; border: none; color: #b9946b; font-weight: bold;
+cursor: pointer;
+}
+.accept span.ui-warning{ color: red; font-weight: bold;  font-size:1.5em;}
+@media only screen and (max-width: 360px) and (min-width: 320px) {
+   body { font-size:9.888px !important; }
+   .ui-button{font-size: 11.888px !important;}
+}
+@media only screen and (max-width: 480px) and (min-width: 360px) {
+    body { font-size: 12px !important; }
+    .ui-button{font-size:16.888px !important;}
+}
+
+@media only screen and (max-width: 560px) and (min-width: 490px) {
+    body { font-size:13.888px !important; }
+    .ui-button{font-size:20.888px !important;}
+}
+@media only screen and (max-width: 570px) and (min-width: 560px) {
+    body { font-size: 15.888px !important; }
+    .ui-button{font-size:22.888px !important;}
+}
+@media only screen and (max-width: 640px) and (min-width: 570px) {
+    body { font-size: 17.888px; }
+    .ui-button{font-size:23.888px !important;}
+}
+@media only screen and (max-width: 710px) and (min-width: 640px) {
+    body { font-size:18.888px !important; }
+    .ui-button{font-size:25.888px !important;}
+}
+@media only screen and (max-width: 800px) and (min-width: 710px) {
+    body { font-size:21.888px !important; }
+    .ui-button{font-size:27.888px !important;}
+}
+@media only screen and (max-width: 1080px) and (min-width: 800px) {
+    body { font-size:23.888px !important; }
+    .ui-button{font-size:29.888px !important;}
+}
+@media only screen and (max-width: 1280px) and (min-width: 1080px) {
+    body { font-size:25.888px !important; }
+    .ui-button{font-size:35.888px !important;}
+}
+@media only screen and (max-width: 1500px) and (min-width: 1280px) {
+    body { font-size: 27.888px !important; }
+    .ui-button{font-size:39.888px !important;}
+}

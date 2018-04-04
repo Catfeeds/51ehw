@@ -1,0 +1,12 @@
+ <xml>
+ <ToUserName><![CDATA[<?=$to?>]]></ToUserName>
+ <FromUserName><![CDATA[<?=$from?>]]></FromUserName>
+ <CreateTime><?=time()?></CreateTime>
+ <MsgType><![CDATA[<?=$type?>]]></MsgType>
+ <Music>
+ <Title><![CDATA[TITLE]]></Title>
+ <Description><![CDATA[DESCRIPTION]]></Description>
+ <MusicUrl><![CDATA[MUSIC_Url]]></MusicUrl>
+ <HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl>
+ </Music>
+ </xml>

@@ -1,0 +1,108 @@
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[70]------ =====签名报文开始====== 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[39]------ 读取签名证书…… 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[48]------ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/certs/acp_test_sign.pfx, pwd[881813] openssl_pkcs12_read fail。 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[39]------ 读取签名证书…… 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[48]------ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/certs/acp_test_sign.pfx, pwd[881813] openssl_pkcs12_read fail。 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[83]------ 签名key=val&...串 >accessType=0&backUrl=http://www.test51ehw.com/index.php/_BUSINESS/Acppay/Notify/BackReceive&bizType=000201&certId=&channelType=08&currencyCode=156&encoding=utf-8&frontUrl=http://www.51ehw.com/index.php/_BUSINESS/Acppay/Notify/FrontReceive&merId=821610148167412&orderId=COM2017121883313&payTimeout=20171219104515&signMethod=01&txnAmt=5000000&txnSubType=01&txnTime=20171218173342&txnType=01&version=5.1.0 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[100]------ 摘要sha256x16 >06ef6d7a5c5557a197681e4532deed1ced011120891b548444eb03032ff5b6b2 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[108]------ >>>>>签名失败<<<<<<< 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[118]------ =====签名报文结束====== 
+2017-12-19 10:30:15, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[363]------ 自动跳转html><html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://gateway.95516.com/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.1.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.51ehw.com/index.php/_BUSINESS/Acppay/Notify/FrontReceive" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.test51ehw.com/index.php/_BUSINESS/Acppay/Notify/BackReceive" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="08" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="merId" id="merId" value="821610148167412" />
+    <input type="hidden" name="orderId" id="orderId" value="COM2017121883313" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20171218173342" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="5000000" />
+    <input type="hidden" name="payTimeout" id="payTimeout" value="20171219104515" />
+    <input type="hidden" name="certId" id="certId" value="" />
+   <!-- <input type="submit" type="hidden">-->
+    </form>
+</body>
+</html> 
+2017-12-19 10:32:50, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[70]------ =====签名报文开始====== 
+2017-12-19 10:32:50, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[39]------ 读取签名证书…… 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[48]------ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/certs/acp_test_sign.pfx, pwd[881813] openssl_pkcs12_read fail。 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[39]------ 读取签名证书…… 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[48]------ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/certs/acp_test_sign.pfx, pwd[881813] openssl_pkcs12_read fail。 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[83]------ 签名key=val&...串 >accessType=0&backUrl=http://www.test51ehw.com/index.php/_BUSINESS/Acppay/Notify/BackReceive&bizType=000201&certId=&channelType=08&currencyCode=156&encoding=utf-8&frontUrl=http://www.51ehw.com/index.php/_BUSINESS/Acppay/Notify/FrontReceive&merId=777290058149512&orderId=COM2017121883313&payTimeout=20171219104750&signMethod=01&txnAmt=5000000&txnSubType=01&txnTime=20171218173342&txnType=01&version=5.1.0 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[100]------ 摘要sha256x16 >6f8f205b0c9c338120d11b270e15aeb812f581230ef035ff68ca8754fad6beaf 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[108]------ >>>>>签名失败<<<<<<< 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[118]------ =====签名报文结束====== 
+2017-12-19 10:32:51, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[363]------ 自动跳转html><html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://gateway.95516.com/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.1.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.51ehw.com/index.php/_BUSINESS/Acppay/Notify/FrontReceive" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.test51ehw.com/index.php/_BUSINESS/Acppay/Notify/BackReceive" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="08" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="merId" id="merId" value="777290058149512" />
+    <input type="hidden" name="orderId" id="orderId" value="COM2017121883313" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20171218173342" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="5000000" />
+    <input type="hidden" name="payTimeout" id="payTimeout" value="20171219104750" />
+    <input type="hidden" name="certId" id="certId" value="" />
+   <!-- <input type="submit" type="hidden">-->
+    </form>
+</body>
+</html> 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[70]------ =====签名报文开始====== 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[39]------ 读取签名证书…… 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[48]------ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/certs/acp_test_sign.pfx, pwd[881813] openssl_pkcs12_read fail。 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[39]------ 读取签名证书…… 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/cert_util.php ], Line[48]------ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/certs/acp_test_sign.pfx, pwd[881813] openssl_pkcs12_read fail。 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[83]------ 签名key=val&...串 >accessType=0&backUrl=http://www.test51ehw.com/index.php/_BUSINESS/Acppay/Notify/BackReceive&bizType=000201&certId=&channelType=08&currencyCode=156&encoding=utf-8&frontUrl=http://www.51ehw.com/index.php/_BUSINESS/Acppay/Notify/FrontReceive&merId=777290058149512&orderId=COM2017121883313&payTimeout=20171219104753&signMethod=01&txnAmt=5000000&txnSubType=01&txnTime=20171218173342&txnType=01&version=5.1.0 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[100]------ 摘要sha256x16 >dbbfe126b348e2adf03dbe56cd8e8cb6d1222f8ed508c8c28044dfe4e95de4d3 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[108]------ >>>>>签名失败<<<<<<< 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[118]------ =====签名报文结束====== 
+2017-12-19 10:32:53, INFO, ::1, File[ /Applications/MAMP/htdocs/Web/51ehw/web/application/libraries/Acppay/sdk/acp_service.php ], Line[363]------ 自动跳转html><html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://gateway.95516.com/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.1.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.51ehw.com/index.php/_BUSINESS/Acppay/Notify/FrontReceive" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.test51ehw.com/index.php/_BUSINESS/Acppay/Notify/BackReceive" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="08" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="merId" id="merId" value="777290058149512" />
+    <input type="hidden" name="orderId" id="orderId" value="COM2017121883313" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20171218173342" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="5000000" />
+    <input type="hidden" name="payTimeout" id="payTimeout" value="20171219104753" />
+    <input type="hidden" name="certId" id="certId" value="" />
+   <!-- <input type="submit" type="hidden">-->
+    </form>
+</body>
+</html> 

@@ -1,0 +1,91 @@
+<?php
+/**
+ * 省市县
+ *
+ *
+ */
+class Region_mdl extends CI_Model
+{
+    /**
+     * 
+     *
+     * @return Region_mdl
+     */
+    function __construct()
+    {
+        parent::__construct();
+    }
+    
+	// --------------------------------------------------------------------
+
+    /**
+     * 
+     *
+     * @param integer $parent_id
+     */
+    function children_of($parent_id, $select="*")
+    {
+        $parent_id = (int)$parent_id;
+        
+        $regions = array();
+        $this->db->select($select);
+        $this->db->where('parent_id', $parent_id);
+        if ($query = $this->db->get('region')){
+            return $query->result_array(); 
+		}
+		return array();       
+    }
+
+    // --------------------------------------------------------------------
+
+	/**
+     * 
+     *
+     * @return array
+     */
+    function provinces()
+    {
+        return $this->children_of(1);
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+	 * 区域名
+	 *
+	 *
+	 */	
+    function get_name($id)
+	{
+		if (!$id){
+            return NULL;
+        }
+		$this->db->select('region_name');
+        $query = $this->db->get_where('region',array('region_id' => $id));
+
+        if ($row = $query->row_array()){
+            return $row['region_name'];
+        }
+		return NULL;
+	}
+
+   // --------------------------------------------------------------------
+
+    /**
+	 * load by id
+	 *
+	 *
+	 */	
+	function load($id)
+	{
+        if (!$id){
+            return array();
+        }
+        $query = $this->db->get_where('region',array('region_id' => $id));
+        if ($row = $query->row_array()){
+            return $row;
+        }
+		return array();
+	}
+
+}

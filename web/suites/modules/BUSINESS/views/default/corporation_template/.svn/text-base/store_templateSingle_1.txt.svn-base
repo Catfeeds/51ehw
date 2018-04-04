@@ -1,0 +1,97 @@
+<!--s <link rel="stylesheet" href="css/jquery.fullPage.css">
+
+
+<style>
+.section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+.sectionPic01,.sectionPic02{ width:1200px; margin:0 auto;}
+</style>
+<script src="js/jquery-ui-1.10.3.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+s-->
+<script>
+$(document).ready(function() {
+	$.fn.fullpage({
+		slidesColor: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+		anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+		navigation: true
+	});
+});
+</script>
+
+
+<div class="section">
+    
+    <!--店铺头部 开始-->
+	<div class="store_top hover_it" style="position:relative;">
+    	<div class="store_top_con"><#banner_1#></div>
+	</div>
+    <!--店铺头部 结束-->
+    
+	<!--头部导航条 开始-->
+    <div class="eh_navbar clearfix">
+        <div class="macth_xv_navlist">
+            <div class="macth_xv_menu">
+                <!--左侧导航 start-->
+                
+                <!--中间导航 start-->
+               
+                <!--中间导航 end-->
+            </div>
+        </div>
+    </div> 
+   <!--头部导航条 结束-->
+</div>
+	<#page_body_begin#>
+<script>
+
+	//点击头部top banner编辑按钮，弹出层仅编辑图片内容
+	$('.store_top .editBtn').click(function(){
+		$('.fancybox-top').show();
+	});
+	//点击取消fancybox_back-top按钮，弹出层内容消失
+	$('.fancybox_back-top').click(function(){
+		$('.fancybox-top').hide();
+	});
+	
+
+	
+	//点击轮播图banner编辑按钮，弹出层编辑轮播图内容
+	$('.carousel .editBtn').click(function(){
+		$('.fancybox0').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back0').click(function(){
+		$('.fancybox0').hide();
+	});
+
+	
+	
+	//点击右侧删除按钮，弹出层删除温馨提示内容
+	$('.productfloor_right .deleteBtn,.sectionPic01 .deleteBtn').click(function(){
+		$('.fancybox5').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back5').click(function(){
+		$('.fancybox5').hide();
+	});
+	
+
+	
+	//点击单品店铺商品图片编辑按钮，弹出层编辑图片背景颜色链接地址内容
+	$('.sectionPic01 .editBtn').click(function(){
+		$('.fancybox6').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back6').click(function(){
+		$('.fancybox6').hide();
+	});
+	
+	//点击单品店铺商品图片编辑按钮，弹出层编辑图片背景颜色链接地址内容
+	$('.sectionPic02 .editBtn').click(function(){
+		$('.fancybox7').show();
+	});
+	//点击取消fancybox_back按钮，弹出层内容消失
+	$('.fancybox_back7').click(function(){
+		$('.fancybox7').hide();
+	});
+</script>

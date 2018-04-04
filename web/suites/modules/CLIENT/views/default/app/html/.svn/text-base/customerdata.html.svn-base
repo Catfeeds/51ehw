@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>客户资料</title>
+<meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+	<div class="padding34">
+    	<form action="" method="post">
+            <input name="" type="text" value="客户会员账号" id="searchkey" class="ui-search-bar"/>
+            <div class="btn_search"><a href="#"><img src="images/icon_search.png" width="31" height="30" alt=""/></a></div>
+        </form>    
+    </div>
+	<div class="ui-customer-data cd">
+        <table width="100%" border="0" class="stripe" cellpadding="0" cellspacing="0">
+          <tr>
+            <th width="15%">序号</th>
+            <th width="20%">会员账号</th>
+            <th width="25%">消费金额</th>
+            <th width="25%">回扣金额</th>
+            <th width="15%">是否有下级</th>
+          </tr>
+          <tr>
+            <td width="15%">1</td>
+            <td width="20%">测试用户</td>
+            <td width="25%">￥222.00</td>
+            <td width="25%">￥22.00</td>
+            <td width="25%">否</td>
+          </tr>
+           <tr>
+            <td width="15%">1</td>
+            <td width="20%">测试用户</td>
+            <td width="25%">￥222.00</td>
+            <td width="25%">￥22.00</td>
+            <td width="25%"><a href="#">是</a></td>
+          </tr>
+           <tr>
+            <td width="15%">1</td>
+            <td width="20%">测试用户</td>
+            <td width="25%">￥222.00</td>
+            <td width="25%">￥22.00</td>
+            <td width="25%"><a href="#">是</a></td>
+          </tr>
+          <tr>
+            <td width="15%">1</td>
+            <td width="20%">测试用户</td>
+            <td width="25%">￥222.00</td>
+            <td width="25%">￥22.00</td>
+            <td width="25%"><a href="#">是</a></td>
+          </tr>
+       </table>
+    </div>
+
+</body> 
+<script language="javascript">
+$(document).ready(function(){ //这个就是传说的ready   
+	$(".stripe tr").mouseover(function(){   
+	   //如果鼠标移到class为stripe的表格的tr上时，执行函数   
+	  $(this).addClass("over");}).mouseout(function(){   
+			//给这行添加class值为over，并且当鼠标一出该行时执行函数   
+			$(this).removeClass("over");}) //移除该行的class   
+  $(".stripe tr:even").addClass("alt");   
+	//给class为stripe的表格的偶数行添加class值为alt
+  });   
+</script>  
+<script type="text/javascript">
+$(document).ready(function(){
+	//focusblur
+	jQuery.focusblur = function(focusid) {
+		var focusblurid = $(focusid);
+		var defval = focusblurid.val();
+		focusblurid.focus(function(){
+			var thisval = $(this).val();
+			if(thisval==defval){
+				$(this).val("");
+			}
+		});
+		focusblurid.blur(function(){
+			var thisval = $(this).val();
+			if(thisval==""){
+				$(this).val(defval);
+			}
+		});
+		
+	};
+	/*下面是调用方法*/
+	$.focusblur("#searchkey");
+});
+</script>
+</html>

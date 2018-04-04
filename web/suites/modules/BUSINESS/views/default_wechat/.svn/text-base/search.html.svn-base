@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/fonts.css">
+<script src="jquery.min.js"></script>
+<script>
+
+	  $(document).ready(function(){
+
+			$(".wheel-button").wheelmenu({
+
+        trigger: "hover",
+
+        animation: "fly",
+
+        animationSpeed: "fast"
+
+      });
+
+		});
+
+		
+
+	</script>
+<title>51易货网</title>
+</head>
+<body>
+  <div class="wrapper">
+<!--头部 begin-->
+<div class="header" name="top">
+   <a href="javascript:history.back()" target="_self" class="icon-back"></a>
+   <p class="title">产品搜索</p>
+</div>
+<!--头部 end-->   
+<div class="page clearfix">
+<!--搜索 begin-->
+<div class="search_bg">
+	<i class="search_img iconfont4" style="color:#fea33b; font-size:30px;"> &#xe602 </i>
+    <input type="text" class="search_input" placeholder="请输入关键词" >
+</div>
+<!--搜索 end-->
+<!--分类搜索 begin-->
+<div class="classify_box">
+	<ul>
+    	<li>
+        	<a>
+            	<span>好评</span>
+                <i class="iconfont4">&#xe612</i>
+            </a>
+            
+        </li>
+        <li style="width:1px;">|</li>
+        <li>
+        	<a>
+            	<span>价格</span>
+                <i class="iconfont4">&#xe613</i>
+            </a>
+        </li>
+        <li style="width:1px;">|</li>
+        <li>
+        	<a>
+            	<span>销量</span>
+                <i class="iconfont4">&#xe613</i>
+            </a>
+        </li>
+        <li style="width:1px;">|</li>
+        <li>
+        	<a>
+            	<span>最新</span>
+                <i class="iconfont4">&#xe613</i>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--分类搜索 end-->
+<!--搜索结果（有数据显示） begin-->
+<div class="search_res">
+	<p class="result_p"><span>莱安中心</span>搜索结果共<span>1000</span>条</p>
+    <ul>
+    	<li class=" clearfix">
+        	<i class="result_img"><img src="images/search_res01.png"></i>
+            <em class="result_em">
+                <p class="result_title">莱安更符合各方的身份稻盛和夫的是非得失公司附近是否更加好看吗好看中心</p>
+                <p class="result_con">曲江新地标，国际一流全LOW-E玻璃幕墙铸就恢宏建筑</p><br>
+                <strong class="result_pirce">M1,904,760.00</strong>
+            </em>
+        </li>
+        <li class=" clearfix">
+        	<i class="result_img"><img src="images/search_res01.png"></i>
+            <em class="result_em">
+                <p class="result_title">莱安更符合各方的身份稻盛和夫的是非得失公司附近是否更加好看吗好看中心</p>
+                <p class="result_con">曲江新地标，国际一流全LOW-E玻璃幕墙铸就恢宏建筑</p><br>
+                <strong class="result_pirce">M1,904,760.00</strong>
+            </em>
+        </li>
+        <li class=" clearfix">
+        	<i class="result_img"><img src="images/search_res01.png"></i>
+            <em class="result_em">
+                <p class="result_title">莱安更符合各方的身份稻盛和夫的是非得失公司附近是否更加好看吗好看中心</p>
+                <p class="result_con">曲江新地标，国际一流全LOW-E玻璃幕墙铸就恢宏建筑</p><br>
+                <strong class="result_pirce">M1,904,760.00</strong>
+            </em>
+        </li>
+        <li class=" clearfix">
+        	<i class="result_img"><img src="images/search_res01.png"></i>
+            <em class="result_em">
+                <p class="result_title">莱安更符合各方的身份稻盛和夫的是非得失公司附近是否更加好看吗好看中心</p>
+                <p class="result_con">曲江新地标，国际一流全LOW-E玻璃幕墙铸就恢宏建筑</p><br>
+                <strong class="result_pirce">M1,904,760.00</strong>
+            </em>
+        </li>
+    </ul>
+</div>
+<!--搜索结果（有数据显示） end-->
+<!--搜索结果（无数据显示） begin-->
+<div class="search_res" hidden>
+	<p class="result_p"><span>莱安中心</span>搜索结果共<span>0</span>条</p>
+</div>
+<!--搜索结果（无数据显示） end-->
+</div>
+
+<!--浮动层－返回顶部 begin-->
+<div class="float_box iconfont4"><a href="javascript:scroll(0,0)" style="color:#fff; font-size:22px;">&#xe615 </a></div>
+<!--浮动层－返回顶部 end-->
+
+<!--浮动层－全网导航 begin-->
+<div class="float_nav icon-fenlei" style="line-height:50px; color:#fff;" onclick="menu2();"><a href="javascript:;"></a></div>
+
+<div class="float_others" hidden>
+    <ul id="wheel2" data-angle="NE" class="wheel" style="display: block; position: fixed; z-index: 5; padding: 30px; top: 340.5px; left: -88.5px; ">
+        <li style=" left: 20px; bottom: 140px;"><a href="#" class="icon-homefill" style="color:#fff;"></a></li>  
+        <li style=" left: 68px; bottom: 120px;"><a href="#" class="icon-peoplefill" style="color:#fff;"></a></li>   
+        <li style=" left: 105px; bottom: 88px;"><a href="#" class="icon-cartfill" style="color:#fff;"></a></li>     
+        <li style=" left: 120px; bottom: 40px;"><a href="#" class="iconfont4" style="color:#fff;"> &#xe617 </a></li>
+    </ul>
+</div>
+<script>
+function menu2(){
+	if($('#wheel2').is(":hidden")){
+		$('.float_others').show()
+	}else{
+		$('.float_others').hide()
+	}
+}
+</script>
+
+
+
+
+<!--
+<div class="main">
+<a href="#wheel2" class="wheel-button ne" style="opacity: 1; z-index: 3;">
+
+		   <span>+</span>
+
+		  </a>
+
+      <ul id="wheel2" data-angle="NE" class="wheel" style="display: none; position: fixed; z-index: 5; padding: 30px; top: 340.5px; left: -88.5px; visibility: hidden;">
+
+        <li class="item" style="transform: rotate(-360deg); position: absolute; opacity: 0; left: 130px; top: 130px;"><a href="#home">A</a></li>
+
+        <li class="item" style="transform: rotate(-360deg); position: absolute; opacity: 0; left: 130px; top: 130px;"><a href="#home">B</a></li>
+
+        <li class="item" style="transform: rotate(-360deg); position: absolute; opacity: 0; left: 130px; top: 130px;"><a href="#home">C</a></li>
+
+        <li class="item" style="transform: rotate(-360deg); position: absolute; opacity: 0; left: 130px; top: 130px;"><a href="#home">D</a></li>
+
+      </ul>
+</div>
+<!--浮动层－全网导航 end-->
+<script>
+function pageScroll() {window.scrollBy(0,-10);scrolldelay=setTimeout('pageScroll()',100);}//返回顶部
+</script>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+/* top */
+
+/* 企业版 css头部 */
+.top li a{color:#8d7400;}
+.top .title{color:#8d7400;}
+.top ul{height: 40.36px;background-color: #fed718;width: 100%;}
+/* end */ 
+
+/* 政府版 css头部 */
+.top.government_header .title{color:#fff;}
+.top.government_header li a{color:#fff;}
+.top.government_header ul{background-color: #ffa043; height: 40.36px; width: 100%;}
+/* end */
+
+.box{
+    width:100%;
+    margin:0 auto;
+}
+a{
+    text-decoration:none;
+}
+.top li{
+    float: left;
+    width: 33.3%;
+    height: 40.36px;
+    line-height: 40.36px;
+    font-size: 1.05rem;
+    color:#8d7400;
+}
+.title_right{
+    float: right;
+    margin-right: 10.8%;
+}
+.top ul{
+    height: 40.36px;
+    background-color: #fed718;
+    width: 100%;
+}
+.title{
+    text-align: center;
+}
+.icon-fanhui{
+    margin-left:4.6%;
+}
+/* top end */
+a{
+    text-decoration:none;
+}
+/* footer */
+
+/* 企业版 尾部css */
+.footer li{float: left;width: 33.333333%;text-align: center;background: #ffd400;padding: 1.6% 0% 1.6% 0%;}
+.footer p{color: #666;font-size: 1rem;font-weight:bolder;}
+.footer h1{color: #666;padding-top: 1.3%;font-size: 0.85rem;}
+/* 政府版 尾部css */
+.footer.government_footer li{background: #ffa043;float: left;width: 33.333333%;text-align: center;padding: 1.6% 0% 1.6% 0%;}
+.footer.government_footer h1{color: #fff;padding-top: 1.3%;font-size: 0.85rem;}
+.footer.government_footer p{color: #fff;font-size: 1rem;font-weight:bolder;}
+
+/* end */
+
+.footer ul{
+    width: 100%;
+    float: left;
+    position:fixed;
+    bottom: 0%;
+}
+.foot_last{
+}
+
+/* footer other */
+.footer_nav ul{
+    width: 100%;
+    background: #000;
+    float: left;
+    position:fixed;
+    bottom: 0%;
+}
+.footer_nav li{
+    width: 25%;
+    text-align: center;
+    float: left;
+    padding: 1.8% 0% 1.7% 0%;
+    font-size: 1.475rem;
+    font-weight: bolder;
+}
+.footer_nav p{
+    font-size: 0.7rem;
+    padding-top: 10.3%;
+}

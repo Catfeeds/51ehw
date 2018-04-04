@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="css/swiper3.08.min.css" rel="stylesheet" type="text/css">
+<link href="css/style_v2.css" rel="stylesheet" type="text/css">
+<link href="css/store.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.easie.js"></script>
+
+
+<title>51易货网</title>
+</head>
+
+<body>
+	<!--排行榜Top6切换js 开始-->	
+    <script type="text/javascript">
+    	$(function(){
+			$('.rankingTop_left li a').hover(function(e) {
+                var indexNum = parseInt($(this).attr("order"));
+				var topNum = indexNum*-686;//'+topNum+'
+				$('.rankingTop_mid ul').stop().animate({'top':''+topNum+'px'},300)
+				$(this).parent('li').stop().animate({'opacity':'1'},300)
+            },function(){
+				$(this).parent('li').stop().animate({'opacity':'0.5'},300)
+			});
+			$('.rankingTop_right li a').hover(function(e) {
+                var indexNum = parseInt($(this).attr("order"));
+				var topNum = indexNum*-686;//'+topNum+'
+				$('.rankingTop_mid ul').stop().animate({'top':''+topNum+'px'},300)
+				$(this).parent('li').stop().animate({'opacity':'1'},300)
+            },function(){
+				$(this).parent('li').stop().animate({'opacity':'0.5'},300)
+			});	
+		});
+    </script>
+	<!--排行榜Top6切换js 结束-->
+ 	<!--页头开始-->
+    
+	<!--页头 结束-->
+    <!--店铺头部 开始-->
+   		<#top#>
+    <!--店铺头部 结束-->
+	<!--头部导航条 开始-->
+    <div class="eh_navbar clearfix">
+        <div class="macth_xv_navlist">
+            <div class="macth_xv_menu">
+                <!--左侧导航 start-->
+                <div class="macth_xv_categorys">
+                    <div class="macth_xv_cat_title">
+                        <h2 class="macth_cat_name"><a href="javascript:void(0)">全部分类<b class="icon-select"></b></a></h2>
+                    </div>
+                    
+                    <div class="macth_xv_cat_catlist ">
+                        <ul class="macth-dropdown-menu" data-bind="foreach:navData">
+                           <#menu_all#>
+                        </ul>
+                    </div>
+                </div>
+                <!--左侧导航 end-->
+                <!--中间导航 start-->
+                <ul class="macth_xv_nav">
+                   <#railing_title#>
+                </ul>
+                <!--中间导航 end-->
+            </div>
+        </div>
+    </div> 
+	<!--头部导航条 结束-->
+    <!--清除浮动 开始-->
+    <div class="clearfix">
+        <!--Banner内容 开始-->
+        <div class="carousel">
+        <#lunbo#>
+            <div class="buttons">
+                <a class="leftBtn"></a>
+                <a class="rightBtn"></a>
+            </div>
+            <div class="bg"></div>
+        <#deng#>
+        </div>
+        <script type="text/javascript" src="js/chuantong.js"></script>
+        <script type="text/javascript">
+            chuantong(300,4000,1200);
+        </script>
+        <!--Banner内容 结束-->
+        <!--特价商品内容 开始-->
+        <div class="store_specialCommodity clearfix">
+            <h2 class="store_h2"><#top_title#></h2>
+            <!-- 特价商品左边一个 -->
+               <#tejiatop#>
+                
+            <!-- 特价商品右边四个 -->
+        		<#tejia#>	
+        
+        
+        </div>
+        <!--特价商品内容 结束-->
+        <!--页面搜索 开始-->
+        <#search#>
+        <!--页面搜索 结束-->
+        <!--排行榜Top6内容 结束-->
+        <div class="store_rankingTop clearfix">
+            <h2 class="store_h2"><#two_title#></h2>
+                  <#mid_body#>
+        </div>
+        <!--排行榜Top6内容 结束-->
+        <!--页面banner 开始-->
+            <#mid#>
+        <!--页面banner 结束-->
+        
+        <!--产品楼层 开始-->
+        <div class="store_productfloor clearfix">
+        <div class="clearfix">
+        <!--产品楼层左边内容 开始-->
+        <div class="productfloor_left">
+        	<!--排行榜 开始-->
+            <div class="productfloor_left_rankingList">
+            	<div class="rankingList_head">排行榜</div>
+                <div class="rankingList_top">
+                	<ul>
+                    	<li class="rankingList_top_current"><a >收藏量</a></li>
+                        <li id="sales"><a >销售量</a></li>
+                    </ul>
+                </div>
+                <div class="rankingList_con" id="rankingList_one">
+                	<#product_fav#>
+                    
+                </div>
+                <div class="rankingList_con" id="rankingList_two" hidden>
+                	<#product_sales#>
+                   
+                </div>
+            </div>
+            <!--排行榜 结束-->
+            <!--推荐 开始-->
+          <div class="productfloor_left_recommend">
+          	  <div class="rankingList_head">推荐</div>
+          	     <#left#>
+              </div>
+            <!--推荐 结束-->
+            
+        </div>
+        <!--产品楼层左边内容 结束-->
+        
+        <!--产品楼层右边内容 开始-->
+        <div class="productfloor_right">
+        	<!--热卖爆款 开始-->
+        	<div class="productfloor_right_hotSale">
+            	<h3 class="productfloor_right_title"><#three_title#></h3>
+            	   <#hotsell#>
+                   
+            </div>
+            <!--热卖爆款 结束-->
+           
+        </div>
+        <!--产品楼层右边内容 结束-->
+        </div>
+        </div>
+        <!--产品楼层 结束-->
+    </div>
+    <!--清除浮动 结束-->
+    
+    <!--页尾banner 开始-->
+   	<#end#>
+    <!--页尾banner 结束-->
+    
+    <!-- 结尾开始 -->
+    
+    <!-- 结尾结束 -->
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+	//收藏量与销售量切换内容js
+	$(".rankingList_top_current").mouseover(function(){
+		$(".rankingList_top_current").css("background","#ccc");
+		$("#sales").css("background","#fff");
+		$("#rankingList_one").show();
+		$("#rankingList_two").hide();
+	})
+	$("#sales").mouseover(function(){
+		$("#sales").css("background","#ccc");
+		$(".rankingList_top_current").css("background","#fff");
+		$("#rankingList_two").show();$("#rankingList_one").hide();
+	})
+</script>
+</html>
+

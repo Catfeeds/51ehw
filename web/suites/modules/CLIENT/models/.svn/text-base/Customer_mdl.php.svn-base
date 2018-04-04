@@ -1,0 +1,1000 @@
+<?php
+/**
+ *
+ *
+ *
+ */
+class Customer_mdl extends CI_Model {
+    var $id;
+	var $name;
+	var $email;
+	var $password;
+	var $dob;
+	var $is_sendemail;
+	var $password_auto;
+	var $parent_id;
+	var $mobile = null;
+	var $phone = null;
+	var $birthday = null;
+	var $sex = null;
+	var $registry_by = 'web';
+	var $nick_name;
+	var $img_avatar;
+	var $wechat_account;
+	var $qq_account;
+	var $weibo_account;
+	var $alipay_account;
+	var $safety_password;
+	var $corporation_id = 0;
+	var $privilege_id = 0;
+	var $app_id;
+	var $wechat_nickname;
+	var $wechat_avatar;
+	var $avatar;
+    var $real_name;
+    var $job;
+    var $openid;
+    var $corporation_status;
+    var $parent_update_time;
+    var $change_parent;
+	/**
+	 * 构造函数
+	 */
+	function __construct() {
+		parent::__construct ();
+	}
+
+	/**
+	 * 添加新客户
+	 */
+	function create() {
+	    
+	    // 检测客户是否存在
+	    if($this->mobile != NULL && $this->mobile != ''){
+            $is_exist = $this->check_mobile($this->mobile );
+            if ($is_exist) {
+                $id = 0;
+                return;
+            }
+	    }
+	    
+	    $datetime = date('Y-m-d H:i:s');
+	    $this->db->set('id', $this->id);
+	    $this->db->set('name', $this->name);
+	    $this->db->set('email', $this->email);
+	    $this->db->set('password', md5($this->password));
+	    $this->db->set('registry_at', $datetime);
+	    $this->db->set('updated_at', $datetime);
+	    $this->db->set('last_login_at', $datetime);
+	    $this->db->set('parent_id', $this->parent_id === NULL ? 0 : $this->parent_id);
+	    
+	    $this->db->set('mobile', $this->mobile);
+	    $this->db->set('phone', $this->phone);
+	    $this->db->set('birthday', $this->birthday);
+	    $this->db->set('sex', $this->sex);
+	    $this->db->set('registry_by', $this->registry_by);
+	    
+	    $this->avatar ? $this->db->set('avatar', $this->avatar) : null;
+	    $this->nick_name ? $this->db->set('nick_name', $this->nick_name) : null;
+	    
+	    $this->wechat_avatar ? $this->db->set('wechat_avatar', $this->wechat_avatar) : null;
+	    $this->wechat_nickname ? $this->db->set('wechat_nickname', $this->wechat_nickname) : null;
+	    
+	    $this->db->set('wechat_account', $this->wechat_account);
+	    $this->db->set('qq_account', $this->qq_account);
+	    $this->db->set('weibo_account', $this->weibo_account);
+	    $this->db->set('alipay_account', $this->alipay_account);
+// 	    $this->db->set('corporation_id', $this->corporation_id);
+// 	    $this->db->set('privilege_id', $this->privilege_id);
+	    $this->db->set('app_id', $this->app_id);
+	    
+	    $this->db->insert('customer');
+	    
+	    $id = $this->db->insert_id();
+	    
+	    error_log($this->db->last_query());
+      
+        return $id;
+    }
+    
+    
+	// --------------------------------------------------------------------
+
+	/**
+	 * 查询该用户名是否存在
+	 */
+	function check_name($name) {
+		$query = $this->db->get_where ( 'customer', array (
+				'name' => $name
+		) );
+		if ($row = $query->row_array ()) {
+			return true;
+		}
+		return false;
+	}
+	//待与check_mobile整合
+	function check_moblie($phone) {
+		$query = $this->db->get_where ( 'customer', array (
+				'mobile' => $phone
+		) );
+		if ($row = $query->row_array ()) {
+			return true;
+		}
+		return false;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * 查询该邮箱是否存在
+	 */
+	function check_email($email) {
+        $query = $this->db->get_where('customer', array(
+            'email' => $email
+        ));
+        if ($row = $query->row_array()) {
+            return true;
+        }
+        return false;
+    }
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * 查询该手机是否存在
+	 */
+	function check_mobile($mobile) {
+	    $query = $this->db->get_where ( 'customer', array (
+	        'mobile' => $mobile
+	    ) );
+	    if ($row = $query->row_array ()) {
+	        return true;
+	    }
+	    return false;
+	}
+
+	// --------------------------------------------------------------------
+    
+	/**
+	 * 查询该用户，返回用户信息
+	 */
+	function check_customer()
+	{
+            // $result = $this->db->get_where('customer', array(
+            // 'name' => $this->name,
+            // 'password' => md5($this->password)
+            // ))->result_array();
+        $where = "(name='" . $this->name . "' or mobile='" . $this->name . "') and password='" . md5($this->password) . "'";
+        $this->db->where($where);
+        $result = $this->db->get('customer')->result_array();
+        if ($result && count($result) > 0) {
+            return $result[0];
+        }
+
+        return array();
+    }
+
+	// --------------------------------------------------------------------
+	
+    /**
+     * 查询该用户，返回用户信息
+     */
+    function check_wechat_customer()
+    {
+        $result = $this->db->get_where('customer', array('wechat_account' => $this->wechat_account))->row_array();
+        return $result;
+    }
+    
+    // --------------------------------------------------------------------
+
+	/**
+	 * 查询该用户，返回用户信息
+	 */
+	function check_customer_with_mobile() {
+		$result = $this->db->get_where ( 'customer', array (
+				'name' => $this->name,
+				'password' => md5 ( $this->password ),
+		        'mobile' => $this->mobile
+		) )->result_array ();
+		if ($result && count ( $result ) > 0) {
+			return $result [0];
+		}
+
+		return array ();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * load by id
+	 */
+	function load($id) {
+	    if (! $id) {
+	        return array ();
+	    }
+
+	    $query = $this->db->get_where ( 'customer', array ('id' => $id) );
+
+	    if ($row = $query->row_array ()) {
+	        return $row;
+	    }
+	    return array();
+	}
+
+	
+	// --------------------------------------------------------------------
+
+	/**
+	 * load by id
+	 */
+	function load_by_name($name) {
+		if (! $name) {
+			return array ();
+		}
+
+		$query = $this->db->get_where ( 'customer', array (
+				'name' => $name
+		) );
+
+		if ($row = $query->row_array ()) {
+			return $row;
+		}
+
+		return array ();
+	}
+
+	function load_by_mobile($mobile) {
+	    if (! $mobile) {
+	        return array ();
+	    }
+
+	    $query = $this->db->get_where ( 'customer', array (
+	        'mobile' => $mobile
+	    ) );
+
+	    if ($row = $query->row_array ()) {
+	        return $row;
+	    }
+
+	    return array ();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * load by id
+	 */
+	function load_by_wechat($unionid) {
+		if ($unionid == '') {
+			return array ();
+		}
+
+		$query = $this->db->get_where ( 'customer', array (
+				'wechat_account' => $unionid
+		) );
+		if ($row = $query->row_array ()) {
+			error_log ( $this->db->last_query () );
+			return $row;
+		}
+		error_log ( $this->db->last_query () );
+
+		return array ();
+	}
+	
+	
+	// --------------------------------------------------------------------
+
+	/**
+	 * load by where
+	 * @param unknown $where
+	 */
+	function load_by_where($where){
+		if (! $where) {
+			return array ();
+		}
+		$query = $this->db->get_where ( 'customer', $where);
+
+		if ($row = $query->row_array ()) {
+		    error_log ( $this->db->last_query () );
+		    return $row;
+		}
+		error_log ( $this->db->last_query () );
+		return array ();
+	}
+	
+	// --------------------------------------------------------------------
+	
+	
+	/**
+	 * 更新客户信息
+	 */
+	function update($id) {
+		$datetime = date ( 'Y-m-d H:i:s' );
+
+		if ($this->name)
+		    $this->db->set ( 'name', $this->name );
+
+		if ($this->email)
+			$this->db->set ( 'email', $this->email );
+		
+		if ($this->real_name)
+		    $this->db->set ( 'real_name', $this->real_name );
+		
+		if ($this->mobile)
+			$this->db->set ( 'mobile', $this->mobile );
+
+		if ($this->phone)
+			$this->db->set ( 'phone', $this->phone );
+
+		if (isset ( $this->sex ))
+			$this->db->set ( 'sex', $this->sex );
+		
+		if (isset ( $this->job ))
+		$this->db->set ( 'job', $this->job );
+
+		if (isset ( $this->nick_name ))
+			$this->db->set ( 'nick_name', $this->nick_name );
+
+		if (isset ( $this->img_avatar ))
+			$this->db->set ( 'img_avatar', $this->img_avatar );
+
+		if (isset ( $this->wechat_account ))
+			$this->db->set ( 'wechat_account', $this->wechat_account );
+		
+        if (isset($this->qq_account))
+            $this->db->set('qq_account', $this->qq_account);
+        
+        if (isset($this->weibo_account))
+            $this->db->set('weibo_account', $this->weibo_account);
+        
+        if (isset($this->alipay_account))
+            $this->db->set('alipay_account', $this->alipay_account);
+        
+        if ($this->birthday)
+            $this->db->set('birthday', $this->birthday);
+
+// 		if(isset($this->corporation_id)&&isset($this->corporation_status)){
+// 		    $this->db->set('corporation_id',$this->corporation_id);
+// 		    $this->db->set('corporation_status',$this->corporation_status);
+// 		}
+
+		if(isset($this->pay_passwd))
+		    $this->db->set('pay_passwd',$this->pay_passwd);
+
+		if(isset($this->wechat_nickname))
+		    $this->db->set('wechat_nickname',$this->wechat_nickname);
+		
+	    if(isset($this->openid))
+	        $this->db->set('openid',$this->openid);
+		    
+		if(isset($this->wechat_avatar))
+		    $this->db->set('wechat_avatar',$this->wechat_avatar);
+		
+		$this->db->set ( 'updated_at', $datetime );
+		
+		if(isset($this->parent_update_time)){
+		    $this->db->set('parent_update_time',$this->parent_update_time);
+		}
+		if(isset($this->parent_id)){
+		    $this->db->set('parent_id',$this->parent_id);
+		}
+		if(isset($this->app_id)){
+		    $this->db->set('app_id',$this->app_id);
+		}
+		if(isset($this->change_parent)){
+		    $this->db->set('change_parent',$this->change_parent);
+		}
+		$this->db->where ( 'id', $id );
+		
+		$this->db->update ( 'customer' );
+		
+		return $this->db->affected_rows();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * 查询密码是否正确
+	 */
+	function check_pwd($password,$id) {
+		$query = $this->db->get_where ( 'customer', array (
+				'password' => md5 ( $password ),
+		        'id'=>$id
+		) );
+
+		if ($row = $query->row_array ()) {
+			return true;
+		}
+		return false;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * 更新密码
+	 */
+	function update_pwd($id, $pwd) {
+		$this->db->set ( 'password', md5 ( $pwd ) );
+		$this->db->where ( 'id', $id );
+		return $this->db->update ( 'customer' );
+	}
+
+	// --------------------------------------------------------------------
+	
+	/**
+	 * 更新最后登录时间
+	 */
+	function update_last_login($customer_id) {
+		$datetime = date ( 'Y-m-d H:i:s' );
+		$this->db->set ( 'last_login_at', $datetime );
+		$this->db->where ( 'id', $customer_id );
+		return $this->db->update ( 'customer' );
+	}
+
+	// 查询注册用户数量
+	public function get_counts() {
+		// $this->db->from('customer');
+		return $this->db->count_all_results ( 'customer' );
+	}
+	public function getChildList($level = 0, $fid = 0, $condition = array(), $like = array(), $order_type = 'Y') {
+		if ($condition) {
+			$this->db->where ( $condition );
+		}
+		if ($like) {
+
+			$this->db->like ( $like );
+		}
+		if ($order_type === 'Y') {
+			$place_at = date ( 'Y' ) . '-01-01';
+		} else if ($order_type === 'M') {
+			$place_at = date ( 'Y-m' ) . '-01';
+		}
+
+		$this->db->select ( "a.*,b.total_price,b.rebate" . ($level + 1) . " as rebate" . ", b.count_order as count_order, c.id as childid" );
+		$this->db->from ( "customer as a" );
+		$join_order_table = "(select sum(total_product_price) as total_price,sum(rebate_1) as rebate1,sum(rebate_2)  as rebate2,sum(rebate_3) as rebate3,sum(rebate_4) as rebate4,sum(rebate_5) as rebate5, count(total_product_price) as count_order,a.customer_id from 9thleaf_order as a ,9thleaf_order_rebate as b where a.id = b.orderid and status= 9 and a.place_at > '" . $place_at . "' group by  customer_id) as b";
+		$this->db->join ( $join_order_table, "a.id = b.customer_id", "left" );
+		$this->db->where ( "a.parent_id", $fid );
+		$this->db->join ( "(select id,parent_id  from 9thleaf_customer) as c", "a.id=c.parent_id", "left" );
+		$this->db->order_by ( "total_price", "desc" );
+		$query = $this->db->get ();
+
+		if ($row = $query->result_array ()) {
+			return $row;
+		}
+
+		return array ();
+	}
+
+	// 查詢用戶的下級數量
+	public function countChild($userid) {
+		$this->db->from ( "customer" );
+		$this->db->where ( "parent_id", $userid );
+		return $this->db->count_all_results ();
+	}
+	public function getChileArray($id) {
+		$this->db->from ( "customer" );
+		$this->db->where ( "parent_id", $id );
+		$childs = $this->db->get ()->result_array ();
+		$cstr = array ();
+		foreach ( $childs as $c ) {
+			array_push ( $cstr, $c ["id"] );
+		}
+		return $cstr;
+	}
+
+	// 查詢用戶消費總額
+	public function getCustomerSaleData($userid, $condition, $childflag) {
+		if ($userid) {
+			$child = array ();
+			if ($childflag) {
+
+				$child = $this->getChileArray ( $userid );
+			}
+
+			$this->db->select ( "sum(quantity) as qty,sum(b.price) as price" );
+			$this->db->from ( "order as a" );
+			$this->db->join ( "order_item as b", "a.id = b.order_id" );
+			$this->db->join ( "product as c", "b.product_id = c.id" );
+			if ($childflag && $child != NULL) {
+				$this->db->where_in ( "a.customer_id", $child );
+			} else {
+				$this->db->where ( "a.customer_id", $userid );
+			}
+
+			if ($condition) {
+				$this->db->where ( $condition );
+			}
+			$query = $this->db->get (); // ->result_array();
+			                            // echo $condition;
+			                            // echo $this->db->last_query();
+			                            // exit;
+
+			if ($row = $query->result_array ()) {
+				return $row;
+			}
+
+			return array ();
+		}
+	}
+	public function get_by_condition($where = array(), $select = '') {
+		if (! empty ( $select ))
+			$this->db->select ( $select );
+		$this->db->where ( $where );
+		$this->db->from ( "customer" );
+
+		$details = $this->db->get ()->row_array ();
+
+		return $details;
+	}
+
+	// ---------------------------------------------------------------------------
+
+	/**
+	 * 更新信用
+	 *
+	 * @param unknown $userid
+	 * @param unknown $total
+	 */
+	public function update_Credit($userid, $total) {
+
+
+	    $this->db->select("id_pay");
+	    $this->db->from('pay_relation');
+	    $this->db->where("customer_id", $userid);
+	    $query = $this->db->get();
+	    $id = $query->row_array();
+
+		//if ($total > 0)
+		$this->db->set ( 'M_credit', "`M_credit`-" . $total, false );
+		$this->db->where ( 'id', $id['id_pay'] );
+		$this->db->where ( 'M_credit  >=', $total );
+
+		$this->db->update ( 'pay_account' );
+
+		$res = $this->db->affected_rows();
+
+		return $res;
+	}
+
+	// ------------------------------------------------------------
+
+	/**
+	 * 更新信用
+	 *
+	 * @param unknown $userid
+	 * @param unknown $total
+	 */
+	public function charge_credit($userid, $total) {
+		if ($total > 0)
+			$this->db->set ( 'credit', "`credit` + " . $total, false );
+		$this->db->where ( 'id', $userid );
+
+		return $this->db->update ( 'customer' );
+	}
+
+	// ------------------------------------------------------------
+
+	/**
+	 * 通过微信ID搜索客户
+	 *
+	 * @param unknown $openid
+	 */
+	public function find_by_wechatopenid($openid) {
+		// TODO:不知为何不能使用wechat_account查询，有待排查问题！
+		$query = $this->db->get_where ( 'customer', array (
+				'name' => 'wechat:' . $openid
+		) );
+		// error_log ( $this->db->last_query () );
+		$row = $query->row_array ();
+		return $row;
+	}
+	
+	// ------------------------------------------------------------
+
+	/**
+	 * 查找是否有上级
+	 *
+	 * @param unknown $user_id
+	 */
+	public function get_parent($user_id) {
+		$query = $this->db->get_where ( 'customer', array (
+				'id' => $user_id
+		) );
+		// error_log ( $this->db->last_query () );
+		$row = $query->row_array ();
+		return $row ['parent_id'];
+	}
+
+	/**
+	 * 更新我爸！
+	 *
+	 * @param unknown $user_id
+	 * @param unknown $parent_id
+	 */
+	public function update_parent($user_id, $parent_id) {
+		$this->db->set ( "parent_id", $parent_id );
+		$this->db->where ( "id", $user_id );
+		$this->db->update ( "customer" );
+	}
+
+	/**
+	 * 激活我自己
+	 */
+	public function active_account($customer_id) {
+		$this->db->set ( "is_active", 1 );
+		$this->db->where ( "id", $customer_id );
+		$this->db->update ( "customer" );
+	}
+
+	/**
+	 * 客户管理-客户列表 -铭
+	 *
+	 * @param $corporation_id --店铺-公司ID
+	 * @param $corporation_id --店铺-公司ID
+	 * @param $num --
+	 *        	每页显示条数
+	 * @param $customer_name --
+	 *        	客户名称 搜索。
+	 */
+	public function get_list($corporation_id, $offset, $num, $customer_name) {
+		$this->db->select ( "sum(O.total_price) as price,C.id,customer_id,nick_name,name,registry_at,last_login_at" );
+		$this->db->from ( "order as O" );
+		$this->db->join ( 'customer C', 'O.customer_id = C.id', 'left' );
+		$this->db->where ( "O.corporation_id",$corporation_id );
+		$this->db->where_in ( "O.status",array(7,9,14) );
+		$this->db->like ( 'C.nick_name', $customer_name );
+		$this->db->group_by ( 'O.customer_id' );
+		$this->db->limit ( $num, $offset );
+		$query = $this->db->get ();
+		$result = $query->result_array ();
+	    return $result;
+	}
+
+	/**
+	 * 统计总条数
+	 *
+	 * @param $corporation_id --店铺-公司ID
+	 * @param $customer_name --客户名称-搜索。
+	 */
+	public function count_customer($corporation_id, $customer_name) {
+// 		$this->db->select ( "C.id" );
+// 		$this->db->from ( "order as O" );
+// 		$this->db->join ( 'customer C', 'O.customer_id = C.id', 'left' );
+// 		$this->db->where ( "O.corporation_id = 1" );
+// 		$this->db->like ( 'C.nick_name', $customer_name );
+// 		$this->db->group_by ( 'O.customer_id' );
+        $query = $this->db->query("select count(*) as num from (SELECT C.id FROM (`9thleaf_order` as O) LEFT JOIN `9thleaf_customer` C ON `O`.`customer_id` = `C`.`id` WHERE O.status in (7,9,14) and `O`.`corporation_id` = $corporation_id AND `C`.`nick_name` LIKE '%$customer_name%' GROUP BY `O`.`customer_id`) as A");
+
+        $result = $query->row_array();
+		return $result['num'];
+	}
+
+	/**
+	 * 客户的消费记录
+	 *
+	 * @param $customer_id --客户ID
+	 * @param $offset --偏移量
+	 * @param $num --每页显示条数
+	 * @param $product_name --消费商品名称搜索
+	 */
+	public function customer_consume_list($customer_id, $offset, $num, $product_name,$corporation_id) {
+		$this->db->select ( 'OI.id, P.name, OI.quantity, (OI.quantity * OI.price) as price ,O.place_at' );
+		$this->db->from ( 'product P, order_item OI, order O' );
+		$this->db->where ( 'O.customer_id =' . $customer_id . ' and O.id = OI.order_id and OI.product_id = P.id' );
+		$this->db->where_in ( "O.status",array(7,9,14) );
+		$this->db->where("O.corporation_id",$corporation_id);
+		$this->db->like ( 'P.name', $product_name );
+		$this->db->limit ( $num, $offset );
+		$query = $this->db->get ();
+		return $query->result_array ();
+	}
+
+	/**
+	 * 统计客户的消费记录
+	 *
+	 * @param $customer_id --客户ID
+	 * @param $product_name --消费商品名称搜索
+	 */
+	public function count_consume_list($customer_id, $product_name,$corporation_id) {
+		$this->db->select ( 'OI.id' );
+		$this->db->from ( 'product P, order_item OI, order O' );
+		$this->db->where ( 'O.customer_id =' . $customer_id . ' and O.status in (7,9,14) and O.id = OI.order_id and OI.product_id = P.id' );
+		$this->db->where("O.corporation_id",$corporation_id);
+		$this->db->like ( 'P.name', $product_name );
+		
+		return $this->db->count_all_results();
+	}
+
+	/**
+	 * 查询某个客户||用户的M卷
+	 * @param $customer_id --客户||用户 ID
+	 */
+    public function M_money( $customer_id ){
+        $this->db->select('M_credit')->from('pay_relation PR, pay_account PA')->where('PR.customer_id ='.$customer_id.' and PR.id_pay = PA.id');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+// 	/**
+// 	 * 查询未入企业号的用户
+// 	 */
+// 	function get_cor_list($phone){
+
+// 	    $this->db->select('id,name,nick_name,mobile,phone,is_valid');
+// 	    $this->db->where('corporation_id = 0');
+// 	    $this->db->where('is_valid = 1');
+// 	    $this->db->where('mobile',$phone);
+// 	    $this->db->or_where('phone',$phone);
+// 	    $query = $this->db->get('customer');
+
+// 	    return $query->result_array();
+
+// 	}
+
+
+	/**
+	 * 查询属于我公司的用户
+	 */
+	function get_my_cus($cor_id,$count='',$offset=''){
+	    if(!$cor_id){
+	        return array();
+	    }
+
+	     $this->db->limit ( ( int ) $count, ( int ) $offset );
+// 	    $this->db->select(' c.id,c.name,c.nick_name,c.mobile,c.is_valid,c.privilege_id,corporation_status,corporation_remark ');
+	    $this->db->from('customer as c');
+	    //$this->db->join('role as r','c.privilege_id=r.id','left outer');
+// 	    $this->db->where('corporation_id',$cor_id);
+	    $this->db->where('id != '.$this->cus_id);
+
+	    $query = $this->db->get();
+
+	    if($res = $query->result_array()){
+	        return $res;
+	    }
+	    return array();
+
+	}
+	function get_my_cuscount($cor_id){
+	    if(!$cor_id){
+	        return array();
+	    }
+
+// 	        $this->db->select(' c.id,c.name,c.nick_name,c.mobile,c.is_valid,c.privilege_id,corporation_status,corporation_remark ');
+	        $this->db->from('customer as c');
+// 	        $this->db->where('corporation_id',$cor_id);
+	        $this->db->where('id != '.$this->cus_id);
+
+	        $query = $this->db->get();
+
+	        if($res = $query->result_array()){
+	            return count($res);
+	        }
+	        return array();
+
+	}
+
+	/**
+	 * 修改我的企业用户
+	 */
+	function cor_user_save($id=''){
+
+	    if(isset($this->privilege_id))
+	        $this->db->set('privilege_id',$this->privilege_id);
+	    if(isset($this->corporation_status))
+	        $this->db->set('corporation_status',$this->corporation_status);
+	    if(isset($this->corporation_remark))
+	        $this->db->set('corporation_remark',$this->corporation_remark);
+
+	    $this->db->where('id',$id);
+
+	    return $res = $this->db->update('customer');
+	}
+
+
+	/**
+	 * 删除我管理的用户
+	 */
+	function del_user($id){
+
+	    $this->db->set('corporation_id',0);
+	    $this->db->set('corporation_status',0);
+	    $this->db->set('privilege_id',0);
+	    $this->db->set('corporation_remark',null);
+
+	    $this->db->where('id',$id);
+
+	    $res = $this->db->update('customer');
+
+	    return $res;
+
+	}
+
+	//------------------------------------------------------------------------
+
+	/**
+	 * 删除用户（整合用户时采用）
+	 * @param unknown $id
+	 */
+	function delete($id){
+
+	    $this->db->where('id',$id);
+
+	    $res = $this->db->delete('customer');
+
+	    return $res;
+	}
+
+	//------------------------------------------------------------------------
+
+    /**
+     *
+     * @param unknown $id
+     * @param unknown $mobile
+     */
+	function bind_mobile($id, $mobile){
+
+
+	    $this->db->set('mobile',$mobile);
+	    $this->db->set('name',$mobile);
+	    $this->db->set('password',md5($mobile));
+
+	    $this->db->where('id',$id);
+
+	    $res = $this->db->update('customer');
+
+	    return $res;
+	}
+
+	/**
+	 * 忘记密码
+	 */
+	public function forget_password($name){
+
+	    $this->db->set('password',$this->password);
+	    $this->db->where('name',$name);
+	    $query = $this->db->update('customer');
+	    return $query;
+
+	}
+
+    /**
+     * 查询该企业所属的用户ID
+     */
+	public function customer_corp( $corp_id ){
+	    if (! $corp_id) {
+	        return array ();
+	    }
+
+	    $query = $this->db->get_where ( 'customer', array (
+	        'corporation_id' => $corp_id
+	    ) );
+
+	    if ($row = $query->row_array ()) {
+	        return $row;
+	    }
+
+	    return array ();
+	}
+	
+	/**
+	 * 根据查询用户id信息
+	 */
+	public function get_customer_info(){
+	    $query = $this->db->where('id',$this->session->userdata('user_id'))->get('customer');
+	    return $query->row_array();
+	}
+	
+	/**
+	 * 根据查询用户id获取openid
+	 */
+	public function load_openid($id) {
+	    if (! $id) {
+	        return array ();
+	    }
+	    
+        $this->db->select('openid');
+	    $query = $this->db->get_where ( 'customer', array (
+	        'id' => $id
+	    ) );
+
+	    if ($row = $query->row_array ()) {
+	        return $row;
+	    }
+	    
+	    return array ();
+	}
+
+	
+	/**
+	 * 查询我的下级。
+	 */
+	public function lower_level( $customer_id )
+	{ 
+	    $this->db->select('id');
+	    $this->db->from('customer');
+	    $this->db->where('parent_id',$customer_id );
+	    $query = $this->db->get();
+	    $result = $query->result_array();
+	    return $result;
+	}
+	
+	/**
+	 * 获取下下级用户ID
+	 */
+	public function two_level( $customer_id )
+	{ 
+	    $this->db->select('id');
+	    $this->db->from('customer');
+	    $this->db->where_in('parent_id',"select id from 9thleaf_customer as c where c.parent_id = {$customer_id}",false);
+	    $query = $this->db->get();
+	    $result = $query->result_array();
+	    return $result;
+	}
+	
+	/**
+	 * 获取整个平台的下线排行榜
+	 */
+	public function sd_ranking_list( $time, $limit, $offset, $customer_id=null )
+	{ 
+	   
+	    $c = '';
+	    $ccc = '';
+	    $sql = '';
+
+	    if( !empty($time['start_at']) && !empty($time['ent_at']) )
+	    {
+	        $c = " and c.parent_update_time  >= '{$time['start_at']}' and c.parent_update_time <= '{$time['ent_at']}' ";
+	        $ccc = " and ccc.parent_update_time  >= '{$time['start_at']}' and ccc.parent_update_time <= '{$time['ent_at']}' ";
+	    }
+
+	    if( $customer_id )
+	    { 
+	        $sql.= " select * from ( select @s:=@s+1 as ranking,a.* from ( ";
+	    }
+	    
+	    $sql .= " SELECT `cc`.`id`, `cc`.`name`, `cc`.`nick_name`, `cc`.`wechat_nickname`,count(distinct(c.id)) as one_level, count(ccc.id) as two_level, count(distinct(c.id))+count(ccc.id) as total ";
+	    $sql .= " FROM `9thleaf_customer` as `c` ";
+	    $sql .= " JOIN `9thleaf_customer` as `cc` ON `c`.`parent_id` = `cc`.`id` {$c} ";
+	    $sql .= " LEFT JOIN `9thleaf_customer` as `ccc` ON `ccc`.`parent_id` = `c`.`id` {$ccc} ";
+	    $sql .= " GROUP BY `c`.`parent_id`, `cc`.`parent_id` ORDER BY `total` DESC ";
+	    
+	    if ($limit)
+	        $sql .= " limit $limit ";
+	    
+	    if ($offset)
+	        $sql .= " offset $offset";
+	    
+	    if( $customer_id )
+	    { 
+	        $sql .= " ) as a, (select @s:=0) b ) as c where c.id = {$customer_id} ";
+	    }
+	    
+	    $query = $this->db->query($sql);
+	    
+	    if( $customer_id )
+	    { 
+	        return $query->row_array();
+	    }
+	    
+	    return $query->result_array();
+	    
+	   
+// 	    if ($limit)
+// 	        $this->db->limit($limit);
+// 	    // 	        $this->db->limit ( $limit );
+// 	    if ($offset)
+// 	        $this->db->offset($offset);
+	    
+// 	    $this->db->select('cc.id,cc.name,cc.nick_name,count(distinct(c.id)) as one_level,count(ccc.id) as two_level,count(distinct(c.id))+count(ccc.id) as total');
+//         $this->db->from('customer as c');
+//         $this->db->join('customer as cc',"c.parent_id = cc.id {$c}");
+//         $this->db->join('customer as ccc',"ccc.parent_id = c.id {$ccc}",'left');
+//         $this->db->group_by('c.parent_id,cc.parent_id');
+//         $this->db->order_by('total','desc');
+//         $query = $this->db->get();
+//         return $query->result_array();
+	
+	}
+}

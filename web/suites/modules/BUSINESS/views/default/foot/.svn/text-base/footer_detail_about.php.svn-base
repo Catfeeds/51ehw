@@ -1,0 +1,1 @@
+<?php include ("uploads/siteinfo/$file_name.php");?>

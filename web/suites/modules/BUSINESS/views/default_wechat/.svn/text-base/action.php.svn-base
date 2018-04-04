@@ -1,0 +1,1 @@
+<?php include (FCPATH.UPLOAD_PATH."uploads/action/$file_name.php");?>

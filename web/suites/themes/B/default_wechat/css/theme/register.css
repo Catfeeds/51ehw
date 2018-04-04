@@ -1,0 +1,109 @@
+
+/* register样式 */
+*{ margin:0; padding:0;}
+a{ text-decoration:none; color:#797979;font-family:Microsoft YaHei; font-size:14px;}
+ul li,ol li{ list-style:none;}
+p{font-family:Microsoft YaHei; font-size:16px; color:#555;}
+.top{ width:100%; height:170px; background:#f3f3f3; margin:0 auto;}
+.con{ width:100%; height:auto;  margin:0 auto;}
+.Box{ 
+	width:1198px; 
+	height:883px; 
+	margin:0 auto; 
+	border:1px solid #fea33b; 
+	background:url(../../images/bg.jpg) no-repeat left bottom;
+	}
+.bTop{ 
+	width:1098px; 
+	height:88px; 
+	margin:0 auto; 
+	border-bottom:2px solid #fea33b;
+	position:relative;
+
+	}
+.bTop ul{ 
+	width:444px; 
+	height:88px; 
+	margin:0 auto;
+	
+	}
+.bTop ul li{ 
+	width:222px; 
+	height:81px; 
+	background:url(../../images/geren.png) no-repeat 50px center; 
+	border-bottom:7px solid #e9e9e9; 
+	line-height:81px; 
+	float:left;
+	}
+.bTop ul li a{ 
+	font-family:Microsoft YaHei; 
+	font-size:20px; 
+	color:#bababa; 
+	padding:0 0 0 88px;
+	}
+.bTop .bCurrent{background:url(../../images/qiye.png) no-repeat 50px center;}
+.bTop .cCurrent{ border-color:#fea33b;}
+.bTop .cCurrent a{ color:#fea33b;}
+.bTop .bp{ 
+	width:200px; 
+	height:70px;
+	line-height:70px;
+	text-align:right;
+	font-size:16px; 
+	color:#555;
+	position:absolute;
+	top:18px;
+	right:0;
+	}
+.bTop .bp a{ color:#72c312; font-size:16px;}
+
+.bBox{ 
+	width:699px; 
+	height:600px; 
+	margin:40px auto 0; 
+	padding:0 0 0 399px;
+	}
+.bBox ul{ width:400px; height:500px; }
+.bBox ul li{ width:400px; height:37px;  margin:0 0 10px 0;}
+.bBox p{ display:inline-block; line-height:37px;}
+.bBox span{ color:#eb5252;}
+.box p img{ width:12px; height:6px;}
+.bBox .p1,.bBox .message1{ width:266px; height:35px; border:1px solid #ccc; float:right;}
+.bBox .message1{ border:none;width:268px; height:37px;}
+.bBox .message2{  
+	margin: 15px 0 0 0; 
+	width:560px; 
+	height:37px;
+	}
+.bBox .p2,.bBox .but1{ width:129px; height:35px;border:1px solid #ccc; float:left;}
+.bBox .but1{width:129px; height:37px; float:right; background-color:#bdbdbd; color:#282828;font-family:Microsoft YaHei; font-size:16px;}
+.bBox .mQing1{ width:400px; height:37px; float:left; }
+.bBox .mQing2{ width:150px; height:37px; float:right;}
+.bBox .mBox{ 
+	width:68px; 
+	height:25px; 
+	background:#72c312 url(../../images/huan.png) no-repeat 5px center; 
+	border-radius:10px;
+	font-family:Microsoft YaHei; 
+	font-size:14px; 
+	color:#fff; 
+	padding:0 5px 0 20px; 
+	line-height:25px;
+	}
+.bBox .pp{ width:400px; height:37px; }
+.bBox .pp p{ width:268px; height:37px; float:right; color:#eb5252; }
+.bBox label{ width:268px; height:37px; float:right; font-family:Microsoft YaHei; font-size:14px; }
+.bBox label span{ color:#72c312;}
+.bBox .pp .p1{ height:42px; width:266px; border:1px solid #a1d761; background-color:#72c312; border-radius:2px;font-family:Microsoft YaHei; font-size:18px; color:#fff; }
+/* 尾部 */
+.footer1{ width:100%; height:204px; background:#f3f3f3; margin:0 auto; margin:165px 0 0 0; padding:10px 0 0 0;}
+.footer1-in{ width:850px; height:180px; margin:20px auto;}
+.fLeft{ width:600px; height:180px; float:left;}
+.fLeft ul{ width:120px; height:180px;margin:0 10px 0 0; float:left;}
+.fLeft li{ line-height:22px;}
+.fUl{ font-size:16px; line-height:40px;}
+.fRight{ width:220px; height:170px; float:right; margin:10px 0 0 0;}
+.fRight p{ font-size:13px; float:right;}
+.down{ margin:20px 0 0 0;}
+
+.footer2{ width:100%; height:92px; background:#cb9513; margin:0 auto; color:#ffff73;font-family:Microsoft YaHei; font-size:14px; text-align:center; line-height:92px;}

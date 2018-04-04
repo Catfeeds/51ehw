@@ -1,0 +1,19 @@
+
+/* personal样式 */
+.Box{  
+	background:url(../images/bg2.jpg) no-repeat left bottom;
+	height:628px;
+	}
+	.bBox{ 
+	width:699px; 
+	height:auto; 
+	margin:40px auto 0; 
+	padding:0 0 0 399px;
+	}
+.bBox ul{ width:400px; height:auto; }
+.bTop .bCurrent{
+	background:url(../images/qiye_02.png) no-repeat 50px center;
+	}
+.bTop ul li{ 
+	background:url(../images/geren_02.png) no-repeat 50px center; 
+	}
