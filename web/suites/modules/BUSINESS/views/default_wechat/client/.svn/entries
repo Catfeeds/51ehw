@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/BUSINESS/views/default_wechat/client
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -25,40 +25,6 @@ fengxianming
 
 
 e24ab575-a676-4291-aba5-8b869a83b07a
-
-choice_label.php
-file
-
-
-
-
-2018-04-02T02:25:05.000000Z
-d86fbabb5d0368ae7c8dcb2a048122ce
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-15322
 
 needs_list.php
 file
@@ -93,6 +59,40 @@ fengxianming
 
 
 12143
+
+choice_label.php
+file
+
+
+
+
+2018-04-02T02:25:05.000000Z
+d86fbabb5d0368ae7c8dcb2a048122ce
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15322
 
 choice_labe_xuan2.php
 file
@@ -196,40 +196,6 @@ jiangfeng
 
 623
 
-needs_details.php
-file
-
-
-
-
-2018-04-02T02:25:05.000000Z
-2a7607f0e37d7bfa7e568337fbcb645a
-2018-02-01T02:02:50.766968Z
-5015
-fengxianming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-11339
-
 my_needs.php
 file
 
@@ -263,6 +229,40 @@ wing
 
 
 5502
+
+needs_details.php
+file
+
+
+
+
+2018-04-02T02:25:05.000000Z
+2a7607f0e37d7bfa7e568337fbcb645a
+2018-02-01T02:02:50.766968Z
+5015
+fengxianming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11339
 
 edit_requirement.php
 file
@@ -298,16 +298,16 @@ fengxianming
 
 21619
 
-my_offer.php
+offer_details.php
 file
 
 
 
 
 2018-04-02T02:25:05.000000Z
-48c1ff1d1011de547b302ecbf2f39c54
-2018-03-02T09:20:41.652665Z
-5402
+b46029df6f9f134f6adc6329dabc1f06
+2018-02-01T02:02:50.766968Z
+5015
 fengxianming
 
 
@@ -330,7 +330,7 @@ fengxianming
 
 
 
-3014
+6280
 
 needs_manage.php
 file
@@ -366,16 +366,16 @@ wing
 
 1298
 
-offer_details.php
+my_offer.php
 file
 
 
 
 
 2018-04-02T02:25:05.000000Z
-b46029df6f9f134f6adc6329dabc1f06
-2018-02-01T02:02:50.766968Z
-5015
+48c1ff1d1011de547b302ecbf2f39c54
+2018-03-02T09:20:41.652665Z
+5402
 fengxianming
 
 
@@ -398,7 +398,7 @@ fengxianming
 
 
 
-6280
+3014
 
 index.php
 file

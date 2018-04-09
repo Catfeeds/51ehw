@@ -340,7 +340,7 @@ class System extends Api_Controller {
 	    
 	    $label_id = $this->session->userdata("label_id");
 	    
-	    $return['data'] = array(
+	     $return['data'] = array(
 	        'www.sxfic.com',
 	        'www.micorcmsapi.onndu.com',
 	        'www.m.qqxqs.com',
@@ -350,6 +350,10 @@ class System extends Api_Controller {
 	        'www.embazqsh.com',
 	        'www.test51ehw.9-leaf.com',
 	        'www.51ehw.com',
+	        'res.wx.qq.com',
+	        'images.51ehw.com',
+	        'a1.easemob.com',
+	        'www.test51ehw.com',
 	    );
 	    
 	    if($label_id){

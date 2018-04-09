@@ -93,7 +93,7 @@ input[type=checkbox]{
 							</p>
 						<p class="order_price">
 						<lable class="item ">单价:&nbsp;
-							<span><em id="group_by_price"><?php echo number_format($groupbuy_product['groupbuy_price'],2); ?></em> 货豆</span>
+							<span><em id="group_by_price"><?php echo number_format($groupbuy_product['groupbuy_price'],2); ?></em> </span>
 						</lable>
 						</p>
 						<p class="fn-12 c9"
@@ -158,7 +158,7 @@ input[type=checkbox]{
 							<span>数量：<em><?php echo $items['qty']; ?></em></span>
 						</p>
 						<p class="order_price">
-							<span><em><?php echo number_format($items['price']*$items['qty'],2); ?> 货豆</em></span>
+							<span><em><?php echo number_format($items['price']*$items['qty'],2); ?> </em></span>
 						</p>
 					</div>
 				</li>
@@ -190,7 +190,7 @@ input[type=checkbox]{
     		<div class="section" style="position: fixed; bottom: 50px;padding-left: 10px; font-size: 14px;border-top: 1px solid #999;width:100%;padding-top: 10px;background: #fff;">
             <?php if(isset($activity) && $activity=='groupbuy'){;?><!-- 拼团结算 -->
     			<span class="price_tit" id="gtotal"><span></span>总计:</span>
-    			<span class="st" style="visibility: hidden;"></span><span id="group_by_total"><?php echo number_format($groupbuy_product['groupbuy_price'] * ( $groupbuy_product['set_limit'] ? ($buy_amount >= $groupbuy_product['least_purchase'] && $buy_amount <=$groupbuy_product['most_purchase'] ? $buy_amount : $groupbuy_product['least_purchase'] ) : $buy_amount ),2);?> </span> 货豆<em></em>
+    			<span class="st" style="visibility: hidden;"></span><span id="group_by_total"><?php echo number_format($groupbuy_product['groupbuy_price'] * ( $groupbuy_product['set_limit'] ? ($buy_amount >= $groupbuy_product['least_purchase'] && $buy_amount <=$groupbuy_product['most_purchase'] ? $buy_amount : $groupbuy_product['least_purchase'] ) : $buy_amount ),2);?> </span> <em></em>
     			<?php if(isset($group_info) && count($group_info)>0 && $group_info['status'] == 1){;?>
     			<a href="<?php echo site_url("goods/detail/".$groupbuy_product['id']."/0/groupbuy/")?>" class="order_tijiao_button" style="width: 180px;">已成团，重新开团</a>
     			<?php }else{;?>
@@ -198,7 +198,7 @@ input[type=checkbox]{
     			<?php };?>
             <?php }else{;?><!-- 普通结算 -->
     			<span class="price_tit"><span><?php echo isset($total_qty) ? $total_qty:"0";?>件</span>总计:</span>
-    			<span class="st" style="visibility: hidden;"></span><span id="zong"><?php echo number_format($total+$freight, 2);?></span> 货豆<em></em>
+    			<span class="st" style="visibility: hidden;"></span><span id="zong"><?php echo number_format($total+$freight, 2);?></span> <em></em>
     			<input type="hidden" value="<?php echo number_format($total+$freight, 2);?>" id="order_total">
     			<a href="javascript:submitOrder();" class="order_tijiao_button custom_button" id="order_submit_status">提交订单</a>
             <?php };?>
@@ -227,7 +227,7 @@ input[type=checkbox]{
             <ul style="border-top: 5px solid #f4f4f4;border-bottom: 1px solid #f4f4f4;margin-bottom: 50px;">
                 <?php if(!isset($activity) || !$activity=='groupbuy'){;?>
                 <li style="padding: 10px 0; font-size: 13px;margin:0px 10px;border-bottom: 1px solid #ddd;font-size: 14px;">
-                       <a href="javascript:void(0);">运费<span style="float:right;">＋<span id="freight"><?php echo isset($freight) ? $freight: 0?></span> 货豆</span></a>
+                       <a href="javascript:void(0);">运费<span style="float:right;">＋<span id="freight"><?php echo isset($freight) ? $freight: 0?></span> </span></a>
                 </li>
                 <?php };?>
                 <li style="padding: 10px 0; font-size: 13px;margin:0px 10px;border-bottom: 1px solid #ddd;font-size: 14px;">
@@ -639,7 +639,7 @@ function wecht_pay(){
                 //获取订单优惠总金额
                 order_total = Number(order_total - discount_price_total);
                
-                $("#total").html('-'+discount_price_total+'货豆');//优惠金额
+                $("#total").html('-'+discount_price_total+'');//优惠金额
                 $("#zong").html( (order_total).toFixed(2) );//优惠后的总额
 
                

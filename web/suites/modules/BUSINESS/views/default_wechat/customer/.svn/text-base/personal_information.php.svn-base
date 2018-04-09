@@ -31,7 +31,7 @@
       <div class="personal_information_list">
         <ul>
             <li><a href="javascript:void(0);"><span>昵称</span><input name="nick_name" value="<?php echo $nick_name;?>" onchange="ajax_up_info();" placeholder="请填写昵称"></a></li>
-            <li><a href="javascript:void(0);"><span>真实姓名</span><input name="real_name" value="<?php echo $real_name;?>" onchange="ajax_up_info();" placeholder="请填写真实姓名"></a></li>
+            <li><a href="javascript:void(0);"><span>真实姓名</span><input name="real_name" value="<?php echo $real_name;?>" onchange="ajax_up_info();" placeholder="请填写真实姓名"  <?php echo $customer_info["idcard"]?'disabled="disabled"':null;?>></a></li>
             <li><a href="javascript:void(0);"><span class='personal_information_sexual'>性别</span><select name="sex" onchange="ajax_up_info();"><?php if($sex==null){;?><option value="" <?php echo $sex==null?"selected":null;?>>请选择</option><?php };?><option value="1" <?php echo $sex==1?"selected":null;?>>男</option><option value="0" <?php echo $sex=="0"?"selected":null;?>>女</option></select></a></li>
             <li><a href="javascript:void(0);"><span>手机号码</span><span><?php echo $mobile;?></span></a></li>
             <li><a href="javascript:void(0);"><span>职位</span><input name="job" value="<?php echo $job;?>" onchange="ajax_up_info();" placeholder="请填写职业"></a></li>

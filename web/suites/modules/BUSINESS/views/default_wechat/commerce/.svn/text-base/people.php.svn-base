@@ -47,7 +47,11 @@
 <div class="commerce_people_head01">
   <ul> 
       <?php foreach ( $tribe_list as $v ){?>
-      <li><a href="<?php echo site_url('Commerce/People/'.$label_id.'/'.$v['id'])?>"><img src="<?php echo IMAGE_URL.$v['logo']?>" onerror="this.src='images/tmp_logo.jpg'"></a></li>
+      <li>
+       <!--<a href="<?php echo site_url('Commerce/People/'.$label_id.'/'.$v['id'])?>">-->
+      <a href ="javascript:change_tribe(<?php echo $v['id'];?>);">
+      <img src="<?php echo IMAGE_URL.$v['logo']?>" onerror="this.src='images/tmp_logo.jpg'"></a>
+      </li>
       <?php }?>
   </ul>
 </div>
@@ -57,7 +61,7 @@
     <ul class="recommended_tribe_top" id="commerce_choice_input">
         <?php foreach ( $tribe_list as $v ){?>
         <li>
-            <a href="<?php echo site_url('Commerce/People/'.$label_id.'/'.$v['id'])?>">
+                <a href="<?php echo site_url('Commerce/People/'.$label_id.'/'.$v['id'])?>"> 
                 <i><img src="<?php echo IMAGE_URL.$v['logo']?>" onerror="this.src='images/tmp_logo.jpg'"></i> 
                 <div class="recommended_tribe_rigth">
                 <div class="tribal_index_zhiding"><h2><?php echo $v['name']?></h2></div>
@@ -70,7 +74,6 @@
         <?php }?>
     </ul>
 </div>
-
 <?php }?>
 
 
@@ -254,6 +257,295 @@
 
 
 <script type="text/javascript">
+function  change_tribe(tribe_id){
+	var label_id = <?php echo $label_id;?>;
+	  $.ajax({ 
+          url:'<?php echo site_url('Commerce/ajax_People')?>',
+          type:'post',
+          dataType:'json',
+          data:{"label_id":label_id,'tribe_id':tribe_id},
+          success:function(data)
+          {
+        	  $(".tribe_people").empty();
+        	  var result = '';
+        	  var site_url = '<?php echo site_url(); ?>'
+              var img_url =  '<?php echo IMAGE_URL; ?>'; 
+        	  var member_defult_url =  "this.src='images/member_defult.png'"; 
+        	  result += '<p class="tribe_people_head">我的</p>'; 
+        	  result += '<ul class="tribe_people_show">';
+        	  result += '<li>';
+        	  result += '<ul class="tribe_people_my">';
+        	  result += '<li>';
+        	  result += '<a href="';
+			  if(data.my_info.customer_id){
+				  result += site_url+'/Tribe_social/Customer_Info/'+data.my_info.customer_id+'?tribe_id='+data.my_info.tribe_id+'&ts_id='+data.my_info.id;
+				  }else{
+					  result += 'javascript:void(0);';
+			  		  }
+        	  result += '">';
+        	  result += '<img src="';
+        	  if(data.my_info.brief_avatar){
+        		  result += img_url+data.my_info.brief_avatar;
+            	  }else{
+            		  result += data.my_info.wechat_avatar;
+                	  }
+        	  result += '" alt="" onerror="'+member_defult_url+'">';
+        	  result += '</a>';
+        	  if(data.my_info.corp_id && data.my_info.approval_status == 2 && data.my_info.corp_status == 1){
+        		  result += '<i class="icon-enterprise enterprise-icon"></i>';
+            	  }
+        	  result += '</li>';
+        	  result += '<a href="';
+        	  if(data.my_info.customer_id){
+				  result += site_url+'/Tribe_social/Customer_Info/'+data.my_info.customer_id+'?tribe_id='+data.my_info.tribe_id+'&ts_id='+data.my_info.id;
+				  }else{
+					  result += 'javascript:void(0);';
+			  		  }
+        	  result += '">';
+        	  result += '<li class="tribe_people_name" style="word-wrap:break-word">';
+        	  result += '<span class="fn-16">';
+        	  if(data.my_info.real_name){
+        		  result += data.my_info.real_name;
+            	  }else{
+            		  result += data.my_info.member_name;
+                	  }
+        	  if(data.my_info.is_host == 1){
+        		  result += '<em class="biaoshi1"><i class="icon-shenfen"></i>部落首领</em>';
+            	  }else{
+                	  if(data.my_info.m_name){
+                		  result += '<em class="biaoshi1" style=" color:#FFCA00; border:1px solid #FFCA00"><i class="icon-shenfen"></i>'+data.my_info.m_name+'</em>';
+                    	  }
+                	  }
+        	  result += '</span>';
+        	  result += '<span class="tribe_people_size tribe_zuyuan" style="padding-top: 8px;"><i></i>';
+        	 
+        	  if(data.my_info.corporation_name != null){
+        		  result += data.my_info.corporation_name;
+            	  }
+        	  if(data.my_info.duties != null){
+        		  result += ','+data.my_info.duties;
+            	  }
+        	  result += '</span>';
+        	  result += '</li>';
+        	  result += '<li class="tribe_people_credit">';
+        	  result += '<a href="';
+        	  result += site_url+'/Tribe_social/invite/'+data.my_info.tribe_id;
+        	  result += '"><i class="tribe_yaoqing custom_button">邀请好友</i></a>';
+        	  result += '</li>';
+        	  result += '</a>';
+        	  result += '</ul> ';
+        	  result += '<div class="tribe_people_list">';
+        	  result += '<a href="'+site_url+'/Tribe_social/Customer_Album/'+data.my_info.customer_id+'/'+data.my_info.tribe_id+'">个人形象</a>';
+        	  result += '<a href="'+site_url+'/Corporation_style/User_Topic/'+data.my_info.customer_id+'">企业形象</a>';
+
+              if(data.my_info.corp_id){
+            	  result +=  '<a href="'+site_url+'/Home/GetShopGoods/'+data.my_info.corp_id+'">我的店铺</a>';
+                  }else{
+                	  result +=  '<a href="javascript:message(5)">我的店铺</a>';
+                      }
+        	  result += '</div>';
+        	  result += '</li>';
+        	  result += '</ul> ';
+        	  
+			 if(data.list.length>0){
+
+				for(var i=0;i<data.list.length;i++){
+					  result += '<div>';
+					  result += '<p class="tribe_people_head">'+data.list[i]['role_name'];
+					  if(data.list[i]['total']){
+						  result += '('+data.list[i]['total']+')';
+						  }else{
+							  result += '0';
+							  }
+					  result += '<span class="icon-right zhankai_icon';
+					  if(data.list[i]['id'] == 5 || data.list[i]['id'] == '' ||  !data.list[i]['id']){
+						  result += ' span_rotate';
+						  }
+					  result += '"></span>';
+				      result += ' </p>';
+				      result += '<ul class="tribe_people_show role_id_'+data.list[i]['id']+'">';
+
+				      for(var j=0;j<data.list[i]['list'].length;j++){
+				    	  result += '<li>';
+				    	  result += '<ul class="tribe_people_my">';
+				    	  if(data.list[i]['list'][j]['corp_id'] && data.list[i]['list'][j]['approval_status'] == 2 && data.list[i]['list'][j]['approval_status'] == 1){
+				    		  result += '<i class="icon-enterprise enterprise-icon"></i>';
+					    	  }
+				    	  result += ' <a href="';
+				    	  if(data.list[i]['list'][j]['customer_id']){
+				    		  result += site_url+'/Tribe_social/Customer_Info/'+data.list[i]['list'][j]['customer_id']+'?tribe_id='+data.list[i]['list'][j]['tribe_id']+'&ts_id='+data.list[i]['list'][j]['id'];
+					    	  }else{
+					    		  result += site_url+'/Tribe_social/Staff_info/'+data.list[i]['list'][j]['id'];
+						    	  }
+				    	  result += '">';
+				    	  result += '<li><img src="';
+
+				    	  if(data.list[i]['list'][j]['brief_avatar']){
+			        		  result += img_url+data.list[i]['list'][j]['brief_avatar'];
+			            	  }else{
+			            		  result += data.list[i]['list'][j]['wechat_avatar'];
+			                	  }
+				    	 
+						  result += '" alt="" onerror="'+member_defult_url+'">';
+						  result += '</li>';
+						  
+						  result += '<li class="tribe_people_name" style="word-wrap:break-word">';
+						  result += '<span class="fn-16">';
+						  if(data.list[i]['list'][j]['real_name']){
+							  result += data.list[i]['list'][j]['real_name'];
+							  }else{
+								  result += data.list[i]['list'][j]['member_name'];
+								  }
+	                      if(data.list[i]['list'][j]['is_host'] == 1){
+	                    	  result += ' <em class="biaoshi1"><i class="icon-shenfen"></i>部落首领 </em>';
+		                     }else{
+		                    	 if(data.list[i]['list'][j]['m_name'] ){
+		                    		 result += ' <em class="biaoshi1" style=" color:#FFCA00; border:1px solid #FFCA00"><i class="icon-shenfen"></i>'+data.list[i]['list'][j]['m_name'] +'</em>';
+			                    	 }
+			                     }
+	                      result += '</span>';
+	                      result += '<span class="tribe_people_size tribe_zuyuan" style="padding-top: 8px;"><i></i>';
+						  if(data.list[i]['list'][j]['corporation_name']){
+							  result += data.list[i]['list'][j]['corporation_name'];
+							  }	
+	                      if(data.list[i]['list'][j]['duties']){
+	                    	  result += ','+data.list[i]['list'][j]['duties'];
+		                      }    
+	                      result += '</span>';
+	                      result += '</li>';
+
+	                      
+	                      result += '<li class="tribe_people_credit">';
+						 if(!data.list[i]['list'][j]['customer_id'] || data.list[i]['list'][j]['customer_id'] == ''){
+							  var dx_status = getTypeCookie(data.list[i]['list'][j]['id'],'dx','Customer');
+						      var wx_status = getTypeCookie(data.list[i]['list'][j]['id'],'wx','Customer');
+						      if(dx_status && wx_status){
+						    	  result += '<em class="send_ok_text">已发送邀请</em>';
+							      }else{
+									if(wx_status){
+										 result += '<em class="send_ok_text" style="left: -96px;">已发送微信邀请</em>';
+										}
+									if(dx_status){
+										 result += '<em class="send_ok_text" style="left: -96px;">已发送短信邀请</em>';
+										}
+
+									if(!wx_status || !wx_status){
+										 result += '<a href=" javascript:void(0);"><i class="tribe_yaoqing custom_button" flag="1" ts_id='+data.list[i]['list'][j]['id']+'>邀请回家</i></a>'; 
+										}else{
+											 result += '<a href=" javascript:void(0);"><i class="tribe_yaoqing custom_button" style="background-color: #ccc">邀请回家</i></a>';
+											}
+								      }
+							 }
+						 else if(!data.list[i]['list'][j]['corp_id'] || data.list[i]['list'][j]['approval_status'] != 2  || data.list[i]['list'][j]['corp_status'] != 1 ){
+								  var dx_status = getTypeCookie(data.list[i]['list'][j]['id'],'dx','Corp');
+							      var wx_status = getTypeCookie(data.list[i]['list'][j]['id'],'wx','Corp');
+							      if(dx_status && wx_status){
+							    	  result += '<em class="send_ok_text">已发送邀请</em>';
+								      }else{
+								    	  if(wx_status){
+												 result += '<em class="send_ok_text" style="left: -96px;">已发送微信邀请</em>';
+												}
+											if(dx_status){
+												 result += '<em class="send_ok_text" style="left: -96px;">已发送短信邀请</em>';
+												}
+											if(!wx_status || !wx_status){
+												 result += '<a href=" javascript:void(0);"><i class="tribe_yaoqing custom_button" flag="2" ts_id='+data.list[i]['list'][j]['approval_status']+'>邀请·分享互助</i></a>';
+												}else{
+													 result += '<a href=" javascript:void(0); "><i class="tribe_yaoqing custom_button" style="background-color: #ccc">邀请·分享互助</i></a>'; 
+													}
+									      }
+								 
+							}
+						 else if(data.list[i]['list'][j]['corp_id'] && data.list[i]['list'][j]['approval_status'] == 2  && data.list[i]['list'][j]['corp_status'] == 1){
+								result += '<a href="'+site_url+'Home/GetShopGoods/'+data.list[i]['list'][j]['corp_id']+'"><i class="tribe_yaoqing" style="background: #b4d465!important;">串串门</i></a>';
+								}
+						result += '</li>'; 
+						result += '</a>';
+						result += '</ul>';
+						result += '<div class="tribe_people_list">';
+
+						if(data.list[i]['list'][j]['customer_id']){
+							result += '<a href="'+site_url+'/Tribe_social/Customer_Album/'+data.list[i]['list'][j]['customer_id']+'/'+tribe_id+'">认识TA</a>';
+							result += '<a href="'+site_url+'/Corporation_style/User_Topic/'+data.list[i]['list'][j]['customer_id']+'">了解TA的产品</a>';
+
+							var user_id = '<?php echo  $this->session->userdata('user_id');?>';
+							if(user_id == data.list[i]['list'][j]['customer_id']){
+								result += '<a href="javascript:message(4)">聊两句</a>';
+								}else{
+									result += '<a href="'+site_url+'/Webim/Control/chat/'+tribe_id+'/'+data.list[i]['list'][j]['customer_id']+'">聊两句</a>';
+									}
+							}else{
+								result += '<a href="javascript:message(2)">认识TA</a>';
+								result += '<a href="javascript:message(2)">了解TA的产品</a>';
+								result += '<a href="javascript:message(3)">聊两句</a>';
+								}
+					  result += '</div>';
+					  result += '</li>';
+					}
+				  result += '</ul>';
+				  result += ' </div>'; 
+
+				
+				}
+				result += ' </div>'; 
+			}
+			  $(".tribe_people").append(result);
+			  $(".tribe_people_head").on("click",function(){
+			      // $(this).siblings('ul').toggleClass('display-block');
+			      $(this).children('span').toggleClass('span_rotate');
+
+			      if($(this).children('span').hasClass('span_rotate'))
+			      {
+			        $(this).siblings('.tribe_people_show').children('li:gt(2)').show();
+			      }else{
+			        $(this).siblings('.tribe_people_show').children('li:gt(2)').hide();
+			      }
+			  })
+
+            $('.tribe_yaoqing').on('click',function(){
+                 var type = $(this).attr('flag');
+                   var ts_id = $(this).attr('ts_id');
+                   if( !type )
+                   { 
+                       return;
+                   }
+                       
+                   $('.clans_ball').show();
+                   $('.clans_ball_box ul li').eq(0).show();
+                   $('.clans_ball_box ul li').eq(1).show();
+                   if( type == 1)
+                   { 
+                     type = 'Customer';
+                       var url = '<?php echo site_url('Tribe/Invite_View/Customer/'.$tribe_id)?>/'+ts_id;
+                   }else{ 
+                     type = 'Corp';
+                       var url = '<?php echo site_url('Tribe/Invite_View/Corp/'.$tribe_id)?>/'+ts_id;
+                   }
+                   $('.clans_ball_box ul li').eq(0).children('a').attr('id',"sendID"+ts_id);
+                   $('.clans_ball_box ul li').eq(0).children('a').attr('href',"javascript:ajax_submit('"+type+"',"+ts_id+");");
+                   $('.clans_ball_box ul li').eq(1).children('a').attr('href',url+'/1');
+                   var dx_status = getCookie(ts_id,'dx');
+                   var wx_status = getCookie(ts_id,'wx');
+                   if(dx_status){
+                   $('.clans_ball_box ul li').eq(0).hide();
+                   }
+                 if(wx_status){
+                   $('.clans_ball_box ul li').eq(1).hide();
+                   }
+               })
+               
+          },
+          error:function()
+          {
+            $(".black_feds").text("网络错误！").show();
+              setTimeout("prompt();", 2000);  
+              $('.clans_ball_box ul li').eq(0).children('a').attr('href',"javascript:ajax_submit('"+type+"',"+tribe_staff+");"); 
+              return;
+          }
+        });  
+}
+
+
 
    $('.commerce_people_head01 ul li').on('click',function(){
      $(this).children('a').css({
@@ -323,6 +615,17 @@
       return true;
       }
   }
+
+
+   function getTypeCookie(ts_id,type,parms){
+	    var Cookie_Customer ='invite_'+type+'_'+parms+'_'+ts_id;
+	    var arr,reg= new RegExp("(^| )"+Cookie_Customer+"=([^;]*)(;|$)");
+	    if(arr=document.cookie.match(reg)){
+	     return true;
+	    }else{
+	    	  return false;
+		    }
+	  }
    function ajax_submit(flag,ts_id)
    {
     var type = flag;

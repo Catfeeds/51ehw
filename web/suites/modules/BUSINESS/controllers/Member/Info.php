@@ -596,8 +596,7 @@ class Info extends Front_Controller {
         $customer_id = $this->session->userdata("user_id");//用户id
         
         $this->load->model('Customer_identity_mdl');
-        
-        $nick_name = $nick_name?$nick_name:$wechat_nickname;
+
         $avatar = $brief_avatar ? $brief_avatar:$wechat_avatar;//头像
         $corp_list = $this->Customer_identity_mdl->Load($customer_id);//查询社会身份列表。
 
@@ -616,13 +615,12 @@ class Info extends Front_Controller {
         $this->load->model('Customer_mdl');
         $customer_info = $this->Customer_mdl->load( $customer_id );
         $data['customer_info'] = $customer_info;
-        
         $data["sex"] = $sex;
         $data["job"] = $job;
-        $data["nick_name"] = $nick_name;
+        $data["nick_name"] = $customer_info['nick_name']?$customer_info['nick_name']:$customer_info['wechat_avatar'];
         $data["mobile"] = $mobile;
         $data["avatar"] = $avatar;
-        $data["real_name"] = $real_name;
+        $data["real_name"] = $customer_info['real_name'];
         $data["corp_list"] = $corp_list;
         $data['title'] = '个人资料';
         $data['head_set'] = 2;
@@ -748,23 +746,7 @@ class Info extends Front_Controller {
         $this->load->view('foot', $data);
     }
 
-    /**
-    * @author JF
-    * 2018年3月7日
-    * 实名认证协议
-    */
-    function approve_protocol(){
-        
-        $data['title'] = '实名认证协议';
-        $data['head_set'] = 2;
-        $data['foot_set'] = 1;
-        $this->load->view('head', $data);
-        $this->load->view('_header', $data);
-        $this->load->view('customer/approve_protocol');
-        $this->load->view('_footer', $data);
-        $this->load->view('foot', $data);
-    }
-    
+   
     /**
     * @author JF
     * 2018年3月7日
@@ -789,7 +771,7 @@ class Info extends Front_Controller {
         if( !$real_name || !checkIdCard($idcard) || !checkMobile($bankmobile) || !$vertify1){
             $return = array(
                     "status" => "02",
-                    "msg" => "您提交实名认证有有误，请重新提交"
+                    "msg" => "您提交实名认证有误，请重新提交"
             );
             echo json_encode($return);exit;
         }
@@ -873,6 +855,25 @@ class Info extends Front_Controller {
                 "member_name" => $real_name
         );
         $row = $this->tribe_mdl->ChangeStaffName($customer_id,$parament);
+        if(!$row){
+            $this->db->trans_rollback();//开启事务
+            $return = array(
+                    "status" => "01",
+                    "msg" => "实名认证失败"
+            );
+            echo json_encode($return);exit;
+        }
+        
+        //更新B端真实姓名（暂时处理日后会同意使用A端用户信息）
+      $parameter = array(
+                "real_name" => $real_name,
+                "bankcard" => $bankcard,
+                "idcard" => $idcard,
+                "bankmobile" => $bankmobile
+        );
+        $this->db->set($parameter);
+        $this->db->where("id",$customer_id);
+        $row = $this->db->update("customer");
         if(!$row){
             $this->db->trans_rollback();//开启事务
             $return = array(
@@ -977,12 +978,12 @@ class Info extends Front_Controller {
         if($result["status"]){
             $return = array(
                     "status" => "00",
-                    "msg" => "绑定成功"
+                    "msg" => "实名认证成功"
             );
         }else{
             $return = array(
                     "status" => "01",
-                    "msg" => "绑定失败"
+                    "msg" => "设置支付密码失败"
             );
         }
         

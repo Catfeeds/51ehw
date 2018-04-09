@@ -183,12 +183,12 @@ dropload = $('.tabBox').dropload({
     					  quantity += Number(data.List[i]['items'][j]['quantity']);
         				  }
 					  result += quantity+'件商品</p>';	
-    				  result += '<p class="fn-14" style="float: right; font-size: 15px !important;">实付款：'+Math.floor(data.List[i]['total_price'])
+    				  result += '<p class="fn-14" style="float: right; font-size: 15px !important;">使用提货权：'+Math.floor(data.List[i]['total_price'])
     				  result += '<span style="font-size: 13px;">';
         			  var  total_price = data.List[i]['total_price'];
     				  var str = total_price.split(".");
             		  result += '.'+str[str.length - 1]+'</span>';
-    				  result += '<span style="padding-left: 4px;">货豆</span>';
+    				  result += '<span style="padding-left: 4px;"></span>';
     				  result += '</p>';
     				  result += '</div>';
     				  result += '</div>';
@@ -265,7 +265,7 @@ function receive( id ){
             $("#pay_").text("确认收货");
             $('#pay_').attr('onclick','ok_receive("'+data.id+'")');
             $('#order_sn').text(data.order_sn);
-            $('#price').text(data.total_price+' 货豆');
+            $('#price').text(data.total_price+' ');
             $(".color-bg").show();
             $("#"+show_bullet_id).show();
         }

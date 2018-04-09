@@ -255,8 +255,11 @@
                             <div class="tribe_people_list">
                                 <a href="<?php echo $val['customer_id'] ? site_url("Tribe_social/Customer_Album/{$val['customer_id']}/{$tribe_id}") : site_url("Tribe_social/staff_album").'/'.$val['id']; ?>">认识TA</a>
                                 <a href="<?php echo $val['customer_id'] ? site_url("Corporation_style/User_Topic/{$val['customer_id']}") : 'javascript:message(3)'; ?>">了解TA的产品</a>
-                                <a href="<?php echo !empty($val['customer_id']) ? site_url("Webim/Control/chat/{$tribe_id}/{$val['customer_id']}") : 'javascript:message(3)'; ?>">聊两句</a>
-                                
+                                <?php if(!empty($val['customer_id']) && $val['customer_id'] == $this->session->userdata('user_id')){?>
+                                     <a href="javascript:message(4)">聊两句</a>
+                                <?php }else{ ?>
+                                    <a href="<?php echo !empty($val['customer_id']) ? site_url("Webim/Control/chat/{$tribe_id}/{$val['customer_id']}") : 'javascript:message(3)'; ?>">聊两句</a>
+                                <?php }?>
                                 <!--  <a href="<?php // echo !empty($val['customer_id']) ? 'javascript:Is_Exists_Comment(' . $val['customer_id'] . ')' : 'javascript:message(3)'; ?>">聊两句</a>-->
                                 
                             </div>
@@ -482,7 +485,7 @@ $.ajax({
         } else if (status == 3) {
             message = '该族员未登录';
         } else if(status == 4){
-            message = '您已经评价过该族员了';
+            message = '不能和自己聊天';
             }
 
         $(".black_feds").text(message).show();

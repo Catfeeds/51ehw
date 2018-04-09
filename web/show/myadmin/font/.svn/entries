@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/show/myadmin/font
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -25,74 +25,6 @@ wing
 
 
 e24ab575-a676-4291-aba5-8b869a83b07a
-
-fontawesome-webfont.eot
-file
-
-
-
-
-2018-04-02T02:25:30.000000Z
-5ae23ad29b67289a1375d2043e289c52
-2017-07-04T04:59:52.697565Z
-9
-wing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-37405
-
-glyphicons-halflings-regular.ttf
-file
-
-
-
-
-2018-04-02T02:25:30.000000Z
-aa9c7490c2fd52cb96c729753cc4f2d5
-2017-07-04T04:59:52.697565Z
-9
-wing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-29512
 
 se7en.svg
 file
@@ -128,17 +60,18 @@ wing
 
 8685
 
-glyphicons-halflings-regular.svg
+glyphicons-halflings-regular.ttf
 file
 
 
 
 
 2018-04-02T02:25:30.000000Z
-3b31e1de93290779334c84c9b07c6eed
+aa9c7490c2fd52cb96c729753cc4f2d5
 2017-07-04T04:59:52.697565Z
 9
 wing
+has-props
 
 
 
@@ -159,8 +92,41 @@ wing
 
 
 
+29512
+
+fontawesome-webfont.eot
+file
 
-63157
+
+
+
+2018-04-02T02:25:30.000000Z
+5ae23ad29b67289a1375d2043e289c52
+2017-07-04T04:59:52.697565Z
+9
+wing
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+37405
 
 se7en.woff
 file
@@ -195,6 +161,40 @@ has-props
 
 
 3636
+
+glyphicons-halflings-regular.svg
+file
+
+
+
+
+2018-04-02T02:25:30.000000Z
+3b31e1de93290779334c84c9b07c6eed
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+63157
 
 glyphicons-halflings-regular.woff
 file

@@ -1045,4 +1045,133 @@ class Product_mdl extends CI_Model {
         $this->db->where('o.order_sn',$order_sn);
         return  $this->db->get()->row_array();
     }
+    
+    /*
+     *
+     * 简易店查询列表
+     * $tribe_id 为0，则为商城，其它为部落
+     */
+    public function tribe_search_list ($tribe_id,$types,$keyword,$offest,$limit) {
+        if ($tribe_id == '0') {
+            switch ($types) {
+                case "1":
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
+                    where a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    group by a.id  order by volume asc limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "2":
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id  and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
+                    where a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    group by a.id  order by volume desc limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "3":
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1
+                    where product_name like '%".$this->db->escape_like_str($keyword)."%'ESCAPE '!'
+                    order by price ASC
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "4":
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1
+                    where product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    order by price desc
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "5":
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1
+                    where product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                default :
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                    break;
+            }
+        } else {
+            switch ($types) {
+                case "1":
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
+                    where a.tribe_id = $tribe_id and is_on_sale = 1 and a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    group by a.id  order by volume asc limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "2":
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
+                    left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
+                    where a.tribe_id = $tribe_id and is_on_sale = 1 and a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    group by a.id  order by volume desc limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "3":
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1
+                    where tribe_id = $tribe_id and is_on_sale = 1 and product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    order by price ASC
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "4":
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1
+                    where tribe_id = $tribe_id and is_on_sale = 1 and product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    order by price desc
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                case "5":
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1 and a.is_on_sale = 1
+                    where tribe_id = $tribe_id and is_on_sale = 1 and product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+                default :
+                    $query = $this->db->query("select a.*,b.path as img_path from 9thleaf_easy_product as a
+                    left join 9thleaf_easy_product_img as b on a.id = b.product_id
+                    and type = 1
+                    where tribe_id = $tribe_id and is_on_sale = 1
+                    limit $offest,$limit");
+                    return $query->result_array();
+                    break;
+            }
+            
+        }
+    }
+    
+    /*
+     *
+     * 获取简易店商品的轮播图及数据
+     */
+    public function goods_img_detail ($id) {
+        $this->db->select('easy_product.*,easy_product_img.path as img_path');
+        $this->db->join('easy_product_img','easy_product_img.product_id = easy_product.id', 'left');
+        $this->db->where('easy_product.id',$id);
+        $this->db->from('easy_product');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

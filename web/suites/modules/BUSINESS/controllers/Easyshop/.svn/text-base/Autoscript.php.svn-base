@@ -24,4 +24,11 @@ class Autoscript extends Front_Controller{
         AutoCancelOrder();//helper的方法。
     
     }
+    
+    public function AutoOrderReceipts()
+    { 
+        $this->load->helper('easy_autoscript');
+        AutoOrderReceipts();
+        
+    }
 }

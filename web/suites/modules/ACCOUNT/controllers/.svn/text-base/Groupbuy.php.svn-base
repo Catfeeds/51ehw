@@ -41,10 +41,10 @@ class Groupbuy extends Account_Controller {
                 if( $up_row ){
                  
                     $this->load->model('customer_currency_log_mdl','customer_currency_log');
-                    // 上一次平台的货豆交易日志
+                    // 上一次平台的提货权交易日志
                     $to_last_m_log = $this->customer_currency_log->load_last('-1');
     
-                    // 平台支出货豆日志
+                    // 平台支出提货权日志
                     $M_credit_data['relation_id'] = '-1';
                     $M_credit_data['id_event'] = '64';
                     $M_credit_data['remark'] = '平台支出-退款';
@@ -58,15 +58,15 @@ class Groupbuy extends Account_Controller {
                     $M_credit_data['app_id'] = $v['app_id'];
                     $M_credit_data['created_at'] = date('Y-m-d H:i:s');
     
-                    // 支出方货豆日志
+                    // 支出方提货权日志
                     $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
                     
                     if ($to_M_credit_log){
                        
-                        // 上一次客户货豆交易的日志中的信息
+                        // 上一次客户提货权交易的日志中的信息
                         $last_m_log = $this->customer_currency_log->load_last($customer_pay['r_id']);
         
-                        // 用户接收退款货豆日志
+                        // 用户接收退款提货权日志
                         $customer_credit_data['relation_id'] = $customer_pay['r_id'];
                         $customer_credit_data['id_event'] = '63';
                         $customer_credit_data['remark'] = '接收退款';

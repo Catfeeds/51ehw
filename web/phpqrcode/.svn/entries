@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/phpqrcode
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -94,40 +94,6 @@ wing
 
 7815
 
-qrspec.php
-file
-
-
-
-
-2018-04-02T02:25:40.000000Z
-7d276c5a768c04d62ae0afde8abaad2d
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-26612
-
 qrbitstream.php
 file
 
@@ -162,14 +128,14 @@ wing
 
 5386
 
-qrsplit.php
+qrspec.php
 file
 
 
 
 
 2018-04-02T02:25:40.000000Z
-206c8468e0089be5f58453cbbd003ec0
+7d276c5a768c04d62ae0afde8abaad2d
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -194,7 +160,7 @@ wing
 
 
 
-11381
+26612
 
 qrmask.php
 file
@@ -229,6 +195,40 @@ wing
 
 
 12584
+
+qrsplit.php
+file
+
+
+
+
+2018-04-02T02:25:40.000000Z
+206c8468e0089be5f58453cbbd003ec0
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11381
 
 VERSION
 file
@@ -298,40 +298,6 @@ wing
 
 17506
 
-customer.php
-file
-
-
-
-
-2018-04-02T02:25:40.000000Z
-1d579c04e2b2eaa5a7810d245d87895e
-2017-10-23T06:02:04.770580Z
-2286
-chenbinhua
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-22585
-
 CHANGELOG
 file
 
@@ -365,6 +331,40 @@ wing
 
 
 1261
+
+customer.php
+file
+
+
+
+
+2018-04-02T02:25:40.000000Z
+1d579c04e2b2eaa5a7810d245d87895e
+2017-10-23T06:02:04.770580Z
+2286
+chenbinhua
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22585
 
 qrinput.php
 file
@@ -434,39 +434,8 @@ wing
 
 6332
 
-README
-file
-
-
-
-
-2018-04-02T02:25:40.000000Z
-f541b0b72589a7d3383eface763af72b
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1634
+bindings
+dir
 
 index.php
 file
@@ -502,8 +471,39 @@ wing
 
 3657
 
-bindings
-dir
+README
+file
+
+
+
+
+2018-04-02T02:25:40.000000Z
+f541b0b72589a7d3383eface763af72b
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1634
 
 qrconfig.php
 file

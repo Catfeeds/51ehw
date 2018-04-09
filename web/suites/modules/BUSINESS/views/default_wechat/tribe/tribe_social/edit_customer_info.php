@@ -77,7 +77,7 @@ if(isset($mac_type) && $mac_type =='APP' ){ ?>
 	<ul>
 		<li><a href="javascript:void(0);"><span class="clans_data_name">姓名</span>
 			<div>
-					<input type="text" value="<?php echo $customer_info['real_name'];?>" name='real_name' placeholder="请填写您的姓名">
+					<input type="text" value="<?php echo $customer_info['real_name'];?>" name='real_name' placeholder="请填写您的姓名" <?php echo $customer_info["idcard"]?'disabled="disabled"':null;?>>
 				</div></a></li>
 		<li><a href="<?php echo site_url('Tribe_social/Edit_Info/2')?>"><span class="clans_data_name">亮点</span>
 			<div>

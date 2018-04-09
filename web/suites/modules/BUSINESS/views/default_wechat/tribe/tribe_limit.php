@@ -21,9 +21,9 @@ if(isset($mac_type) && $mac_type =='APP' ){ ?>
 <div class="page" id="page">
     <div class="tribe_limit">
         <ul>
-          <li>申请金额
+          <li>申请提货权
             <input type="text" id="m_credit" name="m_credit" placeholder="请输入金额" class="tribe_limit_input" onkeyup="value=value.replace(/[^\-?\d.]/g,'')" value="">
-            <span>货豆</span>
+            <span></span>
           </li>
         </ul>
       </div>

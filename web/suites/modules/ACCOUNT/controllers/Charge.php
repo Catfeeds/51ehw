@@ -17,7 +17,7 @@ class Charge extends Account_Controller
         
     }
     /**
-     * 现金余额充值货豆
+     * 现金余额充值提货权
      */
     public function purchase_M()
     {
@@ -44,10 +44,10 @@ class Charge extends Account_Controller
             if ($pay_detailed['pay_passwd'] == md5($password)) 
             {
         
-                // 判断支付账号中的现金余额是否足够购买货豆
+                // 判断支付账号中的现金余额是否足够购买提货权
                 $cash = $pay_detailed['cash']; // 支付账号中的现金余额
         
-                $surplus_m = $pay_detailed['M_credit']; // 支付账号中的货豆余额
+                $surplus_m = $pay_detailed['M_credit']; // 支付账号中的提货权余额
         
                 $pay_id = $pay_detailed['id']; // 支付账号的ID
         
@@ -57,7 +57,7 @@ class Charge extends Account_Controller
                 {
         
                     $this->db->trans_begin(); // 事物执行方法中的MODEL。
-                    // 生成一张货豆充值的记录
+                    // 生成一张提货权充值的记录
                     $this->load->helper('order');
                     $data['customer_id'] = $customer_id;
                     $data['amount'] = $M_credit;
@@ -81,7 +81,7 @@ class Charge extends Account_Controller
         
                         if($update_cash)
                         {
-                            // 加上货豆余额
+                            // 加上提货权余额
                             $update_M_credit = $this->pay_account->charge_M_credit($pay_id, $M_credit);
         
                             if( $update_M_credit )
@@ -105,7 +105,7 @@ class Charge extends Account_Controller
                                 $cash_data['relation_id'] = $pay_relation_id;
                                 $cash_data['id_event'] = '66';
                                 $cash_data['type'] = '2';
-                                $cash_data['remark'] = '现金充值货豆';
+                                $cash_data['remark'] = '现金充值提货权';
                                 $cash_data['cash'] = $M_credit;
                                 $cash_data['charge_no'] = $data['charge_no'];
                                 $cash_data['beginning_balance'] = $cash;
@@ -124,7 +124,7 @@ class Charge extends Account_Controller
                                     $cash_data['relation_id'] = '-1';
                                     $cash_data['type'] = '1';
                                     $cash_data['status'] = '1';
-                                    $cash_data['remark'] = '平台收入-充值货豆';
+                                    $cash_data['remark'] = '平台收入-充值提货权';
                                     $cash_data['beginning_balance'] = isset($to_last_cash_log['ending_balance']) ? $to_last_cash_log['ending_balance'] : '0.00';
                                     $cash_data['ending_balance'] = isset($to_last_cash_log['ending_balance']) ? $to_last_cash_log['ending_balance'] + $M_credit : $M_credit;
                                     $cash_data['customer_id'] = $customer_id;
@@ -133,30 +133,30 @@ class Charge extends Account_Controller
         
                                     if($to_cash_log)
                                     {
-                                        // 上一次平台货豆交易的日志中的信息
+                                        // 上一次平台提货权交易的日志中的信息
                                         $to_last_m_log = $this->customer_currency_log->load_last('-1');
-                                        // 货豆日志 -平台支出货豆
+                                        // 提货权日志 -平台支出提货权
                                         $M_credit_data['relation_id'] = '-1';
                                         $M_credit_data['id_event'] = '66';
                                         $M_credit_data['type'] = '2';
                                         $M_credit_data['status'] = '1';
-                                        $M_credit_data['remark'] = '平台支出-充值货豆';
+                                        $M_credit_data['remark'] = '平台支出-充值提货权';
                                         $M_credit_data['amount'] = $M_credit;
                                         $M_credit_data['order_no'] = $data['charge_no'];
                                         $M_credit_data['beginning_balance'] = isset($to_last_m_log['ending_balance']) ? $to_last_m_log['ending_balance'] : '0.00';
                                         $M_credit_data['ending_balance'] = isset($to_last_m_log['ending_balance']) ? $to_last_m_log['ending_balance'] - $M_credit : - $M_credit;
                                         $M_credit_data['customer_id'] = $customer_id;
                                         $M_credit_data['app_id'] = $app_id;
-                                        // 写入货豆日志
+                                        // 写入提货权日志
                                         $M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
         
                                         if($M_credit_log)
                                         {
-                                            // 上一次货豆交易的日志中的信息
+                                            // 上一次提货权交易的日志中的信息
                                             $last_m_log = $this->customer_currency_log->load_last($pay_relation_id);
-                                            // 货豆日志 -用户收入货豆日志
+                                            // 提货权日志 -用户收入提货权日志
                                             if (isset($last_m_log['ending_balance']) && $last_m_log['ending_balance'] == $surplus_m) 
-                                            { // 检测货豆是否异常
+                                            { // 检测提货权是否异常
                                                 $M_credit_data['status'] = '1';
                                             } else if (! $last_m_log && $surplus_m == '0') {
                                                 $M_credit_data['status'] = '1';
@@ -166,11 +166,11 @@ class Charge extends Account_Controller
         
                                             $M_credit_data['relation_id'] = $pay_relation_id;
                                             $M_credit_data['type'] = '1';
-                                            $M_credit_data['remark'] = '现金充值货豆到账';
+                                            $M_credit_data['remark'] = '现金充值提货权到账';
                                             $M_credit_data['beginning_balance'] = $surplus_m;
                                             $M_credit_data['ending_balance'] = $M_credit + $surplus_m;
                                             $M_credit_data['customer_id'] = '-1';
-                                            //写入货豆日志
+                                            //写入提货权日志
                                             $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
         
                                             if($to_M_credit_log)
@@ -179,7 +179,7 @@ class Charge extends Account_Controller
                                                 $this->db->trans_commit();
                                                 $status = 1; // 充值成功
 //                                                 $this->customer_currency_log->openid = $this->session->userdata('openid');
-//                                                 $this->customer_currency_log->result_message( $M_credit_data ); //货豆充值到账-微信推送
+//                                                 $this->customer_currency_log->result_message( $M_credit_data ); //提货权充值到账-微信推送
                                             }
                                         }
                                     }

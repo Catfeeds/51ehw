@@ -806,5 +806,7 @@ class Order extends Front_Controller {
     public function auto_receive(){
         //
     }
+    
+    
 
 }

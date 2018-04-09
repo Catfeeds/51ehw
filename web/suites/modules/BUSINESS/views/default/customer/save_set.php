@@ -45,16 +45,20 @@
 					class="saveSet_m saveSet_a">修改</a>
 			</p>
 			<p> 
-			    <i class="icon-weirenzheng"></i>
+			   <?php if(count($pay_account)>0&&isset($pay_account['pay_passwd'])&&$pay_account['pay_passwd']!=null): ?>
+			    <i class="icon-yirenzheng"></i>
+			     <?php else: ?>
+			     <i class="icon-weirenzheng"></i>
+			     <?php endif; ?>
 				<span class="saveSet_n">支付密码</span> <span class="saveSet_t">＊在账户资金变动及更改账户信息时需要输入的密码</span>
                 <?php if(count($pay_account)>0&&isset($pay_account['pay_passwd'])&&$pay_account['pay_passwd']!=null): ?>
                 <a
 					href="<?php echo site_url('member/save_set/paypwd_update') ?>"
-					class="saveSet_m saveSet_b">立即启用</a>
+					class="saveSet_m saveSet_a">修改</a>
                 <?php else: ?>
                 <a
 					href="<?php echo site_url('member/save_set/paypwd_set') ?>"
-					class="saveSet_m saveSet_b">立即设置</a>
+					class="saveSet_m saveSet_b">立即启用</a>
                 <?php endif; ?>
             </p>
 			<p>
@@ -74,7 +78,7 @@
             <p class="saveSet_p">
                 <i class="<?php echo  $idcard ? "icon-yirenzheng":"icon-weirenzheng";?>"></i>
 				<span class="saveSet_n">实名认证</span> <span class="saveSet_t">实名认证后，可通过实名信息找回支付密码，修改手机号等，提高账户安全性</span>
-				<a href="<?php echo site_url("Member/info/AuthenticationView");?>"class="saveSet_m saveSet_b"><?php echo  $idcard ? "查看":"立即认证";?></a>
+				<a href="<?php echo site_url("Member/info/AuthenticationView");?>"class="<?php echo  $idcard ? "saveSet_m saveSet_a":"saveSet_m saveSet_b";?>"><?php echo  $idcard ? "查看":"立即认证";?></a>
 			</p>
 		</div>
 		<!--首次修改支付密码 结束-->

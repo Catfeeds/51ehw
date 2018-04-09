@@ -1588,7 +1588,7 @@ class Customer extends Account_Controller
     */
     function CheckIdCard(){
         $idcard = $this->input->post("idcard");//身份证号
-        $return = $this->customer->CheckIdCard($idcard);
+        $return = $this->customer_mdl->CheckIdCard($idcard);
         echo json_encode($return);
         
     }

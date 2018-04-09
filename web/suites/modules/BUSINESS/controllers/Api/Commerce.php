@@ -1203,7 +1203,7 @@ class Commerce extends Api_Controller {
         if(!$Nav_info){
             $Nav_info = NULL;
         }
-        $return['Nav'] = $Nav_info;
+        $return['data'] = $Nav_info;
         print_r(json_encode($return));
     }
     
@@ -1213,19 +1213,25 @@ class Commerce extends Api_Controller {
         $return = $this->return;
         
         $label_id = $this->session->userdata("label_id");
+        
+        $topTenComm = 
         $return['data']  = array(
-            'topTenComm' => array(
+             array(
+                'type'=>'topTenComm',
                 'logo'=> 'images/commerce/commerce_icon_01.png'
             ),
-            'topTenCorp' => array(
+            array(
+                'type'=>'topTenCorp',
                 'url' => site_url("Notice/shijia/2"),
                 'logo'=> 'images/commerce/commerce_icon_02.png'
             ),
-            'topTenPeople' => array(
+           array(
+                'type'=>'topTenPeople',
                 'url' => site_url("Commerce/Outstanding/renwu/2"),
                 'logo'=> 'images/commerce/commerce_icon_03.png'
             ),
-            'topTenCharityCorp' => array(
+           array(
+                'type'=>'topTenCharityCorp',
                 'url' => site_url("Commerce/Outstanding/cishan/2"),
                 'logo'=> 'images/commerce/commerce_icon_04.png'
             )

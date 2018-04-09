@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/BUSINESS/views/default_wechat/js
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -375,6 +375,40 @@ wing
 
 484
 
+jquery.min.js
+file
+
+
+
+
+2018-04-02T02:25:07.000000Z
+87e69028f78d75ca225b3dc54d233239
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+95966
+
 TouchSlide.1.1.js
 file
 
@@ -442,40 +476,6 @@ wing
 
 
 55960
-
-jquery.min.js
-file
-
-
-
-
-2018-04-02T02:25:07.000000Z
-87e69028f78d75ca225b3dc54d233239
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-95966
 
 bootstrap
 dir
@@ -582,40 +582,6 @@ wing
 
 3499
 
-modernizr.custom.js
-file
-
-
-
-
-2018-04-02T02:25:07.000000Z
-7a9ad736fcbd8d99ac7cb282e48f492d
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9003
-
 swiper3.08.jquery.min.js
 file
 
@@ -650,18 +616,17 @@ wing
 
 54751
 
-zepto.min.js
+modernizr.custom.js
 file
 
 
 
 
 2018-04-02T02:25:07.000000Z
-eadc41a1944247c2d126a06135bf3677
+7a9ad736fcbd8d99ac7cb282e48f492d
 2017-07-04T04:59:52.697565Z
 9
 wing
-has-props
 
 
 
@@ -682,7 +647,8 @@ has-props
 
 
 
-24975
+
+9003
 
 classie.js
 file
@@ -717,6 +683,40 @@ wing
 
 
 1835
+
+zepto.min.js
+file
+
+
+
+
+2018-04-02T02:25:07.000000Z
+eadc41a1944247c2d126a06135bf3677
+2017-07-04T04:59:52.697565Z
+9
+wing
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+24975
 
 webuploader.html5only.min.js
 file
@@ -854,40 +854,6 @@ wing
 
 1090
 
-diyUpload.js
-file
-
-
-
-
-2018-04-02T02:25:07.000000Z
-55cb4263d0c5c9d08908a2aa8fb3e129
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9327
-
 idangerous.swiper.min.js
 file
 
@@ -921,6 +887,40 @@ wing
 
 
 44384
+
+diyUpload.js
+file
+
+
+
+
+2018-04-02T02:25:07.000000Z
+55cb4263d0c5c9d08908a2aa8fb3e129
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9327
 
 mlpushmenu.js
 file

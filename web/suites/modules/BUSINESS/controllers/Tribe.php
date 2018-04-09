@@ -1428,7 +1428,6 @@ class Tribe extends Front_Controller
     public function shop($id=0, $label_id = '' ){
         
         $type = $this->input->get("type");
-        $navigate= $this->input->get("navigate");
         $customer_id = $this->session->userdata("user_id");//用户id
         $real_name = $this->session->userdata("real_name");//真实姓名
         $appid = $this->session->userdata("app_info")['id'];
@@ -1439,9 +1438,7 @@ class Tribe extends Front_Controller
             
             //判断是否已经加入此部落
             if($data["tribe"]["tribe_staff_id"] && $data["tribe"]["status"]==2){//已加入
-                $data["goods"] = $this->tribe_mdl->hot_goods($id,$appid);//查询最新商品
-                //
-                
+                $data["goods"] = $this->tribe_mdl->hot_goods($id,$appid);//查询最新商品   
                 $data["customer_id"] = $customer_id;
                 $data["real_name"] = !empty($real_name)?$real_name:$data["tribe"]["member_name"];//用户名称
                 $data["tribe_id"] = $id;
@@ -1452,7 +1449,6 @@ class Tribe extends Front_Controller
                     $data['title'] = "部落商城";
                 }
                 
-                $data["navigate"] = $navigate;
                 $data["type"] = $type;
                 $data['label_id'] = $label_id;
                 $data['head_set'] = 2;
@@ -1476,6 +1472,33 @@ class Tribe extends Front_Controller
         // --------------------------------------------------------------------
         
         /**
+         * 商城
+         * ajax下拉加载商品（根据类型排序）
+         */
+        public function loading_goods_mall(){
+            $appid = $this->session->userdata("app_info")['id'];//分站点id
+            $tribe_id = $this->input->post("tribe_id");//部落id
+            $type = $this->input->post("type");//排序类型1全部商品价格DESC2最新3共享服务4全部商品价格ASC
+            if(!in_array($type,array(1,2,3,4))){
+                $data = array();
+                echo json_encode($data);exit;
+            }
+            $limit = 5;//每页显示的数量
+            $page = $this->input->post("page");//页数
+            if(0 == $page)
+            {
+                $page = 1;
+            }
+            
+            $offset = ($page-1)*$limit;//偏移量
+            $data["list"] = $this->tribe_mdl->loading_goods($tribe_id,$appid,$limit,$offset,$type);//商品列表
+            
+            echo json_encode($data);
+            
+        }
+        
+        /**
+         * 部落
          * ajax下拉加载商品（根据类型排序）
          */
         public function loading_goods(){
@@ -6163,130 +6186,7 @@ class Tribe extends Front_Controller
             
         }
     
-        /*
-         * 
-         * 部落搜索商品页面
-         */
-        public function tribe_search_goods () {
-            $data['keyword'] = $this->input->get_post("keyword");//搜索关键词
-            $data['tribe_id'] = $this->input->get_post("tribe_id");//部落id
-            $data['navigate'] = $this->input->get_post("navigate");//1为商城2为部落
-            $data['title'] = $this->session->userdata('app_info')['app_name'];
-            $data['head_set'] = 3;
-            $this->load->view('head', $data);
-            $this->load->view('tribe/tribe_goods_search', $data);
-            $this->load->view('_footer', $data);
-            $this->load->view('foot', $data);
-        }
         
-        /**
-         * h5搜索五种模式
-         * 模式1：简单的搜索商品名称。
-         * 模式2：没有任何关键词和分类，查询整个商品。
-         */
-        function ajax_search_goods(){
-            $tribe_id = $this->input->get_post("tribe_id");//部落id
-            $keyword = $this->input->get_post("keyword");//搜索关键词
-            $keyword = trim($keyword);//移除字符串2侧的空格
-            $type = $this->input->get_post("type");//类型
-            $navigate= $this->input->get_post("navigate");//1为商城2为部落
-            $customer_id = $this->session->userdata("user_id");//用户id
-//             print_r($keyword);exit;
-            
-            $this->load->model("tribe_mdl");
-            $this->load->model("goods_mdl");
-            
-            //查询我加入的部落
-            $tribe_list = $this->tribe_mdl->Customer_Tribe_List($customer_id);
-            $tribeids = array_column($tribe_list,"id");
-            
-            //判断部落
-            if($tribe_id){
-                //判断是否有登录
-                if(!$customer_id){
-                    $data["status"] = 1;
-                    echo json_encode($data);exit;
-                }
-                //判断我是否属于此部落,如果不属于则登录
-                $is_tribe = $this->tribe_mdl->is_tribe_customer($tribe_id,$customer_id);//查询我是否属于此部落
-                if(!in_array($tribe_id,$tribeids)){
-                    $data["status"] = 1;
-                    echo json_encode($data);exit;
-                }
-            } else {
-                //部落不存在
-                $data["status"] = 0;
-                echo json_encode($data);exit;
-            }
-
-            $limit = 20;//显示条数
-            $page = $this->input->post("page");//页数
-            if(0 == $page)
-            {
-                $page = 1;
-            }
-            $offset = ($page-1)*$limit;//偏移量
-            
-            //1为商城 ，2为部落
-            if ($navigate == '1') {
-                switch ($type){
-                    case "1"://销量
-                        $productList = $this->tribe_mdl->tribe_search_list('0','1',$keyword,$offset,$limit);
-                        break;
-                    case "2"://销量
-                        $productList = $this->tribe_mdl->tribe_search_list('0','2',$keyword,$offset,$limit);
-                        break;
-                    case "3"://价格
-                        $productList = $this->tribe_mdl->tribe_search_list('0','3',$keyword,$offset,$limit);
-                        break;
-                    case "4"://价格
-                        $productList = $this->tribe_mdl->tribe_search_list('0','4',$keyword,$offset,$limit);
-                        break;
-                    case "5"://权重
-                        $productList = $this->tribe_mdl->tribe_search_list('0','5',$keyword,$offset,$limit);
-                        break;
-                    default:
-                        $productList = $this->tribe_mdl->tribe_search_list('0','6',$keyword,$offset,$limit);
-                        break;
-                }
-            } else {
-                switch ($type){
-                    case "1"://销量
-                        $productList = $this->tribe_mdl->tribe_search_list($tribe_id,'1',$keyword,$offset,$limit);
-                        break;
-                    case "2"://销量
-                        $productList = $this->tribe_mdl->tribe_search_list($tribe_id,'2',$keyword,$offset,$limit);
-                        break;
-                    case "3"://价格
-                        $productList = $this->tribe_mdl->tribe_search_list($tribe_id,'3',$keyword,$offset,$limit);
-                        break;
-                    case "4"://价格
-                        $productList = $this->tribe_mdl->tribe_search_list($tribe_id,'4',$keyword,$offset,$limit);
-                        break;
-                    case "5"://权重
-                        $productList = $this->tribe_mdl->tribe_search_list($tribe_id,'5',$keyword,$offset,$limit);
-                        break;
-                    default:
-                        $productList = $this->tribe_mdl->tribe_search_list($tribe_id,'6',$keyword,$offset,$limit);
-                        break;
-                }
-            }
-            $data['productList'] = $productList;
-            $data["status"] = 3;//搜索无异常
-            $data["tribeids"] = $tribeids;//我加入部落的id
-            echo json_encode($data);
-        }
-        
-        /*
-         * 
-         * 商品详情
-         */
-       public function good_detail ($id) {
-           $this->load->model("tribe_mdl");
-           $data['data'] = $this->tribe_mdl->goods_img_detail($id);
-           $this->load->view('head', $data);
-           $this->load->view('tribe/commodity_details', $data);
-       }
 
 
 }

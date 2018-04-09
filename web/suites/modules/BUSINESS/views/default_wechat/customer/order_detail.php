@@ -185,7 +185,7 @@
         			<!-- 小计 -->
 					<p class="fn-14" style="float:left;margin-top: -17px;margin-left: 85px;">
 						<?php echo (isset($order['activity_id']) && $order['activity_id'] !='')?$v['groupbuy_price']:$v['price']?>
-						<span style="font-size: 13px;"></span><span style="font-size: 12px !important; padding-left: 4px;">货豆</span>
+						<span style="font-size: 13px;"></span><span style="font-size: 12px !important; padding-left: 4px;"></span>
 					</p>
                     <p class="" style="float:right;margin-top: -17px;">x<?php echo $v['quantity']?></p>
                     <?php if(isset($order['activity_id']) && $order['activity_id'] !=''):?>
@@ -209,26 +209,26 @@
 					<span style="float: right;" class="c9">
 						<span><?php echo $order['total_product_price'];?></span>
     					<span style="font-size: 12px !important;"></span>
-    					<span style="padding-left: 5px;">货豆</span>
+    					<!--<span style="padding-left: 5px;">货豆</span>-->
 					</span>
 				</p>
 				<p style="padding-top: 8px;">运费
 					<span style="float: right;" class="c9"><span></span>
 					<span style="font-size: 12px !important;">＋<?php echo $order['auto_freight_fee']?></span>
-					<span style="padding-left: 5px;">货豆</span></span>
+					<!--<span style="padding-left: 5px;">货豆</span></span>-->
 				</p>
 				
 				<p style="padding-top: 8px;">优惠
 					<span style="float: right;" class="c9"><span></span>
 					<span style="font-size: 12px !important;">－<?php echo ($order['auto_freight_fee']+$order['total_product_price'])-$order['total_price'];?></span>
-					<span style="padding-left: 5px;">货豆</span></span>
+					<!--<span style="padding-left: 5px;">货豆</span></span>-->
 				</p>
        
-				<p style="padding-top: 8px;">实付款
+				<p style="padding-top: 8px;">使用提货权
 					<span style="float: right;">
 						<span><?php echo $order['total_price'];?></span>
 						<span style="font-size: 12px !important;"></span>
-						<span class="c9" style="padding-left: 5px;">货豆</span>
+						<!--<span class="c9" style="padding-left: 5px;">货豆</span>-->
 					</span>
 				</p>
 				
@@ -345,7 +345,7 @@ function receive( id ){
            $("#pay_").text("确认收货");
            $('#pay_').attr('onclick','ok_receive("'+data.id+'")');
            $('#order_sn').text(data.order_sn);
-           $('#price').text(data.total_price+' 货豆');
+           $('#price').text(data.total_price+' ');
            $(".color-bg").show();
            $("#"+show_bullet_id).show();
        }

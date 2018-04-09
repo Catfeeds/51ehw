@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/themes/B/default/images/products
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -471,40 +471,6 @@ has-props
 
 3379
 
-product13.jpg
-file
-
-
-
-
-2018-04-02T02:24:40.000000Z
-6592df228d875d0ab3e9f865d21fa048
-2017-07-04T04:59:52.697565Z
-9
-wing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3493
-
 img_18.jpg
 file
 
@@ -539,7 +505,7 @@ has-props
 
 78517
 
-product14.jpg
+product13.jpg
 file
 
 
@@ -606,6 +572,40 @@ has-props
 
 
 407371
+
+product14.jpg
+file
+
+
+
+
+2018-04-02T02:24:40.000000Z
+6592df228d875d0ab3e9f865d21fa048
+2017-07-04T04:59:52.697565Z
+9
+wing
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3493
 
 product15.jpg
 file

@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/themes/B/default_wechat/images/lottery
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -94,40 +94,6 @@ has-props
 
 21216
 
-lottery_img01.png
-file
-
-
-
-
-2018-04-02T02:24:23.000000Z
-cf55d32ae30a1e3e05d32de7f3270f01
-2018-03-23T10:31:22.381708Z
-5696
-xiankunkai
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4954
-
 pizze_img02.png
 file
 
@@ -162,14 +128,14 @@ has-props
 
 17095
 
-turntable.png
+lottery_img01.png
 file
 
 
 
 
 2018-04-02T02:24:23.000000Z
-093108631df6db7a82eaa942c07fc330
+cf55d32ae30a1e3e05d32de7f3270f01
 2018-03-23T10:31:22.381708Z
 5696
 xiankunkai
@@ -194,7 +160,7 @@ has-props
 
 
 
-161756
+4954
 
 pizze_img03.png
 file
@@ -229,6 +195,40 @@ has-props
 
 
 12185
+
+turntable.png
+file
+
+
+
+
+2018-04-02T02:24:23.000000Z
+093108631df6db7a82eaa942c07fc330
+2018-03-23T10:31:22.381708Z
+5696
+xiankunkai
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+161756
 
 lottery_title_01.png
 file
@@ -298,40 +298,6 @@ has-props
 
 5844
 
-lottery_title_03.png
-file
-
-
-
-
-2018-04-02T02:24:23.000000Z
-84a4f923018308a84660e944aabf3237
-2018-03-23T10:31:22.381708Z
-5696
-xiankunkai
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5308
-
 pizze_50.png
 file
 
@@ -365,6 +331,40 @@ has-props
 
 
 13698
+
+lottery_title_03.png
+file
+
+
+
+
+2018-04-02T02:24:23.000000Z
+84a4f923018308a84660e944aabf3237
+2018-03-23T10:31:22.381708Z
+5696
+xiankunkai
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5308
 
 pizze_80.png
 file
@@ -434,40 +434,6 @@ has-props
 
 24042
 
-lottery_bg.png
-file
-
-
-
-
-2018-04-02T02:24:23.000000Z
-10e20eed884d9733942a0a7e234c3828
-2018-03-23T10:31:22.381708Z
-5696
-xiankunkai
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-80451
-
 lottery_icon.png
 file
 
@@ -501,6 +467,40 @@ has-props
 
 
 1256
+
+lottery_bg.png
+file
+
+
+
+
+2018-04-02T02:24:23.000000Z
+10e20eed884d9733942a0a7e234c3828
+2018-03-23T10:31:22.381708Z
+5696
+xiankunkai
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+80451
 
 pizze_jinbi.png
 file

@@ -24,7 +24,7 @@
             <!-- 持卡人 -->
             <div class="verify_bank_name"><span id="realname">持卡人: 泰迪熊</span><em class="icon-bangzhu" onclick="tishi();"></em></div>
             <!-- 银行卡号 -->
-            <div class="verify_bank_num verify_bank_num03"><span>银行卡号</span><input type="text" id="" value="" onkeyup="verify_bank_two()" name="bank" placeholder="请输入银行卡号"><i class="icon-guanbi1" onclick="delinput(this,'#nexttwo')"></i><em class="icon-bangzhu" onclick="tishi('只支持储蓄卡');"></em></div>
+            <div class="verify_bank_num verify_bank_num03"><span>银行卡号</span><input type="text" id="" value="" onkeyup="verify_bank_two()" name="bank" placeholder="请输入银行卡号" maxlength="19"><i class="icon-guanbi1" onclick="delinput(this,'#nexttwo')"></i><em class="icon-bangzhu" onclick="tishi('只支持储蓄卡');"></em></div>
             <!-- 预留手机 -->
             <div class="verify_bank_num verify_bank_num04" style="margin-top: 6px;"><span>预留手机</span><input type="text" value="" onkeyup="verify_bank_two()" name="bankmobile"  placeholder="请输入银行预留手机号" maxlength="11"><i class="icon-guanbi1" onclick="delinput(this,'#nexttwo')"></i><em class="icon-bangzhu" onclick="tishi('银行预留手机号是办理银行卡时所填写的手机，没有预留，手机号忘记或已停用，请联系银行客服');"></em></div>
             <!-- 实名认证协议 -->
@@ -210,7 +210,7 @@ function verify_bank_two(){
     	$('input[name="bankmobile"]').siblings('i').hide();
     }
 
-   	if(luhnCheck(bank) && $('#agree').prop("checked") && checkMobile(bankmobile)){
+   	if(bank.length >= 16  && bank.length <= 19  && $('#agree').prop("checked") && checkMobile(bankmobile)){
 //    	   	$("#phone").text(bankmobile.substr(0,3)+"***"+bankmobile.substr(7,4));
    		$('.verify_bank_two button').addClass('verify_bank_next_active').removeAttr('disabled');
    	}else{
@@ -256,7 +256,7 @@ function ball_konw(status) {
 	$('.verify_bank_ball').hide();
 	if(status){
 		$("#ball_konw").attr("onclick","ball_konw(0)");
-		history.back(-1);
+		verify_bank_next('.verify_bank_three','.verify_bank_two');
 	}
 }
 
@@ -286,7 +286,8 @@ function ajaxform1(){
 				if(!is_passwd){
 					verify_bank_next('.verify_bank_three','.verify_bank_four');
 				}else{
-					location.href="<?php echo site_url("Member/info/AuthenticationView");?>";
+					$("#ball_konw").removeAttr("onclick").attr("href","<?php echo site_url("Member/info/AuthenticationView");?>");
+					tishi(data["msg"]);
 				}
 			}else if(data["status"] == 02){
 				$("#ball_konw").attr("onclick","ball_konw(1)");
@@ -301,7 +302,6 @@ function ajaxform1(){
 	});
 }
 
-
 //ajax设置支付密码
 function SetPayPassword(){
 	$.ajax({
@@ -311,9 +311,10 @@ function SetPayPassword(){
 		data:$("#form1").serialize(),
 		success:function(data){
 			if(data["status"] == "00"){
-				location.href="<?php echo site_url("Member/info/AuthenticationView");?>";
+				$("#ball_konw").removeAttr("onclick").attr("href","<?php echo site_url("Member/info/AuthenticationView");?>");
+				tishi(data["msg"]);
 			}else{
-				tishi("支付密码设置失败");
+				tishi(data["msg"]);
 			}
 		},
 		error:function(res){

@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/CLIENT/views/default_wechat/js
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -60,40 +60,6 @@ wing
 
 93636
 
-iscroll.js
-file
-
-
-
-
-2018-04-02T02:25:19.000000Z
-600d51bb33be181eb8993c1aec540bb4
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-45760
-
 jquery.wheelmenu.js
 file
 
@@ -127,6 +93,40 @@ wing
 
 
 7934
+
+iscroll.js
+file
+
+
+
+
+2018-04-02T02:25:19.000000Z
+600d51bb33be181eb8993c1aec540bb4
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+45760
 
 jquery.charfirst.pinyin.js
 file
@@ -199,40 +199,6 @@ wing
 
 2569
 
-verificationCode.js
-file
-
-
-
-
-2018-04-02T02:25:19.000000Z
-8d82362623dce0e306aad6bd557cbdb9
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3499
-
 jquery-1.js
 file
 
@@ -266,6 +232,40 @@ wing
 
 
 2182
+
+verificationCode.js
+file
+
+
+
+
+2018-04-02T02:25:19.000000Z
+8d82362623dce0e306aad6bd557cbdb9
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3499
 
 jquery.js
 file
@@ -335,39 +335,8 @@ wing
 
 13825
 
-swiper3.08.jquery.min.js
-file
-
-
-
-
-2018-04-02T02:25:19.000000Z
-ec0aeddf3054baabb928aaf43a44327f
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-54751
+jquery.parsley
+dir
 
 modernizr.custom.js
 file
@@ -403,17 +372,14 @@ wing
 
 9003
 
-jquery.parsley
-dir
-
-zepto.min.js
+swiper3.08.jquery.min.js
 file
 
 
 
 
 2018-04-02T02:25:19.000000Z
-eadc41a1944247c2d126a06135bf3677
+ec0aeddf3054baabb928aaf43a44327f
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -438,7 +404,7 @@ wing
 
 
 
-24975
+54751
 
 classie.js
 file
@@ -473,6 +439,40 @@ wing
 
 
 1835
+
+zepto.min.js
+file
+
+
+
+
+2018-04-02T02:25:19.000000Z
+eadc41a1944247c2d126a06135bf3677
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+24975
 
 sort.js
 file

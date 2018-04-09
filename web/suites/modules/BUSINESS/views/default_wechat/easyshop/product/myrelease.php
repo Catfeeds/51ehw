@@ -12,7 +12,12 @@
    <!-- 备注 -->
    <div class="myrelease_remarks"><span>备注：商品只能发布到一个部落，需要发布到平台请请联系客服开通正式企业，客服电话：</span><a href="tel:400-002-9777">400-002-9777</a></div>
 </div>
+<<<<<<< .mine
 <div class="myrelease_get"><a href="<?php echo site_url("Easyshop/product/ReleaseGoodsView/?tribe_id={$tribe_id}");?>">发布商品</a></div>
+=======
+<div class="myrelease_get"><a href="<?php echo site_url("easyshop/product/ReleaseGoodsView?tribe_id={$tribe_id}");?>">发布商品</a></div>
+
+>>>>>>> .r5980
 <!-- 弹窗 -->
  <div class="tuichu_ball" hidden>
    <div class="tuichu_ball_box">
@@ -107,6 +112,11 @@ dropload = $('.myrelease').dropload({
                     case 2:
                     	$('.tuichu_ball').hide();
                         $(".black_feds").text("已有订单，删除失败").show();
+                        setTimeout("prompt();", 1600);
+                        break;
+                    case 4:
+                    	$('.tuichu_ball').hide();
+                        $(".black_feds").text("删除数据失败").show();
                         setTimeout("prompt();", 1600);
                         break;
                     default:

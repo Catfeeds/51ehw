@@ -176,13 +176,13 @@ foreach($this->cart->contents() as $items){
             <?php if($is_special){;?>
             <lable class="item" id="special_price_item" >特价&nbsp;&nbsp;
             	<span class="red" style="font-size: 15px;font-weight: bold;" id="special_price">
-        		<?php echo number_format($details['special_price'],2); ?>货豆
+        		<?php echo number_format($details['special_price'],2); ?>
             	</span>
             </lable>
             <?php }else if($tribeVIP){;?>
             <lable class="item" id="special_price_item" >部落价&nbsp;&nbsp;
             	<span class="red" style="font-size: 15px;font-weight: bold;" id="tribe_price">
-        		<?php echo number_format($details['tribe_price'],2); ?>货豆
+        		<?php echo number_format($details['tribe_price'],2); ?>
             	</span>
             </lable>
             <?php }; ?>
@@ -191,9 +191,9 @@ foreach($this->cart->contents() as $items){
             <lable class="item" id="product_price_item">易货价<em style="opacity: 0;">&nbsp;&nbsp;&nbsp;</em>
                 <span class="red" id="product_price" style="color: #333333;font-size: 15px;font-weight: bold;padding-left: 5px;">
                 <?php if($is_special || $tribeVIP){?><!-- 如是特价or部落则有del -->
-        		   <del><?php echo number_format($details['vip_price'], 2);?>货豆</del>
+        		   <del><?php echo number_format($details['vip_price'], 2);?></del>
         		<?php }else{;?>
-        		   <?php echo number_format($details['vip_price'], 2);?>货豆
+        		   <?php echo number_format($details['vip_price'], 2);?>
         		<?php };?>
                 </span>
             </lable>
@@ -274,11 +274,11 @@ foreach($this->cart->contents() as $items){
             <span class="red" id="total_price" style="color: #333333;font-size: 15px;font-weight: bold;padding-left:8px;">                
             <?php 
                 if($is_special){//特价
-                    echo number_format($details['special_price'], 2)."货豆";
+                    echo number_format($details['special_price'], 2)."";
                 }else if($tribeVIP){//部落价
-                    echo number_format($details['tribe_price'], 2)."货豆";
+                    echo number_format($details['tribe_price'], 2)."";
                 }else{ //易货价
-                    echo number_format($details['vip_price'], 2)."货豆";
+                    echo number_format($details['vip_price'], 2)."";
                 };
             ?>
             </span>
@@ -482,7 +482,7 @@ function settlement(){
 	    var item_num = 1;
 	}
 	var total_price = price*item_num;//总价
-	$("#total_price").html(formatCurrency(total_price)+"货豆");//总价显示
+	$("#total_price").html(formatCurrency(total_price)+"");//总价显示
 
 }
 
@@ -528,19 +528,19 @@ function process(){
 		    var vip_price = val['info']['vip_price'];//易货价
 		    $("#special_price").html(special_price);//特价显示
 		    $("#tribe_price").html(tribe_price);//部落价显示
-		    $("#product_price").html("<del>"+vip_price+"货豆</del>");//易货价显示
+		    $("#product_price").html("<del>"+vip_price+"</del>");//易货价显示
 
         	//是否特价
 			<?php if ($is_special) {?>//特价
 			    var price = special_price;
-			    $("#special_price").html(special_price+'货豆');//特价显示
-			    $("#product_price").html("<del>"+vip_price+"货豆</del>");//易货价显示
+			    $("#special_price").html(special_price+'');//特价显示
+			    $("#product_price").html("<del>"+vip_price+"</del>");//易货价显示
 		    <?php }else if($tribeVIP){;?> //部落价
 		        var price = tribe_price;
-    		    $("#tribe_price").html(tribe_price+"货豆");//部落价显示
+    		    $("#tribe_price").html(tribe_price+"");//部落价显示
 			<?php }else{;?>//易货价
 			    var price = vip_price; 
-			    $("#product_price").html(vip_price+"货豆");//易货价显示
+			    $("#product_price").html(vip_price+"");//易货价显示
 			<?php };?>
 
 			var stock = val['info']['stock'];//库存
@@ -553,7 +553,7 @@ function process(){
 			}
 			
 			var total_price = price*item_num;//总价
-			$("#total_price").html(formatCurrency(total_price)+"货豆");//总价显示
+			$("#total_price").html(formatCurrency(total_price)+"");//总价显示
 			
 
         	//判断库存

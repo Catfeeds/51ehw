@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/application/libraries/PHPExcel/locale
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -38,13 +38,13 @@ dir
 ru
 dir
 
-de
+bg
 dir
 
 sv
 dir
 
-bg
+de
 dir
 
 fi
@@ -56,10 +56,10 @@ dir
 cs
 dir
 
-es
+fr
 dir
 
-fr
+es
 dir
 
 nl

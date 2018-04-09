@@ -70,7 +70,7 @@
                                 <?php };?>
                             </p>
                             <!-- 商品单价 -->
-                            <p class="order_price" id="<?php echo "unit_price_".$items["product_id"]."_".$items["sku_id"]?>"><?php echo number_format($items['price'],2,'.','');?></p><p class="order_price">&nbsp;货豆</p>
+                            <p class="order_price" id="<?php echo "unit_price_".$items["product_id"]."_".$items["sku_id"]?>"><?php echo number_format($items['price'],2,'.','');?></p><p class="order_price">&nbsp;</p>
                     	</div>
                     
                         <em class="remove_goods">X</em>
@@ -90,7 +90,7 @@
     		<li style="float: left; width: 70%; background-color: #000000; height: 40px; color: #fff; line-height: 40px; text-align: center; font-size: 15px;">
     			<div class="price-sum">
     				<p class="f16" id="price_total" style="line-height: 42px;">
-    					<span>0</span>件总计: 0.00 货豆<span style="margin-left: 5px;"></span>
+    					<span>0</span>件总计: 0.00 <span style="margin-left: 5px;"></span>
     				</p>
     			</div>
     		</li>
@@ -250,7 +250,7 @@
 
     	total = formatCurrency(total);//商品总额
 
-    	$('#price_total').html("<span>"+total_num+"</span >件总计: <span id='total_m'>"+total+"</span> 货豆");
+    	$('#price_total').html("<span>"+total_num+"</span >件总计: <span id='total_m'>"+total+"</span> ");
 
     }
 

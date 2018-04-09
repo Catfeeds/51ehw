@@ -60,37 +60,86 @@ $(document).ready(function(){
 	};
 
 	$('.pointer').click(function (){
+		
 		if(turnplate.bRotate)return;
 		turnplate.bRotate = !turnplate.bRotate;
 		
 		// 次数减一
 		var lottery_num = $('#lottery_num').text();
         if (lottery_num == 0) {
-        	alert('您的抽奖次数已经用完，快去投票赢取更多抽奖次数吧！');
+        	$(".black_feds").text('您的抽奖次数已经用完，快去投票赢取更多抽奖次数吧！').show();
+  		    setTimeout("prompt();", 2000);
+//        	alert('您的抽奖次数已经用完，快去投票赢取更多抽奖次数吧！');
         	turnplate.bRotate = !turnplate.bRotate;
+            return ;
         } else{
-        	lottery_num--;
-		    $('#lottery_num').text(lottery_num);
-
-		//获取随机数(奖品个数范围内)
-		// var num = rnd(1,turnplate.restaraunts.length);
-        // 获取随机数(1-10)
-		var num = rnd(1,10);
-		var item = 0;
-        // 机率：谢谢参与(40%),50元(30%),80元(20%),100元(10%),小米电视机(0%),iPhone X (0%)
-        if (num<5){
-          item = 1;
-        }else if (num>=4 && num<7){
-          item = 4;
-        }else if (num>=7 && num<9){
-          item = 2;
-        }else {
-          item = 6;
-        };
+        	stochastic()
+        	if(item == 99){
+			turnplate.bRotate = !turnplate.bRotate;
+			return false;
+        	}
+		$('#lottery_num').text(limit);
+		
 		//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
 		rotateFn(item, turnplate.restaraunts[item-1]);
-		console.log(item);
-		    switch (item) {
+		if(mobile){
+			switch (item) {
+				case 1:
+					// rotateFn(252, turnplate.restaraunts[0]);
+					setTimeout(function(){
+						$('.lottery_ball').show();
+						$('.lottery_pizee_no').show();
+						$('.lottery_pizz_yes').hide();
+					},8000);
+					break;
+				case 2:
+					// rotateFn(216, turnplate.restaraunts[1]);
+					setTimeout(function(){
+						$('.lottery_ball').show();
+						$('.lottery_pizz_yes').show();
+						$('.lottery_pizee_no').hide();
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_80.png');
+					},8000)
+					break;
+				case 3:
+					// rotateFn(180, turnplate.restaraunts[2]);
+					setTimeout(function(){
+						$('.lottery_ball').show();
+						$('.lottery_pizz_yes').show();
+						$('.lottery_pizee_no').hide();
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img02.png');
+					},8000)
+					break;
+				case 4:
+				    // rotateFn(180, turnplate.restaraunts[3]);
+					 setTimeout(function(){
+						$('.lottery_ball').show();
+						$('.lottery_pizz_yes').show();
+						$('.lottery_pizee_no').hide();
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_50.png');
+					},8000)
+					break;
+				case 5:
+					// rotateFn(108, turnplate.restaraunts[4]);
+					setTimeout(function(){
+						$('.lottery_ball').show();
+						$('.lottery_pizz_yes').show();
+						$('.lottery_pizee_no').hide();
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img01.png');
+					},8000)
+					break;
+				case 6:
+					// rotateFn(72, turnplate.restaraunts[5]);
+					setTimeout(function(){
+						$('.lottery_ball').show();
+						$('.lottery_pizz_yes').show();
+						$('.lottery_pizee_no').hide();
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_100.png');
+					},8000)
+					break;
+				} 
+		}else{
+			switch (item) {
 			case 1:
 				// rotateFn(252, turnplate.restaraunts[0]);
 				setTimeout(function(){
@@ -103,42 +152,88 @@ $(document).ready(function(){
 				// rotateFn(216, turnplate.restaraunts[1]);
 				setTimeout(function(){
 					$('.lottery_ball').show();
-					$('.lottery_pizz_yes').show();
+					$('.lottery_pizz_yes_condition').show();
+					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
 					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_80.png');
 				},8000)
 				break;
 			case 3:
 				// rotateFn(180, turnplate.restaraunts[2]);
-				
+				setTimeout(function(){
+					$('.lottery_ball').show();
+					$('.lottery_pizz_yes_condition').show();
+					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
+					$('.lottery_pizee_no').hide();
+					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img02.png');
+				},8000)
 				break;
 			case 4:
 			    // rotateFn(180, turnplate.restaraunts[3]);
 				 setTimeout(function(){
 					$('.lottery_ball').show();
-					$('.lottery_pizz_yes').show();
+					$('.lottery_pizz_yes_condition').show();
+					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
 					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_50.png');
 				},8000)
 				break;
 			case 5:
 				// rotateFn(108, turnplate.restaraunts[4]);
-				
+				setTimeout(function(){
+					$('.lottery_ball').show();
+					$('.lottery_pizz_yes_condition').show();
+					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
+					$('.lottery_pizee_no').hide();
+					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img01.png');
+				},8000)
 				break;
 			case 6:
 				// rotateFn(72, turnplate.restaraunts[5]);
 				setTimeout(function(){
 					$('.lottery_ball').show();
-					$('.lottery_pizz_yes').show();
+					$('.lottery_pizz_yes_condition').show();
+					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
 					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_100.png');
 				},8000)
 				break;
-		} 
-        };
+			 }
+		  }
+     };
 
 	});
 });
+
+var limit = 0;
+var item = 99;
+var stochastic_url = '';
+var award_id = 0;
+function stochastic(){
+	var url = stochastic_url;
+	$.ajax({
+		async : false,
+		url : url,
+    	type : "POST",
+    	dataType:"json",
+    	data:{key:"stochastic"},
+    	success:function(data){
+    		if(data.status != '0'){
+    			alert(data.error_msg);
+    			return false;
+    		}else{
+    			item = data.item;
+    			limit = data.total_num;
+    			award_id = data.award_id;
+    		}
+    	},
+    	error:function(){
+    		$(".black_feds").text('网络出错，请重试！').show();
+  		    setTimeout("prompt();", 2000);
+  		    return ;
+		}
+    })
+}
 
 function rnd(n, m){
 	var random = Math.floor(Math.random()*(m-n+1)+n);

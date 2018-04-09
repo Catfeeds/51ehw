@@ -803,6 +803,84 @@ class Commerce extends Front_Controller
 	    $this->load->view('foot', $data);
 	}
 	
+	
+	/**
+	 * ajax 获取部落成员列表
+	 */
+	
+	public function  ajax_People(){
+	    
+	    $label_id = $this->input->post("label_id");
+	    $tribe_id = $this->input->post("tribe_id");
+	    
+	   
+// 	    $labe_id = 2;
+// 	    $tribe_id = 6;
+	    //查询商会存在哪些部落ID。
+	    $labe_info = $this->check_app( $label_id );
+	    
+	    if( $labe_info['app_tribe_ids'] )
+	    {
+	        //查询加入的部落列表 && tribe_id = $labe_info['tribe_ids']。
+	        $this->load->model('tribe_mdl');
+	        $tribe_list = $this->tribe_mdl->MyTribe($this->customer_id,'',$labe_info['app_tribe_ids']);
+	         
+	        if( $tribe_list )
+	        {
+	    
+	            $id  = $tribe_id ? $tribe_id : $tribe_list[0]['id'];
+	    
+	            $user_info = $id ? $this->tribe_mdl->load_members_list( $id, $this->customer_id,null,'manager') : 0;//查询部落
+	             
+	            if( !$user_info )
+	            {
+	                echo "<script>history.back(-1);alert('您不是该部落成员，无法访问');</script>";exit;
+	            }
+	    
+	            $tribe_duties_list = $this->tribe_mdl->load_members_duties( $id );
+	    
+	            $list = $this->tribe_mdl->load_members_list( $id,0,null ,'manager');
+	             
+	            $tribe_duties_list = array_column($tribe_duties_list, NULL,'id');
+	             
+	            $i = 0;
+	            //处理数据
+	            foreach ( $list as $k=>$v )
+	            {
+	    
+	                if( isset( $tribe_duties_list[$v['tribe_role_id']]) )
+	                {
+	                    $tribe_duties_list[$v['tribe_role_id']]['list'][] = $v;
+	                    continue;
+	                }
+	    
+	                $i++;
+	                $tribe_duties_list[0]['list'][] = $v;
+	    
+	            }
+	    
+	             
+	            if( $i )
+	            {
+	                $tribe_duties_list[0]['id'] = 0;
+	                $tribe_duties_list[0]['total'] = $i;
+	                $tribe_duties_list[0]['role_name'] = '部落成员';
+	            }
+	             
+	           
+	            $data['my_info'] = $user_info;
+	            $data['list'] =    array_values($tribe_duties_list);
+	            $data['tribe_id'] = $id;
+	            $data['tribe_list'] = $tribe_list;
+	        }
+	    }
+	    $data['is_host'] = $this->is_host($labe_info['app_tribe_ids']);
+	    
+	    echo json_encode($data);
+	}
+	
+	
+	
 	/**
 	 * 选择商会页面。
 	 * @date:2017年11月24日 上午10:35:05

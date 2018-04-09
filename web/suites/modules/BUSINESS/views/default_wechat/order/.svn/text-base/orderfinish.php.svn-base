@@ -25,7 +25,7 @@
 		<em class="icon-zhifuchenggong" style="position: absolute; top: 60px; left: 30px; font-size: 50px; color: #FED609;"></em>
 		<div style="text-align: center;margin-bottom: 24px;font-size: 21px;"><span>您的支付已成功</span></div>
 <!-- 		<span class="order_span_text">请及时完善订单以便发货</span> -->
-		<span class="order_span_text">支付货豆：<?php echo isset($pay_account)?$pay_account:"0.00"?></span>
+		<span class="order_span_text">使用提货权：<?php echo isset($pay_account)?$pay_account:"0.00"?></span>
 		<?php if(isset($order_sn)&& $order_sn!=''):?>
 		<span class="order_span_text">您的订单号：<?php echo $order_sn;?></span>
 		<?php endif;?>

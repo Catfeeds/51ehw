@@ -32,8 +32,7 @@ function AutoOrderCancel( $customer_id = 0 )
         if( !$order_list )
         { 
             //无处理订单
-            $return['status'] = 255;
-            $return['message'] = '无处理订单';
+            error_log('无处理订单');
             break;
         }
         
@@ -111,5 +110,76 @@ function AutoOrderCancel( $customer_id = 0 )
 
 function AutoOrderReceipts()
 { 
+   
+    $CI = & get_instance();
+    
+    //查询发货10天但未收货的订单
+    $where = [
+        'o.status'=> 3,
+        'ol.created_at < '=> date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s').'- 1 day'))//两个小时前的时间。
+    ];
+    
+    $CI->db->select('o.id,ec.customer_id as corp_customer_id,o.customer_id,o.total_price,o.order_sn');
+    $CI->db->from('easy_order as o')->join('easy_order_log as ol','o.id = ol.order_id and ol.status = 3','left')->join('easy_corporation as ec','ec.id = o.easy_corp_id');
+    $CI->db->where($where);
+    $CI->db->group_by('o.id');
+    $order_list = $CI->db->get()->result_array();
+  
+    $return['code'] =  '';
+    
+    if( !$order_list )
+    { 
+        $return['msg'] =  '无订单处理';
+        exit;
+    }
+    
+    //开启事物。
+    $CI->db->trans_begin();
+    $CI->db->set('status',4);
+    $CI->db->where_in('id',array_column( $order_list, 'id') );
+    $CI->db->update('easy_order');
+    
+    if( $CI->db->affected_rows() == count( $order_list ) )
+    { 
+        //添加操作日志
+        foreach ($order_list as $k => $v)
+        {
+            $insert_log[$k]['order_id'] = $v['id'];
+            $insert_log[$k]['status'] = 4;
+            $insert_log[$k]['remark'] = '自动收货';
+        }
+        
+        $CI->db->insert_batch('easy_order_log', $insert_log);
+        
+        //调用接口
+        $data_post['order_list'] = $order_list;
+        $url = $CI->url_prefix.'Easy_order/receive';
+        $error = json_decode($CI->curl_post_result( $url,$data_post ),true);
+       
+        if( $error['status'] )
+        { 
+            $CI->db->trans_commit();
+            $return['msg'] =  '无订单处理';
+            $return['code'] =  0000;
+        }
+    }
+    
+    $return['msg'] =  '处理失败';
+    $CI->db->trans_rollback();
+    
+    return $return;
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

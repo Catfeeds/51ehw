@@ -2,7 +2,7 @@
   <div class="container" style="background-color:#e8e8e8">
      <div class="business_record_nav">
           <ul>
-              <li class="business_record_nav01 business_record_active">货豆</li><span>｜</span>
+              <li class="business_record_nav01 business_record_active">提货权</li><span>｜</span>
               <li class="business_record_nav02">现金</li><span>｜</span>
               <li class="business_record_nav03">授信额度</li>
           </ul>

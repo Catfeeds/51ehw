@@ -1,7 +1,7 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web/show/files/fonts/lato
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -128,40 +128,6 @@ has-props
 
 30340
 
-lato-regular.ttf
-file
-
-
-
-
-2018-04-02T02:25:37.000000Z
-544d96974bf484f5a128a29d20a0f279
-2017-07-04T04:59:52.697565Z
-9
-wing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-65648
-
 lato-light.eot
 file
 
@@ -195,6 +161,40 @@ has-props
 
 
 30116
+
+lato-regular.ttf
+file
+
+
+
+
+2018-04-02T02:25:37.000000Z
+544d96974bf484f5a128a29d20a0f279
+2017-07-04T04:59:52.697565Z
+9
+wing
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+65648
 
 lato-regular.svg
 file
@@ -230,40 +230,6 @@ wing
 
 268530
 
-lato-regular.woff
-file
-
-
-
-
-2018-04-02T02:25:37.000000Z
-27faf19206c7a20e8126bedc37c95458
-2017-07-04T04:59:52.697565Z
-9
-wing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-35464
-
 lato-italic.ttf
 file
 
@@ -298,14 +264,14 @@ has-props
 
 56732
 
-lato-black.eot
+lato-regular.woff
 file
 
 
 
 
 2018-04-02T02:25:37.000000Z
-5407de996a439dd4470d0a1e98ecd396
+27faf19206c7a20e8126bedc37c95458
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -330,7 +296,7 @@ has-props
 
 
 
-30838
+35464
 
 lato-bolditalic.ttf
 file
@@ -366,14 +332,14 @@ has-props
 
 58908
 
-lato-light.ttf
+lato-black.eot
 file
 
 
 
 
 2018-04-02T02:25:37.000000Z
-f652f5451f853d5b29949248ad7613e9
+5407de996a439dd4470d0a1e98ecd396
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -398,7 +364,7 @@ has-props
 
 
 
-64540
+30838
 
 lato-italic.svg
 file
@@ -434,6 +400,40 @@ wing
 
 266747
 
+lato-light.ttf
+file
+
+
+
+
+2018-04-02T02:25:37.000000Z
+f652f5451f853d5b29949248ad7613e9
+2017-07-04T04:59:52.697565Z
+9
+wing
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+64540
+
 lato-bolditalic.svg
 file
 
@@ -468,40 +468,6 @@ wing
 
 267438
 
-lato-light.svg
-file
-
-
-
-
-2018-04-02T02:25:37.000000Z
-51c7f6a7f47413a9c8f610ea4c8dae1c
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-267401
-
 lato-italic.woff
 file
 
@@ -535,6 +501,40 @@ has-props
 
 
 33592
+
+lato-light.svg
+file
+
+
+
+
+2018-04-02T02:25:37.000000Z
+51c7f6a7f47413a9c8f610ea4c8dae1c
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+267401
 
 lato-bold.eot
 file

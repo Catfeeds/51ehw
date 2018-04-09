@@ -18,7 +18,7 @@ class Order extends Account_Controller
     }
     
     /**
-     * 普通订单的支付---货豆&日志处理
+     * 普通订单的支付---提货权&日志处理
      */
     public function pay_order(){
         
@@ -42,7 +42,7 @@ class Order extends Account_Controller
             $customer_id = $pay_detailed['customer_id'];//支付账号的用户ID
             $pay_account_id = $pay_detailed['id'];//支付账号ID
             $pay_relation_id = $pay_detailed['r_id']; //关联表的ID
-            $surplus_m = $pay_detailed['M_credit']; //支付前的货豆余额
+            $surplus_m = $pay_detailed['M_credit']; //支付前的提货权余额
             $credit = '0.00'; //授信
             $time = date('Y-m-d H:i:s');
             
@@ -65,18 +65,18 @@ class Order extends Account_Controller
 
 	            $this->db->trans_begin(); //事物执行方法中的MODEL。
 	            $process = true; //表示进了事物。
-	            //扣用户货豆
+	            //扣用户提货权
 	            $this->load->model ( 'pay_account_mdl' );
 	            $row = $this->pay_account_mdl->update_M_creadit($pay_account_id, $total_price);
 	             
 	            if($row)
 	            { 
 	                
-	                //上一次用户货豆交易的日志中的信息
+	                //上一次用户提货权交易的日志中的信息
 	                $this->load->model("customer_currency_log_mdl",'customer_currency_log');
 	                
 	                $last_m_log    = $this->customer_currency_log->load_last($pay_relation_id);
-	                //检测货豆是否异常
+	                //检测提货权是否异常
 	                if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $surplus_m)
 	                {
 	                    $M_credit_expend_data['status'] = '1';
@@ -86,7 +86,7 @@ class Order extends Account_Controller
 	                    $M_credit_expend_data['status'] = '2';
 	                }
 	                
-	                //货豆日志
+	                //提货权日志
 	                $M_credit_expend_data['relation_id'] = $pay_relation_id;
 	                $M_credit_expend_data['id_event'] = '60';
 	                $M_credit_expend_data['remark'] = '购物支出';
@@ -102,10 +102,10 @@ class Order extends Account_Controller
 	                if( $M_credit_log )
 	                { 
 	                    
-	                    //上一次平台的货豆交易日志
+	                    //上一次平台的提货权交易日志
 	                    $to_last_m_log    = $this->customer_currency_log->load_last('-1');
 	                     
-	                    //支出方货豆日志
+	                    //支出方提货权日志
 	                    $M_credit_data['remark'] = '平台收入';
 	                    $M_credit_data['relation_id'] = '-1';
 	                    $M_credit_data['type'] = '1';
@@ -117,7 +117,7 @@ class Order extends Account_Controller
 	                    $M_credit_data['ending_balance'] = isset($to_last_m_log['ending_balance']) ? $to_last_m_log['ending_balance']+$total_price:$total_price ;
 	                    $M_credit_data['customer_id'] = $customer_id;
 	                    $M_credit_data['app_id'] = $app_id;
-	                    //收入方货豆日志
+	                    //收入方提货权日志
 	                    $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
 	                     
 	                    if($to_M_credit_log)
@@ -140,7 +140,7 @@ class Order extends Account_Controller
     	                        $error['status'] = 1;//支付成功
     	                        $is_ok = true;
                                 //$this->customer_currency_log->openid = $this->session->userdata('openid');
-    	                        //$this->customer_currency_log->result_message( $M_credit_expend_data ); //货豆支出-微信推送
+    	                        //$this->customer_currency_log->result_message( $M_credit_expend_data ); //提货权支出-微信推送
 	                        }
 	                    }
 	                }
@@ -233,7 +233,7 @@ class Order extends Account_Controller
     }
     
     /**
-     * 订单收货---货豆&日志处理
+     * 订单收货---提货权&日志处理
      */
     public function order_receive(){ 
         
@@ -260,7 +260,7 @@ class Order extends Account_Controller
         //店主关联支付账号表的ID
         $pay_relation_id = $corp_customer_pay['r_id'];
         
-        //收货前店主剩余的货豆
+        //收货前店主剩余的提货权
         $corp_surplus_m = $corp_customer_pay['M_credit'];
         
         if( $customer_pay['pay_passwd'] == $pass ){   
@@ -269,7 +269,7 @@ class Order extends Account_Controller
 	        $error['status']  = false;
 	        
 	        $this->load->model('customer_currency_log_mdl','customer_currency_log');
-	        //上一次店主货豆交易的日志中的信息
+	        //上一次店主提货权交易的日志中的信息
 	        $last_m_log = $this->customer_currency_log->load_last($pay_relation_id);
 	        
 	        //C端才有的手续费店主扣除
@@ -281,15 +281,15 @@ class Order extends Account_Controller
 	            
 	            $C_commission = 0;
 	        }
-	        //店主账号+货豆
+	        //店主账号+提货权
 	        $up_row = $this->pay_account_mdl->charge_M_credit($corp_pay_id, $total_price-$C_commission );
 	        
 	        if( $up_row )
 	        {
-	            //上一次平台的货豆交易日志
+	            //上一次平台的提货权交易日志
 	            $to_last_m_log    = $this->customer_currency_log->load_last('-1');
 	             
-	            //平台支出货豆日志
+	            //平台支出提货权日志
 	            $M_credit_data['relation_id'] = '-1';
 	            $M_credit_data['id_event'] = '62';
 	            $M_credit_data['remark'] = '平台支出';
@@ -302,12 +302,12 @@ class Order extends Account_Controller
 	            $M_credit_data['customer_id'] = $corp_customer_id;
 	            $M_credit_data['status'] = '1';
 	            $M_credit_data['app_id'] = $app_id;
-	            //支出方货豆日志
+	            //支出方提货权日志
 	            $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
 	            
 	            if( $to_M_credit_log )
 	            { 
-	                //收入检测货豆是否异常
+	                //收入检测提货权是否异常
 	                if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $corp_surplus_m)
 	                {
 	                    $M_credit_data['status'] = '1';
@@ -317,7 +317,7 @@ class Order extends Account_Controller
 	                    $M_credit_data['status'] = '2';
 	                }
 	                 
-	                //店主收入货豆日志
+	                //店主收入提货权日志
 	                $M_credit_data['relation_id'] = $pay_relation_id;
 	                $M_credit_data['id_event'] = '62';
 	                $M_credit_data['remark'] = '销售收入';
@@ -329,7 +329,7 @@ class Order extends Account_Controller
 	                $M_credit_data['customer_id'] = $customer_pay['customer_id'];
 	                $M_credit_data['app_id'] = $app_id;
 	                
-	                //写入货豆日志
+	                //写入提货权日志
 	                $M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
 	                
 	                if( $M_credit_log )
@@ -456,7 +456,7 @@ class Order extends Account_Controller
     
     /**
      * 订单处理-
-     * 店主手动提取货豆扣除现金手续费-部分逻辑接口
+     * 店主手动提取提货权扣除现金手续费-部分逻辑接口
      */
     public function carry_rebate(){
         
@@ -475,15 +475,15 @@ class Order extends Account_Controller
         $this->db->trans_begin(); //事物；
         $error['status'] = false;
         if( $pay_info['pay_passwd'] == md5($pass) ) {
-            //店主账号+货豆
+            //店主账号+提货权
             $up_row = $this->pay_account_mdl->charge_M_credit($pay_info['id'], $total_price );
             
             if( $up_row ){ 
                 $this->load->model("customer_currency_log_mdl",'customer_currency_log');
-                //上一次平台的货豆交易日志
+                //上一次平台的提货权交易日志
                 $to_last_m_log    = $this->customer_currency_log->load_last('-1');
                  
-                //平台支出货豆日志
+                //平台支出提货权日志
                 $M_credit_data['relation_id'] = '-1';
                 $M_credit_data['id_event'] = '62';
                 $M_credit_data['remark'] = '平台支出';
@@ -495,14 +495,14 @@ class Order extends Account_Controller
                 $M_credit_data['customer_id'] = $customer_id;
                 $M_credit_data['status'] = '1';
                 $M_credit_data['app_id'] = $app_id;
-                //支出方货豆日志
+                //支出方提货权日志
                 $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
                 
                 if( $to_M_credit_log )
                 { 
-                    //上一次店主货豆交易的日志中的信息
+                    //上一次店主提货权交易的日志中的信息
                     $last_m_log = $this->customer_currency_log->load_last( $relation_id );
-                    //收入检测货豆是否异常
+                    //收入检测提货权是否异常
                     if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $pay_info['M_credit'])
                     {
                         $M_credit_data['status'] = '1';
@@ -513,7 +513,7 @@ class Order extends Account_Controller
                         $M_credit_data['status'] = '2';
                     }
                      
-                    //店主收入货豆日志
+                    //店主收入提货权日志
                     $M_credit_data['relation_id'] = $relation_id;
                     $M_credit_data['id_event'] = '62';
                     $M_credit_data['remark'] = '销售收入';
@@ -525,7 +525,7 @@ class Order extends Account_Controller
                     $M_credit_data['customer_id'] = $buy_customer_id;
                     
                     
-                    //写入货豆日志
+                    //写入提货权日志
                     $M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
                     
                     if( $M_credit_log ){ 
@@ -563,18 +563,18 @@ class Order extends Account_Controller
         $this->load->model("pay_account_mdl");
         $this->Pay_relation->id = $relation_id;
         $pay_info = $this->Pay_relation->load();
-        // 扣货豆
+        // 扣提货权
         $this->db->trans_begin(); //事物；
         
         $row = $this->pay_account_mdl->update_M_creadit($pay_info['id'], $total_groupbuy_price);
         
         if( $row ){
         
-            // 上一次货豆交易的日志中的信息
+            // 上一次提货权交易的日志中的信息
             $this->load->model('customer_currency_log_mdl');
             $last_m_log = $this->customer_currency_log_mdl->load_last( $relation_id );
             
-            // 检测货豆是否异常
+            // 检测提货权是否异常
             if (isset($last_m_log['ending_balance']) && $last_m_log['ending_balance'] == $pay_info['M_credit'])
             {
                 $M_credit_expend_data['status'] = '1';
@@ -584,7 +584,7 @@ class Order extends Account_Controller
                 $M_credit_expend_data['status'] = '2';
             }
         
-            // 货豆日志
+            // 提货权日志
             $M_credit_expend_data['relation_id'] = $pay_info['r_id'];
             $M_credit_expend_data['id_event'] = '60';
             $M_credit_expend_data['remark'] = '购物支出';
@@ -597,11 +597,11 @@ class Order extends Account_Controller
             $M_credit_expend_data['app_id'] = $app_id;
             $M_credit_log = $this->customer_currency_log_mdl->add_log($M_credit_expend_data);
         
-            // 上一次平台的货豆交易日志
+            // 上一次平台的提货权交易日志
             $to_last_m_log = $this->customer_currency_log_mdl->load_last('-1');
             
             if( $to_last_m_log ){ 
-                // 收入方货豆日志
+                // 收入方提货权日志
                 $M_credit_data['remark'] = '平台收入';
                 $M_credit_data['relation_id'] = '-1';
                 $M_credit_data['type'] = '1';
@@ -613,7 +613,7 @@ class Order extends Account_Controller
                 $M_credit_data['ending_balance'] = isset($to_last_m_log['ending_balance']) ? $to_last_m_log['ending_balance'] + $total_groupbuy_price : $total_groupbuy_price;
                 $M_credit_data['customer_id'] = $customer_id;
                 $M_credit_data['app_id'] = $app_id;
-                // 收入方货豆日志
+                // 收入方提货权日志
                 $to_M_credit_log = $this->customer_currency_log_mdl->add_log($M_credit_data);
                 
 
@@ -662,7 +662,7 @@ class Order extends Account_Controller
         $customer_id = $pay_detailed['customer_id'];//支付账号的用户ID
         $pay_account_id = $pay_detailed['id'];//支付账号ID
         $pay_relation_id = $pay_detailed['r_id']; //关联表的ID
-        $surplus_m = $pay_detailed['M_credit']; //支付前的货豆余额
+        $surplus_m = $pay_detailed['M_credit']; //支付前的提货权余额
         $credit = '0.00'; //授信
         $time = date('Y-m-d H:i:s');
         
@@ -686,7 +686,7 @@ class Order extends Account_Controller
             
             $this->db->trans_begin(); //事物执行方法中的MODEL。
             $process = true; //表示进了事物处理
-            //扣用户货豆
+            //扣用户提货权
             $this->load->model ( 'pay_account_mdl' );
             $row = $this->pay_account_mdl->update_M_creadit($pay_account_id, $total_price);
             
@@ -694,10 +694,10 @@ class Order extends Account_Controller
             {
                 $this->load->model("customer_currency_log_mdl",'customer_currency_log');
                 
-                //上一次货豆交易的日志中的信息
+                //上一次提货权交易的日志中的信息
                 $last_m_log    = $this->customer_currency_log->load_last($pay_relation_id);
                 
-                //检测支付方货豆是否异常
+                //检测支付方提货权是否异常
                 if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $surplus_m)
                 {
                     $M_credit_data['status'] = '1';
@@ -708,7 +708,7 @@ class Order extends Account_Controller
                 }
                  
                  
-                //货豆日志
+                //提货权日志
                 $M_credit_data['relation_id'] = $pay_relation_id;
                 $M_credit_data['id_event'] = '60';
                 $M_credit_data['remark'] = '面对面-购物支出';
@@ -727,10 +727,10 @@ class Order extends Account_Controller
                     $corp_customer_id = $this->input->post('corp_customer_id');
                     $pay_info = $this->pay_account_mdl->load( $corp_customer_id );
                     
-                    //上一次店主货豆交易的日志中的信息
+                    //上一次店主提货权交易的日志中的信息
                     $corp_last_m_log = $this->customer_currency_log->load_last($pay_info['r_id']);
                     
-                    //收入检测货豆是否异常
+                    //收入检测提货权是否异常
                     if( isset($corp_last_m_log['ending_balance']) &&  $corp_last_m_log['ending_balance'] == $pay_info['M_credit'])
                     {
                         $M_corp_credit_data['status'] = '1';
@@ -740,7 +740,7 @@ class Order extends Account_Controller
                         $M_corp_credit_data['status'] = '2';
                     }
                      
-                    //店主收入货豆日志
+                    //店主收入提货权日志
                     $M_corp_credit_data['relation_id'] = $pay_info['r_id'];
                     $M_corp_credit_data['id_event'] = '62';
                     $M_corp_credit_data['remark'] = '面对面-销售收入';
@@ -751,7 +751,7 @@ class Order extends Account_Controller
                     $M_corp_credit_data['ending_balance'] = $pay_info['M_credit']+$total_price;
                     $M_corp_credit_data['customer_id'] = $customer_id;
                     $M_corp_credit_data['app_id'] = $app_id;
-                    //收入出方货豆日志
+                    //收入出方提货权日志
                     $to_M_credit_log = $this->customer_currency_log->add_log($M_corp_credit_data);
                     
                     if( $to_M_credit_log )
@@ -774,7 +774,7 @@ class Order extends Account_Controller
                         
                         if( !empty($C_commission ) && $C_commission > 0 )
                         { 
-                            //上一次货豆交易的日志中的信息(平台)
+                            //上一次提货权交易的日志中的信息(平台)
                             $platform_M_last_log = $this->customer_currency_log->load_last('-1');
                             $platform_M  = !empty( $platform_M_last_log ) ? $platform_M_last_log['ending_balance'] : 0;
                             
@@ -788,7 +788,7 @@ class Order extends Account_Controller
                         
                         if( $commission_row && $C_commission_row){
 
-                           //店主账号+货豆
+                           //店主账号+提货权
                            $up_row = $this->pay_account_mdl->charge_M_credit($pay_info['id'], $total_price );
 
                            if( $up_row )
@@ -797,7 +797,7 @@ class Order extends Account_Controller
                                $status = 1;//支付成功
                                $is_ok = true;
                                 //$this->customer_currency_log->openid = $this->session->userdata('openid');
-                                //$this->customer_currency_log->result_message( $M_credit_expend_data ); //货豆支出-微信推送
+                                //$this->customer_currency_log->result_message( $M_credit_expend_data ); //提货权支出-微信推送
                            }
                         }
                         
@@ -840,7 +840,7 @@ class Order extends Account_Controller
                 $customer_id = $pay_detailed['customer_id'];//支付账号的用户ID
                 $pay_account_id = $pay_detailed['id'];//支付账号ID
                 $pay_relation_id = $pay_detailed['r_id']; //关联表的ID
-                $surplus_m = $pay_detailed['M_credit']; //支付前的货豆余额
+                $surplus_m = $pay_detailed['M_credit']; //支付前的提货权余额
                 $credit = '0.00'; //授信
                 $time = date('Y-m-d H:i:s');
             
@@ -854,7 +854,7 @@ class Order extends Account_Controller
                     
                     $this->db->trans_begin(); //事物执行方法中的MODEL。
                     
-                    //扣用户货豆
+                    //扣用户提货权
                     $this->load->model ( 'pay_account_mdl' );
                     $row = $this->pay_account_mdl->update_M_creadit($pay_account_id, $total_price);
                     
@@ -862,10 +862,10 @@ class Order extends Account_Controller
                     { 
                         $this->load->model("customer_currency_log_mdl",'customer_currency_log');
                         
-                        //上一次用户的货豆交易日志
+                        //上一次用户的提货权交易日志
                         $last_m_log    = $this->customer_currency_log->load_last($pay_relation_id);
                         
-                        //检测货豆是否异常
+                        //检测提货权是否异常
                         if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $surplus_m)
                         {
                             $M_credit_expend_data['status'] = '1';
@@ -875,7 +875,7 @@ class Order extends Account_Controller
                             $M_credit_expend_data['status'] = '2';
                         }
                         
-                        //上一次平台的货豆交易日志
+                        //上一次平台的提货权交易日志
                         $to_last_m_log    = $this->customer_currency_log->load_last('-1');
                         
                         
@@ -919,7 +919,7 @@ class Order extends Account_Controller
                             
                             
 
-                            //货豆日志
+                            //提货权日志
                             $M_credit_expend_data['status'] = '1';
                             $M_credit_expend_data['relation_id'] = $pay_relation_id;
                             $M_credit_expend_data['id_event'] = '60';
@@ -938,7 +938,7 @@ class Order extends Account_Controller
                             {
                                  
                                 
-                                //支出方货豆日志
+                                //支出方提货权日志
                                 $M_credit_data['remark'] = '平台收入';
                                 $M_credit_data['relation_id'] = '-1';
                                 $M_credit_data['type'] = '1';
@@ -950,7 +950,7 @@ class Order extends Account_Controller
                                 $M_credit_data['ending_balance'] = $M_income_end;
                                 $M_credit_data['customer_id'] = $customer_id;
                                 $M_credit_data['app_id'] = $app_id;
-                                //收入方货豆日志
+                                //收入方提货权日志
                                 $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
                     
                                 if(!$to_M_credit_log)
@@ -1005,14 +1005,14 @@ class Order extends Account_Controller
      * $order_sn = 订单号
      * $app_id = 地区ID
      * $C_commission = 手续费金额
-     * $corp_M = 扣除手续费钱的货豆（用户）
-     * $platform_M = 收取手续费前的货豆（平台）
+     * $corp_M = 扣除手续费钱的提货权（用户）
+     * $platform_M = 收取手续费前的提货权（平台）
      * $corp_customer_id 支出手续费的用户ID。
      */
     private function C_order_commission( $pay_r_id, $order_sn, $app_id, $C_commission, $corp_M, $platform_M,$corp_customer_id)
     {
     
-        //店主支出货豆手续费
+        //店主支出提货权手续费
         $M_corp_commission['relation_id'] = $pay_r_id;
         $M_corp_commission['status'] = 1;
         $M_corp_commission['id_event'] = '76';
@@ -1025,13 +1025,13 @@ class Order extends Account_Controller
         $M_corp_commission['customer_id'] = '-1';
         $M_corp_commission['app_id'] = $app_id;
         
-        //店主支出货豆手续费日志
+        //店主支出提货权手续费日志
         $M_corp_commission_log = $this->customer_currency_log->add_log($M_corp_commission);
         
         
         if( $M_corp_commission_log )
         { 
-            //平台收入货豆手续费
+            //平台收入提货权手续费
             $M_commission['relation_id'] = '-1';
             $M_commission['id_event'] = '76';
             $M_commission['remark'] = '平台收入-手续费扣款';
@@ -1044,7 +1044,7 @@ class Order extends Account_Controller
             $M_commission['customer_id'] = $corp_customer_id;
             $M_commission['app_id'] = $app_id;
             
-            //平台收入货豆手续费日志
+            //平台收入提货权手续费日志
             $M_commission_log = $this->customer_currency_log->add_log($M_commission);
             
             if( $M_commission_log )

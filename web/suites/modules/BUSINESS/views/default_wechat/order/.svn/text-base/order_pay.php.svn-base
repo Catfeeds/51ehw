@@ -34,7 +34,7 @@
     <!-- 有余额的时候 -->
 	<div class="order-pay-yes" >
 		<ul>
-		  <li><span>订单金额：</span><span class="fn-right order-pay-money-color"><?php echo $total_price?> 货豆 (可用余额：<?php echo round( $user_total_price,2 )?> 货豆)</span></li>
+		  <li><span>订单金额：</span><span class="fn-right order-pay-money-color"><?php echo $total_price?>  (可用提货权：<?php echo round( $user_total_price,2 )?> )</span></li>
 		  <li><span>手续费：</span><span class="fn-right order-pay-money-color"><?php echo number_format($commission, 2, '.', '');?> 元 (可用余额：<?php echo round( $cash,2 )?> 元)</span></li>
 	       <li class="order-pay-money">请输入支付密码<input type="password" name="pay_passwd"></li>
 	       <li class="order-pay-forget"><span class="order-pay-money-color" hidden >密码错误，请重新输入</span><a href="<?php echo site_url('member/info/paypwd_edit')?>" class="fn-right">忘记支付密码？</a></li>
@@ -44,7 +44,7 @@
 	<!-- 余额不足的时候 -->
 	<div class="order-pay-no" >
 		<ul>
-		  <li><span>订单金额：</span><span class="fn-right order-pay-money-color"><?php echo $total_price?> 货豆 (可用余额：<?php echo round( $user_total_price,2 )?> 货豆)</span></li>
+		  <li><span>订单金额：</span><span class="fn-right order-pay-money-color"><?php echo $total_price?>  (可用提货权：<?php echo round( $user_total_price,2 )?> )</span></li>
 		  <li><span>手续费：</span><span class="fn-right order-pay-money-color"><?php echo number_format($commission, 2, '.', '');?> 元 (可用余额：<?php echo round( $cash,2 )?> 元)</span></li>
 		  
 		  <li class="order-pay-money mb-10" id="order-pay-way">请选择支付方式<span class="order-pay-way-active">混合支付</span><span>微信支付</span><span>银联支付</span></li>
@@ -52,7 +52,7 @@
 	</div>
 	<div class="order-pay-no order-pay-way" >
 		<ul>
-		  <li class="order-pay-money"><span>货豆支付金额</span><span class="fn-right"><?php  echo $user_total_price >= $total_price ? round($total_price,2) : round($user_total_price,2);?> 货豆</span></li>
+		  <li class="order-pay-money"><span>使用提货权</span><span class="fn-right"><?php  echo $user_total_price >= $total_price ? round($total_price,2) : round($user_total_price,2);?> </span></li>
 		  <li class="order-pay-money"><span>微信支付金额</span><span class="fn-right"><?php echo  $user_total_price >= $total_price ? round($pay_commission,2) : round(($total_price - $user_total_price) +$pay_commission,2)?> 元</span></li>
 		  <?php 
 		  $prices = $user_total_price >= $total_price ? round($total_price,2) : round($user_total_price,2);
@@ -77,7 +77,7 @@
 	<!-- 确认支付 -->
 	<div class="order-pay-tishi" hidden>
 	   
-		<span>货豆扣款成功，将在3秒内跳转微信支付，请勿关闭页面</span>
+		<span>扣款成功，将在3秒内跳转微信支付，请勿关闭页面</span>
 	</div>
 	<a href="javascript:;" onclick="is_pay()" class="order-pay-confirm custom_button" id="order-pay-confirm">确认支付</a>
 

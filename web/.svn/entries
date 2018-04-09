@@ -1,14 +1,14 @@
 10
 
 dir
-5936
+5980
 svn://liangdaojing@192.168.10.137/51ehw/web
 svn://liangdaojing@192.168.10.137/51ehw
 
 
 
-2018-04-04T07:22:01.923493Z
-5936
+2018-04-08T07:44:48.595310Z
+5980
 xiankunkai
 has-props
 
@@ -66,6 +66,9 @@ has-props
 system
 dir
 
+phpqrcode
+dir
+
 maintenance.html
 file
 
@@ -100,7 +103,7 @@ wing
 
 1637
 
-phpqrcode
+docs
 dir
 
 admin
@@ -127,9 +130,6 @@ dir
 
 
 absent
-
-docs
-dir
 
 UPLOADScomplain
 dir
@@ -211,10 +211,10 @@ dir
 data
 dir
 
-show_management
+suites
 dir
 
-suites
+show_management
 dir
 
 coming_soon.html

@@ -1060,5 +1060,22 @@ class Customer_mdl extends CI_Model {
    	}
 
 
+   	/**
+   	 * 随机抽取100个用户的手机号码
+   	 */
+   	public function get100Mobile(){
+   	    $this->db->select("mobile");
+   	    $this->db->where("mobile !=","00000000000");
+   	    $this->db->where("mobile !=","0");
+   	    $this->db->where("mobile != ",'');
+   	    $this->db->where("mobile != ",NULL);
+   	    $this->db->from("customer");
+   	    $this->db->limit(100);
+   	    $res = $this->db->get()->result_array();
+   	    return $res;
+   	}
+   	
+   	
+   	
 
 }

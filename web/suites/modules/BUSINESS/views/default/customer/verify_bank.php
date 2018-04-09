@@ -142,7 +142,7 @@ function verify_realName(){
     if(!real_name || real_name == ''){
       //$("#yz_name").show();
         }else{
-          if(reg.test(real_name) ){
+          if(regg.test(real_name) ){
            // var real_name = $('input[name="real_name"]').val();
              // $("#yz_name").hide();
             }else{
@@ -169,11 +169,12 @@ function verify_idCard(){
 //第三步银行卡号
 function verify_bankCard(){
     var bank = $('input[name="bank"]').val();
-    var reg = /^(\d{16}|\d{19})$/;
+    //var reg = /^(\d{16}|\d{19})$/;
+    var reg = /^[0-9]*$/;
     if(!bank || bank == ''){
       $("#yz_bankcrad").show();
       }else{
-        if(reg.test(bank)){
+        if(bank.length >= 16  && bank.length <= 19  &&  reg.test(bank) ){
           $("#yz_bankcrad").hide();
           }else{
             $("#yz_bankcrad").show();
@@ -351,15 +352,30 @@ function submitform(){
     });
 
 </script>      
-    <?php }else{ ?>
+    <?php }else{ 
+      $real_name_len =  mb_strlen($customer['real_name']);
+      $real_name = '';
+      for($i=1;$i<$real_name_len;$i++){
+          $real_name .= '*';
+      }
+      $real_name = $real_name.mb_substr($customer['real_name'],-1);
+      
+      $idcard_len = strlen($customer['idcard']);
+      if($idcard_len == 15){
+         $idcard =  substr_replace($customer['idcard'],'*************',1,13);
+      }else if($idcard_len == 18){
+          $idcard =  substr_replace($customer['idcard'],'****************',1,16);
+      }
+        
+        ?>
          <ul class="certificatio_uol" >
            <li>
               <div class="certificatio_le"><span class="certificatio_le_span">真实姓名：</span></div> 
-              <div class="certificatio_ri"><span class="certificatio_ri_span"><?php echo $customer['real_name'];?></span></div> 
+              <div class="certificatio_ri"><span class="certificatio_ri_span"><?php echo $real_name;?></span></div> 
            </li>   
            <li>
               <div class="certificatio_le"><span class="certificatio_le_span">身份证号：</span></div> 
-              <div class="certificatio_ri"><span class="certificatio_ri_span"><?php echo $customer['idcard'];?></span></div> 
+              <div class="certificatio_ri"><span class="certificatio_ri_span"><?php echo $idcard;?></span></div> 
            </li> 
             <li>
               <div class="certificatio_le"><span class="certificatio_le_span">通过认证时间：</span></div> 
@@ -367,7 +383,7 @@ function submitform(){
            </li>   
             <li>
               <div class="certificatio_le"><span class="certificatio_le_span">绑定预留手机：</span></div> 
-              <div class="certificatio_ri"><span class="certificatio_ri_span"><?php echo $customer['bankmobile'] ?></span></div> 
+              <div class="certificatio_ri"><span class="certificatio_ri_span"><?php echo substr_replace($customer['bankmobile'],'****',3,4);?></span></div> 
            </li>          
        </ul>
 
@@ -389,8 +405,6 @@ function submitform(){
     <?php }?>
     </div>
  </div>
-
-
 <script type="text/javascript">
   //添加取消
     function ehw_reset(){
