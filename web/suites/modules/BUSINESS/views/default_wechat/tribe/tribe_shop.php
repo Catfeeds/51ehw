@@ -372,7 +372,7 @@ $(function () {
         	                for(var i=0;i<data["list"].length;i++){
             	                if(types == 2){
                 	                if (data['limit'] == 1) {
-                    	                result += '<div class="tribe_goods_box">';
+                    	                result += '<div class="tribe_goods_box" id="'+data["list"][i]["id"]+'">';
                 	                  	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
                 	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div></a>';
                 	                    result += '<div class="good-text-bg">';
@@ -500,12 +500,13 @@ function cane(){
 //提交置顶数据
 function quit_sub(id) {
 	var ee = 'id'+id;
+	var div_data = document.getElementById(id);
 	var  label_data = document.getElementById(ee).value;
 	$.ajax({
 		url: '<?php echo site_url('tribe/up_product')?>',
         type: 'post',
         dataType: 'json',
-        data: {'id': id,'label_data': label_data},
+        data: {'id': id,'label_data': label_data,'tribe_id':tribe_id},
         success: function (data) {
             switch(data.Type)
             {
@@ -515,12 +516,17 @@ function quit_sub(id) {
                     setTimeout("prompt();", 2000);
                     break;
                 case 1:
-                	window.location.href = '<?php echo site_url("Tribe/shop/11");?>';
+                	$("#style").prepend(div_data);
                 	$('.tuichu_ball').hide();
                 	document.getElementById(ee).value = '已置顶';
                     break;
                 case 2:
-                	window.location.href = '<?php echo site_url("Tribe/shop/11");?>';
+                    if (data.last_up_id == '0') {
+                    	$("#style").prepend(div_data);
+                    }else {
+                    	var last_up_data = document.getElementById(data.last_up_id);
+                        $(div_data).insertAfter(last_up_data);
+                    }
                 	$('.tuichu_ball').hide();
                 	document.getElementById(ee).value = '置顶';
                     break;

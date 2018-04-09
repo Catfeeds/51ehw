@@ -142,7 +142,7 @@ dropload = $('#sort').dropload({
                 for(var i=0;i<data["productList"].length;i++){
                 	
                 	
-                	result += '<a href="<?php echo site_url('easyshop/product/good_detail/}');?>/'+data["productList"][i]['id']+'?tribe_id='+tribe_id+'"><li class=" clearfix" style="">';
+                	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["productList"][i]['id']+'?tribe_id='+tribe_id+'"><li class=" clearfix" style="">';
                 	result += '<i class="result_img" style="width:100px;height: 100px;float: left;margin-right: 15px;"><img src="<?php echo IMAGE_URL;?>'+data["productList"][i]['img_path']+'" onerror="this.src=\'images/default_img_s.jpg\'"></i>';
                 	result += '<em class="result_em"><p class="result_title">'+data["productList"][i]['product_name']+' '+data["productList"][i]['desc']+'</p>';
                 	result += '<p class="tribe_money">价格: '+formatCurrency(data["productList"][i]['price'])+'</p></em></li></a>';

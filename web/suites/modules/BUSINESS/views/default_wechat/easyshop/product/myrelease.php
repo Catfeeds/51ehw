@@ -6,18 +6,17 @@
 <!-- 我的发布 -->
 <div class="myrelease">
    <div class="myrelease_list">
-       <ul>
+       <ul id="uldata">
        </ul>
    </div> 
    <!-- 备注 -->
    <div class="myrelease_remarks"><span>备注：商品只能发布到一个部落，需要发布到平台请请联系客服开通正式企业，客服电话：</span><a href="tel:400-002-9777">400-002-9777</a></div>
 </div>
-<<<<<<< .mine
+
 <div class="myrelease_get"><a href="<?php echo site_url("Easyshop/product/ReleaseGoodsView/?tribe_id={$tribe_id}");?>">发布商品</a></div>
-=======
+
 <div class="myrelease_get"><a href="<?php echo site_url("easyshop/product/ReleaseGoodsView?tribe_id={$tribe_id}");?>">发布商品</a></div>
 
->>>>>>> .r5980
 <!-- 弹窗 -->
  <div class="tuichu_ball" hidden>
    <div class="tuichu_ball_box">
@@ -42,7 +41,7 @@ dropload = $('.myrelease').dropload({
 				  image_url = "<?php echo IMAGE_URL;?>";
 				  var result = "";
 				  for(var i=0;i<data.list.length;i++){
-					  result += '<li>';
+					  result += '<li id="'+data["list"][i]["id"]+'" >';
 					  result += '<div class="myrelease_time">';
 					  result += '<span>创建时间：'+data['list'][i]['created_at']+'</span>';
 					  result += '</div>';
@@ -103,11 +102,10 @@ dropload = $('.myrelease').dropload({
                         setTimeout("prompt();", 2000);
                         break;
                     case 1:
-                    	setTimeout(function (){
-                            window.location.href = '<?php echo site_url('Easyshop/product/personal_list/?tribe_id='.$tribe_id);?>';
-                             }, 1600);
+                        $("#"+id).remove();
                     	$('.tuichu_ball').hide();
                         $(".black_feds").text("删除成功").show();
+                        setTimeout("prompt();", 1600);
                         break;
                     case 2:
                     	$('.tuichu_ball').hide();

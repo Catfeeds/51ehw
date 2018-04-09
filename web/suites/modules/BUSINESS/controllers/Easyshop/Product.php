@@ -338,7 +338,8 @@ class Product extends Front_Controller {
             $id = $id['id'];
         }
         $update_data = array(
-            'is_on_sale' => '3'
+            'is_on_sale' => '3',
+            'sort' => '0',
         );
         $is_order_data = $this->db->where('product_id',$id)->from('easy_order')->get()->result_array();
         if (empty($is_order_data)) {
