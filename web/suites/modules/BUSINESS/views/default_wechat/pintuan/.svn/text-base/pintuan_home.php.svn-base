@@ -14,7 +14,7 @@ if(isset($groupbuy_list) && count($groupbuy_list) != 0){
 		</div>
 		<div>
 			<span style="display: inline-block; padding-left: 10px; padding-top: 20px;">
-			<span style="font-size: 14px;"><?php echo $v['groupbuy_price']?></span>货豆</span>
+			<span style="font-size: 14px;"><?php echo $v['groupbuy_price']?></span>提货权</span>
 			<span style="border: 1px solid #ccc; display: inline-block; margin-left: 10px; padding: 1px 4px;"><?php echo $v['menber_num']?>人团</span>
 			<a href="<?php echo site_url("pintuan/pintuan_detail/".$v['id']."/0/groupbuy")?>" style="display: inline-block; width: 120px; line-height: 48px; text-align: center; background: #FECF0A; font-size: 18px; color: #262626; position: absolute; right: 0;">去开团</a>
 		</div>
@@ -42,7 +42,7 @@ if(isset($groupbuy_list) && count($groupbuy_list) != 0){
 		<div>
 			<span
 				style="display: inline-block; padding-left: 10px; padding-top: 20px;"><span
-				style="font-size: 14px;">599.00</span>货豆</span> <span
+				style="font-size: 14px;">599.00</span>提货权</span> <span
 				style="border: 1px solid #ccc; display: inline-block; margin-left: 10px; padding: 1px 4px;">2人团</span>
 			<a href="javacript:void(0);"
 				style="display: inline-block; width: 120px; line-height: 48px; text-align: center; background: #FECF0A; font-size: 18px; color: #262626; position: absolute; right: 0;">去开团</a>

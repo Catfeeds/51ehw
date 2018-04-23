@@ -120,7 +120,7 @@
                                 <?php 
                                 $total = $v['p_count']*$v['m_price'];
                                 echo $total ;?>
-                                M卷</th>				
+                                </th>				
                                 <th width="76px"><?php echo $v['p_count'];?></th>
                                 <th width="94px" class="no_pass">
                                 <?php 

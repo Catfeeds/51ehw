@@ -319,9 +319,9 @@ class Lottery_mdl extends CI_Model {
 	 */
 	public function getThisDayLog($lottery_id){
 	    $this->db->from("lottery_log as ll");
-	    $min_date = date('Y-m-d ', strtotime("-1 days"));// 筛除时间段：1天
-	    $max_date = date('Y-m-d ', strtotime("+1 days"));// 筛除时间段：1天
-	    $this->db->where("ll.create_at >=",$min_date);
+	    $min_date = date('Y-m-d ', strtotime("-1 days")).'23:59:59';// 筛除时间段：1天
+	    $max_date = date('Y-m-d ').'23:59:59';
+	    $this->db->where("ll.create_at >",$min_date);
 	    $this->db->where("ll.create_at <=",$max_date);
 	    $this->db->where("ll.lottery_id ",$lottery_id);
 	    $row = $this->db->get()->row_array();
@@ -455,21 +455,40 @@ class Lottery_mdl extends CI_Model {
     /**
      * 查询当天获奖记录
      */
-    public function getThisDayAwardLog($lottery_id,$item = 0){
+    public function getThisDayAwardLog($lottery_id = 0,$item = 0){
         $customer_id = $this->session->userdata('user_id');
         if($item){
             $this->db->select("la.item");
         }
-        $this->db->from("lottery_award as la");
-        $min_date = date('Y-m-d ', strtotime("-1 days"));// 筛除时间段：1天
-        $max_date = date('Y-m-d ', strtotime("+1 days"));// 筛除时间段：1天
-        $this->db->where("la.create_at >=",$min_date);
-        $this->db->where("la.create_at <=",$max_date);
-        $this->db->where("la.lottery_id ",$lottery_id);
        
+        $this->db->from("lottery_award as la");
+        $min_date = date('Y-m-d ', strtotime("-1 days")).'23:59:59';// 筛除时间段：1天
+	    $max_date = date('Y-m-d ').'23:59:59';
+	    $this->db->where("la.create_at >",$min_date);
+	    $this->db->where("la.create_at <=",$max_date);
+	    if($lottery_id){
+	        $this->db->where("la.lottery_id ",$lottery_id);
+	    }
         $query = $this->db->get()->result_array();
         return $query;
     }
+    
+    /**
+     * 查询当天是否抽到某个优惠券
+     */
+    public function getPackageById($lottery_id,$package_id){
+        $this->db->from("lottery_award as la");
+        $min_date = date('Y-m-d ', strtotime("-1 days")).'23:59:59';// 筛除时间段：1天
+        $max_date = date('Y-m-d ').'23:59:59';
+        $this->db->where("la.create_at >",$min_date);
+        $this->db->where("la.create_at <=",$max_date);
+        $this->db->where("la.status",1);//已领取的
+        $this->db->where("la.package_id",$package_id);
+        $this->db->where("la.lottery_id ",$lottery_id);
+        $row = $this->db->get()->row_array();
+        return $row;
+    }
+    
     
     /**
      * 更新获奖记录
@@ -482,6 +501,17 @@ class Lottery_mdl extends CI_Model {
         $this->db->update("lottery_award");
         return $this->db->affected_rows();
             
+    }
+    
+    
+    /**
+     * 获取总投票数
+     */
+    public function getVoteNum(){
+        $this->db->select("sum(vote_num) as vote_num");
+        $this->db->from("lottery_log");
+        $query = $this->db->get()->row_array();
+        return $query;
     }
     
     /**

@@ -104,7 +104,7 @@
       <div class="im-right-sidebar_r" style="display:block">
         <h5><img src="images/chatting/gaungao1.jpg"/></h5>
         <h6>欧版爆款  宽松竖条纹雪纺衬衫连衣裙中裙</h6>
-         <strong><span>易货价：</span><samp>189.00 货豆 </samp></strong>
+         <strong><span>易货价：</span><samp>189.00 提货权 </samp></strong>
         <div class="get_into1">
         <a href="#">立即购买</a>
       </div>

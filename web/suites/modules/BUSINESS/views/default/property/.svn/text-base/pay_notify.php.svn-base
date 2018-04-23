@@ -49,7 +49,7 @@
 		    </ul>
         </div>
 
-         <!--货豆余额纪录开始-->
+         <!--提货权余额纪录开始-->
 		<div class="huankuan_cmRight" style="display:block">
             <div class="huankuan_rTop_5" style="display: block">充值通知</div>
                 <div class="transformation_1" >

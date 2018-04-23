@@ -3458,7 +3458,7 @@ footer {border-top: 1px solid #a7a5a5!important;}
 
 
 /*族员*/
-.tribe_people_list {overflow: hidden;/*height: 38px;line-height: 28px;*/background: #f9f9f9;text-align: center;padding: 5px 0 10px 0;}
+.tribe_people_list {overflow: hidden;/*height: 38px;line-height: 28px;*/background: #f9f9f9;text-align: center;padding: 8px 0 8px 0;}
 .tribe_people_list a {float: left;width: 33.3%;height: 100%;box-sizing: border-box;color: #003668;border-right: 1px solid #ddd;font-size: 14px;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;    display: block;
     overflow: hidden;}
 .tribe_people_list a:last-child {border-right: none;}
@@ -3873,7 +3873,7 @@ footer {border-top: 1px solid #a7a5a5!important;}
 .commerce_choice_footer ul li span {font-size: 15px;color: #61c3d0;}
 .commerce_choice_select_all {width: 100%;display: block;}
 .commerce_choice_select_all input {float: left;font-size: 25px;color: #61c3d0;padding-top: 9px;}
-.commerce_people_head01 {overflow: hidden;width: 100%;padding: 20px 10px 20px 10px;background: #fff;text-align: center;}
+.commerce_people_head01 {overflow: hidden;width: 100%;padding: 25px 10px 0px 10px;background: #fff;text-align: center;height: 130px;}
 .commerce_people_head01 ul {white-space: nowrap;overflow-x: auto;overflow-y: hidden;width: 100%;box-sizing: border-box;font-size: 0;}
 .commerce_people_head01 ul li {display: inline-block;width: 25%;text-align: center;}
 .commerce_people_head01 ul li a {position: relative;display: inline-block;width: 60px;height: 60px;}
@@ -4856,7 +4856,7 @@ color: #FFFFFF;}
 }
 
 /*十佳企业*/
-.shijia {height: 100%;overflow: hidden;padding-top: 10px;padding-bottom: 60px;}
+.shijia {height: 100%;overflow: hidden;padding-top: 10px;}
 .shijai_head {padding: 10px;background: #fff;}
 .shijai_head p {padding-top: 10px;font-size: 15px;color: #333333;}
 .shijai_head div {position: relative;}
@@ -4864,6 +4864,10 @@ color: #FFFFFF;}
 .shijai_head .shijia_dian01 {right: 55px;bottom: 7px;background: #fff;}
 .shijai_head .shijia_dian02 {right: 35px;bottom: 7px;background: #fff;}
 .shijai_head .shijia_dian03 {right: 15px;bottom: 7px;background: #fff;}
+.shijai_head_nei{ position: absolute!important; bottom:12px; width: 100%; left: 0; text-align: center;}
+.shijai_head_nei small{ width:20px;height: 10px; border-radius: 5px; display: inline-block;margin:0 5px;}
+.shijia_dian04{ background: #fff;}
+.shijia_dian05{ background: #d26f6e;}
 .shijia_list {padding: 10px;overflow: hidden;}
 .shijia_list ul {display: block;overflow: hidden;}
 .shijia_list ul li {float:left;width: 32%;overflow: hidden;margin-bottom: 10px;}
@@ -4875,6 +4879,35 @@ color: #FFFFFF;}
 .pagenumber .now:after {background: rgba(255,255,255,1) !important;}
 .pagenumber div:after{content: "";width: 8px;height: 8px; background: rgba(255,255,255,0.5);border-radius: 2em;position: absolute;top: 50%;left: 50%;margin-top: -0.2em;margin-left: -0.2em;}
 .shijia_win {padding-bottom: 10px;}
+.shijai_zeng{padding-bottom: 25px!important;}
+.shijia_li_sh{ width: 100%; margin-bottom:17px;}
+.shijia_list_biao{ margin:0px 20px 0 20px; background: #fff; position: relative; padding-bottom: 5px;}
+.list_biao_sh{ margin-right: -10px; padding-left: 10px; position: absolute; margin-top:-17px;}
+.list_biao_ul{display: block;overflow: hidden; padding: 0 10px;}
+.list_biao_ul li{float:left;width: 50%;overflow: hidden;margin-bottom: 4px;box-sizing: border-box;}
+.list_biao_ul li a{ display: block;}
+.list_biao_ul li:nth-child(1) a { margin-right: 2px;}
+.list_biao_ul li:nth-child(2) a { margin-left: 2px;}
+.list_biao_ul li:nth-child(3) a { margin-right: 2px;}
+.list_biao_ul li:nth-child(4) a { margin-left: 2px;}
+.list_biao_ul1{display: block;overflow: hidden; padding: 0 10px;}
+.list_biao_ul1 li{float:left;width: 33.3%;overflow: hidden;margin-bottom: 4px;box-sizing: border-box;}
+.list_biao_ul1 li a{ display: block;}
+.list_biao_ul1 li:nth-child(1) a { margin-right: 2px;}
+.list_biao_ul1 li:nth-child(2) a { margin-left: 2px; margin-right: 2px}
+.list_biao_ul1 li:nth-child(3) a { margin-left: 2px;}
+.list_biao_xian{ overflow:hidden; padding-top:8%}
+.list_biao_xian li{ width: 100%;  overflow: hidden; margin-top:-2px;}
+.list_biao_xian li a{ display: block;padding: 0 10px 10px 30px;border-bottom: 1px solid #e5e5e5}
+.list_biao_uli{display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: box;}
+.list_biao_uli img{ width: 70px;height: 60px; display: inline-block;}
+.list_biao_right{box-sizing: border-box;box-flex: 1; -webkit-box-flex: 1;-moz-box-flex: 1;-ms-flex: 1;}
+.list_biao_right h2{ color: #74282a; font-size: 14px; text-align: right; margin-top:15px;text-overflow: ellipsis;overflow: hidden; width: 100%; white-space: nowrap;}
+.list_biao_right p{ color: #a9a9a9; font-size: 12px; text-align: right; margin-top:9px;text-overflow: ellipsis;overflow: hidden; width: 100%; white-space: nowrap;}
+.list_biao_xian li:nth-last-child(1) a{ border: none;}
+@media screen and (max-width:320px) {
+.list_biao_xian{ overflow:hidden; padding-top:7%}
+}
 /*发现*/
 .find{}
 .find_nav {display: block;overflow: hidden;background: #fff;}
@@ -4995,7 +5028,7 @@ color: #FFFFFF;}
 
 
 
-.count_time {text-align: center;color: #80440b;font-size: 14px;margin: 10px 20px;border: 2px solid #cfa972;border-radius: 25px;padding: 8px 0px 8px 10px;overflow: hidden;}
+.count_time {display: none;text-align: center;color: #80440b;font-size: 14px;margin: 10px 20px;border: 2px solid #cfa972;border-radius: 25px;padding: 8px 0px 8px 10px;overflow: hidden;}
 .count_time span {font-size: 14px;color: #fff;display: inline-block;padding-right: 5px;}
 .count_time em {color: #fff;width: 25px;display:  inline-block;height:  25px;line-height: 25px;border-radius: 4px;text-align:  center;margin: 0 4px;background: url(../images/lottery/lottery_icon.png) no-repeat;background-size: 100% 100%;}
 
@@ -5026,7 +5059,7 @@ color: #FFFFFF;}
   .count_time em {width: 20px;height: 20px;line-height: 20px;}
 }
 .lottery_rule {padding: 10px 30px;margin-top: 20px;}
-.lottery_rule p {font-size: 15px;color: #fff;padding-top: 20px;line-height: 24px;}
+.lottery_rule p {font-size: 15px;color: #fff;padding-top: 18px;line-height: 24px;}
 .lottery_rule_title {}
 .lottery_rule_title img {width: 35%;}
 .lottery_rule_title fieldset {border-top: 1px solid #dadada;border-bottom: none;border-left: none;border-right: none;width: 110px;text-align: center;margin: auto;}
@@ -5037,10 +5070,13 @@ color: #FFFFFF;}
 .lottery_awards_text p:nth-child(2) {color: #fff;font-size: 14px;padding-top: 5px;line-height: 24px;}
 .lottery_pizze {padding: 10px 30px;margin-top: 20px;}
 .lottery_pizze_title {color: #facd89!important;font-size: 15px!important;line-height: 24px;}
-.lottery_pizze p {color: #fff;font-size: 14px;line-height: 24px;padding-top: 15px;}
+.lottery_pizze p {color: #fff;font-size: 15px;line-height: 24px;padding-top: 15px;}
 .lottery_pizze_img {width: 115px;padding-top: 30px!important;}
 .lottery_copyright {padding: 45px 30px;text-align: right;}
 .lottery_copyright span {color: #ae8649;font-size: 13px;}
+.lottery_prompt {margin-top: 20px;padding: 0px 30px;} 
+.lottery_prompt p:nth-child(1) {font-size: 15px;color: #ae8649;}
+.lottery_prompt p:nth-child(2) {font-size: 14px;color: #ae8649;padding-top: 15px;}
 /* 大转盘样式 */
 .turntable-tob{ width:100%; overflow:hidden;}
 .turntable-nei{ background:url(../images/lottery/turntable.png) no-repeat center  center; overflow:hidden;background-size: 100% 100%;padding: 20px 0;}
@@ -5049,7 +5085,7 @@ color: #FFFFFF;}
 .turntablenei .turnplate canvas.item{width:100%;}
 .turntablenei .turnplate img.pointer{position:absolute;width: 25%;height: 30%;left: 37%;top: 32%;}
 .lottery_ball {position: fixed;overflow: auto;width: 100%;height: 100%;top: 0;bottom: 0;right: 0;background-color: rgba(0,0,0,.3);}
-.lottery_ball_box {position: relative;width: 260px;height: auto;margin: 0 auto;overflow: visible;top: 50%;-webkit-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%);}
+.lottery_ball_box {position: relative;width: 270px;height: auto;margin: 0 auto;overflow: visible;top: 50%;-webkit-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%);}
 .lottery_pizee_no {text-align: center;}
 .lottery_pizee_no a {color: #fff;font-size: 35px;display: inline-block;padding-top: 25px;}
 .lottery_pizze_get {text-align: center;padding: 20px 40px;background: #fff;border-bottom-right-radius: 12px;border-bottom-left-radius: 12px;}
@@ -5097,8 +5133,49 @@ color: #FFFFFF;}
 .approve_protocol_close {position: fixed;right: 2%;top: 20%;-webkit-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%);z-index: 9;}
 .approve_protocol_close img {width: 50%;}
 
+/*秦商年鉴*/
+.almanac {padding: 15px;}
+.almanac h1 {text-align: center;font-size: 20px;padding-bottom: 5px;}
+.almanac h2 {font-size: 15px;padding-top: 5px;}
+.almanac h3 {font-size: 13px;padding-top: 2px;}
+.almanac .almanac_mulu .almanac_title {display: block;font-size: 15px;padding-top: 10px;padding-bottom: 5px;}
+.almanac div p {font-size: 13px;text-indent: 2em;line-height: 22px;}
+.almanac_up {display: none;position: fixed;background: rgba(0,0,0,0.5);width: 40px;height: 40px;border-radius: 50%;text-align: center;line-height: 40px;right: 20px;bottom: 40px;padding-top: 2px!important;}
+.almanac_up span {color: #fff;font-size: 18px;}
+.almanac_up_mulu {display: none;position: fixed;z-index: 10;background: rgba(0,0,0,0.5);width: 40px;height: 40px;border-radius: 50%;text-align: center;line-height: 40px;right: 20px;bottom: 40px;padding-top: 2px!important;}
+.almanac_up_mulu span {color: #fff;font-size: 18px;}
+
+.almanac .almanac_mulu h1 {text-align: center;font-size: 20px;padding-bottom: 5px;}
+.almanac .almanac_mulu h2 {font-size: 15px;padding-top: 5px;}
+.almanac .almanac_mulu h3 {font-size: 13px;padding-top: 2px;}
 
 
+
+.pbtopbar_ta{ background: #fff; display: none;position: fixed; top: 0px; width: 100%; height: 100%;overflow-y: scroll;-webkit-overflow-scrolling: touch;z-index: 1;}
+
+.pbtopbar_ta_mu {padding: 15px;}
+.pbtopbar_ta_mu h1 {text-align: center;font-size: 20px;padding-bottom: 5px;}
+.pbtopbar_ta_mu h2 {font-size: 15px;padding-top: 5px;}
+.pbtopbar_ta_mu h3 {font-size: 13px;padding-top: 2px;}
+.pbtopbar_ta_mu .almanac_title {display: block;font-size: 15px;padding-top: 10px;padding-bottom: 5px;}
+.pbtopbar_ta_mu .almanac_title span {font-size: 17px;display: inline-block;padding-left: 5px;}
+
+.pbtopbar_right {position: fixed;background: rgba(0,0,0,0.5);color: #fff;z-index: 9;width: 40px;height: 40px;border-radius: 50%;text-align: center;line-height: 40px;right: 20px;bottom: 95px;padding-top: 2px!important;}
+
+.almanac .almanac_title span {font-size: 17px;display: inline-block;padding-left: 5px;}
+
+
+.lottery_img488 {top: 100px;width: 210px;left: 30px;}
+.lottery_text488 {bottom: 2px;padding: 0 7px;}
+.lottery_pizz_yes_close {text-align: center;}
+.lottery_pizz_yes_close a {color: #fff;font-size: 35px;display: inline-block;padding-top: 25px;}
+
+.lottery_search {position: fixed;background: rgba(0,0,0,0.5);color: #fff;z-index: 1;width: 40px;height: 40px;border-radius: 50%;text-align: center;line-height: 40px;right: 20px;bottom: 150px;padding-top: 2px!important;}
+.lottery_search_ball {display: none;}
+.lottery_search_box {position: fixed;top: 0;width: 100%;max-width: 640px;padding: 10px 15px;display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: box;background: #ccc;}
+.lottery_search_box #search {border: 1px solid #ddd;background: #fff;font-size: 15px;height: 20px;line-height: 20px;padding: 18px 0;box-sizing: border-box;box-flex: 1;-webkit-box-flex: 1;-moz-box-flex: 1;-ms-flex: 1;width: 100%;display: block;border-radius: 5px;text-align: center;}
+.lottery_search_box #searchbtn {border: 1px solid #ddd;color: #fff;margin-left: 15px;padding: 6px;border-radius: 5px;font-size: 15px;}
+.span_color {background-color: yellow;}
 
 
 

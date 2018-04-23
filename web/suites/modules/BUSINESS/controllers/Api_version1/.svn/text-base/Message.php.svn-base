@@ -70,9 +70,14 @@ class Message extends Api_Controller
         $app_tribe_ids = array(0);
         if($label_id && $prams['type']==4){
             $app_tribe_ids = $this->get_app_tribe_ids();
+            
+            if(!$app_tribe_ids){
+                $app_tribe_ids = array(0);
+            }
+            
             //筛选出商会加入的部落与用户加入到部落之间的交集部落
             $mytribe = $this->tribe_mdl->identical_tribe($app_tribe_ids);
-             
+           
             $app_tribe_ids = "0";
             foreach ($mytribe as $k =>$v){
                 $app_tribe_ids .= ','.$v['id'];
@@ -91,7 +96,7 @@ class Message extends Api_Controller
         
        
         $list =  $this->Message->Load_Customer_Message($data);//获取推送信息列表
-      
+        
         if($prams['type'] == 4){//处理APP部落担保队列消息不跳转
             foreach ($list as $key =>$val){
                 if($val['template_id'] == 10){
@@ -233,13 +238,17 @@ class Message extends Api_Controller
            $label_id = $this->session->userdata("label_id");
            $app_tribe_ids = $this->get_app_tribe_ids();
            
+           $app_tribe_ids_str = "0";
            if($app_tribe_ids){
                //筛选出商会加入的部落与用户加入到部落之间的交集部落
                $mytribe = $this->tribe_mdl->identical_tribe($app_tribe_ids);
-                
+               
+            
+               $data['where']['tribe_id'] = $app_tribe_ids;
                $app_tribe_ids = array();
                foreach ($mytribe as $k =>$v){
                    $app_tribe_ids[] = $v['id'];
+                   $app_tribe_ids_str .= ','.$v['id'];
                }
                if(!$app_tribe_ids){
                    $app_tribe_ids = array(0);
@@ -248,14 +257,24 @@ class Message extends Api_Controller
                $app_tribe_ids = array(0);
            }
            
-           
+           $this->load->model("tribe_mdl");
            //查询新的部落消息通知
-           $new_message = $this->tribe_mdl->Load_Tribe_Message( $user_id ,$app_tribe_ids);
-        
-           if( $new_message )
-           {
-               $return['data']['tribe']['count'] = count($this->tribe_mdl->Load_Tribe_Message( $user_id ,$app_tribe_ids,"return_array",0));
-               $return['data']['tribe']['content'] = str_replace( array('<!--','-->'),array('',''), $new_message['message'] );
+           
+           $Msg['where']['customer_id'] = $user_id;
+           $Msg['where']['type'] = 4;
+           $Msg['where']['tribe_id'] = $app_tribe_ids_str;
+           
+           $Message =  $this->Message->Load_Customer_Message($Msg);///获取推送信息列表
+           if($Message){
+               $new_message = $Message[0];
+               if( $new_message )
+               {
+                   $return['data']['tribe']['count'] = count($this->tribe_mdl->Load_Tribe_Message( $user_id ,$app_tribe_ids,"return_array",0));
+                   $return['data']['tribe']['content'] = str_replace( array('<!--','-->'),array('',''), $new_message['message'] );
+               }
+           }else{
+               $return['data']['tribe']['count'] = 0;
+               $return['data']['tribe']['content'] ='';
            }
            
            $sift['sql_status'] = true;

@@ -102,10 +102,10 @@
 
                 <?php //foreach ($order_items as $k=>$v):?>
                 <p>
-                    <span>总商品金额：<?php echo isset($order['total_price'])?$order['total_price']:''//$v['price']?>货豆</span>
-                    <span>应支付金额：<?php echo isset($order['total_price'])?$order['total_price']:''//$v['price']* $v['quantity']?>货豆</span>
-                    <span><!-- 货豆：0--></span>
-                    <span>运费金额：<?php echo $order['actual_freight_fee']?$order['actual_freight_fee']:'0.00'; ?>货豆</span>
+                    <span>总商品金额：<?php echo isset($order['total_price'])?$order['total_price']:''//$v['price']?></span>
+                    <span>应支付金额：<?php echo isset($order['total_price'])?$order['total_price']:''//$v['price']* $v['quantity']?></span>
+                    <span><!-- 提货权：0--></span>
+                    <span>运费金额：<?php echo $order['actual_freight_fee']?$order['actual_freight_fee']:'0.00'; ?></span>
                 </p>
                 <?php //endforeach;?>	
                 	
@@ -164,7 +164,7 @@
                             <li style="width:300px"><a href="<?php echo site_url('goods/detail/'.$v['product_id'])?>"><p>
                             <?php echo isset($v['product_name'])&&$v['product_name']?$v['product_name']:''?></p></a>
                             </li>
-                            <li>M<?php echo isset($v['price'])&&$v['price']!=null?$v['price']:''?></li>
+                            <li><?php echo isset($v['price'])&&$v['price']!=null?$v['price']:''?></li>
                             <li>
                             <p class="mm01_font1" style="margin-top:0px;">
                             <?php if(isset($v['sku_name'])&&$v['sku_name']!=null): ?>
@@ -191,16 +191,16 @@
                   <div class="xiangqing_01_con03_ul">
                   	<ul>
                     	<li>总商品金额：</li>
-                        <li><!-- 货豆：--></li>
+                        <li><!-- 提货权：--></li>
                         <li>+ 运费： </li>
                     </ul>
                     <ul>
-                    	<li><?php echo $order['total_product_price']?>货豆</li>
+                    	<li><?php echo $order['total_product_price']?></li>
                         <li></li>
-                        <li> <?php echo $order['auto_freight_fee']?$order['auto_freight_fee']:'0.00'; ?>货豆</li>
+                        <li> <?php echo $order['auto_freight_fee']?$order['auto_freight_fee']:'0.00'; ?></li>
                     </ul><br><br>
                     <?php if(in_array($order['status'],array(1,2,10,11,12))):?>
-                    <p class="xiangqing_01_con03_p" id="yingzhifu" >应付总额：<span style="margin-left: 15px;"><?php echo $order['total_price'] ?>货豆</span></p>
+                    <p class="xiangqing_01_con03_p" id="yingzhifu" >使用提货权：<span style="margin-left: 15px;"><?php echo $order['total_price'] ?></span></p>
                     <?php else: ?>
                     <p class="xiangqing_01_con03_p">已支付</p>
                     <?php endif;?>

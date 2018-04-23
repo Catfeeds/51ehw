@@ -1,7 +1,31 @@
-
-
-
-
+<!-- 返回 -->
+<?php 
+$mac_type = $this->session->userdata("mac_type");
+if(empty($mac_type)){
+   $link = 'http://m.dev.wezchina.com/vote/1255aba0-1dde-11e8-90c8-4d0fbafef8b8';
+   if(base_url() ==  'http://www.51ehw.com/'){
+      $link = 'http://m.qqxqs.com/vote/396bb4f0-2b31-11e8-89be-09ee32e68284';
+   }
+  ?>
+   <div style="position:fixed;top:15px;left:15px;z-index: 9999;">
+       <a href="<?php echo $link; ?>" style="padding-top:7px;width: 35px;height: 35px;display:inline-block;background:rgba(255,255,255,0.4);border-radius: 50%;text-align: center;-webkit-transform: rotate(180deg);"><span class="icon-right" style="-webkit-transform: rotate(180deg);margin-top:8px;font-size: 20px;color:#fff;"></span></a>
+   </div>            
+<?php }?>
+<style type="text/css">
+  .lottery_num_a {
+    border-radius: 15px;
+    overflow: hidden;
+    background: -webkit-linear-gradient(left,#af874b,#c6a876,#b0894e);
+    background: -o-linear-gradient(left,#af874b,#c6a876,#b0894e);
+    background: -mos-linear-gradient(left,#af874b,#c6a876,#b0894e);
+    background: -moz-linear-gradient(left,#af874b,#c6a876,#b0894e);
+    background: linear-gradient(left,#af874b,#c6a876,#b0894e);
+    padding: 3px 9px;
+    margin-left: 10px;
+    color: #80440b;
+    
+}
+</style>
 <!-- 抽奖 -->
 <div class="lottery">
 	<!-- 头部 -->
@@ -27,7 +51,18 @@
  
       <!-- 大转盘 -->
       <div class="lottery_turntable">
-      	<div class="lottery_turntable_num"><span>您还剩<em id="lottery_num"><?php echo $Lottery['total_num'];?></em>次抽奖机会</span></div>
+      	<div class="lottery_turntable_num"><span>您还剩<em id="lottery_num"><?php echo $Lottery['total_num'];?></em>次抽奖机会</span>
+
+<?php
+       $mac_type = $this->session->userdata("mac_type");
+       if($mac_type && $mac_type == 'APP'){
+           $Package_link = '<#MyPackage#>';
+       }else{
+           $Package_link = site_url('Corporate/card_package/my_package');
+       }?>
+       
+      <a class="lottery_num_a" href="<?php echo $Package_link; ?>">奖券入口</a>
+        </div>
         
         <div class="turntable-tob">
           <div class="turntable-nei"> 
@@ -48,35 +83,35 @@
       	 <div class="lottery_rule_title"><fieldset><legend>活动规则</legend></fieldset></div>
          <div class="lottery_rule_en"><span>ACTIVITY RULES</span></div>
       	 <p>1、在指定微信公众号（51易货网，陕西省秦商联合会）、全球秦商APP的投票完成页面，参与抽奖活动。</p>
-         <p>2、用户每完成1次有效投票，均可获得1次即时抽奖机会和1次终极大奖机会。（一小时可投1次，一天可投10次，获得10次抽奖机会）</p>
+         <p>2、用户每完成1次有效投票，均可获得1次抽奖机会（每个小时可投10个不同的项目，每天最多可投240票，每天最多可获得240次抽奖机会）</p>
       </div>
-      <!-- 终极大奖 -->
-      <div class="lottery_awards">
-      	 <div class="lottery_rule_title"><fieldset><legend>终极大奖</legend></fieldset></div>
-         <div class="lottery_rule_en"><span>FINAL AWARD</span></div>
-         <div class="lottery_awards_text">
-           <p>终极大奖（1名） 长安客西凤酒1箱</p>
-      	   <p>“全球秦商好项目”投票结束后，在获得第一名项目的所有投票用户中抽取终极大奖</p>	
-         </div>
-         <div class="lottery_awards_text">
-           <p>免单大奖（3名）</p>
-           <p>“全球秦商好项目”投票结束后，在活动期间使用专属优惠券购买长安客西凤酒的用户中，抽取免单大奖返还订单消费金额</p>	
-         </div>
-         <div class="lottery_awards_text">
-           <p>幸运大奖（10名） 长安客西凤酒1瓶</p>
-           <p>“全球秦商好项目”投票结束后在所有参与投票的用户中抽出幸运大奖</p>
-         </div>
-      </div>
+     
       <!-- 奖品清单 -->
       <div class="lottery_pizze">
       	<div class="lottery_rule_title"><fieldset><legend>奖品清单</legend></fieldset></div>
         <div class="lottery_rule_en"><span>EVENT PRIZES</span></div>
-        <p class="lottery_pizze_img"><span>即时抽奖奖品</span></p>
-        <p class="lottery_pizze_title">转盘大奖(若干）</p>
+        <!-- <p class="lottery_pizze_img"><span>即时抽奖奖品</span></p> -->
+        <p class="lottery_pizze_title">转盘大奖</p>
         <p>iPhone X</p>
-        <p>小米电视机</p>
-        <p>100、80、50元等各档次51易货网平台上长安客西凤酒专属优惠券1张</p>
+        <p>价值888元长安客西凤酒藏品级一瓶</p>
+        <p>价值488元长安客西凤酒帝享一瓶</p>
+        <p>188元、288元长安客西凤酒专属现金券</p>
       </div>
+      <!-- 现金券使用说明 -->
+      <div class="lottery_rule">
+         <div class="lottery_rule_title"><fieldset style='width:162px;'><legend>现金券使用说明</legend></fieldset></div>
+         <div class="lottery_rule_en"><span>INSTRUCTIONS FOR USE</span></div>
+         <p>1、现金券仅适用于51易货网平台商家“陕西丝路长安客酒业有限公司”；</p>
+         <p>2、现金券的面额有188元和288元，使用期限截止到：2018年5月31日，逾期作废；</p>
+         <p>3、现金券可抵扣商品的相应价格，每消费一款商品就可以使用一张，并且不可以叠加使用；</p>
+         <p>4、现金券不找零、不兑换现金、不另开发票，持现金券购买的商品不支持退货；</p>
+         <p>5、现金券之相关事宜，陕西丝路长安客酒业有限公司在法律允许范围内保留最终解释权。</p>
+      </div>
+       <!-- 温馨提示 -->
+       <div class="lottery_prompt">
+         <p>温馨提示</p>
+         <p>【长安客·西凤酒】属于预售商品，买家须提前支付商品款项（差价）才能完成订单交易，并于5月31日后统一安排发货。</p>
+       </div>
       <!-- *本活动最终解释权归活动方所有 -->
       <div class="lottery_copyright"><span>*本活动最终解释权归活动方所有</span></div>
 
@@ -102,9 +137,10 @@
              <!-- 优惠劵图 -->
              <img src="images/lottery/pizze_50.png" class="lottery_ball_pizze_img" alt="">
              <!-- 文案 -->
-             <span class="lottery_ball_pizze_text">仅限在51易货APP下单购买长安客西凤酒时抵扣</span>
+             <span class="lottery_ball_pizze_text">仅限在51易货APP下单购买长安客西凤酒时使用</span>
            </div>
            <div class="lottery_pizze_get"><a href="javascript:void(0);" onclick="gather();">点击领取</a></div>
+           <div class="lottery_pizz_yes_close"><a href="javascript:void(0);" class="icon-guanbi" onclick="lottery_close_01();"></a></div>
        </div>
        <!-- 中奖 要输入手机号码和验证码领取 -->
        <div class="lottery_pizz_yes_condition" hidden>
@@ -128,6 +164,7 @@
            </div> 
        </div>
        <div class="lottery_pizze_get01"><a href="javascript:void(0);" onclick="gather();">点击领取</a></div>
+       <div class="lottery_pizz_yes_close"><a href="javascript:void(0);" class="icon-guanbi" onclick="lottery_close_02();"></a></div>
        </div> 
 
      </div>
@@ -207,8 +244,15 @@ function gather(){
         		$(".black_feds").text(data.msg).show();
     			setTimeout("prompt();", 2000);
     			if(data.status == 3 || data.status == 1){
+
     				setTimeout(function(){
-						window.location.href = "<?php echo site_url('Corporate/card_package/my_package')?>";
+    					        <?php 
+    		        			$mac_type = $this->session->userdata("mac_type");
+    		        			if($mac_type && $mac_type == 'APP'){?>
+   		        			     window.location.href = "<#MyPackage#>";
+    		        			<?php  }else{?>
+    		        			    window.location.href = "<?php echo site_url('Corporate/card_package/my_package')?>";
+    		        			<?php }?>
         				}, 2200);
     			}
     			return ;
@@ -303,6 +347,15 @@ function gather(){
     // 关闭弹窗
     function lottery_close() {
       $('.lottery_ball').hide();
+      $('.lottery_pizee_no').hide();
+    }
+    function lottery_close_01() {
+      $('.lottery_ball').hide();
+      $('.lottery_pizz_yes').hide();
+    }
+    function lottery_close_02() {
+      $('.lottery_ball').hide();
+      $('.lottery_pizz_yes_condition').hide();
     }
     
 	//抽奖信息

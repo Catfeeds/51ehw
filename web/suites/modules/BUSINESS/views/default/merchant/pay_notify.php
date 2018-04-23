@@ -11,7 +11,7 @@
 <body>
 
 	<div class="Box member_Box clearfix">
-         <!--货豆余额纪录开始-->
+         <!--提货权余额纪录开始-->
 		<div class="huankuan_cmRight" style="display:block;width:100%;">
             <div class="huankuan_rTop_5" style="display: block">支付通知</div>
                 <div class="transformation_1" >

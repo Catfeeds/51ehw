@@ -88,7 +88,7 @@ dropload = $('#sort').dropload({
         			result += '</a>';
     				result += '<p class="circle_publish_time"><span>'+data["announcement_list"][i]["last_updated_time"]+'</span>';
     				if(label_id){
-						result += '<a href="<?php echo site_url("commerce/notice_state");?>/'+data["announcement_list"][i]['id']+'"><span style="color:red;">'+data["announcement_list"][i]["unreadnum"]+'人未读</span></a>';
+						result += '<a href="<?php echo site_url("commerce/notice_state");?>/'+data["announcement_list"][i]['id']+'"><span style="color:red;display:none;">'+data["announcement_list"][i]["unreadnum"]+'人未读</span></a>';
     				}else{
     					result += '<span><a href="javascript:void(0);" onclick="shanchu('+data["announcement_list"][i]['id']+');" style="padding-right:10px;"><i class="icon-shanchu2"></i>删除</a><i class="icon-bianji"></i><a href="<?php echo site_url("tribe/announcement_view");?>/'+data["announcement_list"][i]["id"]+'">编辑</a></span>';
     				}

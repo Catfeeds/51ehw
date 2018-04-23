@@ -248,14 +248,14 @@ class Sale extends Front_Controller
        //支付方
        $pay_account_id = $customer_pay['id'];//支付账号ID
        $pay_relation_id = $customer_pay['r_id']; //关联表的ID
-       $surplus_m = $customer_pay['M_credit']; //支付前的货豆余额
+       $surplus_m = $customer_pay['M_credit']; //支付前的提货权余额
        
        
        //收入方
        $corp_customer_pay = $this->pay_account_mdl->load( $corp_customer_id );
        $corp_pay_id = $corp_customer_pay['id']; //店主支付账号ID
        $corp_pay_relation_id = $corp_customer_pay['r_id']; //店主关联支付账号表的ID
-       $corp_surplus_m = $corp_customer_pay['M_credit'];//剩余的货豆
+       $corp_surplus_m = $corp_customer_pay['M_credit'];//剩余的提货权
       
        $this->db->trans_begin(); //事物执行SQL
       
@@ -293,16 +293,16 @@ class Sale extends Front_Controller
        $this->order_item_mdl->weight = 0; // $items['options']['weight'];
        $res = $this->order_item_mdl->create ();
 
-       //上一次货豆交易的日志中的信息
+       //上一次提货权交易的日志中的信息
        $last_m_log    = $this->customer_currency_log->load_last($pay_relation_id);
        
        //扣钱
        $row = $this->pay_account_mdl->update_M_creadit($pay_account_id, $price);
        
-       //店主账号+货豆
+       //店主账号+提货权
        $up_row = $this->pay_account_mdl->charge_M_credit($corp_pay_id, $price );
        
-       //检测支付方货豆是否异常
+       //检测支付方提货权是否异常
        if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $surplus_m){
            $M_credit_expend_data['status'] = '1';
        }else if(!$last_m_log && $surplus_m =='0'){
@@ -312,7 +312,7 @@ class Sale extends Front_Controller
        }
        
        
-       //货豆日志
+       //提货权日志
        $M_credit_expend_data['relation_id'] = $pay_relation_id;
        $M_credit_expend_data['id_event'] = '60';
        $M_credit_expend_data['remark'] = '面对面-购物支出';
@@ -325,10 +325,10 @@ class Sale extends Front_Controller
        $M_credit_expend_data['order_id'] = $new_order_id;
        $M_credit_log = $this->customer_currency_log->add_log($M_credit_expend_data);
        
-       //上一次店主货豆交易的日志中的信息
+       //上一次店主提货权交易的日志中的信息
        $corp_last_m_log = $this->customer_currency_log->load_last($corp_pay_relation_id);
        
-       //收入检测货豆是否异常
+       //收入检测提货权是否异常
        if( isset($corp_last_m_log['ending_balance']) &&  $corp_last_m_log['ending_balance'] == $corp_surplus_m){
            $M_credit_data['status'] = '1';
        }else if(!$corp_last_m_log && $corp_last_m_log =='0'){
@@ -337,7 +337,7 @@ class Sale extends Front_Controller
            $M_credit_data['status'] = '2';
        }
        
-  	        //店主收入货豆日志
+  	        //店主收入提货权日志
        $M_credit_data['relation_id'] = $corp_pay_relation_id;
        $M_credit_data['id_event'] = '62';
        $M_credit_data['remark'] = '面对面-销售收入';
@@ -348,7 +348,7 @@ class Sale extends Front_Controller
        $M_credit_data['ending_balance'] = $corp_surplus_m+$price;
        $M_credit_data['customer_id'] = $customer_id;
        $M_credit_data['order_id'] = $new_order_id;
-       //收入出方货豆日志
+       //收入出方提货权日志
        $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
 
        if(!$new_order_id || !$res || !$row || !$up_row || !$M_credit_log || !$to_M_credit_log){ 

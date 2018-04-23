@@ -402,7 +402,7 @@ class Order extends Front_Controller {
             $available_amount = $pay_info['credit']+$pay_info['M_credit']; //剩余可用余额
             
             if($available_amount >= $order['total_price'] && $pay_info['cash']  >= $order['commission']){ 
-                //货豆余额足以支付
+                //提货权余额足以支付
                 $data['show_m_pay'] = true;
             }else{ 
                 //余额不足以支付
@@ -454,7 +454,7 @@ class Order extends Front_Controller {
         
         $this->load->model('goods_mdl');
         $product = $this->goods_mdl->get_by_id($data['product_id'], null, null, 1);
-        $total_price = $product['groupbuy_price'] * $data['buy_amount']; //需要支付的货豆
+        $total_price = $product['groupbuy_price'] * $data['buy_amount']; //需要支付的提货权
         
         //查询账户余额
         $url = $this->url_prefix.'Customer/fortune/?relation_id='.$relation_id;
@@ -491,7 +491,7 @@ class Order extends Front_Controller {
         
         }
         if($available_amount >= $total_price && $pay_info['cash']  >= $commission){
-            //货豆余额足以支付
+            //提货权余额足以支付
             $data['show_m_pay'] = true;
         }else{
             //余额不足以支付
@@ -585,7 +585,7 @@ class Order extends Front_Controller {
                     $available_amount = $pay_info['credit']+$pay_info['M_credit']; //剩余可用余额
     
                     if($available_amount >= $price  && $pay_info['cash']  >= $commission){
-                        //货豆余额足以支付
+                        //提货权余额足以支付
                         $data['show_m_pay'] = true;
                     }else{
                         //余额不足以支付
@@ -649,7 +649,7 @@ class Order extends Front_Controller {
         $this->load->helper('order');
         $order_id = $this->input->post('id');
         $status = $this->input->post('status');
-        $no_pwd = $this->input->post('no_pwd');//验证货豆金额是否为零，零则不进行对支付密码验证
+        $no_pwd = $this->input->post('no_pwd');//验证提货权金额是否为零，零则不进行对支付密码验证
         $data = $this->verify_order($order_id);
         
         if( $data['status'] ){
@@ -674,7 +674,7 @@ class Order extends Front_Controller {
                     //扣除现金账户以外->还需支付的手续费
                      $pay_commission = empty($order['commission']) ? 0.00 :  $pay_info['cash'] >= $order['commission'] ? 0.00 :  $order['commission'] - $pay_info['cash'] ;
                     
-                     //货豆+微信支付。
+                     //提货权+微信支付。
                      if( $available_amount >= $order['total_price'])
                      { 
                          $charge_data["amount"] = $pay_commission;
@@ -744,7 +744,7 @@ class Order extends Front_Controller {
     
     
     /**
-     * 面对面全款货豆支付方法
+     * 面对面全款提货权支付方法
      */
     public function pay_code_order()
     {
@@ -1017,7 +1017,7 @@ class Order extends Front_Controller {
                 //扣除现金账户以外->还需支付的手续费
                 $pay_commission = empty($commission) ? 0.00 :  $pay_info['cash'] >= $commission ? 0.00 :  $commission - $pay_info['cash'] ;
                 
-                //货豆+微信支付。
+                //提货权+微信支付。
                 if( $available_amount >= $price )
                 {
                     $charge_data["amount"] = $pay_commission;

@@ -164,7 +164,7 @@ class Notice extends Front_Controller {
 	{ 
 	     $data ['label_id'] = $label_id;
          $data['label_app'] = true;//标识是否显示关注微信公众号icon
-		 $data['title'] = "十佳企业";
+		 $data['title'] = "大赛回顾";
          $data ['head_set'] = 2;
          $data ['foot_set'] = 2;
          $this->load->view('head', $data);
@@ -203,6 +203,47 @@ class Notice extends Front_Controller {
          $this->load->view('head', $data);
          $this->load->view('_header', $data);
          $this->load->view('commerce/lottery', $data);
+         $this->load->view('_footer', $data);
+         $this->load->view('foot', $data);
+	}
+	// 年鉴
+	public function almanac()
+	{ 
+         $data['label_app'] = true;//标识是否显示关注微信公众号icon
+		 $data['title'] = "秦商年鉴";
+         $data ['head_set'] = 2;
+         $data ['foot_set'] = 1;
+         $this->load->view('head', $data);
+         $this->load->view('_header', $data);
+         $this->load->view('commerce/almanac/index', $data);
+         $this->load->view('_footer', $data);
+         $this->load->view('foot', $data);
+	}
+	
+	//获取年鉴内容
+	public  function  getAlmanacList(){
+	    $data =  $this->input->post();
+	    if(empty($data['id'])){
+	        echo '';
+	        exit;
+	    }
+	    $json_string = file_get_contents(FCPATH."suites/modules/BUSINESS/views/default_wechat/commerce/almanac/{$data['id']}.json");
+	    
+	    $return['List'] = $json_string;
+	    echo  json_encode($return);
+	}
+
+
+	// 长安客
+	public function changanke()
+	{ 
+         $data['label_app'] = true;//标识是否显示关注微信公众号icon
+		 $data['title'] = "长安客";
+         $data ['head_set'] = 2;
+         $data ['foot_set'] = 1;
+         $this->load->view('head', $data);
+         $this->load->view('_header', $data);
+         $this->load->view('commerce/changanke', $data);
          $this->load->view('_footer', $data);
          $this->load->view('foot', $data);
 	}

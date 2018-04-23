@@ -138,7 +138,7 @@ class Commerce extends Api_Controller {
             $sift['where']['all_tribe_id'] = $app_tribe_ids;
             //筛选出商会加入的部落与用户加入到部落之间的交集部落
             $mytribe = $this->tribe_mdl->identical_tribe($app_tribe_ids);
-            
+         
             
             $app_tribe_ids_str = "0";
             
@@ -177,7 +177,8 @@ class Commerce extends Api_Controller {
             
             $this->load->model('Customer_message_mdl','Message');
             $Message = $this->Message->Load_Customer_Message($Msg);///获取推送信息列表
-            
+//             echo '<pre>';
+//             print_r($this->db->last_query());exit;
             $return['data']['single_message'] = NULL;
             if($Message){
                 $new_message = $Message[0];
@@ -239,6 +240,22 @@ class Commerce extends Api_Controller {
             
             //秦商
             if($label_id == 2){
+                $return['data']['Lottery'] = array(
+                    'logo' => 'images/lottery/vote.png',
+                    'mobile' => 0,
+                );
+                $this->load->model("customer_mdl");
+                $UserInfo = $this->customer_mdl->load($user_id);
+                if(!empty($UserInfo['mobile'])){
+                    $return['data']['Lottery']['mobile'] = $UserInfo['mobile'];
+                }
+                $this->load->model('Lottery_mdl');
+                $sift['key'] = $user_id;
+                $sift['type'] = 'customer_id';
+                $LotteryInfo = $this->Lottery_mdl->load($sift);
+                if($LotteryInfo && !empty($LotteryInfo['mobile'])){
+                    $return['data']['Lottery']['mobile'] = $LotteryInfo['mobile'];
+                }
                 $return['data']['Commerce_label_list']['logo'] = 'images/commerce/commerce_name.png';
                 $return['data']['TopTenProject'] = array(
                         "logo" =>  'images/commerce/commerce_xiangmu01.png',
@@ -1112,6 +1129,7 @@ class Commerce extends Api_Controller {
         
         //将二级标签下部落全部拿出来堆放在一起方便进行处理
         $label_infos = $this->App_label_mdl->Load_tribe_app_label($label_id);//获取标签信息
+       
         $app_tribe_id = '';
         foreach ($label_infos as $key =>$val ){
             $app_tribe_id = trim($app_tribe_id,",");
@@ -1162,7 +1180,9 @@ class Commerce extends Api_Controller {
         
         $sift['where']['type'] = $type;
         $sift['where']['label_id'] = $label_id;
-       
+        $sift['where']['parent_id'] = $parent_id;
+        $sift['search']['product'] = $search;
+        
         $totalcount = count($this->App_label_mdl->get_SpecialtyProduct($sift));
         $totalpage = $perPage ? ceil($totalcount / $perPage) : 1; // 总页数
          
@@ -1222,17 +1242,17 @@ class Commerce extends Api_Controller {
             ),
             array(
                 'type'=>'topTenCorp',
-                'url' => site_url("Notice/shijia/2"),
+                'url' => site_url("Notice/shijia/2").'?mac_type=APP',
                 'logo'=> 'images/commerce/commerce_icon_02.png'
             ),
            array(
                 'type'=>'topTenPeople',
-                'url' => site_url("Commerce/Outstanding/renwu/2"),
+                'url' => site_url("Commerce/Outstanding/renwu/2").'?mac_type=APP',
                 'logo'=> 'images/commerce/commerce_icon_03.png'
             ),
            array(
                 'type'=>'topTenCharityCorp',
-                'url' => site_url("Commerce/Outstanding/cishan/2"),
+                'url' => site_url("Commerce/Outstanding/cishan/2").'?mac_type=APP',
                 'logo'=> 'images/commerce/commerce_icon_04.png'
             )
         );

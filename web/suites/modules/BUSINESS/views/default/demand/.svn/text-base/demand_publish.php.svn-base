@@ -291,12 +291,12 @@
                             $("#unit").change(function(){
 
                                 var unites = $("#unit").val();
-                                $("#procurement-time_ehw").text("货豆／"+unites);
+                                $("#procurement-time_ehw").text("提货权／"+unites);
                             });
                         </script>
                         <span class="procurement-time  procurement-time02" ></span></li>
-                    <li><div class="title-nav_l"><span class="xinghao" style="color:#E1454F!important;">*</span><span class="shijjj">期望价格：</span></div><input type="text" name="m_price" value="<?php echo $status?$detail['m_price']:"";?>" class="procurement-text3"><span id="procurement-time_ehw" class="procurement-time" style="color:#000000!important;padding-right: 40px;" >货豆／件</span></li>
-                    <li> <div class="title-nav_l"><span><span class="xinghao" style="color:#E1454F!important;">*</span>需求总价：</span></div><div style="    margin-top: 9px;" ><span class="need-line" id="totals"></span></span>货豆</div></li>
+                    <li><div class="title-nav_l"><span class="xinghao" style="color:#E1454F!important;">*</span><span class="shijjj">期望价格：</span></div><input type="text" name="m_price" value="<?php echo $status?$detail['m_price']:"";?>" class="procurement-text3"><span id="procurement-time_ehw" class="procurement-time" style="color:#000000!important;padding-right: 40px;" >提货权／件</span></li>
+                    <li> <div class="title-nav_l"><span><span class="xinghao" style="color:#E1454F!important;">*</span>需求总价：</span></div><div style="    margin-top: 9px;" ><span class="need-line" id="totals"></span></span>提货权</div></li>
                     <li> <div class="title-nav_l"><span>图片/图纸/文档：</span></div><samp class="bainse">只能上传图片、txt文档和pdf文档格式的附件</samp></li>
                 </ul>
                 <!-- 选择上传按钮 -->

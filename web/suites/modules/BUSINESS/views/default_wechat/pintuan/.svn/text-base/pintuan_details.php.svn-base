@@ -16,7 +16,7 @@
           <a href="http://localhost/51yhw/web/index.php/goods/detail/1017" style="width: 100%;display: flex;overflow-x: scroll; margin-bottom: 10px;"><img style="border: 1px solid #ccc;padding:1px;" src="http://image.51ehw.com/uploads/photos/2016/04/11/1324_20160411090301.jpg" width="62" height="83" onerror="this.src='images/default_img_b.jpg'" class="good_list_img">
               <p class="fn-14 goods_list_text">健康/体检 英伦健康体检亲情卡（2500元）</p>
           </a>
-           <p class="fn-14" style="float: left;font-size: 16px!important;margin-left: 90px;margin-top: -43px;">800<span style="font-size: 13px;">.00</span><span style="font-size: 12px!important;padding-left: 4px;">货豆</span></p>
+           <p class="fn-14" style="float: left;font-size: 16px!important;margin-left: 90px;margin-top: -43px;">800<span style="font-size: 13px;">.00</span><span style="font-size: 12px!important;padding-left: 4px;">提货权</span></p>
            <p class="fn-12 c9" style="float: right;font-size: 13px!important;color: #707070!important;margin-top: -45px;border:1px solid #9D9D9D;padding:0px 8px;">3人团</p>
         </div> 
       </div>

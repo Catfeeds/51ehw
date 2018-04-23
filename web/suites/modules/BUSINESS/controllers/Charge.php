@@ -363,7 +363,7 @@ class Charge extends Front_Controller {
     
     
     /**
-     * 购买货豆页面
+     * 购买提货权页面
      */
     public function purchase()
     {
@@ -374,7 +374,7 @@ class Charge extends Front_Controller {
         
         $data['pay_detailed'] = $result;
         
-        $data['title'] = '货豆充值';
+        $data['title'] = '提货权充值';
         $data['back'] = 'customer/fortune';
         $data['head_set'] = 2;
         $data['foot_set'] = 1;
@@ -396,7 +396,7 @@ class Charge extends Front_Controller {
     }
 
     /**
-     * 现金余额充值货豆
+     * 现金余额充值提货权
      */
     public function purchase_M()
     {

@@ -13,7 +13,7 @@
 					<?php echo $this->session->userdata('user_name');?>
 				</p>
 				<p class="notice_word_mid">
-					货豆: <span class="red_font"><?php echo number_format( (isset($customer['M_credit']) ? $customer['M_credit'] : '0') + (isset($customer['credit']) ? $customer['credit'] : '0'),2 )?>货豆</span>
+					提货权: <span class="red_font"><?php echo number_format( (isset($customer['M_credit']) ? $customer['M_credit'] : '0') + (isset($customer['credit']) ? $customer['credit'] : '0'),2 )?></span>
 				</p>
 				<p class="notice_word_mid">
 					现金: <span class="red_font"><?php echo $customer['cash'] !== NULL?number_format($customer['cash'],2):'0.00';?>元</span>
@@ -58,7 +58,7 @@
 			<span class="fn-right"><em class="icon-right c9"></em></span>收货地址</a></li>
 <!-- 			<li><a href="javascript:void(0);"><span class="fn-left "style="padding-right: 10px;font-size: 18px;"><em class="icon-saoyisao"></em></span>
 			<span class="fn-right"><em class="icon-right c9"></em></span>扫一扫</a></li> -->
-			<li hidden><a href="<?php echo site_url("corporate/card_package/my_package");?>"><span class="fn-left "style="padding-right: 10px;font-size: 18px;"><em class="icon-qianbao"></em></span>
+			<li><a href="<?php echo site_url("corporate/card_package/my_package");?>"><span class="fn-left "style="padding-right: 10px;font-size: 18px;"><em class="icon-qianbao"></em></span>
 			<span class="fn-right"><em class="icon-right c9"></em></span>我的货包</a></li>
 			<li hidden><a href="<?php echo site_url('corporate/card_package/package')?>"><span class="fn-left "style="padding-right: 10px;font-size: 18px;"><em class="icon-shouhuo"></em></span>
 			<span class="fn-right"><em class="icon-right c9"></em></span>领取货包</a></li>

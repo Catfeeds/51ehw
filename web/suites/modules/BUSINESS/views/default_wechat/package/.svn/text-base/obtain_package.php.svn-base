@@ -28,8 +28,8 @@
             </form> 
             <a href="javascript:void(0)" onclick=submit()><span>领取优惠劵</span></a>
             <ul>
-                <li>1.货包货豆新老用户共享 </li>
-                <li>2.货豆货包将放入与手机号绑定的账户</li>
+                <li>1.货包提货权新老用户共享 </li>
+                <li>2.提货权货包将放入与手机号绑定的账户</li>
                 <li>3.本活动最终解释权归51易货网所有.</li>
             </ul>
         </div>

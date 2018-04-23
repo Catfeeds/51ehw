@@ -55,8 +55,8 @@
 		<ul>
 		    <li style="padding-top: 0;"><span>分类:<span style="opacity: 0;">测试</span></span><span class='offer-details-text01'><?php echo $requirement['cate']?></span></li>
 		    <li><span>采购数量:</span><span class="offer-details-text01"><?php echo $requirement['p_count'];echo $requirement['unit'];?></span></li>
-		    <li><span>期望价格:</span><span class="offer-details-text01"><?php echo $requirement['m_price']; ?>货豆/<?php echo $requirement['unit']; ?></span></li>
-		    <li><span>需求总价:</span><span class="offer-details-text01"><?php echo $requirement['total_price']; ?>货豆</span></li>
+		    <li><span>期望价格:</span><span class="offer-details-text01"><?php echo $requirement['m_price']; ?>/<?php echo $requirement['unit']; ?></span></li>
+		    <li><span>需求总价:</span><span class="offer-details-text01"><?php echo $requirement['total_price']; ?></span></li>
 		    <li><span>收货地:<span style="opacity: 0;">测</span></span><span class="offer-details-text01"><?php echo $requirement['address']; ?></span></li>
 		    <li><span>收货日期:</span><span class="offer-details-text01"><?php echo substr ( $requirement['receiptdate'], 0,10); ?></span></li>
 		    <li><span>报价须含:</span><span class="offer-details-text01">
@@ -75,7 +75,7 @@
 		    <li style="padding-top: 0;"><span>报价人:<span style="opacity: 0;">测</span></span><span class="offer-details-text01"><?php echo empty($list['corporation']['corporation_name'])? '':$list['corporation']['corporation_name'].'&nbsp;';?><?php echo $list['contactuser']; ?></span></li>
 		    <li><span>联系方式:</span><span class="offer-details-text01"><?php echo $list['mobile']; ?></span></li>
 		    <li><span>联系邮箱:</span><span class="offer-details-text01"><?php echo $list['email']; ?></span></li>
-		    <li><span>报价:<span style="opacity: 0;">测试</span></span><span class="offer-details-text01"><?php echo $list['offer']; ?>货豆/<?php echo $requirement['unit']; ?></span></li>
+		    <li><span>报价:<span style="opacity: 0;">测试</span></span><span class="offer-details-text01"><?php echo $list['offer']; ?>/<?php echo $requirement['unit']; ?></span></li>
 		    <li><span>交货期:<span style="opacity: 0;">测</span></span><span class="offer-details-text01"><?php echo $list['days']; ?>天</span></li>
 		    <li><span>补充说明:</span><span class="offer-details-text01"><?php echo empty($list['remark']) ? '无':$list['remark']; ?></span></li>
 		    <li><span>报价包含:</span><span class="offer-details-text01">

@@ -68,7 +68,7 @@
                         </li>
                         <li class="dingwe"><input class="kehu_kehuguanli1_input" type="text" placeholder="请输入大于1的数字" name="menber_num" id="search_input" value="<?php echo isset($activity['menber_num']) ? $activity['menber_num'] : ''?>"> <span class="shop_managetips1" id="menber_num_message"></span></li>
                         <li class="dingwe">
-                        	<input class="kehu_kehuguanli1_input" type="text" placeholder="" name="groupbuy_price" id="" value="<?php echo isset($activity['groupbuy_price']) ? $activity['groupbuy_price'] : ''?>"><span class="shop_managetips2">货豆 </span> <span style="right:-191px"class="shop_managetips1" id="groupbuy_price_message"></span></li>
+                        	<input class="kehu_kehuguanli1_input" type="text" placeholder="" name="groupbuy_price" id="" value="<?php echo isset($activity['groupbuy_price']) ? $activity['groupbuy_price'] : ''?>"><span class="shop_managetips2">提货权 </span> <span style="right:-191px"class="shop_managetips1" id="groupbuy_price_message"></span></li>
                          <li class="dingwe" style="line-height:37px;">
                          <em style="margin-right:24px;"><span style="float:left; margin-left:5px;"> <input type="radio" value="0" name="set_limit" class="" <?php echo !isset($activity['set_limit']) || $activity['set_limit'] == 0?  'checked' : ''?>> 不限购</span><span style="float:left; margin:0 10px;">|</span><span style="float:left;"> <input type="radio" value="1" name="set_limit" class="" <?php echo isset($activity['set_limit']) && $activity['set_limit'] == 1 ? 'checked' :''?>> 限购</span></em>
                          <em><span><input style="width:155px;"class="kehu_kehuguanli1_input" name="least_purchase" type="text" value="<?php echo isset($activity['least_purchase']) ? $activity['least_purchase'] : ''?>" placeholder="请输入最少购买数量"></span><span style="margin:0 10px; float:left">~</span><span><input  style="width:155px;"class="kehu_kehuguanli1_input" name="most_purchase" type="text" value="<?php echo isset($activity['most_purchase']) ? $activity['most_purchase'] : ''?>" placeholder="请输入最多购买数量"></span></em>
@@ -208,7 +208,7 @@
 
     	var str = "^(([1-9]\\d{0,9})|0)(\\.\\d{1,2})?$";
     	if( groupbuy_price== '' || !groupbuy_price.match(str) || groupbuy_price < 0.01){
-        	$('#groupbuy_price_message').text('*请输入正确的货豆数值');
+        	$('#groupbuy_price_message').text('*请输入正确的提货权数值');
         	ok = false;
         }
         

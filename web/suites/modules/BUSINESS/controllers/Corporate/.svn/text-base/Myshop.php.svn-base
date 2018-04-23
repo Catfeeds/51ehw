@@ -1553,9 +1553,11 @@ class Myshop extends Front_Controller
             return false;
         }
         $p = $cd['img_path'];
-        if (file_exists(FCPATH . UPLOAD_PATH . $p)) {
+        if($p){
+            if (file_exists(FCPATH . UPLOAD_PATH . $p)) {
             
-            unlink(FCPATH . UPLOAD_PATH . $p);
+                unlink(FCPATH . UPLOAD_PATH . $p);
+            }
         }
         
         $res = $this->tp->delete($id);

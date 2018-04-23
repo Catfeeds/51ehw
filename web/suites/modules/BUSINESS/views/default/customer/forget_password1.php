@@ -46,6 +46,8 @@ $this->session->set_userdata('forget',1);
                             data:{mobile:$('#username').val()},
                             dataType:'json',
                             success:function(result){
+                                $('#get_mobile_code').removeAttr('onclick');
+                                $('#get_mobile_code').html('获取验证码中...');
                             	if(result!=null&&result.mobile!=null){
                                 	$.ajax({
                                 	    url: base_url+'/customer/ajax_send/'+1,
@@ -55,7 +57,7 @@ $this->session->set_userdata('forget',1);
                                 	    success: function(data){
                                 	    	$('#re_second').html(100);
                                 	    	timeprocess = setTimeout(remainTime,1000);
-                                			alert(data);
+                                			// alert(data);
                               			  }
                                 	  });
                             	}else{
@@ -85,6 +87,8 @@ $this->session->set_userdata('forget',1);
     		$('#get_mobile_code').css('display', 'inline-block');
     		$('#reget_code').css('display', 'none');
     		clearTimeout(timeprocess);
+            $('#get_mobile_code').attr('onclick','send_valitaty()');
+            $('#get_mobile_code').html('获取手机验证码');
     	}else{
     		times -= 1;
     		$('#re_second').html(times);

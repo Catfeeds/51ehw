@@ -77,15 +77,15 @@
             <div class="ml136_box">
             	<p id="product_price">
 				<?php if ($is_special) {?>
-    				<span class="ogrinal_price" style="text-decoration:none;">特价：<span><?php echo number_format($details['special_price'], 2);?>货豆</del></span></span><br/>
-    				<span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del><?php echo number_format($details['vip_price'], 2);?>货豆</del></span></span>
+    				<span class="ogrinal_price" style="text-decoration:none;">特价：<span><?php echo number_format($details['special_price'], 2);?></del></span></span><br/>
+    				<span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del><?php echo number_format($details['vip_price'], 2);?></del></span></span>
 				<?php }else if($tribeVIP){;?>
-				    <span class="ogrinal_price" style="text-decoration:none;">部落价：<span style="color:red;font-weight: bold;"><?php echo number_format($details['tribe_price'], 2);?>货豆</del></span></span><br/>
+				    <span class="ogrinal_price" style="text-decoration:none;">部落价：<span style="color:red;font-weight: bold;"><?php echo number_format($details['tribe_price'], 2);?></del></span></span><br/>
 				    <?php if($details['cat_id'] != 104164){;?><!-- 共享服务分类104164 -->
-				    <span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del><?php echo number_format($details['vip_price'], 2);?>货豆</del></span></span>
+				    <span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del><?php echo number_format($details['vip_price'], 2);?></del></span></span>
 				    <?php };?>
 				<?php }else{;?>
-				    <span class="ogrinal_price" style="text-decoration:none;">易货价：<span><?php echo number_format($details['vip_price'], 2);?>货豆</span></span>
+				    <span class="ogrinal_price" style="text-decoration:none;">易货价：<span><?php echo number_format($details['vip_price'], 2);?></span></span>
 				<?php };?>
                 <!-- 最多限制出现三个价格对比 start -->
                <?php if($details['market_price']){;?>
@@ -156,11 +156,11 @@
                 <span  id="total_price"> 
                 <?php 
                 if($is_special){//特价
-                    echo number_format($details['special_price'], 2)."货豆";
+                    echo number_format($details['special_price'], 2)."";
                 }else if($tribeVIP){//部落价
-                    echo number_format($details['tribe_price'], 2)."货豆";
+                    echo number_format($details['tribe_price'], 2)."";
                 }else{ //易货价
-                    echo number_format($details['vip_price'], 2)."货豆";
+                    echo number_format($details['vip_price'], 2)."";
                 };
                 ?>
                 </span>
@@ -668,7 +668,7 @@ function settlement(){
 	    var item_num = 1;
 	}
 	var total_price = price*item_num;//总价
-	$("#total_price").html(formatCurrency(total_price)+"货豆");//总价显示
+	$("#total_price").html(formatCurrency(total_price)+"");//总价显示
 
 }
 
@@ -709,17 +709,17 @@ function process(){
 
         	//是否特价
 			<?php if ($is_special) {?>
-    		    html += '<span class="ogrinal_price" style="text-decoration:none;">特价：<span style="color:red;font-weight: bold;">'+val['info']['special_price']+'货豆</del></span></span><br>';
-    		    html += '<span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del>'+val['info']['vip_price']+'货豆</del></span></span>';
+    		    html += '<span class="ogrinal_price" style="text-decoration:none;">特价：<span style="color:red;font-weight: bold;">'+val['info']['special_price']+'</del></span></span><br>';
+    		    html += '<span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del>'+val['info']['vip_price']+'</del></span></span>';
     		    var price = val['info']['special_price'];//单价
 			<?php }else if($tribeVIP){;?>
-    		    html += '<span class="ogrinal_price" style="text-decoration:none;">部落价：<span style="color:red;font-weight: bold;">'+val['info']['tribe_price']+'货豆</del></span></span><br>';
+    		    html += '<span class="ogrinal_price" style="text-decoration:none;">部落价：<span style="color:red;font-weight: bold;">'+val['info']['tribe_price']+'</del></span></span><br>';
     		    <?php if($details['cat_id'] != 104164){;?>//共享服务分类104164
-    		    html += '<span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del>'+val['info']['vip_price']+'货豆</del></span></span>';
+    		    html += '<span class="ogrinal_price" style="text-decoration:none;">易货价：<span><del>'+val['info']['vip_price']+'</del></span></span>';
     		    <?php };?>
     		    var price = val['info']['tribe_price'];//单价
 			<?php }else{;?>
-			    html +='<span class="ogrinal_price" style="text-decoration:none;">易货价：<span>'+val['info']['vip_price']+'货豆</span></span>';
+			    html +='<span class="ogrinal_price" style="text-decoration:none;">易货价：<span>'+val['info']['vip_price']+'</span></span>';
 			    var price = val['info']['vip_price'];//单价
 			<?php };?>
 			<?php if($details["market_price"]){ ?>
@@ -735,7 +735,7 @@ function process(){
 			
 			var total_price = price*item_num;//总价
 			var stock = val['info']['stock'];//库存
-			$("#total_price").html(formatCurrency(total_price)+"货豆");//总价显示
+			$("#total_price").html(formatCurrency(total_price)+"");//总价显示
 			$("#stock").html(stock);//库存显示
 
 			

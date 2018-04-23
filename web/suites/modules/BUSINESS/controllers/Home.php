@@ -493,7 +493,7 @@ class Home extends Front_Controller
                 }
                 $this->load->view('_footer');
                 $this->load->view('foot');
-                exit;
+                
             } else {
                 $options = array();
 

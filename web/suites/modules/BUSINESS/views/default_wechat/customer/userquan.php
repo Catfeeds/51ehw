@@ -38,7 +38,7 @@
                             <tbody>
                                 <tr>
                                     <td class="product-code">MP125984154</td>
-                                    <td class="product-code">156.00货豆</td>
+                                    <td class="product-code">156.00提货权</td>
                                     <td class="product-code">满100即可使用</td>
                                     <td class="product-code">2013/12/24至2013/12/24</td>
                                     <td class="product-code">未用</td>
@@ -63,7 +63,7 @@
                             <tbody>
                                 <tr>
                                     <td class="product-code">MP125984154</td>
-                                    <td class="product-code">156.00货豆</td>
+                                    <td class="product-code">156.00提货权</td>
                                     <td class="product-code">满100即可使用</td>
                                     <td class="product-code">2013/12/24至2013/12/24</td>
                                     <td class="product-code">未用</td>

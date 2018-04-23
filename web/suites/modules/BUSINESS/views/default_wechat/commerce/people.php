@@ -25,7 +25,7 @@
   .tribe_people_show li:nth-child(2) {display: block;}
   .tribe_people_show li:nth-child(3) {display: block;}
   .tribe_people_dianpu {display: block!important;}
-  .tribe_yaoqing  {color: #333;font-size: 15px;background: #FECF0A;padding: 6px 0;margin-top: 8px;width: 120%;left: -10px;}
+  .tribe_yaoqing  {color: #333;font-size: 15px;background: #ffde51;padding: 6px 0;margin-top: 8px;width: 120%;left: -10px;}
   .tribe_people_my li img {width: 50px!important;height: 50px!important;}
   .send_ok_text { position: absolute;left: -72px;top: 18px;color: #ff0000;}
   .prominent_commerce_box {border-top:none;}
@@ -33,6 +33,7 @@
   .prominent_commerce_box li a i {width: 70px;height: 70px;margin-top: 5px;margin-left: 10px;}
   .biaoshi1 {font-size: 12px;color: #55acc9;border: 1px solid #55acc9;border-radius: 5px;padding: 2px;margin-left: 2px;}
   .biaoshi2 {font-size: 12px;color: #ffca00;border: 1px solid #ffca00;border-radius: 5px;padding: 2px;margin-left: 2px;}
+  .commerce_people_text {color: #787878;font-size: 13px;padding-top: 5px;width: 100%;display: block;overflow: hidden;word-break: keep-all;white-space: nowrap;text-overflow: ellipsis;text-align: center;}
 </style>
 
 
@@ -46,11 +47,14 @@
 <?php if( count( $tribe_list) > 1 ) {?>
 <div class="commerce_people_head01">
   <ul> 
-      <?php foreach ( $tribe_list as $v ){?>
+      <?php 
+      foreach ( $tribe_list as $v ){?>
       <li>
        <!--<a href="<?php echo site_url('Commerce/People/'.$label_id.'/'.$v['id'])?>">-->
-      <a href ="javascript:change_tribe(<?php echo $v['id'];?>);">
-      <img src="<?php echo IMAGE_URL.$v['logo']?>" onerror="this.src='images/tmp_logo.jpg'"></a>
+      <a href ="javascript:change_tribe(<?php echo $v['id'];?>);" class="commerce_head_em">
+      <img src="<?php echo IMAGE_URL.$v['logo']?>" onerror="this.src='images/tmp_logo.jpg'">
+       <div class="commerce_people_text"><?php echo $v['name']; ?></div>
+      </a>
       </li>
       <?php }?>
   </ul>
@@ -138,7 +142,7 @@
                        <!-- <span class="tribe_span_bg02"></span> -->
                        
                        <?php if( !empty($val['corp_id'] ) && $val['approval_status'] == 2 && $val['corp_status'] == 1 ) :?>
-                           <i class="icon-enterprise enterprise-icon"></i>
+                           <i class="icon-enterprise enterprise-icon" style="top: 10px;left:5px;;z-index: 1;"></i>
                        <?php endif;?>
                        </li>
                        
@@ -161,12 +165,12 @@
                        </li>
                        <!-- <li class="tribe_people_guarantee">
                            <a href="<?php echo 'javascript:;';//echo site_url('Tribe/My_Info/'.$tribe_id.'/'.$val['id'])?>">
-                             <span class="fn-14"><?php echo $val['remain_guarantee_price'] / 10000 ?>万货豆</span>
+                             <span class="fn-14"><?php echo $val['remain_guarantee_price'] / 10000 ?>万提货权</span>
                              <span class="tribe_edu">可担保额</span>
                            </a>
                        </li> -->
                        <!-- <li class="tribe_people_credit">
-                           <span class="fn-14"><?php echo $val['credit'] / 10000 ?>万货豆</span>
+                           <span class="fn-14"><?php echo $val['credit'] / 10000 ?>万提货权</span>
                            <span class="tribe_edu">获得授信</span>
                            <a href="javascript:void(0);">店铺</a>
                        </li> -->
@@ -267,6 +271,9 @@ function  change_tribe(tribe_id){
           success:function(data)
           {
         	  $(".tribe_people").empty();
+
+			  $("title").html(data.my_info.t_name);
+        	  
         	  var result = '';
         	  var site_url = '<?php echo site_url(); ?>'
               var img_url =  '<?php echo IMAGE_URL; ?>'; 
@@ -359,7 +366,7 @@ function  change_tribe(tribe_id){
 							  }
 					  result += '<span class="icon-right zhankai_icon';
 					  if(data.list[i]['id'] == 5 || data.list[i]['id'] == '' ||  !data.list[i]['id']){
-						  result += ' span_rotate';
+						  result += '';
 						  }
 					  result += '"></span>';
 				      result += ' </p>';
@@ -500,7 +507,11 @@ function  change_tribe(tribe_id){
 			      }else{
 			        $(this).siblings('.tribe_people_show').children('li:gt(2)').hide();
 			      }
-			  })
+			  });
+
+        <?php if($label_id == 2){ ?>
+             change_color();
+        <?php }?>
 
             $('.tribe_yaoqing').on('click',function(){
                  var type = $(this).attr('flag');
@@ -546,15 +557,22 @@ function  change_tribe(tribe_id){
 }
 
 
-
+   
+   $('.commerce_people_head01 ul li').eq(0).children('a').removeClass('commerce_head_em').css({
+       width: '70',
+       height: '70'
+     });
    $('.commerce_people_head01 ul li').on('click',function(){
      $(this).children('a').css({
        width: '70',
        height: '70'
      });
      $(this).children('a').removeClass('commerce_head_em');
-     $(this).siblings('li').children('a').addClass('commerce_head_em');
-   })
+     $(this).siblings('li').children('a').addClass('commerce_head_em').css({
+       width: '60',
+       height: '60'
+     });
+   });
 
 
    $('.tribe_yaoqing').on('click',function(){
@@ -676,6 +694,8 @@ function  change_tribe(tribe_id){
 
 
 
+
+
 <script type="text/javascript">
 var footer_nva_length = $(".tribe_shop_footer ul li").length;
 $(".tribe_shop_footer ul li").css("width",(100/footer_nva_length)+"%"); 
@@ -761,9 +781,20 @@ $(function () {
     window.addEventListener('pagehide', function () { 
       isPageHide = true; 
     }); 
-})
+});
+
+// 秦商会
+<?php if($label_id == 2){ ?>
+   function  change_color(){
+      $('.tribe_yaoqing').css('color', '#fff'); 
+   }
+   change_color();
+<?php }?>
 
 </script>
+
+
+
 
 
 <?php }else{?>
@@ -774,5 +805,10 @@ $(function () {
 
     
 <?php }?>
+
+
+
+
+
 
   </div>

@@ -130,6 +130,33 @@ function set_customer($data,$type ='web'){
     
     $CI->load->model('Tribe_mdl');
     if($customer['mobile']){
+        //---------------------秦商商会逻辑开始---------------------
+        $qx_label_id = $CI->session->userdata("label_id");
+        if(!empty($qx_label_id) && $qx_label_id == 2){
+            //当是在秦商注册绑定后 默认加入到某个部落
+            $qs_tribe_id = 155;
+            if(base_url() ==  'http://www.51ehw.com/'){
+                $qs_tribe_id = 364;
+            }
+            $qs_tribe_info =  $CI->Tribe_mdl->get_tribe($qs_tribe_id);
+            if($qs_tribe_info && $qs_tribe_info['status'] == 2 ){
+                $qs_staff_info =  $CI->Tribe_mdl->verify_tribe_user($qs_tribe_id,$customer['mobile']);
+                if(!$qs_staff_info){
+                    $qs_num = $CI->Tribe_mdl->getQSmemberList($qs_tribe_id);
+                    $qs_num ++;
+                    $qs_data["customer_id"] = $user_id;
+                    $qs_data["tribe_id"] = $qs_tribe_id;
+                    $qs_data["mobile"] = $customer['mobile'];
+                    $qs_data["member_name"] = '好项目支持者'.$qs_num;
+                    $qs_data['status'] = 2;//审核通过
+                    $qs_data['show_mobile'] = 2;
+                    $aff = $CI->Tribe_mdl->add_staff($qs_data);
+                  
+                }
+            }
+        }
+        //---------------------秦商商会逻辑结束---------------------
+        
         //更新部落用户ID信息
         $update_data['customer_id'] = $user_id;
         $update_data['mobile'] = $customer['mobile'];

@@ -157,6 +157,13 @@ class  App_label_mdl extends CI_Model {
             }else if(!empty($sift['page']['limit'])){
                 $limit_sql = " LIMIT {$sift['page']['limit']}";
             }
+            $product = '';
+            if(!empty($sift['search']['product'])){
+                $product = " AND `p`.`name` LIKE '%{$sift['search']['product']}%'";
+            }
+            
+            
+            
           $sql= "SELECT `p`.*, `pi`.`file`,any_value(sale.salenum) as sales 
                 FROM `9thleaf_app_label_category` as `alc` 
                 JOIN `9thleaf_product` as `p` ON `alc`.`product_id` = `p`.`id` 
@@ -171,6 +178,7 @@ class  App_label_mdl extends CI_Model {
                 AND `p`.`is_on_sale` = 1 
                 AND `p`.`is_delete` =0 
                 AND `p`.`is_mc` =0 
+                $product
                 ORDER BY `sales` DESC 
                 $limit_sql
                 ";

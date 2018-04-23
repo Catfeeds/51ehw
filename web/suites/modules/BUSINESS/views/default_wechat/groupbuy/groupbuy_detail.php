@@ -139,17 +139,17 @@ $signPackage = $this->js_api_sdk->getSignPackage();
 			<input type="hidden" name="payment_id" value="2">
 			<lable class="item" id="special_price_item" style="display:none;">特<em style="opacity: 0;">文字</em>价:&nbsp;&nbsp;
 				<span class="red" style="font-size: 15px;font-weight: bold;">
-					<?php echo number_format($details['special_price'],2); ?> 货豆
+					<?php echo number_format($details['special_price'],2); ?> 提货权
 				</span>
 			</lable>
 
             <!-- 拼团 -->
             <div>
-                <span style="font-size: 14px;color:#F66B32;"><?php echo $details['menber_num']?>人拼团价：<span style="font-size: 18px;" id="groupbuy_price"><?php echo $details['groupbuy_price']?></span>货豆／件</span>
+                <span style="font-size: 14px;color:#F66B32;"><?php echo $details['menber_num']?>人拼团价：<span style="font-size: 18px;" id="groupbuy_price"><?php echo $details['groupbuy_price']?></span>提货权／件</span>
             </div>  
              <lable class="item" id="product_price_item"><s>易&nbsp;&nbsp;货&nbsp;&nbsp;价:&nbsp;&nbsp;
                 <span class="red" id="product_price" style="color: #333333;font-size: 15px;font-weight: bold;">
-                    <?php echo number_format($details['vip_price'], 2);?> 货豆
+                    <?php echo number_format($details['vip_price'], 2);?> 提货权
                 </span></s>
             </lable>
             <div class="line"></div>
@@ -179,7 +179,7 @@ $signPackage = $this->js_api_sdk->getSignPackage();
                 <input id="item_amount" type="hidden" value="<?php echo $details['stock'];?>"/><!-- 库存 -->
             </span>
             
-            <lable class="item">小<em style="opacity: 0;">文字</em>计: &nbsp;&nbsp;<span id="total_price"><?php echo number_format($details['groupbuy_price'],2);?> 货豆</span></lable>
+            <lable class="item">小<em style="opacity: 0;">文字</em>计: &nbsp;&nbsp;<span id="total_price"><?php echo number_format($details['groupbuy_price'],2);?> 提货权</span></lable>
             <p class="caution_tips" id="item-error" style="display:none;"></p>
             
         </div>
@@ -366,7 +366,7 @@ jQuery.extend( {
     account : function(obj){
         // 小计计算
         var x = jQuery(obj).val();
-    	$("#total_price").text(formatCurrency((this.groupbuy_price.replace(/,/g,"") * x).toFixed(2)) +" 货豆");
+    	$("#total_price").text(formatCurrency((this.groupbuy_price.replace(/,/g,"") * x).toFixed(2)) +" 提货权");
     },
     finishing : function(obj){
     	// 禁止输入中文

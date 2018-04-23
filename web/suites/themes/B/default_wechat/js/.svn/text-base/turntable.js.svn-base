@@ -16,16 +16,20 @@ var turnplate={
 
 
 // 图片信息
-var img01 = new Image(); //小米电视
+var img01 = new Image(); //188
 img01.src = "images/lottery/pizze_img02.png";
 var img02 = new Image(); //iPhone
 img02.src = "images/lottery/pizze_img01.png";
-var img03 = new Image(); //酒
+var img03 = new Image(); //888
 img03.src = "images/lottery/pizze_img03.png";
+var img04 = new Image(); //288
+img04.src = "images/lottery/pizze_img04.png";
+var img05 = new Image(); //488
+img05.src = "images/lottery/pizze_img05.png";
 
 $(document).ready(function(){
 	//动态添加大转盘的奖品与奖品区域背景颜色
-	turnplate.restaraunts = ["谢谢参与  GOODLUCK", "80元 长安客西凤酒专属优惠券", "小米电视机", "50元 长安客西凤酒专属优惠券 ", "iPhone X ", "100元 长安客西凤酒专属优惠券 ",];
+	turnplate.restaraunts = ["谢谢参与  GOODLUCK", "288元 长安客西凤酒专属现金券", "iPhone X", "价值488元 长安客西凤酒帝享1瓶 ", "188元 长安客西凤酒专属现金券", "价值888元 长安客西凤酒藏品级一瓶",];
 	turnplate.colors = ["#FFFFFF", "#0b0806", "#FFFFFF", "#0b0806","#FFFFFF", "#0b0806"];
 	
 	var rotateTimeOut = function (){
@@ -59,6 +63,9 @@ $(document).ready(function(){
 		});
 	};
 
+	
+
+
 	$('.pointer').click(function (){
 		
 		if(turnplate.bRotate)return;
@@ -74,12 +81,17 @@ $(document).ready(function(){
             return ;
         } else{
         	stochastic()
+        	if(allow_type == 0){
+        		turnplate.bRotate = !turnplate.bRotate;
+    			return false;
+        	}
         	if(item == 99){
 			turnplate.bRotate = !turnplate.bRotate;
 			return false;
         	}
 		$('#lottery_num').text(limit);
 		
+
 		//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
 		rotateFn(item, turnplate.restaraunts[item-1]);
 		if(mobile){
@@ -99,6 +111,8 @@ $(document).ready(function(){
 						$('.lottery_pizz_yes').show();
 						$('.lottery_pizee_no').hide();
 						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_80.png');
+						$('.lottery_ball_pizze_img').removeClass('lottery_img488');
+					    $('.lottery_pizze_jinbi').show();
 					},8000)
 					break;
 				case 3:
@@ -107,7 +121,6 @@ $(document).ready(function(){
 						$('.lottery_ball').show();
 						$('.lottery_pizz_yes').show();
 						$('.lottery_pizee_no').hide();
-						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img02.png');
 					},8000)
 					break;
 				case 4:
@@ -116,7 +129,10 @@ $(document).ready(function(){
 						$('.lottery_ball').show();
 						$('.lottery_pizz_yes').show();
 						$('.lottery_pizee_no').hide();
-						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_50.png');
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_488.png');
+						$('.lottery_ball_pizze_img').addClass('lottery_img488');
+						$('.lottery_ball_pizze_text').addClass('lottery_text488');
+						$('.lottery_pizze_jinbi').hide();
 					},8000)
 					break;
 				case 5:
@@ -125,7 +141,9 @@ $(document).ready(function(){
 						$('.lottery_ball').show();
 						$('.lottery_pizz_yes').show();
 						$('.lottery_pizee_no').hide();
-						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img01.png');
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_50.png');
+						$('.lottery_ball_pizze_img').removeClass('lottery_img488');
+					    $('.lottery_pizze_jinbi').show();
 					},8000)
 					break;
 				case 6:
@@ -134,7 +152,10 @@ $(document).ready(function(){
 						$('.lottery_ball').show();
 						$('.lottery_pizz_yes').show();
 						$('.lottery_pizee_no').hide();
-						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_100.png');
+						$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_888.png');
+					    $('.lottery_ball_pizze_img').addClass('lottery_img488');
+					    $('.lottery_ball_pizze_text').addClass('lottery_text488');
+						$('.lottery_pizze_jinbi').hide();
 					},8000)
 					break;
 				} 
@@ -156,6 +177,8 @@ $(document).ready(function(){
 					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
 					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_80.png');
+					$('.lottery_ball_pizze_img').removeClass('lottery_img488');
+					$('.lottery_pizze_jinbi').show();
 				},8000)
 				break;
 			case 3:
@@ -165,7 +188,6 @@ $(document).ready(function(){
 					$('.lottery_pizz_yes_condition').show();
 					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
-					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img02.png');
 				},8000)
 				break;
 			case 4:
@@ -175,7 +197,10 @@ $(document).ready(function(){
 					$('.lottery_pizz_yes_condition').show();
 					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
-					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_50.png');
+					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_488.png');
+					$('.lottery_ball_pizze_img').addClass('lottery_img488');
+					$('.lottery_ball_pizze_text').addClass('lottery_text488');
+				    $('.lottery_pizze_jinbi').hide();
 				},8000)
 				break;
 			case 5:
@@ -185,7 +210,9 @@ $(document).ready(function(){
 					$('.lottery_pizz_yes_condition').show();
 					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
-					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_img01.png');
+					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_50.png');
+					$('.lottery_ball_pizze_img').removeClass('lottery_img488');
+					$('.lottery_pizze_jinbi').show();
 				},8000)
 				break;
 			case 6:
@@ -195,7 +222,10 @@ $(document).ready(function(){
 					$('.lottery_pizz_yes_condition').show();
 					$('.lottery_pizz_yes_condition .lottery_pizz_yes').show();
 					$('.lottery_pizee_no').hide();
-					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_100.png');
+					$('.lottery_ball_pizze_img').attr('src','images/lottery/pizze_888.png');
+					$('.lottery_ball_pizze_img').addClass('lottery_img488');
+					$('.lottery_ball_pizze_text').addClass('lottery_text488');
+					$('.lottery_pizze_jinbi').hide();
 				},8000)
 				break;
 			 }
@@ -207,6 +237,8 @@ $(document).ready(function(){
 
 var limit = 0;
 var item = 99;
+
+var allow_type = 1;
 var stochastic_url = '';
 var award_id = 0;
 function stochastic(){
@@ -220,9 +252,12 @@ function stochastic(){
     	success:function(data){
     		if(data.status != '0'){
     			alert(data.error_msg);
+    			allow_type = 0;
     			return false;
     		}else{
+    			allow_type = 1;
     			item = data.item;
+    			// item = 6;
     			limit = data.total_num;
     			award_id = data.award_id;
     		}
@@ -285,10 +320,10 @@ function drawRouletteWheel() {
 		  ctx.rotate(angle + arc / 2 + Math.PI / 2);
 		  
 		  /** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
-		  if(text.indexOf("元")>0){//元
+		  if(text.indexOf("长安客西凤酒藏品级一瓶")>0){//元
 			  var texts = text.split("元");
 			  for(var j = 0; j<texts.length; j++){
-				  ctx.font = j == 0?'bold 20px Microsoft YaHei':'13px Microsoft YaHei';
+				  ctx.font = j == 0?'bold 19px Microsoft YaHei':'13px Microsoft YaHei';
 				  ctx.fillStyle = '#fff';
 				  if(j == 0){
 					  ctx.fillText(texts[j]+"元", -ctx.measureText(texts[j]+"元").width / 2, j * line_height);
@@ -296,41 +331,81 @@ function drawRouletteWheel() {
 					  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
 				  }
 			  }
-		  }else if(text.indexOf("元") == -1 && text.length>6){//奖品名称长度超过一定范围 
+		  }
+		  if(text.indexOf("长安客西凤酒帝享1瓶")>0){//元
+			  var texts = text.split("元");
+			  for(var j = 0; j<texts.length; j++){
+				  ctx.font = j == 0?'bold 19px Microsoft YaHei':'13px Microsoft YaHei';
+				  ctx.fillStyle = '#fff';
+				  if(j == 0){
+					  ctx.fillText(texts[j]+"元", -ctx.measureText(texts[j]+"元").width / 2, j * line_height);
+				  }else{
+					  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+				  }
+			  }
+		  }
+		  if(text.indexOf("288")==0){//元
+			  var texts = text.split("元");
+			  for(var j = 0; j<texts.length; j++){
+				  ctx.font = j == 0?'bold 19px Microsoft YaHei':'13px Microsoft YaHei';
+				  ctx.fillStyle = '#fff';
+				  if(j == 0){
+					  ctx.fillText(texts[j]+"元", -ctx.measureText(texts[j]+"元").width / 2, j * line_height);
+				  }else{
+					  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+				  }
+			  }
+		  }
+		  if(text.indexOf("188")==0){//元
+			  var texts = text.split("元");
+			  for(var j = 0; j<texts.length; j++){
+				  ctx.font = j == 0?'bold 19px Microsoft YaHei':'13px Microsoft YaHei';
+				  ctx.fillStyle = '#ca9d42';
+				  if(j == 0){
+					  ctx.fillText(texts[j]+"元", -ctx.measureText(texts[j]+"元").width / 2, j * line_height);
+				  }else{
+					  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+				  }
+			  }
+		  }
+		  else if(text.indexOf("元") == -1 && text.length>6){//奖品名称长度超过一定范围 
 			  text = text.substring(0,6)+"||"+text.substring(6);
 			  var texts = text.split("||");
 			  for(var j = 0; j<texts.length; j++){
 				  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
 			  }
-		  }else{
-			  //在画布上绘制填色的文本。文本的默认颜色是黑色
-			  //measureText()方法返回包含一个对象，该对象包含以像素计的指定字体宽度
-			  ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-			  ctx.fillStyle = "#ccc"; //文字颜色
 		  }
 
 
 
 
-
 		  //添加对应图标
-		  if(text.indexOf("小米电视机") == 0){
-		  	    ctx.fillStyle = "#ca9d42!important"; 
+		  if(text.indexOf("188元") == 0){
 		  	   // 注意，这里要等到img加载完成才能绘制
 			  img01.onload=function(){  
-				  ctx.drawImage(img01,-45,15);      
+				  ctx.drawImage(img01,-43,30);      
 			  }; 
-			  ctx.drawImage(img01,-45,15);  
+			  ctx.drawImage(img01,-43,30);  
 		  }else if(text.indexOf("iPhone") == 0){
 			  img02.onload=function(){  
 				  ctx.drawImage(img02,-25,25);      
 			  }; 
 			  ctx.drawImage(img02,-25,25);  
-		  }if(text.indexOf("元") >= 0){
+		  }if(text.indexOf("888元") >= 0){
 			  img03.onload=function(){  
 				  ctx.drawImage(img03,-25,25);      
 			  }; 
 			  ctx.drawImage(img03,-25,25);  
+		  }else if(text.indexOf("288元") == 0){
+			  img04.onload=function(){  
+				  ctx.drawImage(img04,-43,30);  
+			  }; 
+			  ctx.drawImage(img04,-43,30);
+		  }if(text.indexOf("488元") >= 0){
+			  img05.onload=function(){  
+				  ctx.drawImage(img05,-25,25);      
+			  }; 
+			  ctx.drawImage(img05,-25,25);  
 		  }
 		  //把当前画布返回（调整）到上一个save()状态之前 
 		  ctx.restore();

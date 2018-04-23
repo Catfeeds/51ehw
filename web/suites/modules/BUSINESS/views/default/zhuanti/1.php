@@ -185,7 +185,7 @@
 								</h6>
 								<p class="nei_x1"><?php echo $val['corporation_name']?></p>
 								<p class="nei_x2">
-									<strong>易货价：</strong><span><?php echo $val['vip_price']?>  货豆</span>
+									<strong>易货价：</strong><span><?php echo $val['vip_price']?>  </span>
 								</p>
 							</div>
 						</li>

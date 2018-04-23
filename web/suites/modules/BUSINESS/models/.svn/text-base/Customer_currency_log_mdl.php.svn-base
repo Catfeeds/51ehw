@@ -14,7 +14,7 @@ class Customer_currency_log_mdl extends CI_Model {
 	
 	/**
 	 * 
-	 * 获取货豆操作记录数
+	 * 获取提货权操作记录数
 	 */
     public function count_currency_log($customer_id){
         $this->db->from('customer_currency_log as l');
@@ -147,14 +147,14 @@ class Customer_currency_log_mdl extends CI_Model {
 	                 
 	        switch ( $data['id_event'] ){
 	             
-	            case 66: //充值货豆
+	            case 66: //充值提货权
 	                $data_message['status'] = 1;
-	                $data_message['first'] = '您好，货豆已成功充值到账。'; //模板头部说明
+	                $data_message['first'] = '您好，提货权已成功充值到账。'; //模板头部说明
 	                $data_message['keyword1'] = $pay_info['name']; //账号
-	                $data_message['keyword2'] = $data['amount']. ' 货豆'; //账号
+	                $data_message['keyword2'] = $data['amount']. ' 提货权'; //账号
 	                $data_message['keyword3'] = '五一易货网现金余额'; //途径
 	                $data_message['keyword4'] = date('Y-m-d H:i:s'); //时间
-	                $data_message['remark'] = '货豆余额：'.($data['ending_balance']).'\n感谢您的使用。';//底部说明
+	                $data_message['remark'] = '提货权余额：'.($data['ending_balance']).'\n感谢您的使用。';//底部说明
 	                 
 	                //H5和电脑的连接不一样
 	                if (stristr($_SERVER['HTTP_USER_AGENT'], "Android") || stristr($_SERVER['HTTP_USER_AGENT'], "iPhone") || stristr($_SERVER['HTTP_USER_AGENT'], "wp")) {
@@ -169,11 +169,11 @@ class Customer_currency_log_mdl extends CI_Model {
 	                $data_message['status'] = 2;
 	                $data_message['first'] = '尊敬的客户：您的五一易货网账户发生了一笔消费支出，请确认是否是您本人消费。'; //模板头部说明
 	                $data_message['keyword1'] = !empty($data['order_no']) ? $data['order_no'] : '无'; //订单号
-	                $data_message['keyword2'] = $data['amount']. ' 货豆'; //消费货豆
+	                $data_message['keyword2'] = $data['amount']. ' 提货权'; //消费提货权
 	                $data_message['keyword3'] = $data['remark']; //途径
 	                $data_message['keyword4'] = $pay_info['name']; //账号
 	                $data_message['keyword5'] = date('Y-m-d H:i:s'); //途径
-	                $data_message['remark'] = '货豆余额：'.($data['ending_balance']).'\n亲，如您在购物体验中遇到疑问请联系客服。';//底部说明
+	                $data_message['remark'] = '提货权余额：'.($data['ending_balance']).'\n亲，如您在购物体验中遇到疑问请联系客服。';//底部说明
 	                //H5和电脑的连接不一样
 	                if (stristr($_SERVER['HTTP_USER_AGENT'], "Android") || stristr($_SERVER['HTTP_USER_AGENT'], "iPhone") || stristr($_SERVER['HTTP_USER_AGENT'], "wp")) {
 	                    $url  = site_url('log/transaction_list');
@@ -187,12 +187,12 @@ class Customer_currency_log_mdl extends CI_Model {
 	            case 59://红包收入    
 	            case 62://收入通知
 	                $data_message['status'] = 3;
-	                $data_message['first'] = '尊敬的客户：您的五一易货网账户发生了一笔货豆收入。'; //模板头部说明
-	                $data_message['keyword1'] = $data['amount']. ' 货豆'; //收入货豆
+	                $data_message['first'] = '尊敬的客户：您的五一易货网账户发生了一笔提货权收入。'; //模板头部说明
+	                $data_message['keyword1'] = $data['amount']. ' 提货权'; //收入提货权
 	                $data_message['keyword2'] = $data['remark']; //收入途径
 	                $data_message['keyword3'] = !empty($data['order_no']) ? $data['order_no'] : '无'; //订单号
 	                $data_message['keyword4'] = date('Y-m-d H:i:s'); //时间
-	                $data_message['remark'] = '货豆余额：'.($data['ending_balance']).'\n亲，如您在购物体验中遇到疑问请联系客服。';//底部说明
+	                $data_message['remark'] = '提货权余额：'.($data['ending_balance']).'\n亲，如您在购物体验中遇到疑问请联系客服。';//底部说明
 	                //H5和电脑的连接不一样
 	                if (stristr($_SERVER['HTTP_USER_AGENT'], "Android") || stristr($_SERVER['HTTP_USER_AGENT'], "iPhone") || stristr($_SERVER['HTTP_USER_AGENT'], "wp")) {
 	                    $url  = site_url('log/transaction_list');

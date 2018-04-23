@@ -30,7 +30,7 @@
 
   <div class="account_settings_list">
     <ul>
-        <li style="margin-bottom: 6px;"><a href="<?php echo site_url("Member/info/AuthenticationView");?>"><span class="icon-members_off"></span><span>实名认证</span><i><?php echo $is_authentication?"已认证":"未认证"; ?></i><em class="icon-right"></em></a></li>
+        <li style="margin-bottom: 6px;display: none;"><a href="<?php echo site_url("Member/info/AuthenticationView");?>"><span class="icon-members_off"></span><span>实名认证</span><i><?php echo $is_authentication?"已认证":"未认证"; ?></i><em class="icon-right"></em></a></li>
         <li><a href="<?php echo site_url("Member/info/pwd_edit");?>"><span class="icon-xiugaimima"></span><span>修改密码</span><em class="icon-right"></em></a></li>
         <li><a href="<?php echo site_url("Member/info/paypwd_edit");?>"><span class="icon-xiugaizhifumima"></span><span>修改支付密码</span><em class="icon-right"></em></a></li>
         <?php if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false){?>

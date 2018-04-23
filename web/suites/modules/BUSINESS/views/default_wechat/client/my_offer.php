@@ -35,7 +35,7 @@ var page = 1;
 						 result += '<div class="my_needs_goods_img" style="width: 25%;"><img src="'+img+'" onerror="'+errorimg+'" alt=""></div>';
 						 result += '<div class="my_needs_text">';
 						 result += '<span class="my-needs-li-title">'+data.list[i]['title']+'</span>';
-						 result += '<span class="my-needs-li-money">我报的总价:'+data.list[i]['offer']+'货豆</span>';
+						 result += '<span class="my-needs-li-money">我报的总价:'+data.list[i]['offer']+'</span>';
 						 result += ' <span class="my-needs-li-time">报价时间:'+data.list[i]['create_at']+'</span>';
 						 result += '</div>	';
 						 result += '</a>';

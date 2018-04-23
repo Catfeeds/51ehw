@@ -1,5 +1,5 @@
 <style type="text/css">
-  .commerce_index {padding-bottom: 10px;}
+  /*.commerce_index {padding-bottom: 10px;}*/
 </style>
 
 

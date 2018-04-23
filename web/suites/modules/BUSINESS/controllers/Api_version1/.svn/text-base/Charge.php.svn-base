@@ -12,7 +12,7 @@ class Charge extends Api_Controller {
     }
     
     
-    //现金余额充值货豆
+    //现金余额充值提货权
     public function purchase_M()
     {
         //获取参数
@@ -39,7 +39,7 @@ class Charge extends Api_Controller {
         $info['customer_id'] =$user_id;
         $pay_info =  json_decode($this->curl_post_result($url,$info),true);
        
-        //现金余额充值货豆
+        //现金余额充值提货权
         $data= array();
         $data['m_credit'] =$M_credit;
         $data['pass'] =$pay_passwd;
@@ -86,7 +86,7 @@ class Charge extends Api_Controller {
         $data ["amount"] = $prams['amount'];
         $data ["order_source"] = $prams['source']=="ios"?4:3;//1、PC；2、微信；3、安卓；4、ios
         $data ["payment_id"] = isset($prams['payment_id'])?$prams['payment_id']:2;//1、支付宝；2、微信支付；3、网银在线
-        
+       
         //APP有B端APP跟商会APP的区分 若是商会APP app_sign => label_sn
         $label_sn = $this->session->userdata("label_sn");
         if($label_sn){
@@ -385,7 +385,7 @@ class Charge extends Api_Controller {
             print_r(json_encode($return));
             exit;
         }
-        //获取用户资产 现金cash，授信credit，货豆M_credit
+        //获取用户资产 现金cash，授信credit，提货权M_credit
         $url = $this->url_prefix.'Customer/fortune/?customer_id='.$user_id;
         $credit = json_decode($this->curl_get_result($url),true);
         
@@ -404,7 +404,7 @@ class Charge extends Api_Controller {
         if($is_order){
             //计算订单支付金额与当前用户余额差值
             
-            //用户可用余额 授信+货豆
+            //用户可用余额 授信+提货权
             $available_amount = $credit['credit']+$credit['M_credit'];
             
             //需要支付的手续费
@@ -434,7 +434,6 @@ class Charge extends Api_Controller {
             $data ["order_source"] = $prams['source']=="ios"?4:3;//1、PC；2、微信；3、安卓；4、ios
             $data ["payment_id"] = isset($prams['payment_id'])?$prams['payment_id']:2;//1、支付宝；2、微信支付；3、网银在线
             
-            
             //APP有B端APP跟商会APP的区分 若是商会APP app_sign => label_sn
             $label_sn = $this->session->userdata("label_sn");
             if($label_sn){
@@ -446,6 +445,7 @@ class Charge extends Api_Controller {
                 //后台退款区别标识
                 $data['app_sign'] = '51ehwapp';
             }
+            
             
             do
             {

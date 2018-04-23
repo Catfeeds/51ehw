@@ -100,9 +100,34 @@ class Commerce extends Front_Controller
 	 */
 	function index( $label_id )
 	{
-	   
+	    if($label_id == 2){
+	        //当是在秦商注册绑定后 默认加入到某个部落
+	        $qs_tribe_id = 155;//;
+	        if(base_url() ==  'http://www.51ehw.com/'){
+	            $qs_tribe_id = 364;
+	        }
+	        $this->load->model('Tribe_mdl');
+	        $mobile =  $this->session->userdata("mobile");
+	        $qs_tribe_info = $this->Tribe_mdl->get_tribe($qs_tribe_id);
+	        if($qs_tribe_info && $qs_tribe_info['status'] == 2 ){
+	            $qs_staff_info =  $this->Tribe_mdl->verify_tribe_user($qs_tribe_id,$mobile);
+	            if(!$qs_staff_info){
+	                $qs_num = $this->Tribe_mdl->getQSmemberList($qs_tribe_id);
+	                $qs_num ++;
+	                $qs_data["customer_id"] =  $this->customer_id;
+	                $qs_data["tribe_id"] = $qs_tribe_id;
+	                $qs_data["mobile"] = $mobile;
+	                $qs_data["member_name"] = '好项目支持者'.$qs_num;
+	                $qs_data['status'] = 2;//审核通过
+	                $qs_data['show_mobile'] = 2;
+	                $aff = $this->Tribe_mdl->add_staff($qs_data);
+	            }
+	        }
+	    }
+	    
+	    
+	    
 	    $app_labe_info = $this->check_app( $label_id );
-	   
 	    $this->load->model('tribe_mdl');
         //查nav。
         $data['nav_info'] = $this->App_label_mdl->Load_Nav( $label_id );
@@ -288,7 +313,7 @@ class Commerce extends Front_Controller
 	    
 	    $this->load->model('App_label_mdl');
 	    $return['Product'] = $this->App_label_mdl->get_SpecialtyProduct($sift);
-	   
+	  
 	    if($return['Product']){
 	        foreach ($return['Product'] as $k => $v){
 	             if(!$v['market_price']){
@@ -612,7 +637,7 @@ class Commerce extends Front_Controller
 	                $data['customer']['credit'] = '0.00';
 	            }
 	        }else{
-	            //若没有支付账户，则现金为0 货豆为0
+	            //若没有支付账户，则现金为0 提货权为0
 	            $data['customer']['cash'] = 0;
 	            $data['customer']['credit'] = '0.00';
 	        }

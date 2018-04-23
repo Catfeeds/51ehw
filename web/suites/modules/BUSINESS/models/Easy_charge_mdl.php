@@ -27,7 +27,9 @@ class Easy_charge_mdl extends CI_Model
 		$inser_charge['customer_id'] = $data['customer_id'];
 		$inser_charge['payment_id'] = $data['payment_id'];
 		$inser_charge['source'] = $data['source'];
-		
+		$inser_charge['obj_id'] = $data['obj_id'];
+		$inser_charge['obj_no'] = $data['obj_no'];
+		$inser_charge['remark'] = $data['remark'];
 // 		if( empty( $data['app_sign'] ) )
 // 		{ 
 // 		    $data['app_sign'] = '51ehw';
@@ -101,9 +103,9 @@ class Easy_charge_mdl extends CI_Model
      * @param unknown $order_sn
      * @param unknown $params
      */
-    function Update($id,$params){
+    function Update($where,$params){
 	    $this->db->set($params);
-	    $this->db->where("id",$id);
+	    $this->db->where($where);
 	    $this->db->update("easy_charge");
 	    return $this->db->affected_rows();
 	}

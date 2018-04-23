@@ -37,7 +37,7 @@
 						title="<?php //echo $good['name'];?>"><ul <?php //echo $key%4==3&&$key!=0 ?"style='margin-right:0'":"" ?>>
                 <div class="painting_img"><img src="<?php //echo base_url($good['image_name']."_270".$good['file_ext']);?>"></div>
                 <li><?php //echo $good['name'];?></li>
-                <li style="color: #c32d05; font-size: 16px">易货价: <?php //echo number_format($good['vip_price'],2);?> 货豆</li>
+                <li style="color: #c32d05; font-size: 16px">易货价: <?php //echo number_format($good['vip_price'],2);?> </li>
                 <h3 class="h3_color">(0人)评价</h3>
             </ul></a>
             <?php //endforeach;?>
@@ -169,7 +169,7 @@
            <?php foreach ($goods_list as $v){?>
              <li>
                    <div class="housing_right">
-						<small> <?php echo ($v['vip_price']>=10000) ?   (floor(($v['vip_price']/10000)*10)/10).'万货豆' :substr($v['vip_price'],0,-3).'货豆'?> </small>
+						<small> <?php echo ($v['vip_price']>=10000) ?   (floor(($v['vip_price']/10000)*10)/10).'万' :substr($v['vip_price'],0,-3).''?> </small>
 					</div>
 					<div class="housing_left">
 						<strong class="strong_1"><a

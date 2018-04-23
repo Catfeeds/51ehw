@@ -89,7 +89,7 @@
 							<span>数量：<em>2</em></span>
 						</p>
 						<p class="order_price">
-							<span><em>0.00 货豆</em></span>
+							<span><em>0.00 提货权</em></span>
 						</p>
 					</div>
 				</li>
@@ -97,7 +97,7 @@
 
 			<ul>
 			     <li class="juan-list" style="position: relative;padding: 10px 0; font-size: 13px;margin:0px 10px;border-bottom: 1px solid #ddd;font-size: 14px;">
-                   <a href="javascript:void(0);">优惠劵<span style="float:right;padding-right: 10px;">－100货豆<span class="icon-right" style="position: absolute;right:0;top: 10px;"></span></span></a>
+                   <a href="javascript:void(0);">优惠劵<span style="float:right;padding-right: 10px;">－100提货权<span class="icon-right" style="position: absolute;right:0;top: 10px;"></span></span></a>
             </li>
         			<li style="padding: 10px 10px; font-size: 14px">
 				<h3>
@@ -112,11 +112,11 @@
             </li>
                          
             <li style="padding: 10px 0; font-size: 13px;margin:0px 10px;border-bottom: 1px solid #ddd;font-size: 14px;">
-               <a href="javascript:void(0);">运费<span style="float:right;">＋0 货豆</span></a>
+               <a href="javascript:void(0);">运费<span style="float:right;">＋0 提货权</span></a>
             </li>
             
             <li style="padding: 10px 0; font-size: 13px;margin:0px 10px;font-size: 14px;">
-               <a href="javascript:void(0);">优惠劵<span style="float:right;">－100货豆</span></a>
+               <a href="javascript:void(0);">优惠劵<span style="float:right;">－100提货权</span></a>
             </li>
            
         </ul>
@@ -131,7 +131,7 @@
 <div class="order_total">
   <div class="section" style="position: absolute; bottom: 54px;padding-left: 10px; font-size: 14px;border-top: 1px solid #999;width:100%;padding-top: 10px;">
 	<span class="price_tit"><span>1件</span>总计:</span>
-	<span class="st" style="visibility: hidden;"></span>0.01 货豆<em></em>
+	<span class="st" style="visibility: hidden;"></span>0.01 提货权<em></em>
   </div>
   <a href="javascript:submitOrder();" class="order_tijiao_button" id="order_submit_status">提交订单</a>
 </div>

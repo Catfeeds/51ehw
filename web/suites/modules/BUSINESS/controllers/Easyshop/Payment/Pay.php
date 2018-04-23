@@ -39,11 +39,11 @@ class Pay extends Front_Controller {
 	    
 	    //接收支付价格-支付事件-支付方式等信息。
 // 	    $charge_info['amount'] = 10;//$this->input->get_post('amount');//充值金额
-	    $charge_info['type'] = 1;//$this->input->get_post('charge_type');//1支付订单（简易店）。
+	    $charge_info['obj_type'] = 1;//$this->input->get_post('charge_type');//1支付订单（简易店）。
 	    $charge_info['source'] = 2;//$this->input->get_post('charge_source');//1:PC支付 2:H5支付 3:安卓 4:IOS 5后台
 	    $charge_info['payment_id'] = 1;//$this->input->get_post('payment_id');//充值平台 1:微信H5 2:支付宝 3:银联
 	    $charge_info['customer_id'] = $this->customer_id; //用户ID
-	    $charge_info['obj_id'] = 1;//$this->input->post('obj_id');
+	    $charge_info['obj_id'] = 27;//$this->input->post('obj_id');
 	   
         //根据不同的充值类型生成子选项。一或多。
         $item = $this->ChargeItem( $charge_info );
@@ -105,7 +105,7 @@ class Pay extends Front_Controller {
 	    
 	    
 	    //根据不同类型生成对象价格。
-	    switch ( $charge_info['type'] )
+	    switch ( $charge_info['obj_type'] )
 	    {
 	        case 1 :
                  //查询对象订单信息。
@@ -122,11 +122,14 @@ class Pay extends Front_Controller {
                 
                 $charge_info['amount'] = $order_info['total_price'];
                 $charge_info['remark'] = '订单支付';
+                $charge_info['obj_no'] = $order_info['order_sn'];
                 break;
         }
       
+    
         //生成支付信息
         $charge_id = $this->Easy_charge_mdl->Create( $charge_info );
+      
         if( !$charge_id )
         {
             $return['message'] = '发起支付失败，请重试';
@@ -134,21 +137,26 @@ class Pay extends Front_Controller {
             return $return;
         }
         
+        $return['message'] = 'ok';
+        $return['status'] = true;
+        $return['data']['charge_id'] = $charge_id;
+        
+        
         //使用通用逻辑，如果其它类型还需要则array(添加类型)，特殊类型则else 中生成item.
-        if( in_array( $charge_info['type'], array(1) ) )
-        {
-            //构造信息
-            $item['easy_charge_id'] = $charge_id;
-            $item['amount'] = $charge_info['amount'];
-            $item['obj_id'] = $charge_info['obj_id'];
+//         if( in_array( $charge_info['type'], array(1) ) )
+//         {
+//             //构造信息
+//             $item['easy_charge_id'] = $charge_id;
+//             $item['amount'] = $charge_info['amount'];
+//             $item['obj_id'] = $charge_info['obj_id'];
             
-            if( $this->Easy_charge_mdl->CreateItem( $item ) )
-            {
-                $return['message'] = 'ok';
-                $return['status'] = true;
-                $return['data']['charge_id'] = $charge_id;
-            }
-        }
+//             if( $this->Easy_charge_mdl->CreateItem( $item ) )
+//             {
+//                 $return['message'] = 'ok';
+//                 $return['status'] = true;
+//                 $return['data']['charge_id'] = $charge_id;
+//             }
+//         }
 
         return $return;
 	}
@@ -191,7 +199,7 @@ class Pay extends Front_Controller {
 	    $price = $charge ['amount'] * 100;
 	    $unifiedOrder = new UnifiedOrder_pub ();
 	    $unifiedOrder->setParameter ( "openid", "$openid" ); // 商品描述
-	    $unifiedOrder->setParameter ( "body", "{$charge['remark']}:" . $charge ['charge_no'] ); // 商品描述
+	    $unifiedOrder->setParameter ( "body", "{$charge['remark']}"); // 商品描述
 	    $unifiedOrder->setParameter ( "out_trade_no", $charge ['charge_no'] ); // 商户订单号
 	    $unifiedOrder->setParameter ( "total_fee", $price ); // 总金额
 	    $unifiedOrder->setParameter ( "notify_url", WxPayConf_pub::NOTIFY_URL ); // 通知地址

@@ -13,10 +13,10 @@
         <!-- 第一步 -->
         <div class="verify_bank_one" style="padding-top: 6px;">
             <!-- 姓名 -->
-        	<div class="verify_bank_num verify_bank_num01"><span>姓名</span><input type="text" name="real_name" value=""  placeholder="必填，请输入真实姓名"><i class="icon-guanbi1" onclick="delinput(this,'#nextone')"></i></div>
+        	<div class="verify_bank_num verify_bank_num01"><span>姓名</span><input type="text" name="real_name" value=""  onkeyup="verify_bank_one()" placeholder="必填，请输入真实姓名"><i class="icon-guanbi1" onclick="delinput(this,'#nextone')"></i></div>
             <!-- 身份证号 -->
             <div class="verify_bank_num verify_bank_num02" style="margin-top: 6px;"><span>身份证号</span><input type="tel" onkeyup="verify_bank_one()" name="idcard" value="" placeholder="必填，请输入18位身份证号" maxlength="18"><i class="icon-guanbi1" onclick="delinput(this,'#nextone')"></i></div>
-            <div class="verify_bank_next"><button  disabled="disabled" id="nextone" onclick="verify_bank_next('.verify_bank_one','.verify_bank_two');return false;">下一步</button></div>
+            <div class="verify_bank_next"><button  type="button" disabled="disabled" id="nextone" onclick="verify_bank_next('.verify_bank_one','.verify_bank_two');">下一步</button></div>
         </div>
     
         <!-- 第二步 -->
@@ -31,7 +31,7 @@
             <div class="verify_bank_agree">
             	<label><input type="checkbox" onchange="verify_bank_two()" id="agree" class="icon-yixuan1 recommend_tishi_active" checked="checked"><span>同意</span><a href="javascript:void(0);" onclick="approve_protocol_get();">实名认证协议</a></label>
             </div>
-            <div class="verify_bank_next"><button disabled="disabled" id="nexttwo" onclick="verify_bank_next('.verify_bank_two','.verify_bank_three');return false;">下一步</button></div>
+            <div class="verify_bank_next"><button type="button" disabled="disabled" id="nexttwo" onclick="verify_bank_next('.verify_bank_two','.verify_bank_three');">下一步</button></div>
         </div>
     
     
@@ -46,14 +46,14 @@
             	<input type="text" name="VerificationCode"  onkeyup="verify_bank_three()" placeholder="请输入验证码">
             	<input type="button" class="num-button" id ="get_mobile_code"  onclick="getcode(10);return false;" value="获取验证码">
             </div>
-            <div class="verify_bank_next"><button disabled="disabled" id="complete" onclick="ajaxform1();return false;">完成</button></div>
+            <div class="verify_bank_next"><button type="button" disabled="disabled" id="complete" onclick="ajaxform1(this);">完成</button></div>
         </div>
 
 
         <!-- 第四步，支付密码 -->
         <div class="alternate_password verify_bank_four" hidden>
-      		<div class="alternate_password_input"><input type="password" value="" name="pay_passwd" onkeyup="verify_bank_four()" placeholder="请输入支付密码"></div>
-        	<div class="verify_bank_next"><button disabled="disabled" id="paycomplete" onclick="SetPayPassword();return false;">完成</button></div>
+      		<div class="alternate_password_input"><input type="password" value="" maxlength="6" name="pay_passwd" onkeyup="verify_bank_four()" placeholder="请输入6位支付密码"></div>
+        	<div class="verify_bank_next"><button type="button" disabled="disabled" id="paycomplete" onclick="SetPayPassword(this);">完成</button></div>
         </div>	
     
         <!-- 提示弹窗 -->
@@ -135,12 +135,15 @@ $(function(){
 //         alert("我监听到了浏览器的返回按钮事件啦");//根据自己的需求实现自己的功能 
 		if(now == ".verify_bank_one"){
 			history.back(-1);
-		}else if(now == ".verify_bank_two"){
-			verify_bank_next(now,".verify_bank_one");
-		}else if(now == ".verify_bank_three"){
-			verify_bank_next(now,".verify_bank_two");
-		}else if(now == '.verify_bank_four'){
-			verify_bank_next(now,".verify_bank_three");
+		}else {
+			if(now == ".verify_bank_two"){
+				verify_bank_next(now,".verify_bank_one");
+			}else if(now == ".verify_bank_three"){
+				verify_bank_next(now,".verify_bank_two");
+			}else if(now == '.verify_bank_four'){
+				verify_bank_next(now,".verify_bank_three");
+			}
+			pushHistory();
 		}
     }, false);  
     
@@ -232,7 +235,7 @@ function verify_bank_three(){
 ///第四步
 function verify_bank_four(){
 	var pay_passwd = $('input[name="pay_passwd"]').val();
-	if(pay_passwd.length >= 6){
+	if(pay_passwd.length == 6){
 		$('.verify_bank_four #paycomplete').addClass('verify_bank_next_active').removeAttr('disabled');
 	}else{
 		$('.verify_bank_four #paycomplete').removeClass('verify_bank_next_active').attr('disabled', 'disabled');
@@ -255,7 +258,6 @@ function tishi(content) {
 function ball_konw(status) {
 	$('.verify_bank_ball').hide();
 	if(status){
-		$("#ball_konw").attr("onclick","ball_konw(0)");
 		verify_bank_next('.verify_bank_three','.verify_bank_two');
 	}
 }
@@ -274,7 +276,10 @@ function getcode(type){
 }
 
 //ajax实名认证
-function ajaxform1(){
+function ajaxform1(obj){
+	$("#ball_konw").text("知道了");
+	$("#ball_konw").attr("onclick","ball_konw(0)");
+	$(obj).removeAttr("onclick");
 	var is_passwd = "<?php echo $is_passwd;?>";
 	$.ajax({
 		type:'post',
@@ -284,26 +289,34 @@ function ajaxform1(){
 		success:function(data){
 			if(data["status"] == 00){
 				if(!is_passwd){
+					document.title = "设置支付密码";
 					verify_bank_next('.verify_bank_three','.verify_bank_four');
 				}else{
-					$("#ball_konw").removeAttr("onclick").attr("href","<?php echo site_url("Member/info/AuthenticationView");?>");
-					tishi(data["msg"]);
-				}
+					// $("#ball_konw").removeAttr("onclick").attr("href","<?php echo site_url("Member/info/AuthenticationView");?>");
+					// tishi(data["msg"]);
+                    $('.black_feds').show().html('实名认证成功！');
+                      setTimeout(function(){
+                       window.location.href = "<?php echo site_url("Member/info/AccountSettings");?>";
+                      },2000);
+				    }
 			}else if(data["status"] == 02){
+				$("#ball_konw").text("返回");
 				$("#ball_konw").attr("onclick","ball_konw(1)");
 				tishi(data["msg"]);
 			}else{
 				tishi(data["msg"]);
 			}
+			$(obj).attr("onclick","ajaxform1(this);");
 		},
 		error:function(res){
 			console.log(res);
 		}
 	});
-}
+} 
 
 //ajax设置支付密码
-function SetPayPassword(){
+function SetPayPassword(obj){
+	$(obj).removeAttr("onclick");
 	$.ajax({
 		type:'post',
 		dataType:'json',
@@ -311,11 +324,16 @@ function SetPayPassword(){
 		data:$("#form1").serialize(),
 		success:function(data){
 			if(data["status"] == "00"){
-				$("#ball_konw").removeAttr("onclick").attr("href","<?php echo site_url("Member/info/AuthenticationView");?>");
-				tishi(data["msg"]);
+				// $("#paycomplete").removeAttr("onclick").attr("href","<?php echo site_url("Member/info/AuthenticationView");?>");
+				// tishi(data["msg"]);
+                $('.black_feds').show().html('实名认证成功！');
+                setTimeout(function(){
+                  window.location.href = "<?php echo site_url("Member/info/AccountSettings");?>";
+                },2000);
 			}else{
 				tishi(data["msg"]);
 			}
+			$(obj).attr("onclick","SetPayPassword(this);");
 		},
 		error:function(res){
 			console.log(res);

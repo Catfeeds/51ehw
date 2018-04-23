@@ -456,7 +456,7 @@ function formatCurrency(num) {
 					</div>
 
 					<div class="new_edit_box" <?php echo $cid==104164?"hidden":'';?> ><!-- #共享服务分类104164 -->
-					   <label>易货价（货豆）：</label> <input type="text" name="vip_price" class="p1" value="<?php echo !empty($editing['vip_price'])?$editing['vip_price']:1;?>" >
+					   <label>易货价（提货权）：</label> <input type="text" name="vip_price" class="p1" value="<?php echo !empty($editing['vip_price'])?$editing['vip_price']:1;?>" >
 					   <span class="tishi" style="color:red" id="vip_price"></span>
 				   </div>
 	
@@ -482,7 +482,7 @@ function formatCurrency(num) {
                     
                     <?php if($mytribe){?>
                     <div class="new_edit_box">
-						<label>部落价（货豆）：</label> <input type="text" name="tribe_price" class="p1" value="<?php echo !empty($editing['tribe_price'])?$editing['tribe_price']:"";?>" >
+						<label>部落价（提货权）：</label> <input type="text" name="tribe_price" class="p1" value="<?php echo !empty($editing['tribe_price'])?$editing['tribe_price']:"";?>" >
                         <span class="tishi" style="color:red" id="tribe_price"></span>
                         <?php if($cid==104164){;?><!-- #共享服务分类104164 -->
                         /<input type="text" name="unit" class="p1"  placeholder="单位" style="width:50px;" value="<?php echo !empty($editing['unit'])?$editing['unit']:"";?>" >

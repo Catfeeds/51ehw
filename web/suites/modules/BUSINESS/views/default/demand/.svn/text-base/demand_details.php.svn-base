@@ -32,7 +32,7 @@
      <!-- 需求详情头部 开始 -->
      <div class="needs_details_header">
         <div class="needs_details_title"><?php echo $detail['title'];?></div>
-        <div class="needs_details_text01">期望价格：<span class="needs_details_num"><?php echo $detail['m_price'];?></span> 货豆/<?php echo $detail['unit'];?>&nbsp;&nbsp;  
+        <div class="needs_details_text01">期望价格：<span class="needs_details_num"><?php echo $detail['m_price'];?></span> 提货权/<?php echo $detail['unit'];?>&nbsp;&nbsp;  
 	    <?php if($detail['needtax'] == 0){ ?>
 	    		 不含税 
 	    		 
@@ -94,20 +94,20 @@
                    <li><a href="javascript:void(0);"><img src="images/needs_love01.png" alt="">
                      <span>尊荣外景特惠套餐High Fashion 定制造…</span>
                     </a>
-                    <span class="needs_list_jiage">易货价:<span>50,000.00</span>货豆</span>  
+                    <span class="needs_list_jiage">易货价:<span>50,000.00</span>提货权</span>  
                    </li>
                    <li style="padding-left: 15px;"><a href="javascript:void(0);"><img src="images/needs_love02.png" alt=""><span>
                       那片森林 咥水果 精品A套餐 绿色食品
                    </span></a>
-                   <span class="needs_list_jiage">易货价:<span>298.00</span>货豆</span></li>
+                   <span class="needs_list_jiage">易货价:<span>298.00</span>提货权</span></li>
                    <li style="padding-left: 15px;"><a href="javascript:void(0);"><img src="images/needs_love03.png" alt=""><span>
                       西安冠杰广告媒体 21城电梯广告
                    </span></a>
-                   <span class="needs_list_jiage">易货价:<span>8,000.00</span>货豆</span></li>
+                   <span class="needs_list_jiage">易货价:<span>8,000.00</span>提货权</span></li>
                    <li style="padding-left: 15px;"><a href="javascript:void(0);"><img src="images/needs_love04.png" alt=""><span>
                        杭州深林小座品牌餐厅
                    </span></a>
-                   <span class="needs_list_jiage">易货价:<span>68.00</span>货豆</span></li>
+                   <span class="needs_list_jiage">易货价:<span>68.00</span>提货权</span></li>
                </ul>
            </div>
         </div> 
@@ -131,7 +131,7 @@
             <div id="cate_1">
                 <div class="needs_tanchuang">需求产品： <span><?php echo $detail['title'];?></span></div><br>
                 <div class="needs_tanchuang">需求数量： <span><?php echo $detail['p_count'];?>件</span></div><br>
-                <div class="needs_tanchuang">需求总价： <span><?php echo $detail['min_vip_price'];?>～<?php echo $detail['max_vip_price'];?>货豆</span></div><br>
+                <div class="needs_tanchuang">需求总价： <span><?php echo $detail['min_vip_price'];?>～<?php echo $detail['max_vip_price'];?>提货权</span></div><br>
                 <div class="needs_tanchuang">收货地区： <span><?php echo $detail['province'].$detail['city'].$detail['district'];?></span></div><br>
                 <form action="<?php echo site_url('member/demand/barter');?>" method="post" id="barter">
                     <div class="needs_tanchuang">联系方式： <input type="text" name="contactuser" > </div><br>

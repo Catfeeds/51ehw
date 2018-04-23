@@ -95,9 +95,8 @@ class Customer_mdl extends CI_Model {
      * 同步添加用户。
      */
     function synchro_create($id) {
-	    if($id){
-	        $this->db1->set('id',$id);
-	    }
+	    $this->db1->set('id',$id);
+	  
         $this->db1->set('name', $this->name);
         $this->db1->set('email', $this->email);
         if($this->password){

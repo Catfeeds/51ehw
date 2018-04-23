@@ -60,7 +60,7 @@ table th{ line-height:normal;border:1px solid #dddddd; padding:10px 0; font-size
 					<tr class="tr1 manageC_tr">
 						<th width="300px" style="text-align: left"><input type="checkbox" style="margin-right: 68px; margin-left: 15px" onclick="selectAll('goods',this)" id="selectAllgoods">商品名称</th>
 						<th width="100px">分类</th>
-						<th width="102px">价格(货豆)</th>
+						<th width="102px">价格(提货权)</th>
 						<th width="124px">可享优惠的部落</th>
 						<th width="58px">状态</th>
 						<th width="124px">部落内销售数</th>

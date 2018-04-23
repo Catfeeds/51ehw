@@ -131,11 +131,11 @@
 	
 	
 	// 去支付 - pay
-<?php if($type == 1): //1 = 普通订单货豆的支付?> 
+<?php if($type == 1): //1 = 普通订单提货权的支付?> 
     function pay( id,pass ){
     	$.ajax({
             <?php if($show_m_pay):?>
-                url:'<?php echo site_url('order/pay_order')?>', //普通货豆支付
+                url:'<?php echo site_url('order/pay_order')?>', //普通提货权支付
                 data:{id:id, pass:pass},
             <?php else:?>
                 url:'<?php echo site_url('member/order/wechat_pay')?>', //微信
@@ -318,7 +318,7 @@ function pay( pass, total_price, corp_id, product_id ){
 	
 	$.ajax({
         <?php if($show_m_pay):?>
-            url:'<?php echo site_url('member/order/pay_code_order')?>', //面对面货豆支付
+            url:'<?php echo site_url('member/order/pay_code_order')?>', //面对面提货权支付
             data:{pass:pass, total_price:total_price, corp_id:corp_id, product_id:product_id},
         <?php else:?>
             url:'<?php echo site_url('member/order/wechat_code_pay')?>', //微信需要生成订单
@@ -350,7 +350,7 @@ function pay( pass, total_price, corp_id, product_id ){
                     setTimeout("prompt();", 2000);
                     break;
                 case 4:
-                	$(".black_feds").text("货豆余额不足").show();
+                	$(".black_feds").text("提货权余额不足").show();
                     setTimeout("prompt();", 2000);
                     window.location.reload();
                     break;

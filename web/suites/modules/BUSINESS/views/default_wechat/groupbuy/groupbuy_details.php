@@ -25,7 +25,7 @@ $signPackage = $this->js_api_sdk->getSignPackage();
                     <p class="fn-14 goods_list_text"><?php echo $product['name']?></p>
                     </a>
                     <p class="fn-14" style="float: left;font-size: 16px!important;margin-left: 90px;margin-top: -60px;"> 数量：<?php echo $qty['quantity']?><span style="font-size: 13px;"></span></p>
-                    <p class="fn-14" style="float: left;font-size: 16px!important;margin-left: 90px;margin-top: -40px;">单价：<?php echo $product['groupbuy_price']?><span style="font-size: 13px;"></span><span style="font-size: 12px!important;padding-left: 4px;">货豆</span>&nbsp;</p>
+                    <p class="fn-14" style="float: left;font-size: 16px!important;margin-left: 90px;margin-top: -40px;">单价：<?php echo $product['groupbuy_price']?><span style="font-size: 13px;"></span><span style="font-size: 12px!important;padding-left: 4px;">提货权</span>&nbsp;</p>
                  
                     <p class="fn-12 c9" style="float: right;font-size: 13px!important;color: #707070!important;margin-top: -45px;border:1px solid #9D9D9D;padding:0px 8px;"><?php echo $product['menber_num']?>人团</p>
                     </div> 
@@ -38,7 +38,7 @@ $signPackage = $this->js_api_sdk->getSignPackage();
             <?php if($product['groupbuy_end_at'] > date("Y-m-d H:i:s")){?>
             <span style="font-size: 15px;color:#262626;">还差<span><?php echo $product['menber_num']-count($member);?></span>人，下一位会是你吗？</span>
             <?php }else{ ?>
-            <span style="font-size: 15px;color:#262626;">拼团失败，系统将会在24小时内退货豆到您的51易货网账户</span>
+            <span style="font-size: 15px;color:#262626;">拼团失败，系统将会在24小时内退提货权到您的51易货网账户</span>
             <?php };?>
         <?php }else{?>
         <span style="font-size: 15px;color:#262626;">哞哞在积极安排发货，请注意查收</span>

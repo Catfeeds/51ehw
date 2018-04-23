@@ -1,7 +1,7 @@
 10
 
 dir
-5980
+6183
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/themes/C/default/images
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -981,9 +981,6 @@ has-props
 
 13794
 
-homesliders
-dir
-
 za1.png
 file
 
@@ -1051,6 +1048,9 @@ has-props
 
 
 121523
+
+homesliders
+dir
 
 background1.jpg
 file

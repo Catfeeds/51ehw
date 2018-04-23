@@ -79,7 +79,7 @@
 		    <li><span>数量：<span style="opacity: 0;">测测</span></span><input type="text" id="p_count" value="<?php echo $reqlist['p_count'];  ?>" class="publish-needs-input"></li>
 		    <li><a onclick="select()" href="javascript:void(0);"><span>分类：<span style="opacity: 0;">测测</span></span><span class="needs_fenlei"><?php echo $reqlist['cate']; ?><i class="icon-right"></i></span></a></li>
 		    <li hidden><input id="fenleis" value="<?php echo $reqlist['cate_id'];?>" ></li>
-		    <li><span>期望单价：</span><input type="text" id="m_price" value="<?php echo $reqlist['m_price'];  ?>" class="publish-needs-input1" placeholder="价格"><span style="color: #666;">货豆/</span>
+		    <li><span>期望单价：</span><input type="text" id="m_price" value="<?php echo $reqlist['m_price'];  ?>" class="publish-needs-input1" placeholder="价格"><span style="color: #666;">/</span>
 		    <form class="publish-needs-form">
             <select id="unit"  name="cars" style="color: #666;font-size: 13px;height:20px;">
             <option>请选择单位</option>

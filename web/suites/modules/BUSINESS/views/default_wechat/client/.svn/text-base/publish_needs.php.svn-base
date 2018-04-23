@@ -81,7 +81,7 @@ select {appearance:none;-moz-appearance:none;-webkit-appearance:none;border: non
 		    <li><span>数量：<span style="opacity: 0;">测测</span></span><input type="text" id="p_count" value="" class="publish-needs-input" placeholder="请输入数量"></li>
 		    <li><a onclick="select()" href="javascript:void(0);"><span>分类：<span style="opacity: 0;">测测</span></span><span class="needs_fenlei">请选择分类<i class="icon-right"></i></span></a></li>
        	<li hidden><input id="fenleis" value="" ></li>
-       	<li style="padding-top: 0;padding-bottom: 0;line-height: 40px;"><span>期望单价：</span><input type="text" id="m_price" value="" class="publish-needs-input1" placeholder="价格"><span>货豆/</span>
+       	<li style="padding-top: 0;padding-bottom: 0;line-height: 40px;"><span>期望单价：</span><input type="text" id="m_price" value="" class="publish-needs-input1" placeholder="价格"><span>/</span>
 		    <form class="publish-needs-form">
             <select id="unit"  name="cars" style="font-size: 13px;height:20px;">
                 <option value="">请选择单位</option>

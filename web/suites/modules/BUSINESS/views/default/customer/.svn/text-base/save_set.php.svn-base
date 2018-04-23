@@ -75,11 +75,12 @@
 					class="saveSet_m saveSet_a">绑定手机</a>
                <?php endif; ?>
             </p>
+            <!--
             <p class="saveSet_p">
                 <i class="<?php echo  $idcard ? "icon-yirenzheng":"icon-weirenzheng";?>"></i>
 				<span class="saveSet_n">实名认证</span> <span class="saveSet_t">实名认证后，可通过实名信息找回支付密码，修改手机号等，提高账户安全性</span>
 				<a href="<?php echo site_url("Member/info/AuthenticationView");?>"class="<?php echo  $idcard ? "saveSet_m saveSet_a":"saveSet_m saveSet_b";?>"><?php echo  $idcard ? "查看":"立即认证";?></a>
-			</p>
+			</p>-->
 		</div>
 		<!--首次修改支付密码 结束-->
 	</div>

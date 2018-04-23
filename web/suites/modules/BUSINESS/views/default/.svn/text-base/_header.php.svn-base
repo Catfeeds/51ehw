@@ -299,7 +299,7 @@ window.alert = function(str)
 						</div>
 						<div class="fr">
 							<div class="con">
-								<span class="price"><?php echo $items['price'][0] =='.' ? '0'.$items['price'] :$items['price']?>货豆</span><span
+								<span class="price"><?php echo $items['price'][0] =='.' ? '0'.$items['price'] :$items['price']?>提货权</span><span
 									class="number"><i>x</i><span><?php echo $items['qty'];?></span></span></span>
 							</div>
 							<div class="btn">

@@ -43,7 +43,7 @@
                     <li><a href="<?php echo site_url('corporate/order/get_list/return');?>">已退货(<?php echo $status_12;?>)</a></li>
                     <li><a href="<?php echo site_url('corporate/order/get_list/return');?>">交易成功(<?php echo $status_9 + $status_13;?>)</a></li>
                     <li><a href="<?php echo site_url('corporate/order/get_list/shut');?>">交易关闭(<?php echo $status_10 + $status_11 + $status_12;?>)</a></li>
-                    <li><a href="<?php echo site_url('corporate/order/get_list/receive');?>">待提取货豆(<?php echo $status_7?>)</a></li>
+                    <li><a href="<?php echo site_url('corporate/order/get_list/receive');?>">待提取提货权(<?php echo $status_7?>)</a></li>
                 </ul>
                 
             </div>
@@ -217,8 +217,8 @@
                 <textarea class="cart_texta" style="margin-left:0; width:650px;"><?php echo $details['customer_remark']?></textarea>
                 <!--添加备注 结束-->
                 <span class="gouwuche_d03">
-                    <p>总商品金额：M <?php echo $details['total_product_price']?></p>
-                    <p>+ 运费：M <?php echo $details['auto_freight_fee']?></p><br>
+                    <p>总商品金额：<?php echo $details['total_product_price']?></p>
+                    <p>+ 运费：<?php echo $details['auto_freight_fee']?></p><br>
                     <?php if($details['status'] >3 && $details['status'] <=9 || $details['status'] == 14):?>
                         <p class="gouwuche_dd03">实际支付：<?php echo $details['total_price']?></p>
                     <?php endif;?>
@@ -305,7 +305,7 @@ function up_price(o_id,id){
 			    }
 			    
 	            if(data){
-	             $('.gouwuche_d03 p').eq(0).text('总商品金额：M '+data.total_price);
+	             $('.gouwuche_d03 p').eq(0).text('总商品金额： '+data.total_price);
 	            }else{ 
 	                alert('操作失败');
 	            }
@@ -330,9 +330,9 @@ function up_freight(o_id){
 	            if(data){
 	            	if(freight.indexOf(".") > 0 )
                 	{
-	                	$('.gouwuche_d03 p').eq(1).text('+ 运费：M '+freight);
+	                	$('.gouwuche_d03 p').eq(1).text('+ 运费：'+freight);
                 	}else{
-                		$('.gouwuche_d03 p').eq(1).text('+ 运费：M '+freight+'.00');
+                		$('.gouwuche_d03 p').eq(1).text('+ 运费：'+freight+'.00');
                 	}
 	             
 	            }else{ 

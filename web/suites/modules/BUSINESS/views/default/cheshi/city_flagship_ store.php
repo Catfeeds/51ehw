@@ -112,7 +112,7 @@ $(document).ready(function(){
                         <span class="flagship_guanggao_right">人流量：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><span class="flagship_guanggao_right" style="margin-left: 60px;">关注度：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><br>
                         <span class="flagship_guanggao_right">好评度：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><br>
                         <s class="flagship_guanggao_right" style="margin-top: 35px;">原价：888元</s><br>
-                        <span class="flagship_guanggao_right" style="margin-top: 24px;">秒杀价：<span style="color: #DC4A36;font-size: 20px;">8999 <span style="color: #DC4A36;font-size:15px;">货豆</span></span></span><br>
+                        <span class="flagship_guanggao_right" style="margin-top: 24px;">秒杀价：<span style="color: #DC4A36;font-size: 20px;">8999 <span style="color: #DC4A36;font-size:15px;">提货权</span></span></span><br>
                         <button style="cursor: pointer;width:180px;height:50px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #DC4A36;margin-top: 30px; "><span style="color: white;font-size: 26px;">立即购买</span></button>
                     </div>
                 </li>
@@ -128,7 +128,7 @@ $(document).ready(function(){
                         <span class="flagship_guanggao_right">人流量：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><span class="flagship_guanggao_right" style="margin-left: 60px;">关注度：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><br>
                         <span class="flagship_guanggao_right">好评度：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><br>
                         <s class="flagship_guanggao_right" style="margin-top: 35px;">原价：888元</s><br>
-                        <span class="flagship_guanggao_right" style="margin-top: 24px;">秒杀价：<span style="color: #DC4A36;font-size: 20px;">8999 <span style="color: #DC4A36;font-size:15px;">货豆</span></span></span><br>
+                        <span class="flagship_guanggao_right" style="margin-top: 24px;">秒杀价：<span style="color: #DC4A36;font-size: 20px;">8999 <span style="color: #DC4A36;font-size:15px;">提货权</span></span></span><br>
                         <button style="cursor: pointer;width:180px;height:50px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #DC4A36;margin-top: 30px; "><span style="color: white;font-size: 26px;">立即购买</span></button>
                     </div>
                 </li>
@@ -159,7 +159,7 @@ $(document).ready(function(){
                         <span class="flagship_guanggao_right">人流量：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><span class="flagship_guanggao_right" style="margin-left: 60px;">关注度：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><br>
                         <span class="flagship_guanggao_right">好评度：<span style="color: #DC4A36;">＊＊＊＊＊</span></span><br>
                         <s class="flagship_guanggao_right" style="margin-top: 35px;">原价：888元</s><br>
-                        <span class="flagship_guanggao_right" style="margin-top: 24px;">秒杀价：<span style="color: #DC4A36;font-size: 20px;">8999 <span style="color: #DC4A36;font-size:15px;">货豆</span></span></span><br>
+                        <span class="flagship_guanggao_right" style="margin-top: 24px;">秒杀价：<span style="color: #DC4A36;font-size: 20px;">8999 <span style="color: #DC4A36;font-size:15px;">提货权</span></span></span><br>
                         <button style="cursor: pointer;width:180px;height:50px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #DC4A36;margin-top: 30px; "><span style="color: white;font-size: 26px;">立即购买</span></button>
                     </div>
                 </li>
@@ -183,7 +183,7 @@ $(document).ready(function(){
                    <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
                        <span style="color: #393939;display: inline-block;"><img src="images/flagship_store_time02.png" height="15" width="15" alt="" style="padding-right: 5px;vertical-align: middle;">仅剩<span>05天</span><span>17时</span><span>07分</span><span>26秒</span></span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>
@@ -192,7 +192,7 @@ $(document).ready(function(){
                     <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
                        <span style="color: #393939;display: inline-block;"><img src="images/flagship_store_time02.png" height="15" width="15" alt="" style="padding-right: 5px;vertical-align: middle;">仅剩<span>05天</span><span>17时</span><span>07分</span><span>26秒</span></span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>
@@ -210,7 +210,7 @@ $(document).ready(function(){
                    <a href="javascript:void(0);"><img src="images/flagship_store_11.png" height="380" width="587" alt=""></a>
                    <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="top: 45px;height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>
@@ -218,7 +218,7 @@ $(document).ready(function(){
                     <a href="javascript:void(0);"><img src="images/flagship_store_12.png" height="380" width="587" alt=""></a>
                     <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="top: 45px;height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>
@@ -241,7 +241,7 @@ $(document).ready(function(){
                    <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
                        <span style="color: #393939;display: inline-block;"><img src="images/flagship_store_time02.png" height="15" width="15" alt="" style="padding-right: 5px;vertical-align: middle;">仅剩<span>05天</span><span>17时</span><span>07分</span><span>26秒</span></span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>
@@ -250,7 +250,7 @@ $(document).ready(function(){
                     <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
                        <span style="color: #393939;display: inline-block;"><img src="images/flagship_store_time02.png" height="15" width="15" alt="" style="padding-right: 5px;vertical-align: middle;">仅剩<span>05天</span><span>17时</span><span>07分</span><span>26秒</span></span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>
@@ -270,7 +270,7 @@ $(document).ready(function(){
                    <a href="javascript:void(0);"><img src="images/flagship_store_15.png" height="380" width="587" alt=""></a>
                    <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="top: 45px;height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>
@@ -278,7 +278,7 @@ $(document).ready(function(){
                     <a href="javascript:void(0);"><img src="images/flagship_store_16.png" height="380" width="587" alt=""></a>
                     <div style="margin-top: 40px;position: relative;" >
                        <span style="font-size: 22px;font-weight: bolder;">西风酒52度国花瓷30年西风酒52度国花瓷30年</span><br>
-                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">货豆</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
+                       <span style="padding-top: 15px;;color: #E33D34;font-size: 24px;display: inline-block;">899<span style="font-size: 15px;padding-left: 5px;">提货权</span></span><s style="color: #A0A0A0;padding-left:15px;font-size: 15px; ">原价:999元</s>
                        <button style="top: 45px;height:50px;cursor: pointer;width:180px;background-color:#DC4A36;text-align: center;line-height: 50px;border: 1px solid #E43C36;position: absolute;left:310px;"><span style="color: white;font-size: 26px;">立即抢购</span></button>
                    </div>
                 </li>

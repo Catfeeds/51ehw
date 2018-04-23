@@ -277,7 +277,7 @@ jQuery.extend( {
         
         if (parseInt(x) >= this.min) {
             jQuery(obj).val(x);
-            			$("#total_price").text((curr_price * x).toFixed(2)+" 货豆");
+            			$("#total_price").text((curr_price * x).toFixed(2)+" 提货权");
 						count_freight(parseInt(x));
         } else {
             jQuery('#item-error').html("<i class=\"ico\"></i>商品数量最少为" + this.min
@@ -292,7 +292,7 @@ jQuery.extend( {
         var max = jQuery('#item_amount').val();//获取库存数量
         if (parseInt(x) <= parseInt(max)) {
             jQuery(obj).val(x);
-            			$("#total_price").text((curr_price * x).toFixed(2)+" 货豆");
+            			$("#total_price").text((curr_price * x).toFixed(2)+" 提货权");
 						count_freight(parseInt(x));
         } else {
             jQuery('#item-error').html("<i class=\"ico\"></i>您所填写的商品数量超过库存！");
@@ -329,7 +329,7 @@ jQuery.extend( {
             jQuery(obj).focus();
 			return;
         }
-        		$("#total_price").text((curr_price * $(obj).val()).toFixed(2)+" 货豆");
+        		$("#total_price").text((curr_price * $(obj).val()).toFixed(2)+" 提货权");
 				count_freight(parseInt(x));
     }
 });
@@ -499,7 +499,7 @@ function setInfo()
 			//库存判断
 			if(skuprice[i][1] <= 0){
 				$("#quantity").empty();
-				$('#total_price').html((skuprice[i][3]).toFixed(2)+" 货豆");
+				$('#total_price').html((skuprice[i][3]).toFixed(2)+" 提货权");
 				$("#gouwuche").html('<div class="gouwuche" id="gouwuche" style="background: #cc3333;"><a href="javascript:void(0)" >此商品暂时缺货</a></div>');
 				$("#goumai").remove();
 				}else{
@@ -509,7 +509,7 @@ function setInfo()
 					html += '<input id="item_amount" type="hidden" value="'+skuprice[i][1]+'"/></span>';
 					html += '</span><b class="caution_tips" id="item-error" style="display:none;"></b></dd>';
 					$("#quantity").html(html);
-					$('#total_price').html((skuprice[i][3]*$('#item_num').val()).toFixed(2)+" 货豆");
+					$('#total_price').html((skuprice[i][3]*$('#item_num').val()).toFixed(2)+" 提货权");
 
 					but_button += '<div class="gouwuche" id="gouwuche"><a onclick="javascript:add_to_cart(1768,this)" >加入购物车</a></div>';
 	                but_button += '<div class="goumai" id="goumai"><a onclick="javascript:buy(1768)">立即购买</a></div><br>';
@@ -518,7 +518,7 @@ function setInfo()
 					}
 			
 			var html_price = "";
-			                html_price += '<span class="ogrinal_price" style="text-decoration:none;">易货价：   <span>'+(skuprice[i][3]).toFixed(2)+'货豆</span></span>';
+			                html_price += '<span class="ogrinal_price" style="text-decoration:none;">易货价：   <span>'+(skuprice[i][3]).toFixed(2)+'提货权</span></span>';
                 $("#product_price").html(html_price);
             
             
@@ -547,7 +547,7 @@ function add_to_cart(pid,obj)
 	var max = $('#item_amount').val();//获取库存数量
 //     if (parseInt(x) <= parseInt(max)) {
 //         jQuery(obj).val(x);
-        // 		$("#total_price").text((curr_price * x).toFixed(2)+" 货豆");
+        // 		$("#total_price").text((curr_price * x).toFixed(2)+" 提货权");
 		//     } else {
 //         jQuery('#item-error').html("<i class=\"ico\"></i>您所填写的商品数量超过库存！");
 //         jQuery('#item-error').show();

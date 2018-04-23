@@ -32,7 +32,7 @@
                  </li>
                  <li>
                       <span class="order_tit">订单金额</span>：
-                      <span class="order_num" id="price"><?php echo $total_price?> 货豆</span>  <span class="order_run">(余额：<?php echo round( $user_total_price,2 )?> 货豆)</span>
+                      <span class="order_num" id="price"><?php echo $total_price?> 提货权</span>  <span class="order_run">(余额：<?php echo round( $user_total_price,2 )?> 提货权)</span>
                  </li>
                  <li>
                       <span class="order_tit">手续费</span>：
@@ -211,7 +211,7 @@
     	
     	$.ajax({
             <?php if($show_m_pay):?>
-                url:'<?php echo site_url('Order/pay_order')?>', //普通货豆支付
+                url:'<?php echo site_url('Order/pay_order')?>', //普通提货权支付
                 data:{id:id, pass:pass},
             <?php else:?>
                 url:'<?php echo site_url('Member/Order/wechat_pay')?>', //充值支付

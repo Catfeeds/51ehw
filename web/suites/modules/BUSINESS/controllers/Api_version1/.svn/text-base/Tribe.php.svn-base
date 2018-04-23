@@ -635,9 +635,9 @@ class Tribe extends Api_Controller {
 			print_r(json_encode($return));
 			exit();
 		}
-		
 		//是否公开
 		if($activity_info['display'] == 0){
+		    
 		    if ( $activity_info && $activity_info['tribe_id'] != -1 )
 		    {
 		        //查询是否有资格参加
@@ -1966,8 +1966,8 @@ class Tribe extends Api_Controller {
 	    $this->load->helper("message");
 	    $param['customer_id'] = $user_id;
 	    $param['resource'] = "Login/code_login/$tribe_id?in_id=$user_id&in_tp=code";
-	    $authority = $this->tribe_mdl->ManagementTribe($user_id,$tribe_id);
-	    
+	   
+	   
 	    //部落首领或管理员
 	    $req = json_decode(ToConect($param,'_BUSINESS','n',2),true);
 	    if(!empty($req['key'])){
@@ -5300,7 +5300,7 @@ class Tribe extends Api_Controller {
 	}
 	
 	
-	//------------个人形象开始------------------
+	//------------已注册用户个人形象开始------------------
 	
 	/**
 	 * 个人形象
@@ -5665,12 +5665,12 @@ class Tribe extends Api_Controller {
 	    // 检验参数
 	    $this->_check_prams($prams, array(
 	        'album_id',
-// 	        'del_ablum',
+// 	        'del_album',
 	        'remark',
 	    ));
 	    
 	    $album_id = $prams["album_id"];//相册ID
-	    $del_ablum = isset($prams["del_ablum"]) ? $prams["del_ablum"]:array();//删除ID数组
+	    $del_album = isset($prams["del_album"]) ? $prams["del_album"]:array();//删除ID数组
 	    $remark = $prams["remark"];//备注
 	  
 	    $this->load->model('Customer_album_mdl');
@@ -5685,8 +5685,8 @@ class Tribe extends Api_Controller {
 	        exit;
 	    }
 	    
-        if($del_ablum){//删除操作图片
-            $this->Customer_album_mdl->del_AlbumByImgID($del_ablum);
+        if($del_album){//删除操作图片
+            $this->Customer_album_mdl->del_AlbumByImgID($del_album);
         }  
 	        
 	    $image = array();
@@ -5838,7 +5838,506 @@ class Tribe extends Api_Controller {
         $return['data'] = $album;
         print_r(json_encode($return));
     }
-
 	
 	//------------个人形象结束------------------
+	
+    
+    public function staff_brief(){
+        // 获取参数
+        $prams = $this->p;
+        $return = $this->return;
+         
+        // 检验参数
+        $this->_check_prams($prams, array(
+            'staff_id'
+        ));
+        
+        
+        
+        $customer_id = $this->session->userdata("user_id");//用户id
+        if(!$customer_id || $customer_id == ''){
+            $return['responseMessage'] = array(
+                'messageType' => 'error',
+                'errorType' => '5',
+                'errorMessage' => '用户未登录'
+            );
+            print_r(json_encode($return));
+            exit();
+        }
+        $staff_id = $prams['staff_id'];
+        
+        
+        $this->load->model('Tribe_mdl');
+        $staff_info = $this->Tribe_mdl->load_by_staff_id($staff_id);
+       
+        $idenity_info = $this->Tribe_mdl->load_staff_idenity($staff_info['mobile']);
+        
+        if($staff_info['show_mobile'] == 2){
+            if($staff_info["tribe_id"] != 143){//2018-02-03 荣特殊要求属于143部落的用户手机号码不隐藏
+                $staff_info['mobile'] = substr_replace($staff_info['mobile'],'****',3,4);
+            }
+        }
+        
+        $this->load->model('Tribe_staff_album_mdl');
+        $album_info = $this->Tribe_staff_album_mdl->get_albums($staff_id);
+        
+        $return['data']['staff_info'] = $staff_info;
+        $return['data']['idenity_info'] = $idenity_info;
+        $return['data']['album_info'] = $album_info;
+        
+        print_r(json_encode($return));
+        
+    }
+
+    
+    //------------未注册用户个人形象开始------------------
+    
+    public  function  staff_album_info(){
+        // 获取参数
+        $prams = $this->p;
+        $return = $this->return;
+        $page = $this->n;
+        $return['data'] = array(
+            'perpage' => 0,
+            'currentpage' => 0,
+            'totalpage' => 0,
+            'totalcount' => 0,
+            'listdate' => array()
+        );
+        // 检验参数
+        $this->_check_prams($prams, array(
+            'staff_id'
+        ));
+        
+        $user_id = $this->session->userdata("user_id");//用户id
+        if ($user_id == null || $user_id == "") {
+            $return['responseMessage'] = array(
+                'messageType' => 'error',
+                'errorType' => '5',
+                'errorMessage' => '用户未登录'
+            );
+            print_r(json_encode($return));
+            exit();
+        }
+      
+        $staff_id = $prams["staff_id"];//用户id
+         
+        $this->load->model('Tribe_staff_album_mdl');
+       
+        $return['data']['albums_list_count']  = $this->Tribe_staff_album_mdl->get_albums($staff_id,0);
+        
+        $this->load->model('Tribe_mdl');
+        $ts_info = $this->Tribe_mdl->load_by_staff_id($staff_id);
+        $return['data']['real_name'] = $ts_info['member_name'];
+        
+        $perPage = $page['perPage']; // 每页记录数
+        $currPage = $page['currPage']; // 当前页
+        $offset = ($currPage - 1) * $perPage; // 偏移量
+        
+        $totalcount = count($this->Tribe_staff_album_mdl->load_albums($staff_id));
+      
+        $totalpage = $perPage ? ceil($totalcount / $perPage) : 1; // 总页数
+        
+        $albums_list = $this->Tribe_staff_album_mdl->load_albums($staff_id,$perPage,$offset);
+        
+        
+        $albums =array();
+        if(count($albums_list) > 0){
+            foreach ($albums_list as $k => $val){
+                $photo = $this->Tribe_staff_album_mdl->load_ByAlbum_Id($val['id']);
+                if(count($photo) > 0){
+                    $list = array(
+                        'corporation_name'=>'',
+                        'job'=>'',
+                        'real_name'=>'',
+                    );
+                    $list['album_id'] = $val['id'];
+                    $list['tribe_id'] = $val['tribe_id'];
+                    $list['created_at'] = $val['created_at'];
+                    $list['remark'] = empty($val['remark']) ? "":$val['remark'];
+                    $list['from_customer_id'] = $val['from_customer_id'];
+            
+                    $this->load->model('Customer_album_mdl');
+                    $crop_info = $this->Customer_album_mdl->get_crop_info($val['from_customer_id'],$val['tribe_id']);
+                    $this->load->model('Customer_mdl');
+                    $customer_info = $this->Customer_mdl->load($val['from_customer_id']);
+                 
+                    $list['job'] = $customer_info['job'];
+                    $list['real_name'] = $customer_info['real_name'];
+                    if($crop_info){
+                        $list['corporation_name'] = $crop_info['corporation_name'];
+                    }
+                    $list['photo_list'] = $photo;
+                    $albums[]= $list;
+                }
+            }
+        }
+        // 返回数据
+        $return['data']['perpage'] = $perPage;
+        $return['data']['currentpage'] = $currPage;
+        $return['data']['totalcount'] = $totalcount;
+        $return['data']['totalpage'] = $totalpage;
+        $return['data']['listdate'] = $albums;
+         
+        print_r(json_encode($return));
+        
+    }
+    //------------未注册用户个人形象结束------------------
+    
+   public function  staff_album_upload(){
+       // 获取参数
+       $prams = $this->p;
+       $return = $this->return;
+       
+       $customer_id = $this->session->userdata("user_id");//用户id
+       if ($customer_id == null || $customer_id == "") {
+           $return['responseMessage'] = array(
+               'messageType' => 'error',
+               'errorType' => '5',
+               'errorMessage' => '用户未登录'
+           );
+           print_r(json_encode($return));
+           exit();
+       }
+       
+       // 检验参数
+       $this->_check_prams($prams, array(
+           'staff_id',
+       ));
+      
+ 
+       $image = array();
+       $images = array();
+        
+       $year = date("Y",time());
+       $month = date("m",time());
+       $day = date("d",time());
+        
+       $post['tribe_staff_id']  = $prams["staff_id"];
+       $post['from_customer_id'] = $customer_id;
+       $post['remark']  = empty($prams["remark"]) ? '':$prams["remark"];//备注
+       
+     
+       if(!empty( $_FILES['file'] ))
+       {
+          
+           $this->load->model('Tribe_staff_album_mdl');
+           $this->load->model('Customer_album_mdl');
+           $created_at = date("Y-m-d H:i:s",time());
+          
+           //成员ID
+           $this->load->model('Tribe_mdl');
+           $Ts_Info = $this->Tribe_mdl->load_by_staff_id($post['tribe_staff_id']);
+       
+           $post['tribe_id'] =  $Ts_Info['tribe_id'];
+           $post['created_at'] = $created_at;
+          
+           $album_id =$this->Tribe_staff_album_mdl->create_Album($post);
+       
+           // 图片 初始化数据
+           $save_path = "uploads/staff_album/{$post['tribe_staff_id']}/$year/$month/$day/";
+       
+           $path = FCPATH.UPLOAD_PATH. $save_path;
+       
+       
+           if ( !file_exists( $path ) )
+           {
+               mkdir($path,0777,true);
+           }
+           $this->load->library('upload');
+           
+           if(count($_FILES) > 0){
+              
+               $count=count($_FILES["file"]["name"]);//页面取的默认名称
+               for($i=0;$i<$count;$i++){
+                   $field_name = $_FILES["file"]['name'][$i]. '_' . $i;
+                   $_FILES[$field_name] = array(
+                       'name' => $_FILES["file"]['name'][$i],
+                       'size' => $_FILES["file"]['size'][$i],
+                       'type' => $_FILES["file"]['type'][$i],
+                       'tmp_name' => $_FILES["file"]['tmp_name'][$i],
+                       'error' => $_FILES["file"]['error'][$i]
+                   );
+                   $config['upload_path'] = $path;
+                   $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                   $config['max_size'] = '2097152';
+                   $config['file_name'] = date("YmdHis").rand(0,999999);
+               
+                   $this->upload->initialize($config);
+                  
+                   if ($this->upload->do_upload($field_name)) {
+                       $img = $this->upload->data();
+                       $image['tribe_staff_id']= $post['tribe_staff_id'];
+                       $image['staff_album_id'] = $album_id;
+                       $image['path']= $save_path.$img['file_name'];
+                       $image['created_at']= $created_at;
+                       $images[]= $image;
+                   }
+               }
+               //添加数据
+               $id = $this->Tribe_staff_album_mdl->Create( $images );
+              
+               if($id){
+                   $return['responseMessage'] = array(
+                       'messageType' => 'success',
+                       'errorType' => '0',
+                       'errorMessage' => '发布成功'
+                   );
+                   $return['tribe_name'] = '';
+               
+                   $tribe_detail = $this->tribe_mdl->get_tribe($post['tribe_id']);
+                   $return['tribe_name'] = $tribe_detail['name'];
+                
+                   $return['corporation_name'] ='';
+                   $return['job'] ='';
+                   $return['real_name'] ='';
+                   if($customer_id){
+                       $crop_info = $this->Customer_album_mdl->get_crop_info($customer_id,$post['tribe_id']);
+                        
+                       $this->load->model('Customer_mdl');
+                       $customer_info = $this->Customer_mdl->load($customer_id);
+                       $return['job'] = $customer_info['job'];
+                       $return['real_name'] = $customer_info['real_name'];
+                       if($crop_info){
+                           $return['corporation_name'] = $crop_info['corporation_name'];
+                       }
+                   }
+                   print_r(json_encode($return));
+                   exit();
+               }else{
+                   error_log($this->db->last_query());
+                   $return['responseMessage'] = array(
+                       'messageType' => 'error',
+                       'errorType' => '10',
+                       'errorMessage' => '发布失败'
+                   );
+                   print_r(json_encode($return));
+                   exit();
+               }
+           }else{
+               $return['responseMessage'] = array(
+                   'messageType' => 'error',
+                   'errorType' => '10',
+                   'errorMessage' => '发布失败'
+               );
+               print_r(json_encode($return));
+               exit();
+           }
+       
+       }else{
+              $return['responseMessage'] = array(
+                       'messageType' => 'error',
+                       'errorType' => '10',
+                       'errorMessage' => '发布失败'
+                   );
+               print_r(json_encode($return));
+               exit();
+       }
+   }
+    
+   
+   
+   public function del_staff_album(){
+       // 获取参数
+       $prams = $this->p;
+       $return = $this->return;
+       $page = $this->n;
+       
+       $customer_id = $this->session->userdata("user_id");//用户id
+       if ($customer_id == null || $customer_id == "") {
+           $return['responseMessage'] = array(
+               'messageType' => 'error',
+               'errorType' => '5',
+               'errorMessage' => '用户未登录'
+           );
+           print_r(json_encode($return));
+           exit();
+       }
+       
+       // 检验参数
+       $this->_check_prams($prams, array(
+           'album_id',
+       ));
+       
+       
+       $album_id  = $prams["album_id"];
+       
+       $this->load->model('Tribe_staff_album_mdl');
+       $staff_album_info = $this->Tribe_staff_album_mdl->load_staff_album($album_id);
+       
+       if(!$staff_album_info){
+            $return['responseMessage'] = array(
+                       'messageType' => 'error',
+                       'errorType' => '7',
+                       'errorMessage' => '个人形象不存在'
+                   );
+               print_r(json_encode($return));
+               exit();
+       }
+       
+       if($staff_album_info['from_customer_id'] != $customer_id){
+            $return['responseMessage'] = array(
+                       'messageType' => 'error',
+                       'errorType' => '8',
+                       'errorMessage' => '权限不足'
+                   );
+             print_r(json_encode($return));
+             exit();
+       }
+       $aff =  $this->Tribe_staff_album_mdl->del_AlbumByID($staff_album_info['id']);
+       if($aff){
+           $return['responseMessage'] = array(
+               'messageType' => 'success',
+               'errorType' => '0',
+               'errorMessage' => '删除成功'
+           );
+          
+       }else{
+           $return['responseMessage'] = array(
+               'messageType' => 'error',
+               'errorType' => '3',
+               'errorMessage' => '删除失败'
+           );
+       }
+      print_r(json_encode($return));
+   }
+   
+   public function  edit_staff_album(){
+
+       // 获取参数
+       $prams = $this->p;
+       $return = $this->return;
+       
+       $customer_id = $this->session->userdata("user_id");//用户id
+       if ($customer_id == null || $customer_id == "") {
+           $return['responseMessage'] = array(
+               'messageType' => 'error',
+               'errorType' => '5',
+               'errorMessage' => '用户未登录'
+           );
+           print_r(json_encode($return));
+           exit();
+       }
+       
+       // 检验参数
+       $this->_check_prams($prams, array(
+           'album_id',
+           'remark',
+       ));
+        
+       $album_id = $prams["album_id"];//相册ID
+       $del_album = isset($prams["del_album"]) ? $prams["del_album"]:array();//删除ID数组
+       $remark = $prams["remark"];//备注
+        
+       $this->load->model('Tribe_staff_album_mdl');
+       $this->load->model('Customer_album_mdl');
+       $staff_album_info = $this->Tribe_staff_album_mdl->load_staff_album($album_id);
+      
+       if(!$staff_album_info){
+           $return['responseMessage'] = array(
+               'messageType' => 'error',
+               'errorType' => '7',
+               'errorMessage' => '相册不存在'
+           );
+           echo json_encode($return);
+           exit;
+       }
+        
+       if($del_album){//删除操作图片
+           $this->Tribe_staff_album_mdl->del_AlbumByImgID($del_album);
+       }
+       
+       $image = array();
+       $images = array();
+       
+       $year = date("Y",time());
+       $month = date("m",time());
+       $day = date("d",time());
+       $created_at = date("Y-m-d H:i:s");
+        
+       $id = false;
+       if( !empty( $_FILES['file'] ) )
+       {
+           $tribe_staff_id = $staff_album_info['tribe_staff_id'];
+           // 图片 初始化数据
+            $save_path = "uploads/staff_album/$tribe_staff_id/$year/$month/$day/";
+       
+           $path = FCPATH.UPLOAD_PATH. $save_path;
+       
+           if ( !file_exists( $path ) )
+           {
+               mkdir($path,0777,true);
+           }
+            
+           $this->load->library('upload');
+            
+           $count=count($_FILES["file"]["name"]);//页面取的默认名称
+           for($i=0;$i<$count;$i++){
+               $field_name = $_FILES["file"]['name'][$i]. '_' . $i;
+               $_FILES[$field_name] = array(
+                   'name' => $_FILES["file"]['name'][$i],
+                   'size' => $_FILES["file"]['size'][$i],
+                   'type' => $_FILES["file"]['type'][$i],
+                   'tmp_name' => $_FILES["file"]['tmp_name'][$i],
+                   'error' => $_FILES["file"]['error'][$i]
+               );
+               $config['upload_path'] = $path;
+               $config['allowed_types'] = 'gif|jpg|png|jpeg';
+               $config['file_name'] = date("YmdHis").rand(0,999999);
+       
+               $this->upload->initialize($config);
+               if ($this->upload->do_upload($field_name)) {
+                   $img = $this->upload->data();
+                   $image['tribe_staff_id']= $staff_album_info['tribe_staff_id'];
+                   $image['staff_album_id'] = $album_id;
+                   $image['path']= $save_path.$img['file_name'];
+                   $image['created_at']= $created_at;
+                   $images[]= $image;
+               }
+           }
+            
+           //添加数据
+           $id = $this->Tribe_staff_album_mdl->Create( $images );
+       }
+       
+       $update['id'] = $album_id;
+       $update['remark'] = $remark;
+       $update['update_at'] =$created_at;
+       $update_aff = $this->Tribe_staff_album_mdl->update($update);
+       
+       $return['responseMessage'] = array(
+           'messageType' => 'error',
+           'errorType' => '7',
+           'errorMessage' => '发布失败'
+       );
+       
+       if($id ||  $update_aff){
+           $return['responseMessage'] = array(
+               'messageType' => 'success',
+               'errorType' => '0',
+               'errorMessage' => '发布成功'
+           );
+           $return['tribe_name'] = '';
+          
+           $tribe_detail = $this->tribe_mdl->get_tribe($staff_album_info['tribe_id']);
+           $return['tribe_name'] = $tribe_detail['name'];
+           
+           $return['corporation_name'] ='';
+           $return['job'] ='';
+           $return['real_name'] ='';
+           if($staff_album_info['from_customer_id']){
+               $crop_info = $this->Customer_album_mdl->get_crop_info($staff_album_info['from_customer_id'],$staff_album_info['tribe_id']);
+                
+               $this->load->model('Customer_mdl');
+               $customer_info = $this->Customer_mdl->load($staff_album_info['from_customer_id']);
+               $return['job'] = $customer_info['job'];
+               $return['real_name'] = $customer_info['real_name'];
+               if($crop_info){
+                   $return['corporation_name'] = $crop_info['corporation_name'];
+               }
+           }
+       }
+       
+       print_r(json_encode($return));
+   }
 }

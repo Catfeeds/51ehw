@@ -73,7 +73,7 @@ dropload = $('#boxs').dropload({
 	                	result += '<p class="circle_publish_time">';
 	                	result += '<span>'+data["announcement_list"][i]["last_updated_time"]+'</span>';
 	                	result += '<a href="<?php echo site_url("commerce/notice_state");?>/'+data["announcement_list"][i]['id']+'">';
-	                	result += '<span style="color:red;">'+data["announcement_list"][i]["unreadnum"]+'人未读</span>';
+	                	result += '<span style="color:red;display:none;">'+data["announcement_list"][i]["unreadnum"]+'人未读</span>';
 	                	result += '</a>';
 	                	result += '</p>';
 	                	result += '</li>';

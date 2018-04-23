@@ -155,7 +155,7 @@ dropload = $('#main').dropload({
 					 result += '<div class="my_needs_goods_img" style="width: 25%;"><img src="'+img+'" onerror="'+errorimg+'" alt=""></div>';
 					 result += '<div class="my_needs_text">';
 					 result += '<span class="my-needs-li-title">'+data.demandlist[i]['title']+'</span>';
-					 result += '<span class="my-needs-li-money">总价:'+data.demandlist[i]['total_price']+'货豆</span>';
+					 result += '<span class="my-needs-li-money">总价:'+data.demandlist[i]['total_price']+'</span>';
 					 result += '<!--<span class="my-needs-li-time">';
 					 if(data.demandlist[i]['status']==1)//小于1小时
 					  {

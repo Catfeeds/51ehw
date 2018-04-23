@@ -88,8 +88,8 @@
 		<ul>
 		    <li><span>分类:<span style="opacity: 0;">测试</span></span><span class="offer-details-text01"><?php echo $requirement['cate'];?></span><!-- <span class="offer-details-label"></span> --> </li>
 		    <li><span>采购数量:</span><span class="offer-details-text01"><?php echo $requirement['p_count'];echo $requirement['unit'];?></span></li>
-		    <li><span>期望价格:</span><span class="offer-details-text01"><?php echo  $requirement['m_price'];?>货豆/<?php echo  $requirement['unit'];?></span></li>
-		     <li><span>需求总价:</span><span class="offer-details-text01"><?php echo $requirement['total_price']; ?>货豆</span></li>
+		    <li><span>期望价格:</span><span class="offer-details-text01"><?php echo  $requirement['m_price'];?>/<?php echo  $requirement['unit'];?></span></li>
+		     <li><span>需求总价:</span><span class="offer-details-text01"><?php echo $requirement['total_price']; ?></span></li>
 		    <li><span>收货地:<span style="opacity: 0;">测</span></span><span class="offer-details-text01"><?php echo  $requirement['address'];?></span></li>
 		    <li><span>收货日期:</span><span class="offer-details-text01"><?php echo  substr ( $requirement['receiptdate'], 0,10);?></span></li>
 		    <li><span>报价须含:</span><span class="offer-details-text01">
@@ -150,7 +150,7 @@ dropload = $('#main').dropload({
 							 }
 					 result += '<li><span>联系方式:</span><span class="offer-details-text01">'+data.list[i]['mobile']+'</span></li>';
 					 result += '<li><span>联系邮箱:</span><span class="offer-details-text01">'+data.list[i]['email']+'</span></li>';
-					 result += '<li><span>报价:<span style="opacity: 0;">测试</span></span><span class="offer-details-text01">'+data.list[i]['offer']+'货豆/<?php echo $requirement['unit']; ?></span></li>';
+					 result += '<li><span>报价:<span style="opacity: 0;">测试</span></span><span class="offer-details-text01">'+data.list[i]['offer']+'/<?php echo $requirement['unit']; ?></span></li>';
 					 result += '<li><span>交货期:<span style="opacity: 0;">测</span></span><span class="offer-details-text01">'+data.list[i]['days']+'天</span></li>';
 					 if(data.list[i]['remark']){
 						result += '<li><span>补充说明:</span><span class="offer-details-text01">'+data.list[i]['remark']+'</span></li>';

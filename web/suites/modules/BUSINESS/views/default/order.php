@@ -200,9 +200,9 @@ function save_consignee()
             	<div class="dingdan2_con03_top" style="border-bottom: none;">
                 	<ul>
                         <li class="dingdan2_con03_li">商品信息</li>
-                        <li>单价（货豆）</li>
+                        <li>单价（提货权）</li>
                         <li>数量</li>
-                        <li>小计（货豆）</li>
+                        <li>小计（提货权）</li>
                     </ul>
                 </div>
             
@@ -255,10 +255,10 @@ function save_consignee()
             <!--添加备注 结束-->
     
             <span class="gouwuche_d03">
-                <p>总商品金额：<?php echo number_format($total_product_price, 2, '.', '');?> 货豆</p>
-                <!--<p><span>- 货豆：</span>    0</p>-->
-                <p>配送运费：<?php echo $freight;?> 货豆</p>
-                <p class="gouwuche_dd03 gouwuche_dd05">应付总额（含运费）：<strong><?php echo number_format($total_product_price+$freight, 2, '.', '');?></strong> 货豆</p>
+                <p>总商品金额：<?php echo number_format($total_product_price, 2, '.', '');?></p>
+                <!--<p><span>- 提货权：</span>    0</p>-->
+                <p>配送运费：<?php echo $freight;?></p>
+                <p class="gouwuche_dd03 gouwuche_dd05">提货权（含运费）：<strong><?php echo number_format($total_product_price+$freight, 2, '.', '');?></strong> </p>
                 <p class="gouwuche_dd03 gouwuche_dd05">应付手续费（现金）：<strong><?php echo number_format($commission, 2, '.', '');?></strong>  元&nbsp;&nbsp;&nbsp;</p>
                 
                 <div class="gouwuche_dd03"><a href="javascript:void(0)" onclick="$('#shouxu_message').show()" >点击查看手续费说明</a></div>

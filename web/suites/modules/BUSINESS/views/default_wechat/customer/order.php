@@ -41,7 +41,7 @@
                             <div class="ui-order-info fn-text-overflow "><a href="<?php echo site_url('goods/lists');?>">商品名称：法国圣蒙干红葡萄酒3L</a></div>
                         </div>
                         <div class="order-pay">
-                           <p>156.00货豆</p>
+                           <p>156.00提货权</p>
                             <p>在线支付</p>
                         </div>
                         <div class="order-delivery">等待付款</div>
@@ -65,7 +65,7 @@
                             <div class="ui-order-info fn-text-overflow "><a href="<?php echo site_url('goods/lists');?>">商品名称：法国圣蒙干红葡萄酒3L</a></div>
                         </div>
                         <div class="order-pay">
-                            <p>156.00货豆</p>
+                            <p>156.00提货权</p>
                             <p>在线支付</p>
                         </div>
                         <div class="order-delivery">等待付款</div>
@@ -89,7 +89,7 @@
                             <div class="ui-order-info fn-text-overflow "><a href="<?php echo site_url('goods/lists');?>">商品名称：法国圣蒙干红葡萄酒3L</a></div>
                         </div>
                         <div class="order-pay">
-                            <p>156.00货豆</p>
+                            <p>156.00提货权</p>
                             <p>在线支付</p>
                         </div>
                         <div class="order-delivery">等待付款</div>
@@ -113,7 +113,7 @@
                             <div class="ui-order-info fn-text-overflow "><a href="<?php echo site_url('goods/lists');?>">商品名称：法国圣蒙干红葡萄酒3L</a></div>
                         </div>
                         <div class="order-pay">
-                            <p>156.00货豆</p>
+                            <p>156.00提货权</p>
                             <p>在线支付</p>
                         </div>
                         <div class="order-delivery">等待付款</div>

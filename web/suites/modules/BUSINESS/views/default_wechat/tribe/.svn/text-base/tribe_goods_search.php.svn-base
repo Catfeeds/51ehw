@@ -51,7 +51,7 @@ function get_location(){
 <div class="search-header" name="" style="background-color: #1A1A1A;height:50px;width:100%;position:fixed;top:0;left:0;">
     <a href="javascript:history.back();" target="_self" class="icon-right" style="-webkit-transform: rotate(180deg);;color:#fff;font-size:19px;float:left;margin-left:10px;margin-top:18px;"></a>
    <!-- 搜索框 -->
-   <form action="<?php echo site_url('tribe/tribe_search_goods') ?>" method="get" id="form_search" >
+   <form action="<?php echo site_url('easyshop/product/tribe_search_goods') ?>" method="get" id="form_search" >
        <div class="nav_search" style="padding-top: 10px;margin-left:0px;">
           <p style="background-color: #fff;width:75%;border:1px solid #000;border-radius:3px;margin:-2px auto;padding-left:10px;"><a href="javascript:void(0);" class="icon-sousuo" style="color:#ACACAC;font-size:15px;"></a>
           <input type="text" class="search_input" name="keyword" value="<?php echo isset($keyword)?$keyword:"" ?>" placeholder="请输入关键词"  style="width:85%;color#606060;height:34px;background-color: #fff;border: none;font-size: 15px;">
@@ -132,7 +132,7 @@ dropload = $('#sort').dropload({
 	loadDownFn : function(me){
 	    // 加载数据
         var result = "";
-        $.post("<?php echo site_url("tribe/ajax_search_goods");?>",{keyword:keyword,type:types,page:page,navigate:navigate,tribe_id:tribe_id},function(data){
+        $.post("<?php echo site_url("easyshop/product/ajax_search_goods");?>",{keyword:keyword,type:types,page:page,navigate:navigate,tribe_id:tribe_id},function(data){
             if(data["status"]==1){//部落搜索商品需要登录
                 window.location.href="<?php echo site_url("customer/login");?>";
                 return;
@@ -142,7 +142,7 @@ dropload = $('#sort').dropload({
                 for(var i=0;i<data["productList"].length;i++){
                 	
                 	
-                	result += '<a href="<?php echo site_url('tribe/good_detail');?>/'+data["productList"][i]['id']+'"><li class=" clearfix" style="">';
+                	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["productList"][i]['id']+'?tribe_id='+tribe_id+'"><li class=" clearfix" style="">';
                 	result += '<i class="result_img" style="width:100px;height: 100px;float: left;margin-right: 15px;"><img src="<?php echo IMAGE_URL;?>'+data["productList"][i]['img_path']+'" onerror="this.src=\'images/default_img_s.jpg\'"></i>';
                 	result += '<em class="result_em"><p class="result_title">'+data["productList"][i]['product_name']+' '+data["productList"][i]['desc']+'</p>';
                 	result += '<p class="tribe_money">价格: '+formatCurrency(data["productList"][i]['price'])+'</p></em></li></a>';

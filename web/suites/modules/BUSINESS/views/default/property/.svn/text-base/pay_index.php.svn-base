@@ -43,7 +43,7 @@
             </ul>
         </div>
 
-         <!--货豆余额纪录开始-->
+         <!--提货权余额纪录开始-->
 		<div class="huankuan_cmRight" display:block">
      
             <div class="huankuan_rTop_5" style="display: block">充值</div>
@@ -104,7 +104,7 @@
 </html>
 <script>
 
-		<!--转货豆金额：-->
+		<!--转提货权金额：-->
 		
 	$("#sub").click(function(){
 		

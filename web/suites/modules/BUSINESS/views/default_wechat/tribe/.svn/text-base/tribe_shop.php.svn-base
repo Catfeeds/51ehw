@@ -16,7 +16,7 @@
   .new_img_list li {float: left;width: 3rem;height: 3rem;border-bottom: none;margin-bottom: 5px;margin-left: 0.13rem;}
   .new_img_list_box {margin: 0 0.3rem 0 0.2rem;}
   .circle_zhong_ul_xia h2 samp {vertical-align: inherit;}
-  .circle_zhong {padding-top: 0;border-top: 5px solid #eee;}
+  .circle_zhong {border-top: 5px solid #eee;}
   .detailed_comments {padding-bottom: 0;}
   .circle_zhong_ul li {border-bottom: none;}
   .tribe_shop_footer ul li {width: 20%;}
@@ -31,24 +31,31 @@
 	.recommend {margin-bottom: 0;padding-bottom: 0;}
 	.page {padding-bottom: 0;}
   .search-header {background-color: #1A1A1A;height:50px;width:100%;position:fixed;top:0;left:0;z-index: 999;}
-  .essay_classify_main {margin: 0px;margin-top: -30px;}
+  .essay_classify_main {margin: 0px;margin-top: 50px;}
   .tribe_shop_footer {width: 100%;height: 50px;position: fixed;bottom: 0;background-color: #FEFEFE;border-top: 1px solid #ddd;}
-  .essay_preview_nav ul li {width: 50%;}
+  /*.essay_preview_nav ul li {width: 50%;}*/
   .cart_num1 {position: absolute;right: 20%;top: 5px;width: auto;min-width: 14px;}
-
+  .tribe_goods_box {float: left;width: 49%;border: 1px solid #eee;box-sizing: border-box;margin-left: 1%;margin-top: 1px;background: #fff;margin-bottom: 1%;}
+  .tribe_goods_box a {width: 100%;margin-left: 0;margin-bottom: 0;border: none;margin-top: 0;}
+  .tribe_goods_box .good-text-bg {overflow: hidden;width: 100%;}
+  .nav_search {position: relative;padding-top: 10px;margin-left:0px;}
+  .tribe_sousuo {width: auto!important;color: #fff;position: absolute;right: 10%;top: 12px;font-size: 15px!important;padding-left: 0!important;}
+  .essay_preview_nav {position: fixed;top: 50px;width: 100%;bottom: auto;border-top: 0;z-index: 9;}
+  .head_top .icon-release {position: fixed;bottom: 35px;right: 15px;}
+  .dropload-down {height: 48px;}
 </style>
-
 <!-- 部落搜索 -->
 <div class="search-header">
-    <a href="javascript:history.back()" target="_self" class="icon-right" style="-webkit-transform: rotate(180deg);;color:#fff;font-size:19px;float:left;margin-left:10px;margin-top:18px;"></a>
+    <a href="javascript:history.back();" target="_self" class="icon-right" style="-webkit-transform: rotate(180deg);;color:#fff;font-size:19px;float:left;margin-left:10px;margin-top:18px;"></a>
    <!-- 搜索框 -->
-   <form  id="form_search">
-       <div class="nav_search" style="padding-top: 10px;margin-left:0px;">
-          <p style="background-color: #fff;width:80%;border:1px solid #000;border-radius:3px;margin:-2px auto;padding-left:10px;">
-          <a href="<?php echo site_url('search/wechat_search?tribe_id='.$tribe["id"]) ?>" class="icon-sousuo" style="color:#ACACAC;font-size:15px;">
-          <input type="text" class="search_input" name="keyword" value="<?php echo isset($keyword)?$keyword:"" ?>" placeholder="搜索您想找的商品" required="" style="width:85%;color#606060;height:34px;background-color: #fff;border: none;font-size: 15px;">
+   <form action="<?php echo site_url('easyshop/product/tribe_search_goods') ?>" method="get" id="form_search" >
+       <div class="nav_search">
+          <p style="background-color: #fff;width:65%;margin-left: 10%;border:1px solid #000;border-radius:3px;margin:-2px auto;padding-left:10px;margin-left: 12%;">
+          <a href="javascript:void(0);" class="icon-sousuo" style="color:#ACACAC;font-size:15px;">
+          <input type="text" class="search_input" name="keyword" id="keyword" value="" placeholder="搜索您想找的商品" required="" style="width:85%;color#606060;height:34px;background-color: #fff;border: none;font-size: 15px;padding-left:0;">
           </a>
           </p>
+          <input type="button" class="tribe_sousuo" value="搜索" onclick="search();">
           <?php
             $mac_type = $this->session->userdata("mac_type");
             if(isset($mac_type) && $mac_type =='APP' ){ ?>
@@ -57,38 +64,41 @@
             <a href="<?php echo !$label_id ? site_url('home') : site_url('Commerce/index/'.$label_id);?>" target="_self" class="icon-icon_hone_off tribe-icon-hone"></a>
           <?php }?>
           <input type="hidden" value="<?php echo $tribe_id;?>" name="tribe_id">
-          <input type="hidden" value="0" name="cateid">
+          <input type="hidden" value="" name="navigate" id="navigate">
        </div>
    </form>
 </div>
 <div style="height:50px;"></div>
-
-<div class="essay_preview" id="ceshi">
-  <!-- 导航 -->
-  <div class="tribal_new_nav"><!-- onclick="barnavigation(this,2);" -->
-    <a href="<?php echo $type == 2?"javascript:history.back(-1);":site_url('Tribe/shop/'.$tribe_id.'/'.$label_id);?>" id="tribal_new_nav_active1" class="<?php echo  $_GET['type'] == 1  ? 'tribal_new_nav_active' : '' ?>" >部落商城</a>
-    <a href="<?php echo site_url('Tribe/shop/'.$tribe_id.'/'.$label_id.'?type=2');?>" id="tribal_new_nav_active2"  class="<?php echo  $_GET['type'] == 2  ? 'tribal_new_nav_active' : '' ?>">企业展示</a>
-  </div>
-  <span id="Mall" >
-  <!-- 头部 -->
-  <div class="tribe_shop_head">
-        <img src="<?php echo IMAGE_URL.$tribe["shop_img"]?>" alt="" onerror="this.src='images/tribe_shop_default.png'">
-  </div>
-  <div class="tribe_shop_person">
-     <!-- 头像 -->
-     <img src="<?php echo IMAGE_URL.$tribe["logo"]?>" alt="" onerror="this.src='images/default_img_s.jpg'">
-     <span><?php echo $tribe["name"]?></span>
-     <a href="<?php echo site_url("tribe/home/$tribe_id/$label_id");?>" class="tribe_shop_a"><span class="icon-tribal_profile"></span></a>
-  </div>
 
   <!-- 头部导航 -->
   <div class="essay_preview_nav tribe_shop_nav">
     <ul>
         <li class="essay_classify"><a href="javascript:void(0);" onclick="navigation(this,1);" class="essay_active_a">商城</i></a></li>
         <li class="essay_sales"><a href="javascript:void(0);" onclick="navigation(this,2);">部落</a></li>
+        <li class="essay_sales"><a href="javascript:void(0);" onclick="navigation(this,3);">企业展示</a></li>
     </ul>
   </div>
 
+
+
+
+<div class="essay_preview" id="ceshi">
+  <!-- 导航 -->
+  <div class="tribal_new_nav" hidden><!-- onclick="barnavigation(this,2);" -->
+    <a href="<?php echo $type == 2?"javascript:history.back(-1);":site_url('Tribe/shop/'.$tribe_id.'/'.$label_id);?>" id="tribal_new_nav_active1" class="<?php echo  $_GET['type'] == 1  ? 'tribal_new_nav_active' : '' ?>" >部落商城</a>
+    <a href="<?php echo site_url('Tribe/shop/'.$tribe_id.'/'.$label_id.'?type=2');?>" id="tribal_new_nav_active2"  class="<?php echo  $_GET['type'] == 2  ? 'tribal_new_nav_active' : '' ?>">企业展示</a>
+  </div>
+  <span id="Mall" >
+  <!-- 头部 -->
+  <div class="tribe_shop_head" hidden>
+        <img src="<?php echo IMAGE_URL.$tribe["shop_img"]?>" alt="" onerror="this.src='images/tribe_shop_default.png'">
+  </div>
+  <div class="tribe_shop_person" hidden>
+     <!-- 头像 -->
+     <img src="<?php echo IMAGE_URL.$tribe["logo"]?>" alt="" onerror="this.src='images/default_img_s.jpg'">
+     <span><?php echo $tribe["name"]?></span>
+     <a href="<?php echo site_url("tribe/home/$tribe_id/$label_id");?>" class="tribe_shop_a"><span class="icon-tribal_profile"></span></a>
+  </div>
 
     <!-- 推荐商品内容 -->
     <div class="essay_classify_main" id="recommend" hidden>
@@ -99,9 +109,8 @@
                 <div class="good-img"><img src="<?php echo IMAGE_URL.$v["goods_thumb"];?>" onerror="this.src='images/default_img_s.jpg'"></div>
                 <div class="good-text-bg">
                    <span class="essay-goods-title"><?php echo $v['name'];?></span>
-                   <span class="essay-goods-monery"><?php echo $v["tribe_price"];?>提货权</span>
+                   <span class="essay-goods-monery"><?php echo $v["tribe_price"];?>货豆</span>
                 </div>
-
             </a>
             <?php }; ?>
         </div>
@@ -125,7 +134,7 @@
                 <div class="essay_classify_fuwu_list_img"><img src="<?php echo IMAGE_URL.$v["goods_thumb"];?>" onerror="this.src='images/default_img_s.jpg'"></div>
                 <div class="essay_classify_fuwu_list_text">
                    <span class="essay-goods-title"><?php echo $v['name'];?></span>
-                   <span class="essay-goods-monery">部落价：<?php echo $v["vip_price"];?>提货权</span>
+                   <span class="essay-goods-monery">部落价：<?php echo $v["vip_price"];?>货豆</span>
                 </div>
               </a>
             </div>
@@ -133,8 +142,6 @@
         </div>
       </div>
     </div>
-
-
     <div style="height:50px;opacity: 0;"></div>
     <!-- 底部导航 -->
     <div class="container-center tribe_shop_footer">
@@ -148,16 +155,27 @@
     </div>
 </span>
 <div class="head_top" style="top:80px;display:none;">
-   <div class="head_top_nei">
-      <a href="javascript:history.back();" class=""><span class="icon-back"></span></a>
-	<div class="search_circh" id="yanse"></div>
         <a href="<?php echo site_url("Corporation_style/Add_Topic");?>" class="icon-release" id="suos3"></a>
-    </div>
-    </div>
+</div>
 <!-- 企业形象 -->
-<span id="corporationstyle" hidden>
+<span id="corporationstyle">
 <span id="topic_list"><!-- 企业形象内容 --></span></span>
 </div>
+
+<!-- 弹窗 -->
+ <div class="tuichu_ball" hidden>
+   <div class="tuichu_ball_box">
+      <div class="tuichu_ball_main">
+         <div class="tuichu_ball_title"><span>提示</span></div>
+         <div class="tuichu_ball_text" id="tuichu_ball_text"><span>确定要置顶该商品吗？</span></div>
+         <div class="tuichu_ball_button">
+           <a href="javascript:cane(0);">取消</a>
+           <a id = 'tuichu_sub' href="javascript:void();" >确定</a>
+         </div>      
+      </div>
+   </div>
+ </div> 
+
 </body>
 </html>
 <?php 
@@ -191,6 +209,8 @@ $.ajax({
 <?php }?>
 
 <script type="text/javascript">
+//navigation方法中的type参数
+navigate = 1;
 $(function () { 
 	  //IOS返回不刷新问题
 	  var isPageHide = false; 
@@ -203,47 +223,27 @@ $(function () {
 	    isPageHide = true; 
 	  }); 
 }) 
-
   var width = $(".good-img").width();
   var width_window = $(window).width();
   $(".good-img").height(width);
   $(".essay_classify_fuwu_list_img").height(width_window * 0.24);
 	var customer_id = "<?php echo $customer_id;?>";
 	var tribe_id = "<?php echo $tribe_id;?>";
-	
-	
 	//下拉加载数据
 	var types = 1;//排序类型
 	var page = 1;//默认加载页数
-	dropload = $('#sort').dropload({
+	var class_sort = '#sort';//排序
+	var url = "<?php echo site_url("tribe/loading_goods_mall");?>";
+
+
+
+
+	
+	dropload = $(class_sort).dropload({
 	    scrollArea : window,
     	loadDownFn : function(me){
     	    // 加载菜单一的数据
     	        var result = "";
-<<<<<<< .mine
-    	        $.post("<?php echo site_url("tribe/loading_goods");?>",{tribe_id:tribe_id,type:types,page:page},function(data){
-    	            if(data["list"].length>0){
-    	            	image_url = "<?php echo IMAGE_URL;?>";
-    	            	
-    	                for(var i=0;i<data["list"].length;i++){
-        	                if(types != 3){
-        	                	result += '<a href="<?php echo site_url("Goods/detail");?>/'+data["list"][i]["id"]+'">';
-        	                    result += '<div class="good-img"><img src="'+(data["list"][i]["goods_thumb"]?image_url+data["list"][i]["goods_thumb"]:"images/default_img_s.jpg")+'"></div>';
-        	                    result += '<div class="good-text-bg">';
-                              result += '<input type="buttom" value="置顶" class="tribe_goods_top">';
-        	                    result += '<span class="essay-goods-title">'+data["list"][i]["name"]+'</span>';
-        	                    result += '<span class="essay-goods-monery">'+data["list"][i]["tribe_price"]+'货豆</span></div></a>';  
-        	                }else{
-        	                    result += '<div class="essay_classify_fuwu_list">';
-        	                    result += '<a href="<?php echo site_url("Goods/detail");?>/'+data["list"][i]["id"]+'">';
-        	                    result += '<div class="essay_classify_fuwu_list_img"><img src="'+(data["list"][i]["goods_thumb"]?image_url+data["list"][i]["goods_thumb"]:"images/default_img_s.jpg")+'" ></div>';
-        	                    result += '<div class="essay_classify_fuwu_list_text">';
-        	                    result += '<span class="essay-goods-title">'+data["list"][i]["name"]+'</span>';
-        	                    result += '<span class="essay-goods-monery">部落价：'+data["list"][i]["tribe_price"]+'货豆</span>';
-        	                    result += '</div>';
-        	                    result += '</a>';
-        	                    result += '</div>';
-=======
     	        $.post(url,{tribe_id:tribe_id,type:types,page:page},function(data){
         	        if (types == '3') {
 						if(data["topic_list"].length>0){
@@ -366,82 +366,188 @@ $(function () {
 	                        me.resetload();
 	                        $('.dropload-noData').hide();
 		            	}
-                  	}else {
+                  	}else if(types == '2') {
                   		if(data["list"].length>0){
         	            	image_url = "<?php echo IMAGE_URL;?>";
         	                for(var i=0;i<data["list"].length;i++){
             	                if(types == 2){
                 	                if (data['limit'] == 1) {
-                    	                result += '<div class="tribe_goods_box">';
-                	                  	result += '<a href="<?php echo site_url('tribe/good_detail');?>/'+data["list"][i]["id"]+'">';
+                    	                result += '<div class="tribe_goods_box" id="'+data["list"][i]["id"]+'">';
+                	                  	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
                 	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div></a>';
                 	                    result += '<div class="good-text-bg">';
                 	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
-                	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span>';
+                	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'货豆</span>';
                 	                    result += '<input type="button" value="'+data["list"][i]['stick']+'" onclick="stick('+data["list"][i]["id"]+','+data["list"][i]['sort']+')" id="'+'id'+data["list"][i]["id"]+'" class="tribe_goods_top"></div>';
                 	                    result += '</div>';
                 	                } else {
-                	                	result += '<a href="<?php echo site_url('tribe/good_detail');?>/'+data["list"][i]["id"]+'">';
+                	                	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
                 	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
                 	                    result += '<div class="good-text-bg">';
                 	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
-                	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span></div></a>';  
+                	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'货豆</span></div></a>';  
                 	                }
             	                }else{
-            	                	result += '<a href="<?php echo site_url('tribe/good_detail');?>/'+data["list"][i]["id"]+'">';
+            	                	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
             	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
             	                    result += '<div class="good-text-bg">';
             	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
-            	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span></div></a>';  
+            	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'货豆</span></div></a>';  
             	                }
->>>>>>> .r6014
         	                }
-    	                }
-    	                if(types != 3){
- 	                	   $('#style').attr("class","essay").append(result);
-    	                }else{
-    	                	$('#style').attr("class","essay_classify_fuwu_main").append(result);
-    	                }
-    	                var width = $("#style .good-img").width();
-                        $("#style .good-img").height(width);
-    	                page++;
-    	                me.resetload();
-    	            }else{
-    	            	
-    	            	// 锁定
-    	                me.lock();
-    	                // 无数据
-    	                me.noData();
-                        me.resetload();
-                        
-                        $('.dropload-noData').hide();
-    	            }
+        	                $('#style').attr("class","essay").append(result);
+        	                var width = $("#style .good-img").width();
+                            $("#style .good-img").height(width);
+        	                page++;
+        	                me.resetload();
+        	            }else{
+        	            	// 锁定
+        	                me.lock();
+        	                // 无数据
+        	                me.noData();
+                            me.resetload();
+                            $(".dropload-noData").html("没有更多的数据了");
+        	            }
+                    } else {
+                        console.log(1111111111);
+                    	if(data["list"].length>0){
+        	            	image_url = "<?php echo IMAGE_URL;?>";
+        	                for(var i=0;i<data["list"].length;i++){
+            	                
+        	                	result += '<div class="essay_classify_fuwu_list">';
+        	                    result += '<a href="<?php echo site_url("Goods/detail");?>/'+data["list"][i]["id"]+'">';
+        	                    result += '<div class="essay_classify_fuwu_list_img"><img src="'+(data["list"][i]["goods_thumb"]?image_url+data["list"][i]["goods_thumb"]:"images/default_img_s.jpg")+'" ></div>';
+        	                    result += '<div class="essay_classify_fuwu_list_text">';
+        	                    result += '<span class="essay-goods-title">'+data["list"][i]["name"]+'</span>';
+        	                    result += '<span class="essay-goods-monery">部落价：'+data["list"][i]["tribe_price"]+'货豆</span>';
+        	                    result += '</div>';
+        	                    result += '</a>';
+        	                    result += '</div>';
+ 
+            	                }
+        	                
+        	                $('#style').attr("class","essay").append(result);
+        	                var width = $("#style .good-img").width();
+                            $("#style .good-img").height(width);
+        	                page++;
+        	                me.resetload();
+        	            }else{
+        	            	// 锁定
+        	                me.lock();
+        	                // 无数据
+        	                me.noData();
+                            me.resetload();
+                            $(".dropload-noData").html("没有更多的数据了");
+        	            }
+                    }
     	        },"json");
     	}
 	});
 
-//商品导航切换
-function navigation(obj,type){
-	//特效
-	$(".essay_preview_nav ul li").siblings().children('a').removeClass('essay_active_a');
-	$(obj).parent().children('a').addClass('essay_active_a');
-    types = type;
-    if(type == "1"){
-        
-    }else{
-    	
-    }
-	page = 1;//默认第一页
-	$("#style").empty();
-    // 解锁
-    dropload.unlock();
-    dropload.noData(false);
-    // 重置
-    dropload.resetload();
+	//商品导航切换
+	function navigation(obj,type){
+		navigate = type;
+		//特效
+		$(".essay_preview_nav ul li").siblings().children('a').removeClass('essay_active_a');
+		$(obj).parent().children('a').addClass('essay_active_a');
+	    types = type;
+	    if(type == "3"){
+	        url = "<?php echo site_url("corporation_style/Topic_List");?>";
+	        class_sort = '#topic_list';
+	        $(".head_top").show();
+			$("#tribal_new_nav_active1").removeClass('tribal_new_nav_active');
+	    	$(".essay_preview_nav ul li").siblings().children('a').removeClass('essay_active_a');
+	    	$(".essay_preview_nav ul li").eq(2).children('a').addClass('essay_active_a');
+	        $("#corporationstyle").show();
+			$("#Mall").hide();
+	    }else if(type == '2') {
+	    	url = "<?php echo site_url("tribe/loading_goods");?>";
+	    	$(".head_top").hide();
+	    	$("#tribal_new_nav_active2").removeClass('tribal_new_nav_active');
+	    	$("#corporationstyle").hide();
+			$("#Mall").show();
+	    }else {
+	    	url = "<?php echo site_url("tribe/loading_goods_mall");?>";
+	    	$(".head_top").hide();
+	    	$("#tribal_new_nav_active2").removeClass('tribal_new_nav_active');
+	    	$("#corporationstyle").hide();
+			$("#Mall").show();
+		}
+		page = 1;//默认第一页
+		$("#style").empty();
+	    // 解锁
+	    dropload.unlock();
+	    dropload.noData(false);
+	    // 重置
+	    dropload.resetload();
+	}	
+
+//置顶部落商品
+function stick (id,stick) {
+	if (stick == '0') {
+		document.getElementById("tuichu_ball_text").innerHTML = '确定置顶该商品？';
+	} else {
+		document.getElementById("tuichu_ball_text").innerHTML = '取消置顶该商品？';
+	}
+	$("#tuichu_sub").attr('onclick','quit_sub('+id+')')
+	$(".tuichu_ball").show();
 }
+
+function cane(){
+	$('.tuichu_ball').hide();
+}
+
+//提交置顶数据
+function quit_sub(id) {
+	var ee = 'id'+id;
+	var div_data = document.getElementById(id);
+	var  label_data = document.getElementById(ee).value;
+	$.ajax({
+		url: '<?php echo site_url('tribe/up_product')?>',
+        type: 'post',
+        dataType: 'json',
+        data: {'id': id,'label_data': label_data,'tribe_id':tribe_id},
+        success: function (data) {
+            switch(data.Type)
+            {
+                case 0:
+                	$('.tuichu_ball').hide();
+                    $(".black_feds").text("商品信息错误").show();
+                    setTimeout("prompt();", 2000);
+                    break;
+                case 1:
+                	$("#style").prepend(div_data);
+                	$('.tuichu_ball').hide();
+                	document.getElementById(ee).value = '已置顶';
+                    break;
+                case 2:
+                    if (data.last_up_id == '0') {
+                    	$("#style").prepend(div_data);
+                    }else {
+                    	var last_up_data = document.getElementById(data.last_up_id);
+                        $(div_data).insertAfter(last_up_data);
+                    }
+                	$('.tuichu_ball').hide();
+                	document.getElementById(ee).value = '置顶';
+                    break;
+                default:
+                	$('.tuichu_ball').hide();
+                    $(".black_feds").text("操作失败").show();
+                    setTimeout("prompt();", 2000);
+                    return false;
+             }
+           },
+        error:function (data) {
+          $('.tuichu_ball').hide();
+          $(".black_feds").text("网络错误，请重试").show();
+          setTimeout("prompt();", 2000);
+          return false;
+            }
+		});
+}
+
 //头部导航切换
 function barnavigation(obj,type){
-
 	//特效
 	if(type ==1 ){
 		$(".head_top").hide();
@@ -449,6 +555,8 @@ function barnavigation(obj,type){
 	}else{
 		$(".head_top").show();
 		$("#tribal_new_nav_active1").removeClass('tribal_new_nav_active');
+    	$(".essay_preview_nav ul li").siblings().children('a').removeClass('essay_active_a');
+    	$(".essay_preview_nav ul li").eq(2).children('a').addClass('essay_active_a');
 	}
 	$(obj).addClass('tribal_new_nav_active');
 	if(type == 1){
@@ -461,7 +569,6 @@ function barnavigation(obj,type){
 		dropload = $('#topic_list').dropload({
 		    scrollArea : window,
 	    	loadDownFn : function(me){
-	    	
                 me.lock();// 锁定
 	    		var result = "";
 	            $.post("<?php echo site_url("corporation_style/Topic_List");?>",{tribe_id:tribe_id,page:page},function(data){
@@ -518,10 +625,6 @@ function barnavigation(obj,type){
 	    	        			result += '</div>';  
 
 	            			}
-	                   
-	                   
-	                
-	            			  
 	            			result += '<dl class="circle_zhong_dl">';
 	            			result += '<dd><span><i class="icon-not_praise';
 
@@ -704,6 +807,25 @@ String.prototype.trim = function (char, type) {
 	  }
 	  return this.replace(/^\s+|\s+$/g, '');
 	};
+
+function search(){
+	var action_data =  document.getElementById("form_search").action;
+	document.getElementById("navigate").value = navigate;
+	if (navigate == '3') {
+		return false;
+	}else if(navigate == '1') {
+		console.log(navigate);
+		document.getElementById("form_search").action = "<?php echo site_url('Search/wechat_search_goods') ?>";
+		$('#form_search').submit();
+		var tribe_id = "<?php echo $tribe_id;?>";
+	} else {
+		action_data = "<?php echo site_url('easyshop/product/tribe_search_goods') ?>";
+		console.log(action_data);
+		$('#form_search').submit();
+		var tribe_id = "<?php echo $tribe_id;?>";
+	}
+	
+}
 
 </script>
 

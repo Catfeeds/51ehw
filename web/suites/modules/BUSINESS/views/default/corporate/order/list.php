@@ -49,7 +49,7 @@
                     </li>
                     
                     <!--   <li <?php if( $order_state == 'receive') echo'class="houtai_zijin_current"';?>>
-                        <a href="<?php echo site_url('corporate/order/get_list/receive');?>">待提取货豆(<?php echo $status_7?>)</a>
+                        <a href="<?php echo site_url('corporate/order/get_list/receive');?>">待提取提货权(<?php echo $status_7?>)</a>
                     </li>
                     -->
                 </ul>
@@ -98,7 +98,7 @@
                         </li>
                         <!--  
                          <li <?php if ( $order_state =='receive') echo'class="dingdanguanli_01_top02_current"';?>>
-                            <a href="<?php echo site_url('corporate/order/get_list/receive');?>">待提取货豆(<?php echo $status_7?>)</a>
+                            <a href="<?php echo site_url('corporate/order/get_list/receive');?>">待提取提货权(<?php echo $status_7?>)</a>
                         </li>
                         -->
                     </ul>
@@ -136,7 +136,7 @@
                             	<p style="width:137px"><?php echo $order['order_sn'];?></p>
                             </th>
                             <th width="70px"><?php echo $order['num'];?></th>
-                            <th width="100px">货豆：<?php echo  $order['total_price'];?></th>
+                            <th width="100px">提货权：<?php echo  $order['total_price'];?></th>
                             
                             <th width="150px"><?php echo $order['consignee'];?><br>
 							<?php echo  $order['contact_mobile'];?><br>
@@ -162,7 +162,7 @@
 													echo '已发货';
 													break;
 												case 7 :
-													echo '待提取货豆';
+													echo '待提取提货权';
 													break;
 												case 8 :
 													echo '收货并付款';//暂时用不到
@@ -246,8 +246,8 @@
                       <span class="order_num" style="color:#555;" id="order_sn">20160615123650</span>
                  </li>
                  <li>
-                      <span class="order_tit">交易金额（货豆）</span>：
-                      <span class="order_num" id="price">10000.00</span>  货豆
+                      <span class="order_tit">交易金额（提货权）</span>：
+                      <span class="order_num" id="price">10000.00</span>  提货权
                  </li>
                  <li>
                       <span class="order_tit">手续费（现金）</span>：
@@ -293,11 +293,11 @@
             <!--支付成功 start-->
             <div class="orderpay_result" >
                <span><img src="images/success1.png"/></span>
-               <h5>成功从您的现金账上扣除50.00 元现金手续费，您的账上已增加10000.00货豆</h5>
+               <h5>成功从您的现金账上扣除50.00 元现金手续费，您的账上已增加10000.00提货权</h5>
                <p>接下来，您可以继续以下操作：</p>
                <div class="orderpay_btn">
                    <a href="<?php echo site_url('corporate/order/get_list/receive')?>"class="orderpay_btn01">查看订单</a>
-                   <a href="<?php echo site_url('member/property/get_list')?>"class="orderpay_btn02">查看货豆余额</a>     
+                   <a href="<?php echo site_url('member/property/get_list')?>"class="orderpay_btn02">查看提货权余额</a>     
                </div>
             </div>
          
@@ -443,7 +443,7 @@
             success:function(data){ 
                 
               if(data == 1){ 
-          	      $('#pay_is_ok').children('.orderpay_result').children('h5').html('成功从您的现金账上扣除'+commission+'元现金手续费，您的账上已增加'+pirce+'货豆');
+          	      $('#pay_is_ok').children('.orderpay_result').children('h5').html('成功从您的现金账上扣除'+commission+'元现金手续费，您的账上已增加'+pirce+'提货权');
             	  $('#pay_is_ok').show();
                   $('#pay_index').hide();
                   

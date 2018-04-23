@@ -102,9 +102,9 @@
     <option value="8">验证用户名是否存在-接口测试</option>
 <!--     <option value="9">微信openid登录-接口测试</option> -->
     <option value="10">退出登录-接口测试</option>
-    <option value="11">发布广告扣除货豆-接口测试</option>
+    <option value="11">发布广告扣除提货权-接口测试</option>
     <option value="12">获取商家信息-接口测试</option>
-    <option value="13">用户的货豆转入与支出-接口测试</option>
+    <option value="13">用户的提货权转入与支出-接口测试</option>
     <option value="14">设置支付密码-接口测试</option>
     <option value="15">商家注册-接口测试</option>
     <option value="16">获取用户兑换排行-接口测试</option>
@@ -251,7 +251,7 @@
 
 <!-- 发布广告 -->
 <div id="purchase" class="view" hidden>
-    <h3>发布广告扣除货豆</h3>
+    <h3>发布广告扣除提货权</h3>
     <h3>说明：平台方需提供给接口方->平台方在易货网中的用户ID,以及店铺ID做为平台方收入账户</h3><br />
     <form action="<?php echo site_url('api_other/user/purchase')?>" method="post">
         商户号(接口方提供)：<input type="text" name="app_id" value="ehw0000001xx"><br/><br/>
@@ -273,16 +273,16 @@
     </form>
 </div>
 
-<!-- 用户获得平台赠送的货豆 -->
+<!-- 用户获得平台赠送的提货权 -->
 <div id="give_m" class="view" hidden>
-    <h3>用户的货豆转入与支出</h3>
+    <h3>用户的提货权转入与支出</h3>
     <form action="<?php echo site_url('api_other/user/give_voucher')?>" method="post">
         商户号(接口方提供)：<input type="text" name="app_id" value="ehw0000001xx"><br/><br/>
         商户key(接口方提供)：<input type="text" name="app_key" value=""><br/><br/>
         支出方用户ID <input type="text" name="expend_customer_id" value=""><br/><br/>
         支出方支付密码：<input type="text" name="pay_password" value=""><br/><br/>
         收入方用户ID：<input type="text" name="to_customer_id"><br/><br/>
-        货豆数量：<input type="text" name="M_voucher"><br/><br/>
+        提货权数量：<input type="text" name="M_voucher"><br/><br/>
        <input type="submit" value="提交">
     </form>
 </div>

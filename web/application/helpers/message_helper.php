@@ -16,6 +16,11 @@ function send_message($mobile,$status = 0,$content,$type=1,$source){
 		);
 		return json_encode($return);
 	}
+	//51易货网 -> 全球秦商
+	//51易货 -> 全球秦商
+	
+	$content = str_replace('51易货网', '全球秦商', $content);//替换
+	$content = str_replace('51易货', '全球秦商', $content);//替换
 	
 	$CI = & get_instance();
 	$date = date('Y-m-d H:i:s');//时间

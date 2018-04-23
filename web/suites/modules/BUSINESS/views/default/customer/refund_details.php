@@ -64,7 +64,7 @@
                             </th>
                             <th>
                             	<span>退款金额： ￥300.00</span><br>
-                            	<span>退还货豆：0</span>
+                            	<span>退还提货权：0</span>
                             </th>
                             <th class="kehufuwu_03_th05_span">
                             	<span>2015-10-17</span><br>

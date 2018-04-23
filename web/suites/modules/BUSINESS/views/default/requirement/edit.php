@@ -143,7 +143,7 @@
                         <div class="fabuxuqiu_con01_right">
                             <!--示例-->
                             <input type="text" class="fabuxuqiu_con01_input02" placeholder="请输入单价，不填代表面议" value="" name="vip_price">
-                            <i class="req_m">货豆</i>
+                            <i class="req_m">提货权</i>
                         </div>
                         <!--右边内容 结束-->
                     </div>

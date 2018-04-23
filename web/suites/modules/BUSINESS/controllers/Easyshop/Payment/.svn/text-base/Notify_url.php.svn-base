@@ -195,8 +195,8 @@ class Notify_url extends Front_Controller {
 	 */
 	public function HandlingEvents()
 	{ 
-	    $this->total_fee = 100;
-	    $this->chargeno = '111111';
+	    $this->total_fee = 2;
+	    $this->chargeno = '20180409203';
 	    //查询充值单
 	    $this->load->model('easy_charge_mdl');
 	    $charge = $this->easy_charge_mdl->LoadByChangeNo($this->chargeno);
@@ -206,34 +206,34 @@ class Notify_url extends Front_Controller {
         
         do{
             //判断价钱=充值。
-            if( !$charge || $this->total_fee != $charge['amount'] )
+            if( !$charge || $this->total_fee != $charge['amount'] || $charge['status'] != 0 )
             { 
                 //充值价格不匹配
-                error_log( '单号:'.$this->chargeno.',Message:充值价格不匹配' );
+                error_log( '单号:'.$this->chargeno.',Message:充值价格不匹配，或改订单已完成支付' );
                 break;
             }
             
-            //更新主表状态+第三方单号。
-            $set['status'] = 1;
-            $set['payment_id'] = 1;
             
-            if( !$this->easy_charge_mdl->Update( $charge['id'],$set ) )
+            //更新主表状态+第三方单号。
+            $set = ['status'=>1,'payment_id'=>1];
+            $where = ['id'=>$charge['id'],'status'=>0];
+            
+            if( !$this->easy_charge_mdl->Update( $where,$set ) )
             { 
                 //状态更新失败。
                 error_log( '单号:'.$this->chargeno.',Message:状态更新失败' );
                 break;
             }
             
-            
-            if ( $charge['type'] == 1 )
+            if ( $charge['obj_type'] == 1 )
             {
                 $obj_id = $this->easy_charge_mdl->LoadItem( $charge['id'] )['obj_id'];
                 //订单支付--完成
                 $this->load->model('easyshop_order_mdl');
                 $result = $this->easyshop_order_mdl->AfterEasyOrder( $obj_id );
-                error_log( '单号:'.$this->chargeno.',Message:'.$result['message'].',type:'.$charge['type'] );
+                error_log( '单号:'.$this->chargeno.',Message:'.$result['message'].',type:'.$charge['obj_type'] );
             }
-            
+           
             
         }while(0);
         

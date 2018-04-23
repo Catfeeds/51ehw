@@ -272,7 +272,7 @@
                   <div class="activities_neirong_xia">
                     <div class="tribe_new_gonggao">
                       <div class="tribe_new_gonggao_img"><img src="<?php echo IMAGE_URL.$new_announcement['title_img']?>" onerror="this.src='images/default_img_s.jpg'"></div>
-                      <div class="tribe_new_gonggao_text"><span><?php echo $new_announcement['content']?></span><span><?php echo $new_announcement['last_updated_time']?></span></div>
+                      <div class="tribe_new_gonggao_text"><span><?php echo $new_announcement['title']?></span><span><?php echo $new_announcement['last_updated_time']?></span></div>
                     </div>
                 </div>
                 </a>

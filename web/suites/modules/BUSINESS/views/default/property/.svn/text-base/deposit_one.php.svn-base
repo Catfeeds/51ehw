@@ -49,7 +49,7 @@
 		    </ul>
         </div>
 
-         <!--货豆余额纪录开始-->
+         <!--提货权余额纪录开始-->
 		<div class="huankuan_cmRight" display:block">
      
             <div class="huankuan_rTop_5" style="display: block">充值</div>
@@ -144,7 +144,7 @@
 			$('.dingdan4_3_tanchuang').hide();
 			$('.huankuan_rTop_4').show();
 		});	
-		<!--转货豆金额：-->
+		<!--转提货权金额：-->
 		
 	$("#determine_1").click(function(){
 		var cash = '<?php echo isset($customer['cash']) ? $customer['cash'] :'0.00'?>';

@@ -49,34 +49,34 @@
 		    </ul>
         </div>
 
-         <!--货豆余额纪录开始-->
+         <!--提货权余额纪录开始-->
 		<div class="huankuan_cmRight" display:block">
-        	<div class="huankuan_rTop" style="display:block">货豆余额纪录</div>
+        	<div class="huankuan_rTop" style="display:block">提货权余额纪录</div>
             <div class="huankuan_rTop_1" style="display:none">授信纪录</div>
             <div class="huankuan_rTop_2" style="display:none">现金余额</div>
-            <div class="huankuan_rTop_3" style="display:none">现金转货豆</div>
+            <div class="huankuan_rTop_3" style="display:none">现金转提货权</div>
             <div class="dd">
             <div class="huankuan_rCon01">
             	<ul>
-                	<li class="<?php echo !$status || $status == 3? 'huankuan_rCon01_current' :''?>"><a href="<?php echo site_url('member/property/get_list/')?>" id="collect_shop" >货豆余额 </a></li>
+                	<li class="<?php echo !$status || $status == 3? 'huankuan_rCon01_current' :''?>"><a href="<?php echo site_url('member/property/get_list/')?>" id="collect_shop" >提货权余额 </a></li>
                     <li class="huankuan_line"></li>
                     <li class ="<?php echo $status == 2 ? 'huankuan_rCon01_current' :''?>"><a  href="<?php echo site_url('member/property/get_list/2')?>" id="collect_shops">现金余额</a></li>
                 </ul>
                 <dl>
-                  <dd class=""><a href="javascript:void(0);" onClick="show()" id="cash">现金转货豆</a></dd>
+                  <dd class=""><a href="javascript:void(0);" onClick="show()" id="cash">现金转提货权</a></dd>
                   <dd><a href="<?php echo site_url('member/property/pay_index')?>"  id="cash1">充值</a></dd>
                 </dl>
             </div>
             <div class="kehuguanli_con_top clearfix" style="display:block">
                 <?php if(!$status || $status == 3):?>
                      <ul>
-                         <li class="<?php echo !$status? 'huankuan_rCon01_current' :''?>"><a href='<?php echo site_url('member/property/get_list')?>' id="detailed_1">查看货豆明细</a></li>
+                         <li class="<?php echo !$status? 'huankuan_rCon01_current' :''?>"><a href='<?php echo site_url('member/property/get_list')?>' id="detailed_1">查看提货权明细</a></li>
                          <li class ="<?php echo $status == 3 ? 'huankuan_rCon01_current' :''?>"><a href='<?php echo site_url('member/property/get_list/3')?>' id="detailed_2">查看授信明细</a></li>
                      </ul>
                 <?php endif;?>
                    <div class="kehuguanli_con02" style="display:block">
                       <?php if(!$status || $status == 3):?>
-                      <h5><span>货豆可用余额：</span><span class="con02_l"><?php echo  number_format( (isset($customer['M_credit']) ? $customer['M_credit'] : '0.00') + (isset($customer['credit']) ? $customer['credit'] : '0.00'),2 )?></span>   <em>(<span>货豆实际余额：</span><span class="con02_l"><?php echo isset($customer['M_credit']) ? $customer['M_credit'] : '0.00'?> </span><span>授信额度：</span><span class="con02_l"><?php echo isset($customer['credit']) ? $customer['credit'] : '0.00' ?></span>)</em></h5>
+                      <h5><span>提货权可用余额：</span><span class="con02_l"><?php echo  number_format( (isset($customer['M_credit']) ? $customer['M_credit'] : '0.00') + (isset($customer['credit']) ? $customer['credit'] : '0.00'),2 )?></span>   <em>(<span>提货权实际余额：</span><span class="con02_l"><?php echo isset($customer['M_credit']) ? $customer['M_credit'] : '0.00'?> </span><span>授信额度：</span><span class="con02_l"><?php echo isset($customer['credit']) ? $customer['credit'] : '0.00' ?></span>)</em></h5>
                      <?php else:?>
                       <h5><span>现金可用余额：</span><span class="con02_l"><?php echo number_format( (isset($customer['cash']) ? $customer['cash'] : '0.00') ,2)?></span></h5>
                      <?php endif;?>
@@ -176,16 +176,16 @@
                 </div>
                 -->
                     </div>
-                    </div> <!--货豆余额纪录结束-->
-                      <!--现金转货豆开始-->
+                    </div> <!--提货权余额纪录结束-->
+                      <!--现金转提货权开始-->
                     <div class="huankuan_cmRight_1" style="display:none">
-                        <div class="huankuan_rTop_4" style="display: block">现金转货豆</div>
+                        <div class="huankuan_rTop_4" style="display: block">现金转提货权</div>
                         <div class="huankuan_rTop_6" style="display: none">转换成功</div>
                         <div class="transformation" style="display:dlock">
                      <ul>
                        <li><span>现金账号余额：</span><span class="yan_r"><?php echo isset($customer['cash']) ? $customer['cash'] :'0.00'?></span></li>
-                       <li class="yan_l"><span>货豆实际余额：</span><span class="yan_r"><?php echo isset($customer['M_credit']) ? $customer['M_credit'] :'0.00'?></span></li>
-                       <li class="yan_l"><span>转货豆金额：</span><span class=""> <input type="text" onkeyup="value=value.replace(/[^\-?\d.]/g,'')"  value="" placeholder=" 请输入金额" name="charge_m" class="input-text1"></span></li>
+                       <li class="yan_l"><span>提货权实际余额：</span><span class="yan_r"><?php echo isset($customer['M_credit']) ? $customer['M_credit'] :'0.00'?></span></li>
+                       <li class="yan_l"><span>转提货权金额：</span><span class=""> <input type="text" onkeyup="value=value.replace(/[^\-?\d.]/g,'')"  value="" placeholder=" 请输入金额" name="charge_m" class="input-text1"></span></li>
                         购买数量限额大于0，小于等于50000
                      </ul>
             <div class="transformation_btn">
@@ -198,7 +198,7 @@
                    <h5>转换成功</h5>
                    <p><a href="<?php echo site_url('member/property/get_list')?>">点击查看我的资产</a></p>
                  </div>
-            </div>  <!--现金转货豆结束-->
+            </div>  <!--现金转提货权结束-->
                     
              <div class="huankuan_cmRight_2" style=" display:none">
             <div class="huankuan_rTop_5" style="display: block">充值</div>
@@ -211,7 +211,7 @@
   <div class="dingdan4_3_tanchuang_con">
       <div class="dingdan4_3_tanchuang_top">温馨提示</div>
       <div class="dingdan4_3_tanchuang_top2">
-          <p id='prompt'>本操作为不可逆操作，请确认是否需要把现金转成货豆</p>
+          <p id='prompt'>本操作为不可逆操作，请确认是否需要把现金转成提货权</p>
       </div>
       <div class="dingdan4_3_tanchuang_btn">
           <div class="dingdan4_3_btn01" style="background:#ccc;"><a onclick=hiding()>取消</a></div>
@@ -301,7 +301,7 @@
 // 			$('.dingdan4_3_tanchuang').hide();
 // 			$('.huankuan_rTop_4').show();
 // 		});	
-		<!--转货豆金额：-->
+		<!--转提货权金额：-->
 		
 	$("#determine_1").click(function(){
 		$('input[name=pay_password]').val('');

@@ -114,8 +114,7 @@ class Customer_message_mdl extends CI_Model {
         $this->db->where('cm.is_detele',0);
         
        if(!empty( $sift['where']['tribe_id'] )){
-            $this->db->join("message_template as mt","mt.template_id = cm.template_id","LEFT");
-            $this->db->where("IF(cm.template_id != NULL, mt.type = 4  and cm. obj_id IN ({$sift['where']['tribe_id']}),true)",'',false);
+            $this->db->where(" cm. obj_id IN ({$sift['where']['tribe_id']})",'',false);
         }
         
         //类型

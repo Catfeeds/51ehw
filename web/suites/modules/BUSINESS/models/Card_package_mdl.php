@@ -628,9 +628,9 @@ var $is_activity;
         if($type && $type == 'default'){//默认选择优惠券  取获取到的一张优惠券
             $this->db->order_by("d.collection_at","desc");//领取时间最新
         }else{
-            $this->db->order_by("sales_count","desc");//默认销量最高
+            $this->db->order_by("a.sales_count","desc");//默认销量最高
+            $this->db->group_by("a.id");
         }
-        
         $query = $this->db->get();
         $result = $query->result_array();
         return $result;

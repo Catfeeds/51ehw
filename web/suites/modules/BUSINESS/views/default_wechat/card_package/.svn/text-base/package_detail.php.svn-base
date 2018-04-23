@@ -16,7 +16,7 @@
 			<?php if($package["discount_type"]==1){;?>
 			<span><?php echo $package["discount"];?> 折优惠券</span>
 			<?php }elseif($package["discount_type"]==2){;?>
-			<span><?php echo $package["deduction_price"];?> 货豆抵用券</span>
+			<span><?php echo $package["deduction_price"];?> 提货权抵用券</span>
 			<?php }else{?>
 			<span><?php echo $package["deduction_price"];?> 现场礼包</span>
 			<?php }?>

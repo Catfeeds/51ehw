@@ -12,7 +12,7 @@
  <div class="certificatio_top">
     <div class="certificatio_con">   
         <div class="certificatio_sh">实名认证</div>
-        <div class="certificatio_t"><a href="<?php echo site_url("home");?>">首页</a> > <a href="javascript:;">个人中心</a> > <a href="javascript:;">安全设置</a> >  <a href="javascript:;" class="certificatio_current">立即设置</a></div>
+        <div class="certificatio_t"><a href="<?php echo site_url("home");?>">首页</a> > <a href="<?php echo site_url('Member/info');?>">个人中心</a> > <a href="<?php echo site_url('Member/save_set');?>">安全设置</a> >  <a href="javascript:;" class="certificatio_current">立即设置</a></div>
        
        <?php if(empty($customer['idcard'])){ ?>
        <form id="form1">
@@ -321,7 +321,6 @@ function submitform(){
       data:$("#form1").serialize(),
       success:function(data){
         if(data["status"] == 00){
-          alert("更新成功");
           window.location.reload();
         }else{
           alert(data["msg"]);
@@ -361,6 +360,7 @@ function submitform(){
       $real_name = $real_name.mb_substr($customer['real_name'],-1);
       
       $idcard_len = strlen($customer['idcard']);
+      $idcard = '';
       if($idcard_len == 15){
          $idcard =  substr_replace($customer['idcard'],'*************',1,13);
       }else if($idcard_len == 18){
@@ -384,10 +384,13 @@ function submitform(){
             <li>
               <div class="certificatio_le"><span class="certificatio_le_span">绑定预留手机：</span></div> 
               <div class="certificatio_ri"><span class="certificatio_ri_span"><?php echo substr_replace($customer['bankmobile'],'****',3,4);?></span></div> 
-           </li>          
+           </li> 
+           <?php if(!$is_passwd){?>
+               <li> <a class="certificatio_xia_a" href="<?php echo site_url("Member/save_set/paypwd_update");?>">快去设置支付密码</a></li>       
+           <?php  }?>  
+           
        </ul>
-
-
+    
           <!--已通过认证-->
           <div class="certificatio_xia" style="display:none;">
              <div class="icon-chenggong1"></div> 

@@ -60,7 +60,7 @@
 					</a>
 				</div>
 				<p><?php  echo $product['name'];?></p>
-				<p style="color: #c32d05; font-size: 16px">易货价: <?php echo $product['vip_price'];?> 货豆</p>
+				<p style="color: #c32d05; font-size: 16px">易货价: <?php echo $product['vip_price'];?> </p>
 				<!-- <p style="color: #fea33b">(0人)评价</p>  -->
 			</li>
                <?php

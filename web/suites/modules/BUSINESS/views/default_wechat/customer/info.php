@@ -9,7 +9,7 @@
 					<?php echo $this->session->userdata('user_name');?>
 				</p>
 				<p class="notice_word_mid">
-					货豆: <span class="red_font"><?php echo number_format( (isset($customer['M_credit']) ? $customer['M_credit'] : '0') + (isset($customer['credit']) ? $customer['credit'] : '0'),2 )?>货豆</span>
+					提货权: <span class="red_font"><?php echo number_format( (isset($customer['M_credit']) ? $customer['M_credit'] : '0') + (isset($customer['credit']) ? $customer['credit'] : '0'),2 )?></span>
 				</p>
 				<p class="notice_word_mid">
 					现金: <span class="red_font"><?php echo $customer['cash'] !== NULL?number_format($customer['cash'],2):'0.00';?>元</span>

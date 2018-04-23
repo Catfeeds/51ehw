@@ -4,7 +4,7 @@
 	<div class="purchase-finish-picture">
 		<img src="images/purchase-finish.png" height="100" width="100" alt="">
 	</div>
-	<span class="purchase-finish-text">您已成功购买<span id="amount"></span>货豆
+	<span class="purchase-finish-text">您已成功购买<span id="amount"></span>提货权
 	</span>
 	<div class="purchase-finish_button">
 		<button

@@ -745,13 +745,14 @@ class Products extends Api_Controller
         }
         
       if(!$tribe_id){
-        
+          // 设置查询字段
           $productList = $this->goods_mdl->get_productApp($catid_array,$perPage,$offset,$type,$longitude,$latitude,$keyword,$search_type,$corporation_id);//查询商品
       }else{
           $keyword_array = array();
           $keyword_array[] = $keyword;
           $productList = $this->goods_mdl->get_productFour($tribe_id,$keyword_array,$perPage,$offset,$type,$longitude,$latitude);//查询商品
       }
+     
         // 返回数据
         $return['data']['perpage'] = $perPage;
 //         $return['data']['totalpage'] = $totalpage;

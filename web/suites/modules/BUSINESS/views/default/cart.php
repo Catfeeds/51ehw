@@ -19,9 +19,9 @@
                 <div class="gouwuche_box_con01">
                 	<ul> 
                 	    <li> <label style="margin-left:65px;"><em style="margin-left:20px;"></em></label><span class="gouwuche_m01" style="width:468px;">商品信息</span></li>
-                        <li><span class="gouwuche_m02">单价（货豆）</span></li>
+                        <li><span class="gouwuche_m02">单价（提货权）</span></li>
                         <li><span class="gouwuche_m02">数量</span></li>
-                        <li><span class="gouwuche_m02">小计（货豆）</span></li>
+                        <li><span class="gouwuche_m02">小计（提货权）</span></li>
                         <li><span class="gouwuche_m02">操作</span></li>
                     </ul>
                 </div>
@@ -96,7 +96,7 @@
                     <span class="gouwuche_d01"><a href="javascript:deleteSelect()">删除选中商品</a></span>
 <!--                     <span class="gouwuche_d01"><a href="javascript:movetofav()">移入收藏夹</a></span> -->
                     <span class="gouwuche_d03">
-                        <p class="gouwuche_dd03" id="total">商品总额(不含运费)：0.00货豆</p>
+                        <p class="gouwuche_dd03" id="total">商品总额(不含运费)：0.00</p>
                         <div class="gouwuche_dd04"><a onclick="submitform();">提交订单</a></div>
                     </span>
                 </div>
@@ -236,7 +236,7 @@ function total(pid,sku_id){
     	total = total*1+(num*unit_price);
 	});
 	total = formatCurrency(total);//商品总额
-    $("#total").text("商品总额(不含运费)："+total+"货豆");//总额：商品＋运费
+    $("#total").text("商品总额(不含运费)："+total+"");//总额：商品＋运费
 
 }
 

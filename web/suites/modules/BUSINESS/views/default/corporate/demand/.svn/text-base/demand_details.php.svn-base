@@ -53,7 +53,7 @@
 			    <li><span class="biaoti-text1">产品名称：<span class="xuqiu-text2"><?php echo $details['p_name']?></span></span></li>
 			    <li><span class="biaoti-text1">数量：<span class="xuqiu-text3"><?php echo $details['p_count']?></span></span></li>
 			    <li><span class="biaoti-text1">单位：<span class="xuqiu-text4"><?php echo $details['unit']?></span></span></li>
-			    <li><span class="biaoti-text1">价格区间：<span class="xuqiu-text5"><?php echo $details['min_vip_price']?>-<?php echo $details['max_vip_price']?>货豆</span></span></li>
+			    <li><span class="biaoti-text1">价格区间：<span class="xuqiu-text5"><?php echo $details['min_vip_price']?>-<?php echo $details['max_vip_price']?>提货权</span></span></li>
 			    <li><span class="biaoti-text1">产品描述：<span class="xuqiu-text6"><?php echo $details['p_content']?></span></span></li>
 			    <?php if(!empty($details['img_path'])){?>
 			    <li><span class="biaoti-text1">图片/图纸/文档：

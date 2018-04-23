@@ -117,7 +117,7 @@ class Info extends Front_Controller {
                     $data['customer']['credit'] = '0.00';
                 }
             }else{
-                //若没有支付账户，则现金为0 货豆为0 
+                //若没有支付账户，则现金为0 提货权为0 
                  $data['customer']['cash'] = 0;
                  $data['customer']['credit'] = '0.00';
             }
@@ -708,24 +708,26 @@ class Info extends Front_Controller {
             redirect('member/binding/binding_mobile');
             return;
         }
-
+        
         //调用接口处理->验证实名认证
         $url = $this->url_prefix.'Customer/load';
         $data_post['customer_id'] = $customer_id;
         $customer = json_decode($this->curl_post_result( $url,$data_post ),true);
         $data['customer'] = $customer;
         
-        //判断商品是否存在
+        
+        //调用接口处理->查询支付账户
+        $url = $this->url_prefix.'Customer/load_pay_account';
+        $data_post['customer_id'] = $customer_id;
+        $pay = json_decode($this->curl_post_result( $url,$data_post ),true);
+        $is_passwd = $pay["pay_passwd"]?true:false;//是否设置支付密码
+        $data["is_passwd"] = $is_passwd;
+    
+        //判断
         if (!stristr($_SERVER['HTTP_USER_AGENT'], "Android") && !stristr($_SERVER['HTTP_USER_AGENT'], "iPhone") && !stristr($_SERVER['HTTP_USER_AGENT'], "wp")){//pc
             $view = "customer/verify_bank";
         }else{//h5
             if(!$customer["idcard"]){
-                //调用接口处理->查询支付账户
-                $url = $this->url_prefix.'Customer/load_pay_account';
-                $data_post['customer_id'] = $customer_id;
-                $pay = json_decode($this->curl_post_result( $url,$data_post ),true);
-                $is_passwd = $pay["pay_passwd"]?true:false;//是否设置支付密码
-                $data["is_passwd"] = $is_passwd;
                 $data["mobile"] = $mobile;
                 $view = "customer/verify_bank";
             }else{
@@ -824,7 +826,7 @@ class Info extends Front_Controller {
         $isidcard = json_decode($this->curl_post_result( $url,$parameter ),true);
         if($isidcard){
             $return = array(
-                    "status" => "07",
+                    "status" => "02",
                     "msg" => "该身份已被占有，请提交其他身份信息"
             );
             echo json_encode($return);exit;
@@ -945,7 +947,7 @@ class Info extends Front_Controller {
         }
 
         //验证实名认证数据
-        if($customer["idcard"] != $idcard ||  $customer["bankcard"] != $bankcard ||  $customer["bankmobile"] != $bankmobile){
+        if($customer["idcard"] != $idcard ||  $customer["bankcard"] != $bankcard ||  $customer["bankmobile"] != $bankmobile || strlen($pay_passwd) != 6){
             $return = array(
                     "status" => "01",
                     "msg" => "非法操作"

@@ -244,7 +244,7 @@ $(document).ready(function(){
                         echo 0;
                     }
                     ?>
-                     货豆</span>
+                     提货权</span>
                 </div>
             </div>
             <!-- 酒店娱乐 -->
@@ -271,7 +271,7 @@ $(document).ready(function(){
                         echo 0;
                     }
                     ?>
-                    货豆</span>
+                    提货权</span>
                 </div>
            </div>
            <!-- 其他 -->
@@ -298,7 +298,7 @@ $(document).ready(function(){
                         echo 0;
                     }
                     ?>
-                     货豆</span>
+                     提货权</span>
                 </div>
            </div>
 
@@ -370,7 +370,7 @@ $(document).ready(function(){
                 }
              }
                     
-             ?> 货豆</span></span>
+             ?> 提货权</span></span>
          </div>
          <!-- 内容 -->
         <div class="needs_list_main_header">
@@ -410,7 +410,7 @@ $(document).ready(function(){
                <li class="needs_list_table_li03" style="line-height: 15px;"><span style="display: block;margin-top: 35px;"> <?php  echo $v['status']?mb_substr($v['corporation_name'],0,1).'*****'.mb_substr($v['corporation_name'],-1):"个人需求"; ?> </span></li>
                <li class="needs_list_table_li04"><span><?php echo substr($v['mobile'],0,4).'***'.substr($v['mobile'],-3);?></span></li>
                <li class="needs_list_table_li05"><span id="<?php echo 'p_count_'.$v['id']?>"><?php echo $v['p_count'];?><?php echo $v['unit'];?></span></li>
-               <li class="needs_list_table_li06" style="line-height: 15px;"><span style="display: block;margin-top: 35px;" id="<?php echo 'price_'.$v['id']?>"><?php echo $v['total_price'];?>货豆</span></li>
+               <li class="needs_list_table_li06" style="line-height: 15px;"><span style="display: block;margin-top: 35px;" id="<?php echo 'price_'.$v['id']?>"><?php echo $v['total_price'];?>提货权</span></li>
                <li class="needs_list_table_li07" style="line-height: 15px;"><span style="display: block;margin-top: 35px;" id="<?php echo 'shippingaddress_'.$v['id']?>"><?php echo $v['province'].$v['city'].$v['district'];?></span></li>
 <!--                <li class="needs_list_table_li08"><span> -->
                <?php 
@@ -465,20 +465,20 @@ $(document).ready(function(){
                    <li><a href="javascript:void(0);"><img src="images/needs_love01.png" alt="">
                      <span>尊荣外景特惠套餐High Fashion 定制造…</span>
                     </a>
-                    <span class="needs_list_jiage">易货价:<span>50,000.00</span>货豆</span>  
+                    <span class="needs_list_jiage">易货价:<span>50,000.00</span>提货权</span>  
                    </li>
                    <li style="padding-left: 15px;"><a href="javascript:void(0);"><img src="images/needs_love02.png" alt=""><span>
                       那片森林 咥水果 精品A套餐 绿色食品
                    </span></a>
-                   <span class="needs_list_jiage">易货价:<span>298.00</span>货豆</span></li>
+                   <span class="needs_list_jiage">易货价:<span>298.00</span>提货权</span></li>
                    <li style="padding-left: 15px;"><a href="javascript:void(0);"><img src="images/needs_love03.png" alt=""><span>
                       西安冠杰广告媒体 21城电梯广告
                    </span></a>
-                   <span class="needs_list_jiage">易货价:<span>8,000.00</span>货豆</span></li>
+                   <span class="needs_list_jiage">易货价:<span>8,000.00</span>提货权</span></li>
                    <li style="padding-left: 15px;"><a href="javascript:void(0);"><img src="images/needs_love04.png" alt=""><span>
                        杭州深林小座品牌餐厅
                    </span></a>
-                   <span class="needs_list_jiage">易货价:<span>68.00</span>货豆</span></li>
+                   <span class="needs_list_jiage">易货价:<span>68.00</span>提货权</span></li>
                </ul>
            </div>
         </div> 
@@ -539,7 +539,7 @@ $(document).ready(function(){
                         <div id="cate_1">
                             <div class="needs_tanchuang">需求产品： <span id="title_">法国拉菲传奇2014波尔多红葡萄酒750ml（双瓶装）</span></div><br>
                             <div class="needs_tanchuang">需求数量： <span id="p_count_">100件</span></div><br>
-                            <div class="needs_tanchuang">需求总价： <span id="price_">1000～200000货豆</span></div><br>
+                            <div class="needs_tanchuang">需求总价： <span id="price_">1000～200000提货权</span></div><br>
                             <div class="needs_tanchuang">收货地区： <span id="shippingaddress_">广东广州</span></div><br>
                             <div class="needs_tanchuang">联系方式： <input type="text" value="" name="contactuser"> </div><br>
                             <div class="needs_tanchuang"><em style="opacity: 0;">测试</em>备注:  <textarea style="height:200px;width:430px;border: 1px solid #A2A2A2;outline: none;" name ="remark" ></textarea> </div> 

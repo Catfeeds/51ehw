@@ -2,6 +2,7 @@
   .gerenzhongxin_01_con{ width:670px ;}
   .gerenzhongxin_01_con_right{ width:auto;}
   .gerenzhongixn_01_btn{ width:172px;}
+  .saveSet_m1{color: #fea33b;}
 </style>
 <div class="Box member_Box clearfix">
 	<div class="kehu_Left">
@@ -86,7 +87,7 @@
 					<li><?php echo $customer['job'];?></li>
 					<li><?php echo $customer['email'];?></li>
 					<li><?php echo $customer['real_name'];?></li>
-					<li><?php echo $customer['mobile'];?><?php echo $customer['mobile']!=null?'<a href="'.site_url('member/save_set/change_mobile') .'" class="saveSet_m">更换手机</a>':'<a href="'.site_url('member/save_set/set_mobile').'" class="saveSet_m">绑定手机</a>' ?></li>
+					<li><?php echo $customer['mobile'];?><?php echo $customer['mobile']!=null?'<a href="'.site_url('member/save_set/change_mobile') .'" class="saveSet_m1">更换手机</a>':'<a href="'.site_url('member/save_set/set_mobile').'" class="saveSet_m">绑定手机</a>' ?></li>
 					<li><?php echo $customer['phone'];?></li>
 				</ul>
 			</div>

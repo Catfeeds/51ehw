@@ -166,7 +166,7 @@ $(document).ready(function(){
            <div class="guanjie_top_conx_b1_n dingwei">
              <h5></h5>
              <p>古丽兰 18K金钻石戒指</p>
-             <p class="juan4"><em><span class="juan">11495</span><samp class="juan1">货豆</samp></em><em style="margin-top:5px;"><span class="juan3">11495</span><samp class="juan2">货豆</samp></em></p>
+             <p class="juan4"><em><span class="juan">11495</span><samp class="juan1">提货权</samp></em><em style="margin-top:5px;"><span class="juan3">11495</span><samp class="juan2">提货权</samp></em></p>
              <h6><a href="<?php echo site_url('goods/detail/1215');?>">立即购买</a></h6>
            </div>
            </li>
@@ -177,7 +177,7 @@ $(document).ready(function(){
            <div class="guanjie_top_conx_b1_n dingwei1">
              <h5></h5>
              <p>古丽兰 18K金钻石戒指</p>
-             <p class="juan4"><em><span class="juan">11495</span><samp class="juan1">货豆</samp></em><em style="margin-top:5px;"><span class="juan3">11495</span><samp class="juan2">货豆</samp></em></p>
+             <p class="juan4"><em><span class="juan">11495</span><samp class="juan1">提货权</samp></em><em style="margin-top:5px;"><span class="juan3">11495</span><samp class="juan2">提货权</samp></em></p>
              <h6><a href="javascript:;">立即购买</a></h6>
            </div>
            </li>

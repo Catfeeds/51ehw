@@ -882,10 +882,13 @@ class  Tribe_mdl extends CI_Model {
             $this->db->set("show_mobile",$data["show_mobile"]);
             $this->db->set("is_pre_record",$data["is_pre_record"]);
         }else{
-            // if(isset($data["show_mobile"])){
-            $data["show_mobile"] = 1; // 不是预录入部落成员写死显示手机号码
+            if(isset($data["show_mobile"]) && $data["show_mobile"] == 2){
+                $data["show_mobile"] == 2;
+            }else{
+                $data["show_mobile"] = 1; // 不是预录入部落成员写死显示手机号码
+            }
             $this->db->set("show_mobile",$data["show_mobile"]);
-            // }
+          
         }
         
         $this->db->set("created_at",date("Y-m-d H:i:s"));
@@ -1032,8 +1035,8 @@ class  Tribe_mdl extends CI_Model {
         //         $this->db->set('update_at',date("Y-m-d H:i:s"));
         if( !empty($data['customer_id']) )
             $this->db->set('customer_id',$data['customer_id']);
-            $data['show_mobile'] = 1;
-            $this->db->set('show_mobile',$data['show_mobile']);
+//             $data['show_mobile'] = 1;
+//             $this->db->set('show_mobile',$data['show_mobile']);
             // if(isset($data['is_pre_record'])){
             //     $this->db->set('is_pre_record',$data['is_pre_record']);
             // }
@@ -2041,8 +2044,19 @@ class  Tribe_mdl extends CI_Model {
         return $query->result_array();
     }
     
-    
 
+    public function getQSmemberList($tribe_id){
+        $this->db->from("tribe_staff");
+        $this->db->where("tribe_id",$tribe_id);
+        $this->db->where("customer_id !=",NULL);
+        $this->db->where("status",2);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+
+    
+    
     /**
      * @author JF
      * 2018年4月3日

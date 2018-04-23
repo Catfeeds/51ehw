@@ -111,6 +111,19 @@ div.flicking_con a.on{background: #FDCF0C;border: 1px solid #FDCF0C;}
     	<?php }?>
     </div>
     <?php }?>
+
+    <!-- 投票入口 -->
+    <?php if($label_id == 2){
+        if(base_url() == 'http://www.51ehw.com/' ){
+            //正式
+            $vote_link = 'http://m.qqxqs.com/vote/396bb4f0-2b31-11e8-89be-09ee32e68284';
+        }else{
+            //测试
+            $vote_link = 'http://m.dev.wezchina.com/vote/1255aba0-1dde-11e8-90c8-4d0fbafef8b8';
+        }
+    ?><!-- 只有秦商商会才显示 -->
+    <div class="commerce_xiangmu_go"><a href="<?php echo $vote_link;?>"><img src="images/lottery/vote.png" alt=""></a></div>
+    <?php }?>
     
     <!-- 全球秦商十大好项目揭晓 -->
     <?php if($label_id == 2){?><!-- 只有秦商商会才显示 -->

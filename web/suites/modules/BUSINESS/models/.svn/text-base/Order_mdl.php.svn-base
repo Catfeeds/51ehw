@@ -1701,7 +1701,7 @@ class Order_mdl extends CI_Model
      {
          $this->db->select(
              "(oi.price*oi.quantity) as price_total,
-        (case o.status when 1 then '等待商家确认' when 2 then '等待付款' when 4 then '等待发货' when 6 then '已发货' when 7 then '订单完成（商家手续费不足无法提取货豆）' when 9 then '订单完成' when 14 then ' 订单完成' when 10 then'订单取消' when 11 then'已退款' end) as status,
+        (case o.status when 1 then '等待商家确认' when 2 then '等待付款' when 4 then '等待发货' when 6 then '已发货' when 7 then '订单完成（商家手续费不足无法提取提货权）' when 9 then '订单完成' when 14 then ' 订单完成' when 10 then'订单取消' when 11 then'已退款' end) as status,
         o.customer_remark,od.consignee,od.address,od.contact_phone,od.contact_mobile,o.place_at,o.pay_time,oi.product_name,oi.quantity,o.corporation_id,cc.corporation_name,
         (case o.order_source when 1 then 'PC' when 2 then 'H5' when 3 then'安卓' when 4 then'ios' else '其它' end) as order_source, o.order_sn"
          );

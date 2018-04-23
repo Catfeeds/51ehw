@@ -50,7 +50,7 @@
 		    </ul>
 		</div>
 
-		<!--货豆余额纪录开始-->
+		<!--提货权余额纪录开始-->
 		<div class="huankuan_cmRight" id="charge_list">
 
 			<div class="huankuan_rTop_5" style="display: block">微信扫码支付</div>
@@ -68,7 +68,7 @@
 
 		</div>
 
-		<!--货豆余额纪录开始-->
+		<!--提货权余额纪录开始-->
 		<div class="huankuan_cmRight" style="display:none; " id="message">
 			<div class="huankuan_rTop_5" style="display: block">充值通知</div>
 			<div class="transformation_1">

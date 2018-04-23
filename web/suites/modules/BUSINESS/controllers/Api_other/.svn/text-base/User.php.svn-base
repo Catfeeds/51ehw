@@ -882,7 +882,7 @@ class User extends External_Api_Controller
     // ------------------------------------------------------------
 
     /**
-     * 用户购入扣除货豆
+     * 用户购入扣除提货权
      */
     public function purchase(){ 
         //验证是否登录
@@ -993,7 +993,7 @@ class User extends External_Api_Controller
                                     $this->load->model("customer_currency_log_mdl",'customer_currency_log');
                                     $last_m_log    = $this->customer_currency_log->load_last($customer_pay['r_id']);
                                     
-                                    //检测货豆是否异常
+                                    //检测提货权是否异常
                                     if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $customer_pay['M_credit']){
                                         $M_credit_data['status'] = '1';
                                     }else if(!$last_m_log && $customer_pay['M_credit'] =='0'){
@@ -1002,7 +1002,7 @@ class User extends External_Api_Controller
                                         $M_credit_data['status'] = '2';
                                     }
                                     
-                                    //货豆日志
+                                    //提货权日志
                                     $M_credit_data['relation_id'] = $customer_pay['r_id'];
                                     $M_credit_data['id_event'] = '60';
                                     $M_credit_data['remark'] = '购物支出';
@@ -1029,7 +1029,7 @@ class User extends External_Api_Controller
                                         //收入方最后一次日志
                                         $to_last_m_log    = $this->customer_currency_log->load_last($corp_customer_pay['r_id']);
                                         
-                                        //检测货豆是否异常
+                                        //检测提货权是否异常
                                         if( isset($to_last_m_log['ending_balance']) &&  $to_last_m_log['ending_balance'] == $corp_customer_pay['M_credit']){
                                             $M_credit_data_to['status'] = '1';
                                         }else if(!$to_last_m_log && $corp_customer_pay['M_credit'] =='0'){
@@ -1038,7 +1038,7 @@ class User extends External_Api_Controller
                                             $M_credit_data_to['status'] = '2';
                                         }
                                         
-                                        //收入方货豆日志
+                                        //收入方提货权日志
                                         $M_credit_data_to['relation_id'] = $corp_customer_pay['r_id'];
                                         $M_credit_data_to['id_event'] = '62';
                                         $M_credit_data_to['remark'] = '销售收入';
@@ -1050,7 +1050,7 @@ class User extends External_Api_Controller
                                         $M_credit_data_to['customer_id'] = $customer_id;
                                         $M_credit_to_log = $this->customer_currency_log->add_log($M_credit_data_to);
                                         
-                                        //收入方账户+货豆
+                                        //收入方账户+提货权
                                         $up_row = $this->pay_account_mdl->charge_M_credit($corp_customer_pay['id'], $total_price );
                                         //----收入方一系列操作结束
                                         
@@ -1159,7 +1159,7 @@ class User extends External_Api_Controller
     // ------------------------------------------------------------
     
     /**
-     * 货豆转账
+     * 提货权转账
      */
     public function give_voucher(){
         
@@ -1205,7 +1205,7 @@ class User extends External_Api_Controller
                                 $this->load->model("customer_currency_log_mdl",'customer_currency_log');
                                 $last_m_log    = $this->customer_currency_log->load_last($customer_pay['r_id']);
                                 
-                                //检测货豆是否异常
+                                //检测提货权是否异常
                                 if( isset($last_m_log['ending_balance']) &&  $last_m_log['ending_balance'] == $customer_pay['M_credit']){
                                     $M_credit_data['status'] = '1';
                                 }else if(!$last_m_log && $customer_pay['M_credit'] =='0'){
@@ -1219,7 +1219,7 @@ class User extends External_Api_Controller
                                         $remark = '来源于广告平台';
                                         break;
                                 }
-                                //货豆日志
+                                //提货权日志
                                 $M_credit_data['relation_id'] = $customer_pay['r_id'];
                                 $M_credit_data['id_event'] = '77';
                                 $M_credit_data['remark'] = $remark;
@@ -1245,7 +1245,7 @@ class User extends External_Api_Controller
                                     //收入方最后一次日志
                                     $to_last_m_log    = $this->customer_currency_log->load_last($receive_pay_info['r_id']);
                                 
-                                    //检测货豆是否异常
+                                    //检测提货权是否异常
                                     if( isset($to_last_m_log['ending_balance']) &&  $to_last_m_log['ending_balance'] == $receive_pay_info['M_credit']){
                                         $M_credit_data_to['status'] = '1';
                                     }else if(!$to_last_m_log && $receive_pay_info['M_credit'] =='0'){
@@ -1254,7 +1254,7 @@ class User extends External_Api_Controller
                                         $M_credit_data_to['status'] = '2';
                                     }
                                 
-                                    //收入方货豆日志
+                                    //收入方提货权日志
                                     $M_credit_data_to['relation_id'] = $receive_pay_info['r_id'];
                                     $M_credit_data_to['id_event'] = '77';
                                     $M_credit_data_to['remark'] = $remark;
@@ -1265,7 +1265,7 @@ class User extends External_Api_Controller
                                     $M_credit_data_to['customer_id'] = $expend_customer_id;
                                     $M_credit_to_log = $this->customer_currency_log->add_log($M_credit_data_to);
                                 
-                                    //收入方账户+货豆
+                                    //收入方账户+提货权
                                     $up_row = $this->pay_account_mdl->charge_M_credit($receive_pay_info['id'], $M_voucher );
                                     //----收入方一系列操作结束
                                 

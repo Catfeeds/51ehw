@@ -66,7 +66,7 @@
 					<span class="float-left"><span style="opacity: 0;">补</span>订单号：</span><span class="dingdan-num" id="order_sn">-------------</span>
 				</div>
 				<div id="order_money_text" style="margin-top: 5px;">
-					<span class="float-left">订单金额：</span><span class="diagndan-monery" id='price'>0.00货豆</span>
+					<span class="float-left">订单金额：</span><span class="diagndan-monery" id='price'>0.00提货权</span>
 				</div>
 				<div style="margin-top: 5px;">
 					<span class="float-left">支付密码：</span><input type="password" value="" class="mima-forget" name="pay_passwd">
@@ -86,9 +86,9 @@
         </div>
     	<div class="forget-password">
     		<div class="password-text">
-    		  <span>货豆余额不足</span>
+    		  <span>提货权余额不足</span>
     		</div>
-    		<a href="<?php echo site_url("customer/fortune");?>" class="password-button custom_button">充值货豆</a>
+    		<a href="<?php echo site_url("customer/fortune");?>" class="password-button custom_button">充值提货权</a>
     	</div>
     </div>
 	<?php

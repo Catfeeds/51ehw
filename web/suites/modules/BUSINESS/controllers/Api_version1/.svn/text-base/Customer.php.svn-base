@@ -169,7 +169,8 @@ class Customer extends Api_Controller {
         
         //创建部落权限
         $this->load->model("tribe_mdl");
-        $tribe = $this->tribe_mdl->get_MyTribe($user_id);//查询我创建的部落
+        $tribe_id = $this->session->userdata("tribe_id");
+        $tribe = $this->tribe_mdl->get_MyTribe($user_id,$tribe_id);//查询我创建的部落
         $return['data']['tribe_create_status'] = $tribe?$tribe["status"]:0;//0未创建1待审核2通过3不通过
        
         //需求权限  暂时先为true

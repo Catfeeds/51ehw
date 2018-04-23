@@ -140,7 +140,7 @@
     					</a>
     				</div>
     				<p><?php echo $v['name']?></p>
-    				<p style="color: #fea33b; font-size: 16px">易货价: <?php echo $v['vip_price']?> 货豆</p>
+    				<p style="color: #fea33b; font-size: 16px">易货价: <?php echo $v['vip_price']?> </p>
     				<p style="color: #aaaaaa">(0人)评价</p> <!--<div class="con_btn01">
     					<a
     						href="javascript:add_to_cart(337,this);"

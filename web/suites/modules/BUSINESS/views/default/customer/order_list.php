@@ -3,6 +3,8 @@
 .dingdanzhongxin_01_con02_down .dingdanzhongxin_01_con02_down_btn{ margin-top:7px;}
 .dingdanzhongxin_01_con02_down ul li{ height:90px}
 .yangshijuzhong{ position:absolute; top:50%;}
+.dingdanzhongxin_01_con02_down ul li{width: 98px;}
+.dingdanzhongxin_01_con01 ul li{width: 98px;}
 </style>
     <div class="Box member_Box clearfix">
         <div class="kehu_Left">
@@ -61,7 +63,7 @@
             <div class="dingdanzhongxin_01_con01">
             	<ul>
                 	<li style="width:349px">商品信息</li>
-                    <li>价格（货豆）</li>
+                    <li>价格（提货权）</li>
                     <li>数量</li>
                     <li>总价（元）</li>
                     <!--<li>商品操作</li>-->
@@ -74,7 +76,7 @@
                             <option value="5" <?php echo isset($statu)&&$statu==5?"selected":"" ?> >已取消</option>
                         </select>
                     </li>
-                    <li style="width:168px; border-right:0">交易操作</li>
+                    <li style="width:148px; border-right:0">交易操作</li>
                 </ul>
             </div>
             <!---->
@@ -121,7 +123,7 @@
                                               ?></a>
                             <a href="<?php echo site_url('member/order/detail').'/'.$v['id'];?>">订单详细</a>
                         </li>
-                        <li style="width:168px; border-right:0; display:table;" id='status_submit_<?php echo $v['id']?>'>
+                        <li style="width:148px; border-right:0; display:table;" id='status_submit_<?php echo $v['id']?>'>
                                 <?php if(in_array($v['status'],array(6))):?>
                                     <a href="javascript:;" onclick="receive(<?php echo $v['id']?>)" class="dingdanzhongxin_01_con02_down_btn">确认收货</a>
                                      </br>
@@ -165,7 +167,7 @@
                         <div style="display:none;">
                         <li style="line-height:110px;"></li>
                         <li style="width:114px; display:block"> </li>
-                        <li style="width:168px; border-right:0; display:table;">
+                        <li style="width:148px; border-right:0; display:table;">
                         </li>
                         </div>
                     </ul>

@@ -209,26 +209,26 @@
 					<span style="float: right;" class="c9">
 						<span><?php echo $order['total_product_price'];?></span>
     					<span style="font-size: 12px !important;"></span>
-    					<!--<span style="padding-left: 5px;">货豆</span>-->
+    					<!--<span style="padding-left: 5px;">提货权</span>-->
 					</span>
 				</p>
 				<p style="padding-top: 8px;">运费
 					<span style="float: right;" class="c9"><span></span>
 					<span style="font-size: 12px !important;">＋<?php echo $order['auto_freight_fee']?></span>
-					<!--<span style="padding-left: 5px;">货豆</span></span>-->
+					<!--<span style="padding-left: 5px;">提货权</span></span>-->
 				</p>
 				
 				<p style="padding-top: 8px;">优惠
 					<span style="float: right;" class="c9"><span></span>
 					<span style="font-size: 12px !important;">－<?php echo ($order['auto_freight_fee']+$order['total_product_price'])-$order['total_price'];?></span>
-					<!--<span style="padding-left: 5px;">货豆</span></span>-->
+					<!--<span style="padding-left: 5px;">提货权</span></span>-->
 				</p>
        
 				<p style="padding-top: 8px;">使用提货权
 					<span style="float: right;">
 						<span><?php echo $order['total_price'];?></span>
 						<span style="font-size: 12px !important;"></span>
-						<!--<span class="c9" style="padding-left: 5px;">货豆</span>-->
+						<!--<span class="c9" style="padding-left: 5px;">提货权</span>-->
 					</span>
 				</p>
 				

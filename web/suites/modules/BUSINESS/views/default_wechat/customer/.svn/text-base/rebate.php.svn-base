@@ -6,8 +6,8 @@
 
 		<ul class="member_head_list">
 			<li><a href="javascript:void(0);<?php //echo site_url('customer/customerdata');?>"><span
-					class="fn-right"><span class="mr-20"><em></em><?php echo $customer['credit'] !== NULL?number_format($customer['credit'],2):'0.00';?> 货豆</span><em
-						class="icon-right c9"></em></span>货豆</a></li>
+					class="fn-right"><span class="mr-20"><em></em><?php echo $customer['credit'] !== NULL?number_format($customer['credit'],2):'0.00';?> 提货权</span><em
+						class="icon-right c9"></em></span>提货权</a></li>
 						
 			<li><a href="javascript:void(0);<?php //echo site_url('customer/customerdata');?>"><span
 					class="fn-right"><span class="mr-20"><em></em> 0.00<?php //echo $customer['credit'] !== NULL?number_format($customer['credit'],2):'0.00';?> 元</span><em

@@ -41,6 +41,49 @@ switch ($type) {
 	case '10':
 	$img = 'images/shijia/shijia_10.png';
 		break;
+		case '11':
+	$img = 'images/shijia/shijia_11.jpg';
+		break;
+		case '12':
+	$img = 'images/shijia/shijia_12.jpg';
+		break;
+		case '13':
+	$img = 'images/shijia/shijia_13.jpg';
+		break;
+		case '14':
+	$img = 'images/shijia/shijia_14.jpg';
+		break;
+		case '15':
+	$img = 'images/shijia/shijia_15.jpg';
+		break;
+		case '16':
+	$img = 'images/shijia/shijia_16.jpg';
+		break;
+		case '17':
+	$img = 'images/shijia/shijia_17.jpg';
+		break;
+		case '18':
+	$img = 'images/shijia/shijia_18.jpg';
+		break;
+		case '20':
+	$img = 'images/shijia/shijia_20.jpg';
+		break;
+		case '21':
+	$img = 'images/shijia/shijia_21.jpg';
+		break;
+		case '22':
+	$img = 'images/shijia/shijia_22.jpg';
+		break;
+		case '23':
+	$img = 'images/shijia/shijia_23.jpg';
+		break;
+		case '24':
+	$img = 'images/shijia/shijia_24.jpg';
+		break;
+		case '25':
+	$img = 'images/shijia/shijia_25.jpg';
+		break;
+		
 
 	default:
 		# code...

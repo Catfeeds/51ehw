@@ -85,7 +85,7 @@ table th{ line-height:normal;border:1px solid #dddddd; padding:10px 0; font-size
 							style="margin-right: 68px; margin-left: 15px"
 							onclick="selectAll(this)">商品名称</th>
 						<th width="76px">分类</th>
-						<th width="102px">价格（货豆）</th>
+						<th width="102px">价格（提货权）</th>
 						<th width="64px">总库存</th>
 						<th width="100px">上下架</th>
 						<th width="44px">排序</th>

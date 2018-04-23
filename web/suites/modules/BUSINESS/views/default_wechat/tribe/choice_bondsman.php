@@ -49,7 +49,7 @@
 
 <!-- 底部结算 -->
     <div class="tribe-choice-count-nav container-center">
-        <span class="pt05">担保申请额：0万货豆</span><a id="sub" href="javascript:void(0);"
+        <span class="pt05">担保申请额：0万</span><a id="sub" href="javascript:void(0);"
     		class="tribe-go-count">提交申请</a>
     </div>
 </div>
@@ -97,7 +97,7 @@ $(function(){
                 setTimeout("prompt();", 2000);   
                 return false;
        	 }
-         document.getElementById('sub').previousElementSibling.innerText='担保申请额：'+total+'万货豆';
+         document.getElementById('sub').previousElementSibling.innerText='担保申请额：'+total+'万提货权';
 
          return true;
     }

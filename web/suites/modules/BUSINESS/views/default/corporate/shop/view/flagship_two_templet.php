@@ -205,7 +205,7 @@
           </div>
           <!--  
              <p>古丽兰 18K金钻石戒指</p>
-             <p class="juan4"><em><span class="juan">11495</span><samp class="juan1">货豆</samp></em><em style="margin-top:5px;"><span class="juan3">11495</span><samp class="juan2">货豆</samp></em></p>
+             <p class="juan4"><em><span class="juan">11495</span><samp class="juan1">提货权</samp></em><em style="margin-top:5px;"><span class="juan3">11495</span><samp class="juan2">提货权</samp></em></p>
              <h6><a href="http://www.51ehw.com/goods/detail/1181">立即购买</a></h6>
              -->
            </div>

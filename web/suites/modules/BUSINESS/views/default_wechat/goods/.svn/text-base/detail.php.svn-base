@@ -386,7 +386,7 @@ $(function(){
 function check_item_num(mode){
     var status = true;//默认成功
     var x=$("#item_num").val();//加入购物车数量
-    var max = parseInt($('#stock').text());//获取库存数量
+    var max = parseInt($('#stock').text().replace(",",""));//获取库存数量
     var is_num = new RegExp("^[1-9]\\d*$").test(x);//验证数据类型
     if(is_num){
         if(mode=='-'){

@@ -21,7 +21,7 @@
         <div class="envelope_content envelope_two">
             <img src="images/yihuohongma5.png">
             <input placeholder="请输入您的手机号获取红包" name="mobile" type="number" id="mobile" pattern="[0-9]*" >
-            <a href="javascript:check_submit();"><span>领取货豆</span></a>
+            <a href="javascript:check_submit();"><span>领取提货权</span></a>
             <ul>
                 <li>1.易货红包新老用户共享 </li>
                 <li>2.易货红包将放入与手机号绑定的账户</li>

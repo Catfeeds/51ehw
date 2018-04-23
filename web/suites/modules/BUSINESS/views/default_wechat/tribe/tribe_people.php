@@ -21,9 +21,9 @@
     .tribe_people_dianpu a {width: 25px;border: 1px solid #999;padding: 2px 5px;border-radius: 4px;float: right;margin-top: 5px;margin-right: -14px;}
     .tribe_people_img_ball {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);border-radius: 4px;}
     .tribe_people_size {-webkit-line-clamp:inherit;}
-	.tribe_people_size i{ display:inline-block;}
-	.qiyemain{ display:inline-block; float:left;overflow: hidden;text-overflow: ellipsis; white-space: nowrap; max-width:65%;}
-	.qiyemain_rig{display:inline-block; float:left;overflow: hidden;text-overflow: ellipsis; white-space: nowrap; max-width:35%;}
+    .tribe_people_size i{ display:inline-block;}
+    .qiyemain{ display:inline-block; float:left;overflow: hidden;text-overflow: ellipsis; white-space: nowrap; max-width:65%;}
+    .qiyemain_rig{display:inline-block; float:left;overflow: hidden;text-overflow: ellipsis; white-space: nowrap; max-width:35%;}
     .tribe_people_show li {display: none;}
     .tribe_people_show li:nth-child(1) {display: block;}
     .tribe_people_show li:nth-child(2) {display: block;}
@@ -43,11 +43,11 @@
     .tribe_yaoqing {top: 0px;}
     .biaoshi1 {font-size: 12px;color: #55acc9;border: 1px solid #55acc9;border-radius: 5px;padding: 2px;margin-left: 2px; box-sizing:border-box}
     .biaoshi2 {font-size: 12px;color: #ffca00;border: 1px solid #ffca00;border-radius: 5px;padding: 2px;margin-left: 2px;}
-	.tribe_people_list{ background:#fff}
-	.fn-16 .dn_io{ display:inline-block; float:left;overflow: hidden;text-overflow: ellipsis; white-space: nowrap;max-width:50%; margin-top:1px;}
-	.tribe_people_credit{ width:88px !important; float:right !important;}
-	.tribe_zuyuan{ padding-left:0}
-	.tribe_people_my li span{ width:100%; float:left}
+    .tribe_people_list{ background:#fff}
+    .fn-16 .dn_io{ display:inline-block; float:left;overflow: hidden;text-overflow: ellipsis; white-space: nowrap;max-width:50%; margin-top:1px;}
+    .tribe_people_credit{ width:88px !important; float:right !important;}
+    .tribe_zuyuan{ padding-left:0}
+    .tribe_people_my li span{ width:100%; float:left}
     .cart_num1 {position: absolute;right: 20%;top: 5px;width: auto;min-width: 14px;}
     .tribe_shop_footer ul li {width: 20%;}
 </style>
@@ -68,9 +68,16 @@
                 <!-- <a href="javascript:void(0);" onclick="$('.search_input').val(' ').focus();" style="position: fixed;top: 20px;"><img src="images/search_close.png" height="15" width="15" alt=""></a> -->
             </p>
             <!--  <span class="sousuo_text"><a href="<?php //echo site_url('Tribe/Members_List/'.$tribe_id);?>">取消</a></span> -->
-            <a href="<?php echo site_url('Tribe/Tribe_Ranking/' . $tribe_id); ?>"><span class="sousuo_text"
+            
+            <?php 
+            if(!empty($label_id) && $label_id == 1 || !empty($label_id) && $label_id == 2){
+                
+            }else{?>
+                <a href="<?php echo site_url('Tribe/Tribe_Ranking/' . $tribe_id); ?>"><span class="sousuo_text"
                                                                                         style="text-align: center;font-size: 12px;top:13px;"><span
                         class="icon-ranking_list_off" style="display: block;font-size: 14px;"></span>排行榜</span></a>
+            <?php }?>
+            
         </div>
     </form>
 </div>
@@ -189,12 +196,12 @@
                                     </li>
                                     <!-- <li class="tribe_people_guarantee">
                            <a href="<?php echo 'javascript:;';//echo site_url('Tribe/My_Info/'.$tribe_id.'/'.$val['id'])?>">
-                             <span class="fn-14"><?php echo $val['remain_guarantee_price'] / 10000 ?>万货豆</span>
+                             <span class="fn-14"><?php echo $val['remain_guarantee_price'] / 10000 ?>提货权</span>
                              <span class="tribe_edu">可担保额</span>
                            </a>
                        </li> -->
                                     <!-- <li class="tribe_people_credit">
-                           <span class="fn-14"><?php echo $val['credit'] / 10000 ?>万货豆</span>
+                           <span class="fn-14"><?php echo $val['credit'] / 10000 ?>提货权</span>
                            <span class="tribe_edu">获得授信</span>
                            <a href="javascript:void(0);">店铺</a>
                        </li> -->
@@ -263,6 +270,7 @@
                                 <!--  <a href="<?php // echo !empty($val['customer_id']) ? 'javascript:Is_Exists_Comment(' . $val['customer_id'] . ')' : 'javascript:message(3)'; ?>">聊两句</a>-->
                                 
                             </div>
+
                         </li>
 
                     <?php } ?>
@@ -328,8 +336,8 @@ $.ajax({
     data:{},
     success:function(data)
     {
-   	  console.log("获取未读消息成功");
-   	  var MsgCount = data.MsgCount;
+      console.log("获取未读消息成功");
+      var MsgCount = data.MsgCount;
       if(MsgCount > 0){
         if(MsgCount >= 99){
             MsgCount = '99+';   
@@ -337,7 +345,7 @@ $.ajax({
         $("#huanxin_chatNum").html(MsgCount);
         $("#huanxin_chatNum").show();
       }
-     	
+        
     },
     error:function()
     {
@@ -515,7 +523,15 @@ $.ajax({
         window.addEventListener('pagehide', function () {
             isPageHide = true;
         });
-    })
+    });
+
+        // 秦商会
+<?php if($label_id == 2){ ?>
+   function  change_color(){
+      $('.tribe_yaoqing').css('color', '#fff'); 
+   }
+   change_color();
+<?php }?>
 
 </script>
 

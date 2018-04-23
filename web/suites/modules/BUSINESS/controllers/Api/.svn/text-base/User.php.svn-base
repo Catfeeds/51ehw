@@ -774,6 +774,7 @@ private function check_register($type, $object, $password = 'ehw888888')
             'mobile_vertify'
         ));
         
+       
         // 检查用户名是否存在
         if ($this->customer_mdl->check_name($prams['username'])) {
             $return['responseMessage'] = array(
@@ -788,6 +789,7 @@ private function check_register($type, $object, $password = 'ehw888888')
         $mobile = $this->session->userdata("verfity_mobile_0");
         $mobile_vertify = $this->session->userdata("verfity_yzm_0");
         $set_time = $this->session->userdata('verfity_settime_0');
+     
         if ($mobile_vertify != $prams['mobile_vertify']) {
             $return['responseMessage'] = array(
                 'messageType' => 'error',
@@ -837,7 +839,18 @@ private function check_register($type, $object, $password = 'ehw888888')
                 'user_last_login' => null
             );
             
-            $this->session->set_userdata($customer);
+//             $this->session->set_userdata($customer);
+            $this->load->helper("session");
+            
+            $sift = array();
+            $sift['customer_id'] = $customer_info['customer_id'];
+            $url = $this->url_prefix.'Customer/get_pay_relation_id?';
+            $pay_data = json_decode($this->curl_do_result($url,$sift),true);
+            
+            $this->load->model("customer_mdl");
+            $info = $this->customer_mdl->load($customer_info['customer_id']);
+            $info['pay_relation'] = $pay_data;
+            set_customer($info,"app");
             
             $return['data'] = array(
                 'result' => 'success',
@@ -2759,7 +2772,7 @@ private function check_register($type, $object, $password = 'ehw888888')
     }
 
     /**
-     * 货豆日志
+     * 提货权日志
      */
     public function getUserCurrencylog()
     {
@@ -2809,7 +2822,7 @@ private function check_register($type, $object, $password = 'ehw888888')
             $return['responseMessage'] = array(
                 'messageType' => 'error',
                 'errorType' => '7',
-                'errorMessage' => '无货豆日志！'
+                'errorMessage' => '无提货权日志！'
             );
         }
         print_r(json_encode($return));

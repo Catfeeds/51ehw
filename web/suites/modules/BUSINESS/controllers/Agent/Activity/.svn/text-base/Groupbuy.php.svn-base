@@ -160,10 +160,10 @@ class Groupbuy extends Front_Controller
                     if ($up_row)
                         $count_up_row ++; // 执行成功次数
                                              
-                    // 上一次平台的货豆交易日志
+                    // 上一次平台的提货权交易日志
                     $to_last_m_log = $this->customer_currency_log->load_last('-1');
                     
-                    // 平台支出货豆日志
+                    // 平台支出提货权日志
                     $M_credit_data['relation_id'] = '-1';
                     $M_credit_data['id_event'] = '64';
                     $M_credit_data['remark'] = '平台支出-退款';
@@ -179,16 +179,16 @@ class Groupbuy extends Front_Controller
                     
                     $data_to_M_credit_log[] = $M_credit_data;
                     
-                    // 支出方货豆日志
+                    // 支出方提货权日志
                     $to_M_credit_log = $this->customer_currency_log->add_log($M_credit_data);
                     if ($to_M_credit_log){
                         $count_M_log ++;
                     }
                         
-                    // 上一次客户货豆交易的日志中的信息
+                    // 上一次客户提货权交易的日志中的信息
                     $last_m_log = $this->customer_currency_log->load_last($customer_pay['r_id']);
                     
-                    // 店主接收退款货豆日志
+                    // 店主接收退款提货权日志
                     $customer_credit_data['relation_id'] = $customer_pay['r_id'];
                     $customer_credit_data['id_event'] = '63';
                     $customer_credit_data['remark'] = '接收退款';
@@ -383,7 +383,7 @@ class Groupbuy extends Front_Controller
     
     // --------------------------------------------------------------------
     
-    // 直接付款－》拼团是否满了－》满了开新团，未满验证是否够货豆－》不够货豆转充值页面，够支付－》支付成功验证活动时间内拼团成功否－》是则修改同一团单为成功，商家发货，否标记拼团过期，商家退款
+    // 直接付款－》拼团是否满了－》满了开新团，未满验证是否够提货权－》不够提货权转充值页面，够支付－》支付成功验证活动时间内拼团成功否－》是则修改同一团单为成功，商家发货，否标记拼团过期，商家退款
     /**
      * 拼团订单支付、生成订单
      * 
@@ -451,7 +451,7 @@ class Groupbuy extends Front_Controller
         $customer_pay = json_decode($this->curl_get_result($url),true);
         $pay_account_id = $customer_pay['id']; // 支付账号ID
         $pay_relation_id = $customer_pay['r_id']; // 关联表的ID
-        $surplus_m = $customer_pay['M_credit']; // 支付前的货豆余额
+        $surplus_m = $customer_pay['M_credit']; // 支付前的提货权余额
         $credit = '0.00'; // 授信
         $time = date('Y-m-d H:i:s');
         if ($customer_pay['credit_start_time'] <= $time && $customer_pay['credit_end_time'] >= $time) {
@@ -816,7 +816,7 @@ class Groupbuy extends Front_Controller
         
         $pay_account_id = $customer_pay['id']; // 支付账号ID
         $pay_relation_id = $customer_pay['r_id']; // 关联表的ID
-        $surplus_m = $customer_pay['M_credit']; // 支付前的货豆余额
+        $surplus_m = $customer_pay['M_credit']; // 支付前的提货权余额
         
         $time = date('Y-m-d H:i:s');
         if( $customer_pay ){
@@ -824,7 +824,7 @@ class Groupbuy extends Front_Controller
                 $customer_pay['credit'] = '0.00'; //如果授信过期
             }
         }
-        $available_amount = $surplus_m+$customer_pay['credit']; //可用货豆
+        $available_amount = $surplus_m+$customer_pay['credit']; //可用提货权
         // 团购信息
         $group = $this->groupbuy_mdl->load_by_buy_num($buy_num);
         
@@ -939,7 +939,7 @@ class Groupbuy extends Front_Controller
                                     //扣除现金账户以外->还需支付的手续费
                                     $pay_commission = empty($commission) ? 0.00 :  $customer_pay['cash'] >= $commission ? 0.00 :  $commission - $customer_pay['cash'];
                                     
-                                    //货豆+微信支付。
+                                    //提货权+微信支付。
                                     if( $available_amount >= $total_groupbuy_price)
                                     {
                                         $data["amount"] = $pay_commission;

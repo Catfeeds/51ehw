@@ -42,7 +42,7 @@
                             <p>商户名称&nbsp;&nbsp;&nbsp;&nbsp;某某某网络科技有限公司</p>
                             <p>商户ID&nbsp;&nbsp;&nbsp;&nbsp;10001</p>
                             <p>可用余额&nbsp;&nbsp;&nbsp;&nbsp;0.00元</p>
-                            <p>可用货豆&nbsp;&nbsp;&nbsp;&nbsp;0</p>
+                            <p>可用提货权&nbsp;&nbsp;&nbsp;&nbsp;0</p>
                         </div>
                     </div>
                     <div class="zijin2_2_con01">

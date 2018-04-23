@@ -66,7 +66,7 @@
 		    <li class="list-one">
 		        <div class="list-one-right">		      
 		         <h4><?php echo $v['p_name']?></h4>
-		           <p class="p1"><span class="right-text1">期望单价：<span class="right-text2"><?php echo $v['min_vip_price']?>-<?php echo $v['max_vip_price']?>货豆</span></span> <span class="right-text3">数量：<span class="right-text4"><?php echo $v['p_count']?>件</span></span></p>
+		           <p class="p1"><span class="right-text1">期望单价：<span class="right-text2"><?php echo $v['min_vip_price']?>-<?php echo $v['max_vip_price']?>提货权</span></span> <span class="right-text3">数量：<span class="right-text4"><?php echo $v['p_count']?>件</span></span></p>
 		           <p class="p2"><span class="right-text5">收货地：<span class="right-text6"><?php echo $v['shippingaddress'];?></span></span> <span class="right-text7">发布时间：<span class="right-text8"><?php echo $v['create_at'];?></span></span></p>
 		           <!-- <p class="right-text9">补充说明：</p>
 		           <p class="right-text10">需要1950年－2010年期间的产自法国诺儿山庄的卡斯特干红葡萄酒，一级的生产。需要1950年－2010年期间的产自法国诺儿山庄的卡斯特干红葡萄酒，一级的生产 -->

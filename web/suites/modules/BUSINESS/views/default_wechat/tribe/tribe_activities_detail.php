@@ -176,7 +176,13 @@ if(isset($mac_type) && $mac_type =='APP' ){ ?>
 <script type="text/javascript">
     function wx_share()
     {
-    	window.location.href="<#share#>name=<?php echo $activity_info['name'].'@desc='.$activity_info['remark'].'@link='.site_url("Tribe/activity_detaile").'/'.$activity_info['id'].'@img='.$activity_info['banner_img'];?>";
+        <?php 
+        $desc = preg_replace("#<!--.*?-->#", "", $activity_info['content']);
+        $desc =  strip_tags($desc);
+        $desc = preg_replace("/(\s|\&nbsp\;||\xc2\xa0)/","",$desc);
+        $desc = mb_substr($desc,0,500);
+        ?>
+    	window.location.href="<#share#>name=<?php echo $activity_info['name'].'@desc='.$desc.'@link='.site_url("Tribe/activity_detaile").'/'.$activity_info['id'].'@img='.$activity_info['banner_img'];?>";
     }
     
 	function register()

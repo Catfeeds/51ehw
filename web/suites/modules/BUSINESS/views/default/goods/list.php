@@ -103,7 +103,7 @@
 					</a>
 				</div>
 				<p><?php  echo $product['name'];?></p>
-				<p style="color: #fea33b; font-size: 16px">易货价: <?php echo number_format($product['vip_price'],2);?> 货豆 <span><a><img src="images/ml_contact22.png" width="20" height="20" alt=""/></a></span></p>
+				<p style="color: #fea33b; font-size: 16px">易货价: <?php echo number_format($product['vip_price'],2);?>  <span><a><img src="images/ml_contact22.png" width="20" height="20" alt=""/></a></span></p>
 				<!-- <p style="color: #aaaaaa">(<?php echo !empty($product['comment_total'])?$product['comment_total']:0;?>人)评价</p>  -->
 				<!--<div class="con_btn01">
 					<a

@@ -113,7 +113,7 @@ dd{
                             <p class="goods-price">
                                 <!--<del>¥359.00</del>-->
 
-                                <span>易货价: <?php echo number_format($prod["vip_price"],2)?> 货豆</span>
+                                <span>易货价: <?php echo number_format($prod["vip_price"],2)?> 提货权</span>
 
                             </p>
                         </div>

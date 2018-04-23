@@ -41,7 +41,10 @@ class Info extends Front_Controller {
 		
 		// 获取企业资料
 		$data ['corporation'] = $this->corporation_mdl->load_corp_info ( $corporation_id );
-
+		
+		if($data ['corporation']['status'] == 2){
+		    echo "<script>alert('店铺已冻结！');history.back(-1);</script>";exit;
+		}
 		
 // 		// 获取默认收货地址
 // 		$data ['address'] = $this->customer_address_mdl->load ( $account_id );
@@ -208,6 +211,7 @@ class Info extends Front_Controller {
 	    //查询判断我是否企业员工，如果是把管理的企业写入session
 	    $this->load->model("corporation_staff_mdl");
 	    $staff = $this->corporation_staff_mdl->corp_manage($user_id);
+	  
 	    if(count($staff) > 0){
 	        $customer['is_staff'] = true;
 	        $corplist = array();

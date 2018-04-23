@@ -111,7 +111,7 @@
            <h5><a href="<?php echo site_url('goods/detail/403');?>"><img src="images/jiu1.jpg"/></a></h5>
            <p class="mr_frbox1_ne1"><a href="<?php echo site_url('goods/detail/403');?>">西安喜来登大酒店</a></p>
            <p class="mr_frbox1_ne2">行政间住宿券 豪华套/标准套 含双早</p>
-           <h6><span>1,650.00 货豆</span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
+           <h6><span>1,650.00 </span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
          </div>
        </li>
       <li>
@@ -119,7 +119,7 @@
            <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193"><img src="images/jiu4.jpg"/></a></h5>
            <p class="mr_frbox1_ne1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">西安桃源假日酒店</a></p>
            <p class="mr_frbox1_ne2">【酒店/住宿】西安桃源假日酒店 四星级酒店服务 桃源酒店 大床房/标准间 无早 免费宽带</p>
-           <h6><span>345.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">详情 ></a></small></h6>
+           <h6><span>345.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">详情 ></a></small></h6>
          </div>
        </li>
        <li>
@@ -127,7 +127,7 @@
            <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/1831"><img src="images/jiu5.jpg"/></a></h5>
            <p class="mr_frbox1_ne1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/1831">清水庄园</a></p>
            <p class="mr_frbox1_ne2">清水庄园占地400亩，环绕在3000亩的生态林中，这不仅仅是一个度假酒店，也不仅仅是一个有机农场，也不只是一个温泉SPA，他是一种生活方式</p>
-           <h6><span>10,000.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/1831">详情 ></a></small></h6>
+           <h6><span>10,000.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/1831">详情 ></a></small></h6>
          </div>
        </li>
        <li>
@@ -135,7 +135,7 @@
            <h5><a href="<?php echo site_url('goods/detail/1591');?>"><img src="images/jiu6.jpg"/></a></h5>
            <p class="mr_frbox1_ne1"><a href="<?php echo site_url('goods/detail/1591');?>">西安大唐西市酒店</a></p>
            <p class="mr_frbox1_ne2">五星级豪华服务 住宿/会议/休闲/娱乐</p>
-           <h6><span>688.00 货豆</span><small><a href="<?php echo site_url('goods/detail/1591');?>">详情 ></a></small></h6>
+           <h6><span>688.00 </span><small><a href="<?php echo site_url('goods/detail/1591');?>">详情 ></a></small></h6>
          </div>
        </li>
        <li>
@@ -143,7 +143,7 @@
            <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322"><img src="images/jiu7.jpg"/></a></h5>
            <p class="mr_frbox1_ne1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">西安群贤莊园度假酒店</a></p>
            <p class="mr_frbox1_ne2">【酒店/住宿】西安群贤莊园度假酒店</p>
-           <h6><span>6088.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
+           <h6><span>6088.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
          </div>
        </li>
      </ul>
@@ -164,7 +164,7 @@
                  <div class="mr_frbox1_rigth">
                     <h3><a href="http://www.51ehw.com/goods/detail/2100">西部王朝酒店</a></h3> 
                     <p>西部王朝酒店储值卡（1000元）</p>
-                    <h6>1,000.00 货豆</h6>
+                    <h6>1,000.00 </h6>
                     <span class="mr_frbox1_rigth_bo"><a href="http://www.51ehw.com/goods/detail/2100">查看详情</a></span>
                  </div>
             </div>
@@ -174,7 +174,7 @@
             <h5><a href="<?php echo site_url('goods/detail/403');?>"><img src="images/jiu10.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="<?php echo site_url('goods/detail/403');?>">西安喜来登大酒店</a></p>
            <p class="mr_frbox1_2">行政间住宿券 豪华套/标准套 含双早</p>
-           <h6><span>1,650.00 货豆</span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
+           <h6><span>1,650.00 </span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
            </div>
          </li>
          <li class="tempWrap2_nei2">
@@ -182,7 +182,7 @@
             <h5><a href="<?php echo site_url('goods/detail/1591');?>"><img src="images/jiu11.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="<?php echo site_url('goods/detail/1591');?>">西安大唐西市酒店</a></p>
            <p class="mr_frbox1_2">五星级豪华服务 住宿/会议/休闲/娱乐</p>
-           <h6><span>688.00 货豆</span><small><a href="<?php echo site_url('goods/detail/1591');?>">详情 ></a></small></h6>
+           <h6><span>688.00 </span><small><a href="<?php echo site_url('goods/detail/1591');?>">详情 ></a></small></h6>
            </div>
          </li>
        </ul>
@@ -194,7 +194,7 @@
                  <div class="mr_frbox1_rigth">
                     <h3><a href="http://www.51ehw.com/goods/detail/1831">清水庄园</a></h3> 
                     <p>清水庄园占地400亩，环绕在3000亩的生态林中，这不仅仅是一个度假酒店，也不仅仅是一个有机农场，也不只是一个温泉SPA，他是一种生活方式</p>
-                    <h6>10,000.00 货豆</h6>
+                    <h6>10,000.00 </h6>
                     <span class="mr_frbox1_rigth_bo"><a href="http://www.51ehw.com/goods/detail/1831">查看详情</a></span>
                  </div>
             </div>
@@ -204,7 +204,7 @@
             <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2191"><img src="images/jiu12.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2191">清水湾</a></p>
            <p class="mr_frbox1_2">【温泉洗浴】清水湾 乐汤汇 洗浴温泉酒店 卡/券</p>
-           <h6><span>58.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2191">详情 ></a></small></h6>
+           <h6><span>58.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2191">详情 ></a></small></h6>
            </div>
          </li>
          <li class="tempWrap2_nei2">
@@ -212,7 +212,7 @@
             <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322"><img src="images/jiu13.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">西安群贤莊园度假酒店</a></p>
            <p class="mr_frbox1_2">【酒店/住宿】西安群贤莊园度假酒店</p>
-           <h6><span>6088.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
+           <h6><span>6088.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
            </div>
          </li>
        </ul>     
@@ -234,7 +234,7 @@
             <h5><a href="<?php echo site_url('goods/detail/403');?>"><img src="images/jiu14.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="<?php echo site_url('goods/detail/403');?>">西安喜来登大酒店</a></p>
            <p class="mr_frbox1_2">行政间住宿券 豪华套/标准套 含双早</p>
-           <h6><span>1,650.00 货豆</span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
+           <h6><span>1,650.00 </span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
            </div>
          </li>
           <li class="tempWrap2_nei2">
@@ -242,7 +242,7 @@
             <h5><a href="<?php echo site_url('goods/detail/1591');?>"><img src="images/jiu15.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="<?php echo site_url('goods/detail/1591');?>">西安大唐西市酒店</a></p>
            <p class="mr_frbox1_2">五星级豪华服务 住宿/会议/休闲/娱乐</p>
-           <h6><span>688.00 货豆</span><small><a href="<?php echo site_url('goods/detail/1591');?>">详情 ></a></small></h6>
+           <h6><span>688.00 </span><small><a href="<?php echo site_url('goods/detail/1591');?>">详情 ></a></small></h6>
            </div>
          </li>
           <li class="tempWrap2_nei2">
@@ -250,7 +250,7 @@
             <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193"><img src="images/jiu16.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">西安桃源假日酒店</a></p>
            <p class="mr_frbox1_2">【酒店/住宿】西安桃源假日酒店 四星级酒店服务 桃源酒店 大床房/标准间 无早 免费宽带</p>
-           <h6><span>345.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">详情 ></a></small></h6>
+           <h6><span>345.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">详情 ></a></small></h6>
            </div>
          </li>
           <li class="tempWrap2_nei2">
@@ -258,7 +258,7 @@
             <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322"><img src="images/jiu17.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">西安群贤莊园度假酒店</a></p>
            <p class="mr_frbox1_2">【酒店/住宿】西安群贤莊园度假酒店</p>
-           <h6><span>6088.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
+           <h6><span>6088.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
            </div>
          </li>
       </ul>
@@ -268,7 +268,7 @@
             <h5><a href="<?php echo site_url('goods/detail/411');?>"><img src="images/jiu18.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="<?php echo site_url('goods/detail/411');?>">天目温泉假日酒店</a></p>
            <p class="mr_frbox1_2">天目温泉假日酒店储值卡（3000元） 健身/游泳/住宿/温泉/餐饮/休闲/娱乐</p>
-           <h6><span>3000.00 货豆</span><small><a href="<?php echo site_url('goods/detail/411');?>">详情 ></a></small></h6>
+           <h6><span>3000.00 </span><small><a href="<?php echo site_url('goods/detail/411');?>">详情 ></a></small></h6>
            </div>
          </li>
           <li class="tempWrap2_nei2">
@@ -276,7 +276,7 @@
             <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193"><img src="images/jiu19.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">西安桃源假日酒店</a></p>
            <p class="mr_frbox1_2">【酒店/住宿】西安桃源假日酒店 四星级酒店服务 桃源酒店 大床房/标准间 无早 免费宽带</p>
-           <h6><span>345.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">详情 ></a></small></h6>
+           <h6><span>345.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2193">详情 ></a></small></h6>
            </div>
          </li>
           <li class="tempWrap2_nei2">
@@ -284,7 +284,7 @@
             <h5><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322"><img src="images/jiu20.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">西安群贤莊园度假酒店</a></p>
            <p class="mr_frbox1_2">【酒店/住宿】西安群贤莊园度假酒店</p>
-           <h6><span>6088.00 货豆</span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
+           <h6><span>6088.00 </span><small><a href="http://www.51ehw.com/index.php/_BUSINESS/Goods/detail/2322">详情 ></a></small></h6>
            </div>
          </li>
           <li class="tempWrap2_nei2">
@@ -292,7 +292,7 @@
             <h5><a href="<?php echo site_url('goods/detail/403');?>"><img src="images/jiu21.jpg"/></a></h5>
            <p class="mr_frbox1_1"><a href="<?php echo site_url('goods/detail/403');?>">西安喜来登大酒店</a></p>
            <p class="mr_frbox1_2">行政间住宿券 豪华套/标准套 含双早</p>
-           <h6><span>1,650.00 货豆</span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
+           <h6><span>1,650.00 </span><small><a href="<?php echo site_url('goods/detail/403');?>">详情 ></a></small></h6>
            </div>
          </li>
       </ul>

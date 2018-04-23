@@ -320,7 +320,7 @@ class Order extends Api_Controller
         $credit = json_decode($this->curl_get_result($url),true);
         //用户现金余额
         $return['data']['cash'] = $credit['cash'];
-        //用户货豆余额
+        //用户提货权余额
         $return['data']['M_credit'] = $credit['M_credit'];
         //用户授信余额
         $return['data']['credit'] = $credit['credit'];
@@ -2041,7 +2041,7 @@ class Order extends Api_Controller
                 $credit = json_decode($this->curl_get_result($url),true);
                 //用户现金余额
                 $return['data']['cash'] = $credit['cash'];
-                //用户货豆余额
+                //用户提货权余额
                 $return['data']['M_credit'] = $credit['M_credit'];
             }
             
@@ -2209,7 +2209,7 @@ class Order extends Api_Controller
     }
   
 /**
-* 扫描二维码支付 - 支付货豆，生成订单
+* 扫描二维码支付 - 支付提货权，生成订单
 */
     public function sweep_pay()
     {
@@ -2392,7 +2392,7 @@ class Order extends Api_Controller
                         $return['responseMessage'] = array(
                             'messageType' => 'error',
                             'errorType' => '7',
-                            'errorMessage' => '货豆余额不足'
+                            'errorMessage' => '提货权余额不足'
                         );
                         print_r(json_encode($return));
                         exit();

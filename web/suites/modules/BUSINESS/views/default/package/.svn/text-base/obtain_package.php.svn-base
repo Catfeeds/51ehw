@@ -23,12 +23,12 @@
         <div class="envelope_content envelope_two">
             <img src="../images/hongbao3.png">
             <form action="<?php echo site_url("package/receive");?>" method="post" id='sunmit'>
-            <input type="text" name="phone" placeholder="请输入您的手机号获取51易货M卷"  maxlength='11' onkeyup="value=this.value.replace(/\D+/g,'')">
+            <input type="text" name="phone" placeholder="请输入您的手机号获取51易货提货权"  maxlength='11' onkeyup="value=this.value.replace(/\D+/g,'')">
             </form> 
             <a href="javascript:void(0)" onclick=submit()><span>领取优惠劵</span></a>
             <ul>
-                <li>1.货包货豆新老用户共享 </li>
-                <li>2.货豆货包将放入与手机号绑定的账户</li>
+                <li>1.货包提货权新老用户共享 </li>
+                <li>2.提货权货包将放入与手机号绑定的账户</li>
                 <li>3.本活动最终解释权归美团外卖所有.</li>
             </ul>
         </div>

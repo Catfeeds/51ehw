@@ -30,7 +30,7 @@
             <div class="in_money">
                 <span>消费金额：</span>
                 <input class="input_money" name= "input_money" type="text" placeholder="0.00" maxlength="14" onkeyup="value=value.replace(/[^\-?\d.]/g,'')"  onkeyup="value=value.replace(/[^\d.]/g,'')" value="">
-                <span class="input_M">货豆</span>
+                <span class="input_M">提货权</span>
                 <!-- 没有输入金额时候，显示以下提示语 -->
                 <p class="payNum_tips" id="error_price" hidden>*请输入正确的金额</p>
             </div>
@@ -97,7 +97,7 @@
     		<div class="password-text">
     		  <span>余额不足,无法支付</span>
     		</div>
-    		<a href="<?php echo site_url("customer/fortune");?>" class="password-button">充值货豆</a>
+    		<a href="<?php echo site_url("customer/fortune");?>" class="password-button">充值提货权</a>
     	</div>
     	</div>
     </div>	

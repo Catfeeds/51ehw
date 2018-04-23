@@ -59,7 +59,7 @@
           </label>
     </div>
       <div class="commerce_name_logo" style="background:none;">
-        <div><img src="images/commerce/shanghui_logo_01.png" alt="" style="width:60%;"></div>
+        <div><img src="images/commerce/shanghui_logo_01.png" alt="" style="width:30%;"></div>
       </div>
     </div>
 

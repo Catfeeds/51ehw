@@ -39,7 +39,7 @@
                         <li>流水号：</li>
                         <li>商户号：</li>
                         <li>收支金额：</li>
-                        <li>货豆：</li>
+                        <li>提货权：</li>
                     </ul>
                 </div>
                 <div class="zijin1_1_con01_right">

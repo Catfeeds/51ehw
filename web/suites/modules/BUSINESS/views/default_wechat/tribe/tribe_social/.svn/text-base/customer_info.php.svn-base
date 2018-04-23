@@ -347,7 +347,7 @@ if(isset($mac_type) && $mac_type =='APP' ){ ?>
 		if($customer_info['id'] != $user_id){?>
 		   <li class="customer_info_duihua"><a href="<?php echo site_url("Webim/Control/chat/{$tribe_id}/{$customer_info['id']}");?>" ><span class="icon-huihua" style="padding-right: 5px;"></span>对话</a></li>
 		<?php }?>
-		<li><a href="javascript:upvote();" class="custom_button"><span class="<?php echo $upvote_info['is_upvote'] ? 'icon-goods1' : 'icon-dianzan'?> " style="padding-right: 5px;"></span><span id="upvote_message">点赞</span><span class="dianzan_num1"><?php echo $upvote_info['num'] ? $upvote_info['num'] : 0;?></span></a></li>
+		<li><a href="javascript:upvote();"><span class="<?php echo $upvote_info['is_upvote'] ? 'icon-goods1' : 'icon-dianzan'?> " style="padding-right: 5px;"></span><span id="upvote_message">点赞</span><span class="dianzan_num1"><?php echo $upvote_info['num'] ? $upvote_info['num'] : 0;?></span></a></li>
 	</ul>
 </div>
 

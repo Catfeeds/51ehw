@@ -148,10 +148,10 @@ class Datacollation extends Front_Controller {
 	// --------------------------------------------------------------
 	
 	/**
-	 * 货豆转移
+	 * 提货权转移
 	 */
 	function  M_credit($status = 0){
-	    //接口－删除货豆转移log
+	    //接口－删除提货权转移log
         $post['status']=$status;
 	    $url = $this->url_prefix.'Data_collation/M_credit';
 	    echo $this->curl_post_result($url,$post);
@@ -160,10 +160,10 @@ class Datacollation extends Front_Controller {
 	// --------------------------------------------------------------
 	
 	/**
-	 * 现金转货豆
+	 * 现金转提货权
 	 */
 	function  money($status = 0){
-	    //接口－删除现金转货豆log
+	    //接口－删除现金转提货权log
 	    $post['status']=$status;
 	    $url = $this->url_prefix.'Data_collation/money';
 	    echo $this->curl_post_result($url,$post);

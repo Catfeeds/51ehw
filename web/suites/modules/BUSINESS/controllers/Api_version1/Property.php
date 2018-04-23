@@ -68,7 +68,7 @@ class Property extends Api_Controller {
             'type'
         ));
         $type = $prams['type'];
-        if(!in_array($type,array("3","1","2"))){ //授信 3 现金 2   货豆 1
+        if(!in_array($type,array("3","1","2"))){ //授信 3 现金 2   提货权 1
             $return['responseMessage'] = array(
                 'messageType' => 'error',
                 'errorType' => '1',
@@ -98,7 +98,7 @@ class Property extends Api_Controller {
                 $listdate[$key]["created_at"] = isset($res["created_at"])?$res["created_at"]:"";
                 if($type == 3){//授信
                     $listdate[$key]["balance"] = isset($res["credit"])?$res["credit"]:"";
-                }else if($type == 1){// 货豆
+                }else if($type == 1){// 提货权
                     $listdate[$key]["balance"] = isset($res["amount"])?$res["amount"]:"";
                 }else{//现金
                     $listdate[$key]["balance"] = isset($res["cash"])?$res["cash"]:"";
@@ -124,9 +124,6 @@ class Property extends Api_Controller {
         }
         print_r(json_encode($return));
     }
-    
-    
-    
     /**
      * 我的收益
      * @param unknown $url
@@ -135,12 +132,12 @@ class Property extends Api_Controller {
         // 获取参数
         $prams = $this->p;
         $return = $this->return;
-    
+        
         // 检验参数
         // $this->_check_prams($prams,array('userid'));
-    
+        
         $user_id = $this->session->userdata('user_id');
-    
+        
         if ($user_id == null || $user_id == "") {
             $return['responseMessage'] = array(
                 'messageType' => 'error',
@@ -155,11 +152,6 @@ class Property extends Api_Controller {
         );
         print_r(json_encode($return));
     }
-    
-    
-    
-    
-    
     
     
     private function curl_get_result( $url ){

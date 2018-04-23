@@ -10,7 +10,7 @@
 	<div class="commodity_detail_main">
 		<div class="commodity_detail_main_title">
 			<h3>货包类型：</h3>
-			<span>100 货豆抵用券</span>
+			<span>100抵用券</span>
 
 		</div>
 	</div>	

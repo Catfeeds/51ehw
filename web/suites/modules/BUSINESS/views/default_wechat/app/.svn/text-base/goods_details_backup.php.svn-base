@@ -69,12 +69,12 @@
                 <?php if($is_special){?>
                  	<lable class="item" id="special_price_item" >特价&nbsp;&nbsp;
                     <span style="font-size: 15px; font-weight: bold; color: red;" id="special_price"> 
-                    <?php echo number_format($details['special_price'],2); ?> 货豆 </span>
+                    <?php echo number_format($details['special_price'],2); ?>  </span>
                	 	</lable>
                 <?php }else if($tribeVIP){?>
                      <lable class="item" style="margin-top: 5px;">部落价&nbsp;&nbsp;
                         <span class="red" style="font-size: 15px;font-weight: bold; color: red;" id="tribe_price">
-                        <?php  echo $curr_price = number_format($details['tribe_price'], 2);?> 货豆
+                        <?php  echo $curr_price = number_format($details['tribe_price'], 2);?> 
                     	</span>
                      </lable>
                 <?php }
@@ -82,9 +82,9 @@
                      <lable class="item" id="product_price_item">易货价<em style="opacity: 0;">测</em>
                     <span class="red" id="product_price" style="color: #333333; font-size: 15px; font-weight: bold;"> 
                     <?php if($is_special || $tribeVIP){   ?>
-                        <del><?php echo $details['vip_price'] == 0 ? "0":number_format($details['vip_price'], 2);?> 货豆</del>
+                        <del><?php echo $details['vip_price'] == 0 ? "0":number_format($details['vip_price'], 2);?> </del>
                    <?php }else{ ?>
-                       <?php echo $details['vip_price'] == 0 ? "0":number_format($details['vip_price'], 2);?> 货豆
+                       <?php echo $details['vip_price'] == 0 ? "0":number_format($details['vip_price'], 2);?> 
                     <?php }?>
                     </span>
                     </lable>
@@ -115,18 +115,18 @@
                 <lable class="item">小计<em style="opacity: 0;">测试</em>
                     <span class="red"  style="color: #333333;font-size: 15px;font-weight: bold;padding-left:8px;" id="total_price">
                     <?php if($is_special){//特价
-                        echo number_format($details['special_price'],2)." 货豆";
+                        echo number_format($details['special_price'],2)." ";
                     }else if($tribeVIP){//部落价
-                        echo number_format($details['tribe_price'], 2)." 货豆";
+                        echo number_format($details['tribe_price'], 2)." ";
                     }else{ //易货价
-                        echo number_format($details['vip_price'], 2)." 货豆";
+                        echo number_format($details['vip_price'], 2)." ";
                     }?>
             </span>
                 </lable>
                 <p class="caution_tips" id="item-error" style="display: none;"></p>
                 <!-- 运费 -->
                 <?php if($details['cat_id'] != 104063){?>
-                <lable class="item">运费<em style="opacity: 0;">测试</em><span class="red" id="freight" style="color: #333333;font-size: 15px;margin-left: 3px;"><?php echo $details['is_freight'] ? $details['default_freight'].' 货豆' : '免运费'?></span></lable>
+                <lable class="item">运费<em style="opacity: 0;">测试</em><span class="red" id="freight" style="color: #333333;font-size: 15px;margin-left: 3px;"><?php echo $details['is_freight'] ? $details['default_freight'].' ' : '免运费'?></span></lable>
 				<?php }?>
 
                   <!-- 店铺名 -->
@@ -300,11 +300,11 @@ function num_check(){
 function account(obj){
     var x = jQuery(obj).val();
     <?php if($is_special && empty($skuinfo['skulist']) && empty($skuinfo['skuitem'])){?>//判断是否特价商品
-    $("#total_price").text(formatCurrency((special_price.replace(/,/g,"") * x).toFixed(2)) +" 货豆");
+    $("#total_price").text(formatCurrency((special_price.replace(/,/g,"") * x).toFixed(2)) +" ");
     <?php }elseif(!empty($skuinfo['skuinfo']) && !empty($skuinfo['skulist']) && !empty($skuinfo['skuitem']) && $is_special){?>
-    $("#total_price").text(formatCurrency(sku_special_offer *x) + " 货豆");
+    $("#total_price").text(formatCurrency(sku_special_offer *x) + " ");
     <?php }else{?>
-    $("#total_price").text(formatCurrency((curr_price.replace(/,/g,"") * x).toFixed(2)) +" 货豆");
+    $("#total_price").text(formatCurrency((curr_price.replace(/,/g,"") * x).toFixed(2)) +" ");
     <?php };?>
 }
 //商品数量操作结束
@@ -358,7 +358,7 @@ if($is_special){  //判断是否特价?>
     $("#product_price").css("font-size","14px");
     $("#special_price_item").show();
     $("#product_price_item").css("text-decoration","line-through");
-    $('#total_price').html((special_price*$('#item_num').val()).toFixed(2)+" 货豆");
+    $('#total_price').html((special_price*$('#item_num').val()).toFixed(2)+" ");
 <?php
 }
 foreach($sku_list as $key=>$list):
@@ -421,17 +421,17 @@ function setInfo()
          $('#item_amount').val(skuprice[i][1]);
          curr_stock = formatCurrency(skuprice[i][1]);
          <?php if($is_special){?>
-            $("#special_price").html((formatCurrency(skuprice[i][4]))+" 货豆");
-         	$("#product_price").html("<del>"+(formatCurrency(skuprice[i][2]))+" 货豆</del>");
-         	$("#total_price").html((formatCurrency(skuprice[i][4]))+" 货豆");
+            $("#special_price").html((formatCurrency(skuprice[i][4]))+" ");
+         	$("#product_price").html("<del>"+(formatCurrency(skuprice[i][2]))+" </del>");
+         	$("#total_price").html((formatCurrency(skuprice[i][4]))+" ");
          	curr_price = formatCurrency(skuprice[i][4]);
          <?php }else if($tribeVIP){?>
-         	$("#product_price").html("<del>"+(formatCurrency(skuprice[i][2]))+" 货豆</del>");
-         	$("#total_price").html((formatCurrency(skuprice[i][5]))+" 货豆");
-        	$("#tribe_price").html((formatCurrency(skuprice[i][5]))+" 货豆");
+         	$("#product_price").html("<del>"+(formatCurrency(skuprice[i][2]))+" </del>");
+         	$("#total_price").html((formatCurrency(skuprice[i][5]))+" ");
+        	$("#tribe_price").html((formatCurrency(skuprice[i][5]))+" ");
          	curr_price = formatCurrency(skuprice[i][5]);
          <?php }else{ ?>
-   	 		$("#product_price").html((formatCurrency(skuprice[i][2]))+" 货豆");
+   	 		$("#product_price").html((formatCurrency(skuprice[i][2]))+" ");
       	 	curr_price = formatCurrency(skuprice[i][2]);
          <?php }?>
          sku_special_offer = skuprice[i][4];
@@ -447,20 +447,20 @@ function setInfo()
         setTimeout("prompt();", 2000);
         $('input[name="item_num"]').val(max == 0 ? 1 : max);
         <?php if($is_special && empty($skuinfo['skuinfo']) && empty($skuinfo['skulist']) && empty($skuinfo['skuitem'])){?>//判断是否特价商品
-        $("#total_price").text(formatCurrency((special_price.replace(/,/g,"") * max).toFixed(2)) +" 货豆");
+        $("#total_price").text(formatCurrency((special_price.replace(/,/g,"") * max).toFixed(2)) +" ");
         <?php }elseif(!empty($skuinfo['skuinfo']) && !empty($skuinfo['skulist']) && !empty($skuinfo['skuitem']) && $is_special){?>
-        $("#total_price").text(formatCurrency(sku_special_offer * max) + " 货豆");
+        $("#total_price").text(formatCurrency(sku_special_offer * max) + " ");
         <?php }else{?>
-        $("#total_price").text(formatCurrency((curr_price.replace(/,/g,"") * max).toFixed(2)) +" 货豆");
+        $("#total_price").text(formatCurrency((curr_price.replace(/,/g,"") * max).toFixed(2)) +" ");
         <?php };?>
     }else{
         x = $('input[name="item_num"]').val();
         <?php if($is_special && empty($skuinfo['skuinfo']) && empty($skuinfo['skulist']) && empty($skuinfo['skuitem'])){?>//判断是否特价商品
-        $("#total_price").text(formatCurrency((special_price.replace(/,/g,"") * x).toFixed(2)) +" 货豆");
+        $("#total_price").text(formatCurrency((special_price.replace(/,/g,"") * x).toFixed(2)) +" ");
         <?php }elseif(!empty($skuinfo['skuinfo']) && !empty($skuinfo['skulist']) && !empty($skuinfo['skuitem']) && $is_special){?>
-        $("#total_price").text(formatCurrency(sku_special_offer * x) + " 货豆");
+        $("#total_price").text(formatCurrency(sku_special_offer * x) + " ");
         <?php }else{?>
-        $("#total_price").text(formatCurrency((curr_price.replace(/,/g,"") * x).toFixed(2)) +" 货豆");
+        $("#total_price").text(formatCurrency((curr_price.replace(/,/g,"") * x).toFixed(2)) +" ");
         <?php };?>
         }
 }
@@ -631,13 +631,13 @@ function count_freight(num){
         freight = freight.toFixed(2);
 
         if(isInteger(freight) ){ 
-            $('#freight').text(freight+'.00 货豆');
+            $('#freight').text(freight+'.00 ');
         }else{ 
-           $('#freight').text(freight+' 货豆');
+           $('#freight').text(freight+' ');
         }
         return freight;
     }else{ 
-        $('#freight').text(default_freight+' 货豆');
+        $('#freight').text(default_freight+' ');
         return default_freight;
     }
 }

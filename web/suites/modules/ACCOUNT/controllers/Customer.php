@@ -207,12 +207,14 @@ class Customer extends Account_Controller
             }
             
             $pay_relation_id = 0;//默认支付id
+            error_log ( "--------------A端创建用户ID:{$customer_id}----------");
             if($customer_id){
+                $this->customer_mdl->id = $customer_id;
                 $db2 = $this->customer_mdl->db1 = $this->load->database('B',true);//切换B库
                 $db2->trans_begin();//开启事务
                 $row2 = $this->customer_mdl->synchro_create($customer_id);//创建用户
                 error_log ( "--------------B端创建用户error_log-----------开始--------------");
-                error_log ( $this->db->last_query () );
+                error_log ( $db2->last_query () );
                 error_log ( "--------------B端创建用户error_log-----------结束--------------");
                 $db3 = $this->customer_mdl->db1 = $this->load->database('C',true);//切换C库
                 $db3->trans_begin();//开启事务
@@ -223,10 +225,11 @@ class Customer extends Account_Controller
                 $row3 = $this->customer_mdl->synchro_create($customer_id);//创建用户
                 
                 error_log ( "--------------C端创建用户error_log-----------开始--------------");
-                error_log ( $this->db->last_query () );
+                error_log ( $db3->last_query () );
                 error_log ( "--------------C端创建用户error_log-----------结束--------------");
                 
                 if(($registry_by != 'APP' && empty($apptype) && $registry_by != 'wechat') || $apptype == "appmobile"){//app不是微信注册 || h5 || pc 注册才有支付账户
+                    error_log ( "--------------进入创建支付用户--------------");
                     // 插入pay信息
                     $this->load->model('pay_account_mdl');
                     $this->load->model('pay_relation_mdl');
@@ -240,8 +243,11 @@ class Customer extends Account_Controller
                         $this->pay_relation_mdl->customer_id = $customer_id;
                         $pay_relation_id = $this->pay_relation_mdl->createpay_relation();
                         if($pay_relation_id){
+                            error_log ( "--------------创建支付用户成功--------------");
                             $is_ok = true;
                         }
+                    }else{
+                        error_log ( "--------------创建支付用户失败--------------");
                     }
                 }else{
                     $is_ok = true;
@@ -1482,6 +1488,7 @@ class Customer extends Account_Controller
         
         $pay_relation_id = 0;//默认支付id
         if($customer_id && $row){
+            $this->customer_mdl->id = $customer_id;
             $db2 = $this->customer_mdl->db1 = $this->load->database('B',true);//切换B库
             $db2->trans_begin();//开启事务
             $row2 = $this->customer_mdl->synchro_create($customer_id);//创建用户

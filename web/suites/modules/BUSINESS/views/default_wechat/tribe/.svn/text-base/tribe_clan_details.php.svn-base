@@ -50,15 +50,15 @@
   <div class="tribe_clan_details_list"> 
   	<ul>
         <li>
-          <span class="fn-14"><?php echo $user_info['guarantee_ceiling']  /10000 ?>万货豆</span>
+          <span class="fn-14"><?php echo $user_info['guarantee_ceiling']  /10000 ?>万提货权</span>
           <span class="tribe_edu">每笔担保额</span>
         </li>
         <li>
-          <span class="fn-14"><?php echo $user_info['remain_guarantee_price'] /10000?>万货豆</span>
+          <span class="fn-14"><?php echo $user_info['remain_guarantee_price'] /10000?>万提货权</span>
           <span class="tribe_edu">可担保额</span>
         </li>
         <li>
-          <span class="fn-14"><?php echo $user_info['guarantee_from_ceiling'] /10000?>万货豆</span>
+          <span class="fn-14"><?php echo $user_info['guarantee_from_ceiling'] /10000?>万提货权</span>
           <span class="tribe_edu">担保上限</span>
         </li>
      </ul>

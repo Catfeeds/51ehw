@@ -957,7 +957,7 @@ private function order_confirm()
             }
            
             if( $my_M_price < $order_message['total_price'] || $pay_info['cash']  < $order_message['commission']  )
-            { //货豆不够支付订单 或者 现金不够支付手续费的时候
+            { //提货权不够支付订单 或者 现金不够支付手续费的时候
                 $order_message['pay_status'] = 1; 
                 $pay_order_M = round($my_M_price - $order_message['total_price'],2);
             }
@@ -1185,7 +1185,7 @@ private function order_confirm()
                     $row = $this->order_mdl->update_order_status($order_id, 9);
                     
                     if( $row ){ 
-                        //通过接口调用写日志+货豆流程
+                        //通过接口调用写日志+提货权流程
                         $url = $this->url_prefix.'Order/carry_rebate';
                         $data_post['buy_customer_id'] = $order['customer_id'];
                         $data_post['customer_id'] = $customer_id;
@@ -1227,7 +1227,7 @@ private function order_confirm()
                     
                     if( $row ){
                         
-                        //通过接口调用写日志+货豆流程
+                        //通过接口调用写日志+提货权流程
                         $url = $this->url_prefix.'Order/carry_rebate';
                         $data_post['buy_customer_id'] = $order['customer_id'];
                         $data_post['customer_id'] = $customer_id;
@@ -1263,7 +1263,7 @@ private function order_confirm()
 	 **/
 	    
 	/**
-	 * 提取货豆订单的信息(B端废弃)
+	 * 提取提货权订单的信息(B端废弃)
 	 
 	public function load_pay_order(){ 
 	    $order_id = $this->input->post('order_id');

@@ -39,7 +39,7 @@
                 <div class="cmLeft3">续费会员</div>-->
                 <div class="dian_f">
                 <p style="margin-top:20px; font-size:16px; line-height:24px; overflow:hidden;">
-				<span class="cmLeft2_1">货豆：</span>  <span class="cmLeft2_r"><?php echo  number_format( (isset($pay_info['M_credit']) ? $pay_info['M_credit'] : '0.00'),2 )?></span></p>
+				<span class="cmLeft2_1">提货权：</span>  <span class="cmLeft2_r"><?php echo  number_format( (isset($pay_info['M_credit']) ? $pay_info['M_credit'] : '0.00'),2 )?></span></p>
 				<p style="font-size:16px; line-height:24px"><span class="cmLeft2_1">财富：</span> <span class="cmLeft2_r">￥<?php echo  isset($pay_info['cash']) ? $pay_info['cash'] : '0.00' ?></span></p>
                 <div class="cmLeft-line"></div>
                 <p style="font-size:16px; "><span class="cmLeft2_1">保证金：</span> <span class="cmLeft2_r">￥<?php echo $corporation['deposit'];?></span></p>

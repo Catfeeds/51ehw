@@ -55,8 +55,8 @@
 
 	<!-- 价格/库存 -->
 	<div class="release_goods_input">
-		<div><span>价格</span><input type="number" id="price" placeholder="填写"></div>
-		<div><span>库存</span><input type="number" id="inventory" placeholder="填写"></div>
+		<div><span>价格</span><input type="number" id="price" onblur="modifyprice();"placeholder="填写"></div>
+		<div><span>库存</span><input type="number" id="inventory" onblur="modify();" placeholder="填写"></div>
 	</div>
     
     <!-- 发布 -->
@@ -423,7 +423,7 @@ function sub()
   	    		$(".black_feds").text('上传成功').show();
   	    		setTimeout("prompt();", 2000);
   	    		setTimeout(function(){
-  	  	    		window.location.href='<?php echo site_url("Tribe/shop/11");?>';
+  	  	    		window.location.href='<?php echo site_url("Easyshop/product/personal_list/?tribe_id={$tribe_id}");?>';
   	  	    		}, 2200);
   	    		
   	    	}else{
@@ -442,6 +442,27 @@ function sub()
   	 		setTimeout("prompt();", 2000);
   	  	}
 	});
+}
+
+function modifyprice () {
+	var price = document.getElementById("price").value;
+	var pp = /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/;
+    if (pp.test(price) == false) {
+    	$(".black_feds").text('请填写正确的价格').show();
+    	setTimeout("prompt();", 1800);
+    	document.getElementById("price").value = null;
+    }
+}
+
+function modify () {
+	var inputValue = document.getElementById("inventory").value;
+	var re = /^\+?[1-9][0-9]*$/;
+    if (re.test(inputValue) == false) {
+    	$(".black_feds").text('库存必须为整数').show();
+    	setTimeout("prompt();", 1800);
+    	document.getElementById("inventory").value = null;
+    }
+	
 }
 
 var JM = function(){

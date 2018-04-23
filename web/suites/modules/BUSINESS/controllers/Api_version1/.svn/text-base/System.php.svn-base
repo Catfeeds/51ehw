@@ -340,7 +340,7 @@ class System extends Api_Controller {
 	    
 	    $label_id = $this->session->userdata("label_id");
 	    
-	     $return['data'] = array(
+	    $return['data'] = array(
 	        'www.sxfic.com',
 	        'www.micorcmsapi.onndu.com',
 	        'www.m.qqxqs.com',
@@ -354,6 +354,7 @@ class System extends Api_Controller {
 	        'images.51ehw.com',
 	        'a1.easemob.com',
 	        'www.test51ehw.com',
+	       
 	    );
 	    
 	    if($label_id){
@@ -375,6 +376,7 @@ class System extends Api_Controller {
 	    
 	    print_r(json_encode($return));
 	}
+	
 	
 	
 	//APP首页改版接口

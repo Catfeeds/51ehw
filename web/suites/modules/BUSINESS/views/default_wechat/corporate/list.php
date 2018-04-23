@@ -59,7 +59,7 @@
                 	<i class="result_img" style="width:100px;height: 100px;float: left;margin-right: 15px;"><img src="<?php echo isset($p['goods_thumb'])&&$p['goods_thumb']!=null?(IMAGE_URL.$p['goods_thumb']):'' ?>" onerror="this.src='images/default_img_s.jpg'"></i>
                     <em class="result_em">
                         <p  class="result_title"><?php echo $p['name']?></p>
-                        <p  style="padding-top: 20px"><?php echo $p['vip_price'].'货豆'?></p>
+                        <p  style="padding-top: 20px"><?php echo $p['vip_price'].''?></p>
                         <!-- <p class="min"></p> -->
                     </em>
                 </li>
@@ -223,7 +223,7 @@ function order(search_index,limit,condition){
                     }else{
                 		var img = "images/default_img_s.jpg";
                     }
-    	            html += "<a href='"+url+data["productList"][i]["id"]+"'><li class='clearfix' style=''><i class='result_img' style='width:100px;height: 100px;float: left;margin-right: 15px;'><img src='"+img+"' onerror='+errorimg+'></i><em class='result_em'><p class='result_title'>"+data["productList"][i]["name"]+"<p>"+data["productList"][i]["vip_price"]+"货豆</p><p class='min'></p></p></em></li></a>";
+    	            html += "<a href='"+url+data["productList"][i]["id"]+"'><li class='clearfix' style=''><i class='result_img' style='width:100px;height: 100px;float: left;margin-right: 15px;'><img src='"+img+"' onerror='+errorimg+'></i><em class='result_em'><p class='result_title'>"+data["productList"][i]["name"]+"<p>"+data["productList"][i]["vip_price"]+"</p><p class='min'></p></p></em></li></a>";
                 }
             }else{
             	html ="<li class=' clearfix' style='text-align:center;'>无更多" + search_index + "商品</li>";
@@ -283,7 +283,7 @@ function onsearch(search_index,limit,condition){
                 for(var i=0;i<data.productList.length;i++){
                 	var img = "<?php echo IMAGE_URL; ?>/"+data.productList[i]['goods_thumb'];
                 	km="";
-                	html += '<a href="'+url+data['productList'][i]["id"]+'"><li class=" clearfix" style=""><i class="result_img" style="width:100px;height: 100px;float: left;margin-right: 15px;"><img src="'+img+'" onerror='+errorimg+'></i><em class="result_em"><p  style=""class="result_title">'+data['productList'][i]['name']+'<p  style="padding-top: 20px">'+data['productList'][i]['vip_price']+'货豆</p><p class="min">'+km+'</p></p></em></li></a>';
+                	html += '<a href="'+url+data['productList'][i]["id"]+'"><li class=" clearfix" style=""><i class="result_img" style="width:100px;height: 100px;float: left;margin-right: 15px;"><img src="'+img+'" onerror='+errorimg+'></i><em class="result_em"><p  style=""class="result_title">'+data['productList'][i]['name']+'<p  style="padding-top: 20px">'+data['productList'][i]['vip_price']+'</p><p class="min">'+km+'</p></p></em></li></a>';
                     }
                 setTimeout(function(){
                 	$('#panduan').val(1);

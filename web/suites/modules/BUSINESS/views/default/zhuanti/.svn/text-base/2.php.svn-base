@@ -30,7 +30,7 @@
 						title="<?php //echo $good['name'];?>"><ul <?php //echo $key!=0&&$key%4==3?"style='margin-right:0'":"" ?>>
                 <div class="painting_img"><img src="<?php //echo base_url($good['image_name']."_270".$good['file_ext']);?>"></div>
                 <li><?php //echo $good['name'];?></li>
-                <li style="color: #c32d05; font-size: 16px">易货价: <?php //echo number_format($good['vip_price'],2);?> 货豆</li>
+                <li style="color: #c32d05; font-size: 16px">易货价: <?php //echo number_format($good['vip_price'],2);?> </li>
                 <h3 class="h3_color">(0人)评价</h3>
             </ul></a>
             <?php //endforeach;?>

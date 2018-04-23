@@ -18,7 +18,7 @@
         </div>
         <textarea placeholder="恭喜发财,大吉大利" id="desc"></textarea>
         <div class="send_money"><span>M</span><span id="total_m">0.00</span></div>
-        <div class="send_buttom"><button id="send_out">塞货豆红包</button></div>
+        <div class="send_buttom"><button id="send_out">塞提货权红包</button></div>
     </div>
 </div>
 
