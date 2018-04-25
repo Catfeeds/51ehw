@@ -182,11 +182,11 @@ function set_customer($data,$type ='web'){
     
     
     //查询是否开通简易店
-//     $CI->load->model("Easyshop_mdl");
-//     $Easyshop = $CI->Easyshop_mdl->Load($user_id);
-//     if($Easyshop){
-//         $customer['Easyshop_id'] = $Easyshop['id'];
-//     }
+    $CI->load->model("Easyshop_mdl");
+    $Easyshop = $CI->Easyshop_mdl->Load($user_id);
+    if($Easyshop){
+        $customer['Easyshop_id'] = $Easyshop['id'];
+    }
     
     //查询是否部落管理者
     $CI->load->model("tribe_mdl");

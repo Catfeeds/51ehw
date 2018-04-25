@@ -32,6 +32,7 @@
  </div> 
 <!--订单加载 -->
 <script type="text/javascript">
+var tribe_id = "<?php echo $tribe_id;?>";
 var page = 1;//默认第一页
 dropload = $('.myrelease').dropload({
 	  scrollArea : window,
@@ -45,7 +46,7 @@ dropload = $('.myrelease').dropload({
 					  result += '<div class="myrelease_time">';
 					  result += '<span>创建时间：'+data['list'][i]['created_at']+'</span>';
 					  result += '</div>';
-    				  result += '<a href="<?php echo site_url("tribe/good_detail");?>/'+data["list"][i]["id"]+'">';
+					  result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
         	          result += '<div class="myrelease_list_left"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
         	          result += '<div class="myrelease_list_right">';
         	          result += '<div>';
@@ -78,9 +79,17 @@ dropload = $('.myrelease').dropload({
 
 	//提示框
     function quit(id){
-    	$("#tuichu_sub").attr('onclick','quit_sub('+id+')')
-    	document.getElementById('tuichu_ball_text').innerText = '确认删除该商品？';
-    	$(".tuichu_ball").show();
+        var object = 'id'+id;
+        var idtest = document.getElementById(object).innerText;
+        if (idtest == '上架') {
+        	$("#tuichu_sub").attr('onclick','quit_sub('+id+')')
+        	document.getElementById('tuichu_ball_text').innerText = '确认删除该商品？';
+        	$(".tuichu_ball").show();
+        }else {
+        	$('.tuichu_ball').hide();
+            $(".black_feds").text("商品还没下架，请下架再删除").show();
+            setTimeout("prompt();", 1800);
+        }
     }
     
     function cane(){

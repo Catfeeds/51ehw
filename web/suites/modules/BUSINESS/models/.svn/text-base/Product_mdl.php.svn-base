@@ -1055,7 +1055,7 @@ class Product_mdl extends CI_Model {
         if ($tribe_id == '0') {
             switch ($types) {
                 case "1":
-                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,ANY_VALUE(c.path) as img_path from 9thleaf_easy_product as a
                     left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
                     left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
                     where a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
@@ -1063,7 +1063,7 @@ class Product_mdl extends CI_Model {
                     return $query->result_array();
                     break;
                 case "2":
-                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,ANY_VALUE(c.path) as img_path from 9thleaf_easy_product as a
                     left join  9thleaf_easy_order as b on a.id  = b.product_id  and b.status in ('4','5')
                     left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
                     where a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
@@ -1108,7 +1108,7 @@ class Product_mdl extends CI_Model {
         } else {
             switch ($types) {
                 case "1":
-                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) as img_path from 9thleaf_easy_product as a
                     left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
                     left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
                     where a.tribe_id = $tribe_id and is_on_sale = 1 and a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'
@@ -1116,7 +1116,7 @@ class Product_mdl extends CI_Model {
                     return $query->result_array();
                     break;
                 case "2":
-                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) from 9thleaf_easy_product as a
+                    $query = $this->db->query("select a.* ,sum(b.quantity) as volume,any_value(c.path) as img_path from 9thleaf_easy_product as a
                     left join  9thleaf_easy_order as b on a.id  = b.product_id and b.status in ('4','5')
                     left join 9thleaf_easy_product_img as c on a.id = c.product_id and c.type = 1
                     where a.tribe_id = $tribe_id and is_on_sale = 1 and a.product_name like '%".$this->db->escape_like_str($keyword)."%' ESCAPE '!'

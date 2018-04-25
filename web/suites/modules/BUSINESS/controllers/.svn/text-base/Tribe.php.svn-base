@@ -1519,7 +1519,7 @@ class Tribe extends Front_Controller
             if ($type == '1') {
                 $data["list"] = $this->db->where('is_on_sale','1')->from('easy_product')->order_by('id','desc')->limit((int) $limit, (int) $offset)->get()->result_array();
             } elseif ($type == '2') {
-                $data['list'] = $this->db->where('tribe_id',$tribe_id)->where('is_on_sale','1')->from('easy_product')->order_by('sort','desc')->order_by('update_at','desc')->limit((int) $limit, (int) $offset)->get()->result_array();
+                $data['list'] = $this->db->where('tribe_id',$tribe_id)->where('is_on_sale','1')->where('easy_corp_id !=','0')->from('easy_product')->order_by('sort','desc')->order_by('update_at','desc')->limit((int) $limit, (int) $offset)->get()->result_array();
             } else {
                 $data = array();
             }

@@ -65,7 +65,7 @@
         </div><!--page end-->
              <div class="footer">
                 <ul class="nav-tab" id="AddCart">
-                    <li style="width:100%"><a href="javascript:void(0);" onclick="" class="button bg-color">立即购买</a></li>
+                    <li style="width:100%"><a href="javascript:void(0);" onclick="buy()" class="button bg-color">立即购买</a></li>
                 </ul>
             </div>
         </div>
@@ -139,9 +139,13 @@ function add () {
 	document.getElementById('item_num').value = item_num;
 	if (item_num > stock) {
 		document.getElementById('item_num').value = stock;
-		var count = price * stock;
+		$(".black_feds").text("商品数量不能超过库存！").show();
+        setTimeout("prompt();", 1800);
+		var count = price * 100 * stock / 100;
+		count = count.toFixed(2);
 	} else {
-		var count = price * item_num;
+		var count = price * 100 * item_num / 100;
+		count = count.toFixed(2);
 	}
 	document.getElementById('total_price').innerText = count;
 	
@@ -154,9 +158,12 @@ function reduce () {
 	item_num = item_num * 1 -1;
 	if (item_num < 1) {
 		item_num = 1;
+        $(".black_feds").text("商品数量最少为1！").show();
+        setTimeout("prompt();", 1800);
 	}
 	document.getElementById('item_num').value = item_num;
-	var count = price * item_num;
+	var count = price * 100 * item_num / 100;
+	count = count.toFixed(2);
 	document.getElementById('total_price').innerText = count;
 }
 
@@ -167,21 +174,56 @@ function modify () {
 	var re = /^\+?[1-9][0-9]*$/;
     if (re.test(item_num) == false) {
     	document.getElementById('item_num').value = 1;
+    	$(".black_feds").text("商品数量最少为1！").show();
+        setTimeout("prompt();", 1800);
     }
     var pp = /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/;
     if (pp.test(item_num) == true) {
     	document.getElementById('item_num').value = parseInt(item_num);
     	if (item_num > stock) {
     		document.getElementById('item_num').value = stock;
+    		$(".black_feds").text("商品数量不能超过库存！").show();
+            setTimeout("prompt();", 1800);
     	}
     }
     var item_num = document.getElementById('item_num').value;
-    var count = price * item_num;
+    var count = price * 100 * item_num / 100;
+    count = count.toFixed(2);
 	document.getElementById('total_price').innerText = count;
 
     
 }
 
+function buy () {
+	var goods_id = <?php echo $goods_id;?>;
+	var tribe_id = <?php echo $tribe_id;?>;
+	var item_num = document.getElementById('item_num').value;
+	if (!goods_id) {
+		$(".black_feds").text("商品信息错误，请退出重来！").show();
+        setTimeout("prompt();", 1800);
+        return;
+	}
+	if (!tribe_id) {
+		$(".black_feds").text("部落信息错误，请退出重来！").show();
+        setTimeout("prompt();", 1800);
+        return;
+	}
+	if (!item_num) {
+		$(".black_feds").text("商品信息错误，请退出重来！").show();
+        setTimeout("prompt();", 1800);
+        return;
+	}
+	window.location.href = "<?php echo site_url("Easyshop/order/index/$tribe_id?pid=$goods_id&qty=")?>"+item_num+""; 
+	
+}
+
+function Goback(){
+	if(window.history.length >1){
+			window.history.back();
+		}else{
+			window.location.href = '<?php echo site_url("Home")?>';
+		}
+}
 
 
 

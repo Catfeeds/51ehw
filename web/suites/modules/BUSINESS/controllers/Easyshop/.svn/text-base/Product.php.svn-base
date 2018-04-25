@@ -81,8 +81,6 @@ class Product extends Front_Controller {
 	    $this->load->view('head', $data);
 	    $this->load->view('_header', $data);
 	    $this->load->view('easyshop/product/release_goods', $data);
-	    $this->load->view('_footer', $data);
-	    $this->load->view('foot', $data);
 	}
     
     public function addproduct () {
@@ -128,21 +126,17 @@ class Product extends Front_Controller {
         $tribe_id = $this->tribe_id;
         //简易店ID
         $easyshop_id= $this->session->userdata("Easyshop_id");
-        
         $image = array();
         $images = array();
-        
         $year = date("Y",time());
         $month = date("m",time());
         $day = date("d",time());
-        
         $files =  $data_post['file'];
         if($files)
         {
             
             $this->load->model('Easyshop_mdl');
             $created_at = date("Y-m-d H:i:s",time());
-            
             $post['easy_corp_id'] = $easyshop_id;
             $post['tribe_id'] = $tribe_id;
             //标题
@@ -536,8 +530,17 @@ class Product extends Front_Controller {
      * 商品详情
      */
     public function good_detail ($id) {
+        if (empty($id)) {
+            return;
+        }
+        $tribe_id = $this->tribe_id;
         $this->load->model("product_mdl");
         $data['data'] = $this->product_mdl->goods_img_detail($id);
+        if (empty($data['data']['0'])) {
+            return;
+        }
+        $data['goods_id'] = $id;
+        $data['tribe_id'] = $tribe_id;
         $this->load->view('head', $data);
         $this->load->view('tribe/commodity_details', $data);
     }
