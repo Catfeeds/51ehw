@@ -74,9 +74,9 @@
   <!-- 头部导航 -->
   <div class="essay_preview_nav tribe_shop_nav">
     <ul>
-        <li class="essay_classify"><a href="javascript:void(0);" onclick="navigation(this,1);" class="essay_active_a">商城</i></a></li>
-        <li class="essay_sales"><a href="javascript:void(0);" onclick="navigation(this,2);">部落</a></li>
-        <li class="essay_sales"><a href="javascript:void(0);" onclick="navigation(this,3);">企业展示</a></li>
+        <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_d" onclick="navigation(this,1);" class="essay_active_a">商城</i></a></li>
+        <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_e" onclick="navigation(this,2);">部落</a></li>
+        <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_f" onclick="navigation(this,3);">企业展示</a></li>
     </ul>
   </div>
 
@@ -190,7 +190,6 @@ $.ajax({
     data:{},
     success:function(data)
     {
-   	  console.log("获取未读消息成功");
    	  var MsgCount = data.MsgCount;
       if(MsgCount > 0){
         if(MsgCount >= 99){
@@ -239,6 +238,14 @@ $(function () {
 	dropload = $(class_sort).dropload({
 	    scrollArea : window,
     	loadDownFn : function(me){
+			if (types == 3) {
+				url = "<?php echo site_url("corporation_style/Topic_List");?>";
+				}else if(types == 2) {
+					url = "<?php echo site_url("tribe/loading_goods");?>";
+					}else{
+						url = "<?php echo site_url("tribe/loading_goods_mall");?>";
+						}
+			console.log('url='+url);
     	    // 加载菜单一的数据
     	        var result = "";
     	        $.post(url,{tribe_id:tribe_id,type:types,page:page},function(data){
@@ -368,32 +375,31 @@ $(function () {
     	        	        break;
     	        	    case 2:
     	        	    	if(data["list"].length>0){
+        	        	    	console.log('进入');
             	            	image_url = "<?php echo IMAGE_URL;?>";
             	                for(var i=0;i<data["list"].length;i++){
                 	                if(types == 2){
-                    	                if (data['limit'] == 1) {
-                        	                result += '<div class="tribe_goods_box" id="'+data["list"][i]["id"]+'">';
-                    	                  	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
-                    	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div></a>';
-                    	                    result += '<div class="good-text-bg">';
-                    	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
-                    	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span>';
-                    	                    result += '<input type="button" value="'+data["list"][i]['stick']+'" onclick="stick('+data["list"][i]["id"]+')" id="'+'id'+data["list"][i]["id"]+'" class="tribe_goods_top"></div>';
-                    	                    result += '</div>';
-                    	                } else {
-                    	                	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
-                    	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
-                    	                    result += '<div class="good-text-bg">';
-                    	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
-                    	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span></div></a>';  
-                    	                }
-                	                }else{
-                	                	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
-                	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
-                	                    result += '<div class="good-text-bg">';
-                	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+' '+data["list"][i]["desc"]+'</span>';
-                	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span></div></a>';  
-                	                }
+                	                	switch(data['limit'])
+                	                	{
+                	                	    case 1:
+                	                	    	result += '<div class="tribe_goods_box" id="'+data["list"][i]["id"]+'">';
+                        	                  	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
+                        	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div></a>';
+                        	                    result += '<div class="good-text-bg">';
+                        	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+'</span>';
+                        	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span>';
+                        	                    result += '<input type="button" value="'+data["list"][i]['stick']+'" onclick="stick('+data["list"][i]["id"]+')" id="'+'id'+data["list"][i]["id"]+'" class="tribe_goods_top"></div>';
+                        	                    result += '</div>';
+                	                	        break;
+                	                	    case 0:
+                	                	    	result += '<a href="<?php echo site_url('easyshop/product/good_detail');?>/'+data["list"][i]["id"]+'?tribe_id='+tribe_id+'">';
+                        	                    result += '<div class="good-img"><img src="'+(data["list"][i]["img_path"]?image_url+data["list"][i]["img_path"]:"images/default_img_s.jpg")+'"></div>';
+                        	                    result += '<div class="good-text-bg">';
+                        	                    result += '<span class="essay-goods-title">'+data["list"][i]["product_name"]+'</span>';
+                        	                    result += '<span class="essay-goods-monery">'+data["list"][i]["price"]+'</span></div></a>';  
+                	                	        break;
+                	                	}
+                	               }
             	                }
             	                $('#style').attr("class","essay").append(result);
             	                var width = $("#style .good-img").width();
@@ -401,6 +407,7 @@ $(function () {
             	                page++;
             	                me.resetload();
             	            }else{
+                	            console.log('退出');
             	            	// 锁定
             	                me.lock();
             	                // 无数据
@@ -410,6 +417,7 @@ $(function () {
             	            }
     	        	        break;
     	        	    default:
+        	        	    console.log(1);
     	        	    	if(data["list"].length>0){
             	            	image_url = "<?php echo IMAGE_URL;?>";
             	                for(var i=0;i<data["list"].length;i++){
@@ -423,13 +431,13 @@ $(function () {
             	                    result += '</a>';
             	                    result += '</div>';
                 	                }
-            	                
             	                $('#style').attr("class","essay").append(result);
             	                var width = $("#style .good-img").width();
                                 $("#style .good-img").height(width);
             	                page++;
             	                me.resetload();
             	            }else{
+                	            console.log('结束');
             	            	// 锁定
             	                me.lock();
             	                // 无数据
@@ -440,10 +448,13 @@ $(function () {
     	        	}
     	        },"json");
     	}
+
 	});
 
 	//商品导航切换
 	function navigation(obj,type){
+
+		
 		$("#style").empty();
 		navigate = type;
 		//特效
@@ -479,6 +490,7 @@ $(function () {
 	    dropload.noData(false);
 	    // 重置
 	    dropload.resetload();
+	    
 	}	
 
 //置顶部落商品
@@ -815,13 +827,11 @@ function search(){
 	if (navigate == '3') {
 		return false;
 	}else if(navigate == '1') {
-		console.log(navigate);
 		document.getElementById("form_search").action = "<?php echo site_url('Search/wechat_search_goods') ?>";
 		$('#form_search').submit();
 		var tribe_id = "<?php echo $tribe_id;?>";
 	} else {
 		action_data = "<?php echo site_url('easyshop/product/tribe_search_goods') ?>";
-		console.log(action_data);
 		$('#form_search').submit();
 		var tribe_id = "<?php echo $tribe_id;?>";
 	}
@@ -829,7 +839,6 @@ function search(){
 }
 
 function Goback(){
-	console.log('返回')
 	if(window.history.length >1){
 			window.history.back();
 		}else{
