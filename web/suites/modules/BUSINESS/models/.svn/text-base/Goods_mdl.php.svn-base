@@ -1604,11 +1604,11 @@ class Goods_mdl extends CI_Model
         if($appid){
             $this->db->where_in('a.app_id',array(0,$appid));
         }
-        $this->_product_sort($type,$longitude,$latitude,true);
+        $this->_product_sorted($type,$longitude,$latitude,true);
         if($type==1){
             $this->db->order_by("c.sales","desc");
         }else{
-            $this->db->order_by("a.id","desc");
+            $this->db->order_by("c.sales","asc");
         }
         
         if($limit){
@@ -1691,6 +1691,53 @@ class Goods_mdl extends CI_Model
            return  $this->db->get()->num_rows();
        }
       
+   }
+   
+   
+   /**
+    * 针对简易店商城块做的改动，其它的请调用 _product_sort
+    * 搜索商品私有方法，根据不同状态排序商品
+    * @param int $type 类型：1,2销量，3,4评论，5,6距离, 7,8价格
+    * @param string $longitude 经度
+    * @param string $latitude 纬度
+    * @param int $is_tribe  识别是否部落处理
+    */
+   private function _product_sorted($type,$longitude,$latitude,$is_tribe = false){
+       switch ($type){
+           case "1"://销量
+           case "2":
+               $this->db->select('any_value(c.sales) as sales');
+               $this->db->order_by("sales",$this->sequence['sequence']);
+               break;
+           case "3"://评论
+           case "4":
+               $this->db->select('count(oc.id) as comment');
+               $this->db->join('order_item as oi','oi.product_id = a.id ','left');
+               $this->db->join('order_comments as oc', 'oc.orderitem_id = oi.id','left');
+               $this->db->order_by("comment",$this->sequence['sequence']);
+               break;
+           case "5"://距离
+           case "6":
+               $this->db->select("round(6378.138*2*asin(sqrt(pow(sin( ('$latitude'*pi()/180-a.latitude*pi()/180)/2),2)+cos('$latitude'*pi()/180)*cos(a.latitude*pi()/180)* pow(sin( ('$longitude'*pi()/180-a.longitude*pi()/180)/2),2)))*1000) AS distance");
+               $this->db->where("a.latitude >",0);
+               $this->db->where("a.longitude >",0);
+               $this->db->order_by("distance",$this->sequence['sequence']);
+               break;
+           case "7"://价格
+           case "8":
+               if($is_tribe){
+                   $this->db->order_by("a.tribe_price",$this->sequence['sequence']);
+               }else{
+                   $this->db->order_by("a.vip_price",$this->sequence['sequence']);
+               }
+               break;
+           case "9":
+               $this->db->order_by("a.updated_at",$this->sequence['sequence']);
+               break;
+           case "10":
+               $this->db->order_by("a.sequence",$this->sequence['sequence']);
+               break;
+       }
    }
     
     /**

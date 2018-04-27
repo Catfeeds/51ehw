@@ -74,7 +74,7 @@
   <!-- 头部导航 -->
   <div class="essay_preview_nav tribe_shop_nav">
     <ul>
-        <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_d" onclick="navigation(this,1);" class="essay_active_a">商城</i></a></li>
+        <li class="essay_classify"><a href="javascript:void(0);" id="essay_active_d" onclick="navigation(this,1);" class="essay_active_a">商城</i></a></li>
         <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_e" onclick="navigation(this,2);">部落</a></li>
         <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_f" onclick="navigation(this,3);">企业展示</a></li>
     </ul>
@@ -417,7 +417,6 @@ $(function () {
             	            }
     	        	        break;
     	        	    default:
-        	        	    console.log(1);
     	        	    	if(data["list"].length>0){
             	            	image_url = "<?php echo IMAGE_URL;?>";
             	                for(var i=0;i<data["list"].length;i++){
@@ -437,7 +436,6 @@ $(function () {
             	                page++;
             	                me.resetload();
             	            }else{
-                	            console.log('结束');
             	            	// 锁定
             	                me.lock();
             	                // 无数据

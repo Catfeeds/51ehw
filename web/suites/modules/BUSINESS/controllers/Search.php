@@ -342,7 +342,6 @@ class Search extends Front_Controller
 	    }else{
 	        $status = 1;//全网站
 	    }
-	    
 	    //判断是否非法操作
 	    if($cateid<0){
 	        $data["productList"] = array();
@@ -363,9 +362,6 @@ class Search extends Front_Controller
 	        }
 	    
 	    }
-
-        
-
         $limit = 20;//显示条数
 	    $page = $this->input->post("page");//页数
 	    if(0 == $page)
@@ -428,7 +424,6 @@ class Search extends Front_Controller
             }
             
         }
-        
         $data['productList'] = $productList;
         $data["status"] = 3;//搜索无异常
         $data["tribeids"] = $tribeids;//我加入部落的id
