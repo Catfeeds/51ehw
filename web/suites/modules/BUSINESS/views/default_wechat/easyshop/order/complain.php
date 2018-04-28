@@ -16,7 +16,7 @@
   .z_file_lo{float: none;display: inline-block;}
 </style>
 
-<form action="<?php site_url("easyshop/order/save_complain");?>" method="post" enctype="multipart/form-data" id="form1" >
+<form action="<?php site_url("Easyshop/order/save_complain");?>" method="post" enctype="multipart/form-data" id="form1" >
 <!-- 投诉 -->
 <div class="complaint">
   <input type="hidden" name="order_id" value="<?php echo $order_id?>">
@@ -388,7 +388,6 @@ var JM = function(){
     xX();
 }(); 
 
-
 function sub(){
 
     var moblie = $('input[name=moblie]').val();
@@ -436,8 +435,11 @@ function sub(){
    var progress_bar = $(".progress-bar");
    var percent = $('.percent');
 
+   var tribe_id = "<?php echo $tribe_id?>";
+   var order_id = "<?php echo $order_id?>";
+
   $('#form1').ajaxSubmit({
-      url: '<?php echo site_url("easyshop/order/save_complain")?>',
+      url: '<?php echo site_url("Easyshop/order/save_complain")?>',
       type: 'POST',
       //cache: false,
       //data: new FormData( $('#form1')[0] ),
@@ -463,7 +465,7 @@ function sub(){
             $(".black_feds").text('提交成功').show();
             setTimeout("prompt();", 2000);
             setTimeout(function(){
-                window.location.href='';
+                window.location.href = "<?php echo site_url('Easyshop/order/detail')?>"+'/'+tribe_id+'/'+order_id;
                 }, 2200);
             
           }else{ 

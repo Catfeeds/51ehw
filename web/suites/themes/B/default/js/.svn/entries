@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/themes/B/default/js
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -94,40 +94,6 @@ wing
 
 4938
 
-jquery-1.8.3.min.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-c6ce4fbea92319dc168417ed8697c252
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-93639
-
 jquery.stellar.min.js
 file
 
@@ -161,6 +127,40 @@ wing
 
 
 12597
+
+jquery-1.8.3.min.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+c6ce4fbea92319dc168417ed8697c252
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+93639
 
 jquery.countTo.js
 file
@@ -264,14 +264,14 @@ wing
 
 10023
 
-jquery.nouislider.min.js
+jquery.countdown.plugin.min.js
 file
 
 
 
 
 2018-04-02T02:24:46.000000Z
-6d7d11b8edeb37c56ed067bbacded33e
+2548a741b69e479e2159819c2e9d24da
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -296,41 +296,7 @@ wing
 
 
 
-10359
-
-jquery.qrcode.min.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-05f0b1d7d4b9b0b4975870606d650e3c
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-13995
+3209
 
 qrcode.js
 file
@@ -366,14 +332,14 @@ wing
 
 22454
 
-jquery.countdown.plugin.min.js
+jquery.qrcode.min.js
 file
 
 
 
 
 2018-04-02T02:24:46.000000Z
-2548a741b69e479e2159819c2e9d24da
+05f0b1d7d4b9b0b4975870606d650e3c
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -398,7 +364,41 @@ wing
 
 
 
-3209
+13995
+
+jquery.nouislider.min.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+6d7d11b8edeb37c56ed067bbacded33e
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10359
 
 superslide.2.1.js
 file
@@ -437,40 +437,6 @@ wing
 local
 dir
 
-fm.tagator.jquery.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-dab06141605db38bea71348740b0b580
-2018-03-06T08:45:18.831148Z
-5456
-jiangfeng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-17299
-
 jquery.countdown.min.js
 file
 
@@ -504,6 +470,40 @@ wing
 
 
 13330
+
+fm.tagator.jquery.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+dab06141605db38bea71348740b0b580
+2018-03-06T08:45:18.831148Z
+5456
+jiangfeng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17299
 
 jquerySession.js
 file
@@ -959,40 +959,6 @@ wing
 
 13766
 
-waypoints-sticky.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-1d3c2e2422abbc1abfad1eb9984fe62c
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2048
-
 jquery-1.4.2.min.js
 file
 
@@ -1026,6 +992,40 @@ wing
 
 
 80291
+
+waypoints-sticky.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+1d3c2e2422abbc1abfad1eb9984fe62c
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2048
 
 jquery-1.7.1.min.js
 file
@@ -1061,40 +1061,6 @@ zhangliufei
 
 93940
 
-jquery.easie.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-eb30eaf44b643cfd06c7f917f88d2ec9
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6404
-
 isotope.min.js
 file
 
@@ -1128,6 +1094,40 @@ wing
 
 
 36059
+
+jquery.easie.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+eb30eaf44b643cfd06c7f917f88d2ec9
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6404
 
 jquery-1.8.2.min.js
 file
@@ -1163,40 +1163,6 @@ wing
 
 93436
 
-jquery.easing.min.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-3eac3c72434a0945b92dd4a01f7b6b4e
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5555
-
 Jdropdown.js
 file
 
@@ -1230,6 +1196,40 @@ wing
 
 
 3318
+
+jquery.easing.min.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+3eac3c72434a0945b92dd4a01f7b6b4e
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5555
 
 jquery.validate.merchant.js
 file
@@ -1299,40 +1299,6 @@ wing
 
 1841
 
-jquery.bxslider.min.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-697d69a48e5356f7106e38c09f7f19e0
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-19359
-
 wow.js
 file
 
@@ -1367,14 +1333,14 @@ wing
 
 8811
 
-owl.carousel.js
+jquery.bxslider.min.js
 file
 
 
 
 
 2018-04-02T02:24:46.000000Z
-fa4a70cccfbba2942e8b998889e56bc2
+697d69a48e5356f7106e38c09f7f19e0
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -1399,7 +1365,7 @@ wing
 
 
 
-52935
+19359
 
 verificationCode.js
 file
@@ -1435,14 +1401,14 @@ tanjianfu
 
 3536
 
-jquery.qqFace.js
+owl.carousel.js
 file
 
 
 
 
 2018-04-02T02:24:46.000000Z
-41a3e3f8b1246b84af6dba2dc6ef4487
+fa4a70cccfbba2942e8b998889e56bc2
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -1467,7 +1433,7 @@ wing
 
 
 
-3401
+52935
 
 Public.js
 file
@@ -1502,6 +1468,40 @@ jiangfeng
 
 
 1828
+
+jquery.qqFace.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+41a3e3f8b1246b84af6dba2dc6ef4487
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3401
 
 jquery-1.11.2.min.js
 file
@@ -1605,40 +1605,6 @@ wing
 
 30457
 
-citySet.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-e1c76263908565c0d1fc97476ae4899e
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4163
-
 jquery.stellar.js
 file
 
@@ -1672,6 +1638,40 @@ wing
 
 
 23282
+
+citySet.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+e1c76263908565c0d1fc97476ae4899e
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4163
 
 ranking.js
 file
@@ -1809,40 +1809,6 @@ wing
 
 12269
 
-jquery.lazyload.js
-file
-
-
-
-
-2018-04-02T02:24:46.000000Z
-db5be9be3fb7f28c261f7818928211cd
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3628
-
 jquery.jqzoom.js
 file
 
@@ -1877,14 +1843,14 @@ wing
 
 4723
 
-jquery-2.1.1.min.js
+jquery.lazyload.js
 file
 
 
 
 
 2018-04-02T02:24:46.000000Z
-e40ec2161fe7993196f23c8a07346306
+db5be9be3fb7f28c261f7818928211cd
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -1909,7 +1875,7 @@ wing
 
 
 
-84245
+3628
 
 jquery.countdown.js
 file
@@ -1945,14 +1911,14 @@ wing
 
 34619
 
-jquery.themepunch.tools.min.js
+jquery-2.1.1.min.js
 file
 
 
 
 
 2018-04-02T02:24:46.000000Z
-09305e284b2d78b1cbcbf0ff6247cce8
+e40ec2161fe7993196f23c8a07346306
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -1977,7 +1943,7 @@ wing
 
 
 
-95453
+84245
 
 bootstrap.min.js
 file
@@ -2012,6 +1978,40 @@ wing
 
 
 35452
+
+jquery.themepunch.tools.min.js
+file
+
+
+
+
+2018-04-02T02:24:46.000000Z
+09305e284b2d78b1cbcbf0ff6247cce8
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+95453
 
 global.js
 file

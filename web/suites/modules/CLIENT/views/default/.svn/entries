@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/CLIENT/views/default
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -316,9 +316,6 @@ wing
 corporation_template
 dir
 
-app_regist
-dir
-
 foot.php
 file
 
@@ -352,6 +349,9 @@ tanjianfu
 
 
 778
+
+app_regist
+dir
 
 api_other_test.php
 file
@@ -430,9 +430,6 @@ wing
 
 71
 
-foot
-dir
-
 notice.php
 file
 
@@ -467,7 +464,7 @@ wing
 
 8259
 
-game
+foot
 dir
 
 logo.ico
@@ -504,7 +501,7 @@ has-props
 
 4286
 
-content
+game
 dir
 
 404.html
@@ -541,10 +538,10 @@ wing
 
 7022
 
-hotel
+content
 dir
 
-js
+hotel
 dir
 
 jquery.min.js
@@ -580,6 +577,9 @@ wing
 
 
 93068
+
+js
+dir
 
 response_view.php
 file

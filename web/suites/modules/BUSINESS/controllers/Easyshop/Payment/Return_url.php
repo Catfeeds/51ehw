@@ -37,47 +37,59 @@ class Return_url extends Front_Controller {
 	    $message[3] = '支付失败';
 	    
 	    //支付成功视图路径
-	    $view_path[1] = 'easyshop/order/xxxx.php';
+	    $view_path[1] = 'easyshop/order/orderpay_finish.php';
+
+	    $view_path[2] = 'easyshop/order/orderpay_status.php';
+	    $view_path[3] = 'easyshop/order/orderpay_status.php';
+	    
 	    //充值事件 1 普通充值现金 2 支付订单  3拼团支付 4面对面支付 5互助店开通
 	   
 	    
 	    $title = $message[0];
 	    $status = 3;
+	    $order = [];
 	    
 	    $this->load->model ( 'easy_charge_mdl', 'charge' );
 	    $charge = $this->charge->LoadByChangeNo( $charge_no,$this->customer_id );
-	    
+
 	    if( $charge )
 	    {
+
+		    $this->load->model('easyshop_order_mdl','order');
+		    $order = $this->order->get_where('easy_order',['order_sn'=>$charge['obj_no']],'id,tribe_id');
+		    // var_dump($order);exit;
+
     	    //验证是否支付成功
 	        if( $charge['status'] == 1 )
 	        { 
-	            $message = $message[1];
+	            $title = $message[1];
+	            $status = 1;
 	            
 	            //成功的就转跳当前事件显示成功页面。
-	            
-	            if( $charge['type'] == 1 )
-	            { 
+
+	            // if( $charge['type'] == 1 )
+	            // { 
 	                //显示订单支付成功页面。
-	            }
+	            // }
 	            
 	        }else{ 
 	            //失败统一显示。
 	            $title = $message[3];
-	            $status = 3;
+	            $status = 2;
 	        }
-	    }        
+	    }
     	
 
         $data['charge'] = $charge;
-	    $data['message'] = $title;
+	    $data['title'] = $title;
 	    $data['head_set'] = 2;
 	    $data['status'] = $status;
-	   
+	    $data['order'] = $order;
+	   	// echo "<pre>";print_r($data);exit;
 	    $this->load->view('head', $data);
 	    $this->load->view('_header', $data);
-	    $this->load->view($view_path[$charge['type']], $data);
-	    $this->load->view('_footer', $data);
+	    $this->load->view($view_path[$status], $data);
+	    // $this->load->view('_footer', $data);
 	    $this->load->view('foot', $data);
 	}
 	

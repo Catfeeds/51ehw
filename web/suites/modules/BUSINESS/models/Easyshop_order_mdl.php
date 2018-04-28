@@ -102,9 +102,10 @@ class Easyshop_order_mdl extends CI_Model
      */
     public function order_info($tribe_id,$order_id){
         $res = $this->db
-        ->select('o.id,o.order_sn,o.quantity,o.product_id,o.product_img,o.total_price,o.customer_id,o.status,o.product_name,t.member_name name,t.mobile')
+        ->select('o.id,o.order_sn,o.quantity,o.product_id,o.product_img,o.total_price,o.customer_id,o.status,o.product_name,o.easy_corp_id,t.member_name name,t.mobile')
         ->from('easy_order o')
-        ->join('tribe_staff t','t.customer_id = o.customer_id AND t.tribe_id = '.$tribe_id,'left')
+        ->join('easy_corporation c','c.id = o.easy_corp_id','left')
+        ->join('tribe_staff t','t.customer_id = c.customer_id AND t.tribe_id = '.$tribe_id,'left')
         ->where('o.id',$order_id)
         ->where('o.is_delete',0)
         ->get()
@@ -165,8 +166,8 @@ class Easyshop_order_mdl extends CI_Model
         //修改订单状态
         $data = ['status'=>$status];
         $where = ['id'=>$id];
-        // $res = $this->db->update('easy_order',$data,$where);
-        $res = 1;
+        $res = $this->db->update('easy_order',$data,$where);
+
         if(!$res)
         {
             $result = ['status'=>0,'message'=>'修改订单状态失败'];
@@ -179,7 +180,7 @@ class Easyshop_order_mdl extends CI_Model
             'status'    =>  $status,
             'created_at'=>  date('Y-m-d H:i:s'),
         ];
-        // $res = $this->db->insert('easy_order_log',$data);
+        $res = $this->db->insert('easy_order_log',$data);
         if(!$res)
         {
             $result = ['status'=>0,'message'=>'添加订单日志失败'];
@@ -213,6 +214,10 @@ class Easyshop_order_mdl extends CI_Model
         $data_post['app_id'] = $this->session->userdata('app_info')['id'];
         $data_post['corp_customer_id'] = $corp_cusotmer_id['customer_id'];
         $data_post['customer_id'] = $this->session->userdata('user_id');
+        if($status==4)
+        {
+            $data_post['order_list'][] = $data_post;
+        }
         $error = json_decode($this->curl_post_result($url,$data_post),true);
         if($error['status'])
         {
@@ -271,13 +276,16 @@ class Easyshop_order_mdl extends CI_Model
      * 2018年3月30日
      * 查询卖家最后订单
      * @param number $easy_corp_id 简易店id
+     * @param number $tribe_id 部落id
      */
-    function LastOrder($easy_corp_id){
+    function LastOrder($easy_corp_id,$tribe_id){
         if(!$easy_corp_id){
             return array();
         }
         $this->db->from("easy_order");
         $this->db->where("easy_corp_id",$easy_corp_id);
+        $this->db->where("tribe_id",$tribe_id);
+        $this->db->where("is_delete",0);
         $this->db->order_by("id","desc");
         $query = $this->db->get();
         return $query->row_array();
@@ -288,13 +296,16 @@ class Easyshop_order_mdl extends CI_Model
     * 2018年4月2日
     * 查询买家最后订单
     * @param number $customer_id 用户id
+    * @param number $tribe_id 部落id
     */
-    function BuyersLastOrder($customer_id){
+    function BuyersLastOrder($customer_id,$tribe_id){
         if(!$customer_id){
             return array();
         }
         $this->db->from("easy_order");
         $this->db->where("customer_id",$customer_id);
+        $this->db->where("tribe_id",$tribe_id);
+        $this->db->where("is_delete",0);
         $this->db->order_by("id","desc");
         $query = $this->db->get();
         return $query->row_array();
@@ -305,13 +316,16 @@ class Easyshop_order_mdl extends CI_Model
     * 2018年4月2日
     * 根据简易店ID查询卖出的订单
     * @param number $easy_corp_id 简易店id
+    * @param number $tribe_id 部落id
     */
-    function SalesOrder($easy_corp_id,$limit=0,$offset=0){
+    function SalesOrder($easy_corp_id,$tribe_id,$limit=0,$offset=0){
         if(!$easy_corp_id){
             return array();
         }
         $this->db->from("easy_order");
         $this->db->where("easy_corp_id",$easy_corp_id);
+        $this->db->where("tribe_id",$tribe_id);
+        $this->db->where("is_delete",0);
         if($limit){
             $this->db->limit($limit,$offset);
         }
@@ -328,13 +342,16 @@ class Easyshop_order_mdl extends CI_Model
     * 2018年4月2日
     * 根据用户ID查询购买的订单
     * @param number $customer_id 用户id
+    * @param number $tribe_id 部落id
     */
-    function BuyersOrder($customer_id,$limit=0,$offset=0){
+    function BuyersOrder($customer_id,$tribe_id,$limit=0,$offset=0){
         if(!$customer_id){
             return array();
         }
         $this->db->from("easy_order");
         $this->db->where("customer_id",$customer_id);
+        $this->db->where("tribe_id",$tribe_id);
+        $this->db->where("is_delete",0);
         if($limit){
             $this->db->limit($limit,$offset);
         }

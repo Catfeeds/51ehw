@@ -1,14 +1,14 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web
 svn://liangdaojing@192.168.10.137/51ehw
 
 
 
-2018-04-23T06:57:38.447854Z
-6183
+2018-04-28T06:26:43.750147Z
+6225
 jiangfeng
 has-props
 
@@ -66,9 +66,6 @@ has-props
 system
 dir
 
-phpqrcode
-dir
-
 maintenance.html
 file
 
@@ -103,7 +100,7 @@ wing
 
 1637
 
-docs
+phpqrcode
 dir
 
 admin
@@ -130,6 +127,9 @@ dir
 
 
 absent
+
+docs
+dir
 
 UPLOADScomplain
 dir
@@ -211,10 +211,10 @@ dir
 data
 dir
 
-suites
+show_management
 dir
 
-show_management
+suites
 dir
 
 coming_soon.html

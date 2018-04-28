@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/CLIENT/views/default_wechat
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -359,9 +359,6 @@ wing
 
 6582
 
-game
-dir
-
 logo.ico
 file
 
@@ -396,7 +393,7 @@ has-props
 
 4286
 
-content
+game
 dir
 
 404.html
@@ -433,10 +430,7 @@ wing
 
 7022
 
-js
-dir
-
-groupbuy
+content
 dir
 
 jquery.min.js
@@ -472,6 +466,12 @@ wing
 
 
 93068
+
+groupbuy
+dir
+
+js
+dir
 
 response_view.php
 file

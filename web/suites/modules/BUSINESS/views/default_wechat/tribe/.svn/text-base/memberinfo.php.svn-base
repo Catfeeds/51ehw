@@ -41,11 +41,11 @@
     	     <a href="<?php if(!$customer["idcard"] || !$shop){echo "javascript:mylist_ball_show();";}else{echo site_url("easyshop/product/personal_list?tribe_id=$tribe_id");};?>">
     	     	<span class="icon-shangpin1 mylist_shangpin"></span>
     	     	<em>我的商品</em>
-    	     	<i>12</i>
+    	     	<i><?php echo $producttotal;?></i>
     	     </a>
     	    </li>
     	    <li>
-    	     <a href="<?php if(!$customer["idcard"] || !$shop){echo "javascript:mylist_ball_show();";}else{echo "javascript:void(0);";};?>">
+    	     <a href="<?php if(!$customer["idcard"] || !$shop){echo "javascript:mylist_ball_show();";}else{echo site_url('easyshop/order/order_list').'/'.$tribe_id.'/is_sell';};?>">
     	     	<div>
     	     	   <span class="icon-mai mylist_ma"></span>
     	     	   <?php if($orderstatus){?>
@@ -57,7 +57,7 @@
     	     </a>
     	    </li>
     	    <li>
-    	     <a href="javascript:void(0);">
+    	     <a href="<?php echo site_url('easyshop/order/order_list').'/'.$tribe_id?>">
     	     	<div>
     	     	  <span class="icon-mai1 mylist_mai"></span>
     	     	   <?php if($Buyersstatus){?>
@@ -87,7 +87,7 @@
 
     <!-- 弹窗 -->
     <?php if(!$customer["idcard"]){;?>
-    <div class="mylist_ball">
+    <div class="mylist_ball" hidden>
       <div class="mylist_ball_box">
          <img onclick="mylist_ball_close();" src="images/51h5-lose.png" alt="" class="mylist_ball_close">
          <div class="mylist_ball_text"><span>您尚未完成实名认证，无权限使用该功能</span></div>

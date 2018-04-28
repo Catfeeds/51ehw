@@ -45,6 +45,7 @@ class Customer_mdl extends CI_Model {
     var $bankcard;
     var $bankmobile;
     var $authenticationat;
+    var $idcard;
 	/**
 	 * 构造函数
 	 */
@@ -440,6 +441,7 @@ class Customer_mdl extends CI_Model {
 		$this->db1->where ( 'id', $id );
 		
 		$this->db1->update ( 'customer' );
+		error_log($this->db1->last_query());
 		return $this->db1->affected_rows();
 	}
 	

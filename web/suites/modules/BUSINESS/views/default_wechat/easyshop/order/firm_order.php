@@ -24,7 +24,7 @@ input[type=checkbox]{
 		<?php if (count($address) === 0){?>
 		<!-- 新订单页收货地址为空时 -->
 		<div>
-			<a href="<?php echo site_url("easyshop/address/index/2")?>">
+			<a href="<?php echo site_url("Easyshop/address/index/2")?>">
     			<div class="" style="position: relative; margin-left: 40px; margin-top: 10px; font-size: 14px; color: #363636;">
     				<em class="icon-locationfill c9 custom_color" style="position: absolute; top: 5px; left: -29px; font-size: 20px;"></em>
     				<span style="display: block; padding-top: 5px;">您还没有创建收货地址</span>
@@ -35,7 +35,7 @@ input[type=checkbox]{
 		<?php }else{ ?>
 		<!-- 收货地址new 开始 -->
 		<div class="" style="position: relative; margin-left: 40px; margin-top: 10px; font-size: 14px; color: #363636;">
-			<a href="<?php echo site_url("easyshop/address/index/2")?>">
+			<a href="<?php echo site_url("Easyshop/address/index/2")?>">
     			<em class="icon-locationfill custom_color" style="position: absolute; top: 18px; left: -29px; color: #FED609; font-size: 20px;"></em>
     			<span>
         			<span style="opacity: 0">字</span>收货人：
@@ -69,17 +69,17 @@ input[type=checkbox]{
 
             <ul style="border-bottom: 1px solid #e6e6e6; font-size: 14px;">
                 <li><em class="icon-shop"></em>
-                    <span style="margin-left: 10px; line-height: 30px;"><?php echo isset($corporation_name)?$corporation_name:"111"; ?></span>
+                    <span style="margin-left: 10px; line-height: 30px;"><?php echo $sell_info['member_name'].' - '.$sell_info['mobile'] ?></span>
                 </li>
 			</ul>
             
             
 			<ul class="order_list" style="margin-top: 5px;">
 				<li>
-				<input type="checkbox" checked class="selected_info selected_info_<?php echo 1 ?>" id="<?php echo 1 ?>" name="item[]" value="<?php echo 1 ?>" style="display: none">
+				<!-- <input type="checkbox" checked class="selected_info selected_info_<?php echo 1 ?>" id="<?php echo 1 ?>" name="item[]" value="<?php echo 1 ?>" style="display: none"> -->
 				<input type="hidden" class="product_id" value="<?php echo $items['product_id'];?>">
 				<!--选中添加上面<em class="icon-squarecheckfill">，未选中取消class里面的icon-squarecheckfill-->
-					<img src="<?php echo IMAGE_URL;?>" alt="" class="fn-left good_list_img"
+					<img src="<?php echo IMAGE_URL.substr($items['product_pic'],2);?>" alt="" class="fn-left good_list_img"
 					onerror="this.src='images/default_img_b.jpg'">
 					<div class="order_info">
 						<h2 class="goods_list_text" style="margin-left: 0px;"><?php echo $items['product_name']; ?></h2>
@@ -101,11 +101,11 @@ input[type=checkbox]{
 
 		<!--结算、支付 开始-->
 		<div class="order_total">
-    		<div class="section" style="position: fixed; bottom: 50px;padding-left: 10px; font-size: 14px;border-top: 1px solid #999;width:100%;padding-top: 10px;background: #fff;">
+    		<div class="section" style="position: fixed; bottom: 0px;padding-left: 10px; font-size: 14px;border-top: 1px solid #999;width:100%;padding-top: 10px;background: #fff;">
     			<span class="price_tit"><span><?php echo isset($items['quantity']) ? $items['quantity']:"0";?>件</span>总计:</span>
     			<span class="st" style="visibility: hidden;"></span>￥<span id="zong"><?php echo number_format($items['total_price'], 2);?></span><em></em>
     			<input type="hidden" value="<?php echo number_format($items['total_price'], 2);?>" id="order_total">
-    			<a href="javascript:submitOrder();" class="order_tijiao_button custom_button" id="order_submit_status">提交订单</a>
+    			<a href="javascript:submitOrder();" class="order_tijiao_button custom_button" style="bottom:0px" id="order_submit_status">提交订单</a>
     		</div>
             
     		<!--添加备注信息 开始-->
@@ -143,7 +143,7 @@ function submitOrder() {
         var base_url = "<?php echo site_url()?>";
 
         $.ajax({
-            url :base_url + '/easyshop/order/save',
+            url :base_url + '/Easyshop/order/save', // 注意目录必须注意大小写
             type:'post',
             dataType : "json",
             data:{'product_id':product_id,'quantity':quantity,'address_id':address_id,'tribe_id':tribe_id},
@@ -153,10 +153,11 @@ function submitOrder() {
                 
             },
             success:function(data){
-                console.log(data);
+                // console.log(data);
                 switch(data.status){
                     case 0:
-                        alert(data.errorMessage);
+                        // alert(data.errorMessage);
+                        location.href = base_url + '/Easyshop/order/detail/'+tribe_id+'/'+data.order_id;
                         break;
                     case 255:
                         $(".black_feds").text(data.message).show();
@@ -164,11 +165,14 @@ function submitOrder() {
                         window.setTimeout("window.location.href='"+data.redirect_url+"'", 2000);       
                         break;
                     case 'address':
-                        alert(data['errorMessage']);
+                        // $(".black_feds").text(data.errorMessage).show();
+                        // setTimeout("prompt();", 2000);
+                        alert(data.errorMessage);
+                        location.reload();
                         break;
                     default:
-                        alert(data['errorMessage']);
-                        location.href = base_url + '/easyshop/product';
+                        alert(data.errorMessage);
+                        location.href = base_url + '/home';
                         break;
                 }
             },

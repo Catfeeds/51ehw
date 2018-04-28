@@ -69,6 +69,9 @@
             case 5:
                 echo '已完成';
                 break;
+            case 9:
+            	echo '订单异常';
+            	break;
             default:
                 echo '已取消';
                 break;
@@ -87,7 +90,7 @@
 					<span style="padding-left: 60px;" class="c9"><?php echo isset($order_delivery['contact_mobile']) ? $order_delivery['contact_mobile'] :''?></span>
 				</h3>
 				<em class="icon-dingwei1 c9" style="float: left; margin-left: -20px; margin-top: 2px;"></em>
-				<p class="c9" style=""> <?php echo isset($order_delivery['address']) ? $order_delivery['address'] :''?><?php echo $order_delivery["province"];?><?php echo $order_delivery["city"];?><?php echo $order_delivery["district"];?></p>
+				<p class="c9" style=""> <?php echo $order_delivery["province"];?><?php echo $order_delivery["city"];?><?php echo $order_delivery["district"];?><?php echo isset($order_delivery['address']) ? $order_delivery['address'] :''?></p>
 				<!-- <em class="icon-right  firm_order_font"></em> -->
 			</a>
 		</div>
@@ -111,7 +114,7 @@
 				<div style="margin-bottom: 10px;">
 				
 					<!-- 标题 -->
-					<a href="<?php echo site_url('goods/detail/'.$order['product_id'])?>" style="">
+					<a href="<?php echo site_url('Easyshop/product/good_detail/'.$order['product_id']).'?tribe_id='.$tribe_id?>" style="">
     					<img src="<?php echo IMAGE_URL.$order['product_img']; ?>" width="62" height="83" onerror="this.src='images/default_img_b.jpg'" class="good_list_img">
     					<div style="float:left;margin-top: -85px;margin-left: 75px;">
     						<p class="fn-14 goods_list_text"><?php echo $order['product_name'];?></p>
@@ -150,17 +153,17 @@
 					</span>
 				</p>
 							
-				<?php foreach($order_log as $v):?>
+				<?php foreach($order_log as $v):if(in_array($v['status'],[1,3,6,7])):?>
 					<p style="padding-top: 10px;"><?php echo $order_log_status[$v['status']];?>
 						<span style="float: right;" class="c9">
-							<?php if( $v['status'] == 6 ):?>
+							<?php if( $v['status'] == 6 || $v['status'] == 7 ):?>
 								<?php echo $v['remark']?>
 							<?php else:?>
 								<?php echo $v['created_at'];?>
 							<?php endif;?>
 						</span>
 					</p>
-				<?php endforeach;?>
+				<?php endif;endforeach;?>
 				
 			</div>
 		</section>
@@ -177,12 +180,12 @@
 
 		<section class="noborder" id="show_order_message">
 
-		<?php if($is_sell=='sell'):?>
+		<?php if($is_sell):?>
 
 	        <?php if(in_array($order['status'],array(1))):?>
 	        	<a href="javascript:;" onclick="cancel(<?php echo $order['id']?>)" class="order_list_comment" id="cancel_submit">取消订单</a>
 	        <?php elseif($order['status'] == 2) :?>
-	        	<a href="javascript:;" onclick="receive(<?php echo $order['id']?>)" class="order_list_comment" id="receive_submit"><i class="c9"></i>确认发货</a>
+	        	<!-- <a href="javascript:;" onclick="receive(<?php echo $order['id']?>)" class="order_list_comment" id="receive_submit"><i class="c9"></i>确认发货</a> -->
 	        	<a href="javascript:;" onclick="cancel(<?php echo $order['id']?>)" class="order_list_comment" id="cancel_submit"><i class="c9"></i>取消订单</a>
 	        <?php endif;?>
 
@@ -196,7 +199,7 @@
 				<a href="javascript:;" onclick="receive(<?php echo $order['id']?>)" class="order_list_comment" id="receive_submit"><i class="c9"></i>确认收货</a>
 	        <?php endif;?>
 
-	        <?php $is_pay = array_column($order_log, 'status'); if( in_array(2,$is_pay) ):?>
+	        <?php if( $order['status'] > 2 && $is_pay):?>
 	        	<a href="<?php echo site_url("easyshop/order/complain/".$tribe_id.'/'.$order['id'])?>" class="order_list_comment" id="cancel_submit"><i class="c9"></i>去投诉</a>
 	        <?php endif;?>
 
@@ -221,50 +224,64 @@
 
 <script>
 
-var tribe_id = "<?php echo $tribe_id?>";
-
 function cane(){
     $('#tuichu_sub').attr('href','javascript:;');
     $('.tuichu_ball').hide();
 }
 
-// 确认收货 
-function receive( id ){
-    var tc = $('#tuichu_sub');
-    if(tc.attr('href')=='javascript:;')
-    {
-        $('.tuichu_ball_text span').text('是否确认收货？');
-        tc.attr('href','javascript:receive('+id+');');
-        $('.tuichu_ball').show();
-    }
-    else
-    {
-        $.ajax({
-            url:'<?php echo site_url('easyshop/order/confirm_order')?>',
-            data:{id:id,tribe_id:tribe_id},
-            dataType:'json',
-            type:'post',
-            success:function(data){
-            	cane();
-            	console.log(data.status);
-                if(data.status){
-                    $(".black_feds").text("操作失败").show();
-                    setTimeout("prompt();", 1000);
-                }else{
-                    $('#status_name').text('订单完成');
-                    $('#show_order_message').empty();
-                }
+var tribe_id = "<?php echo $tribe_id?>";
+var show_bullet_id = "<?php echo $bullet_set == 1? "skip_bullet":"pay_bullet";?>";
 
-            },
-            error:function(){ 
-                $(".black_feds").text("网络连接超时").show();
-                setTimeout("prompt();", 1000);
-                setTimeout(location.reload(), 2000);
-            }
-        })
-    }
+// 确认收货 - show
+function receive( id ){
+    $.ajax({ 
+        url:'<?php echo site_url('Easyshop/order/detail')?>',
+        data:{ order_id:id,tribe_id:tribe_id },
+        dataType:'json',
+        type:'post',
+        success:function(data){
+            $("#pay_").text("确认收货");
+            $('#pay_').attr('onclick','ok_receive("'+data.id+'")');
+            $('#order_sn').text(data.order_sn);
+            $('#price').text('￥ '+data.total_price);
+            $(".color-bg").show();
+            $("#"+show_bullet_id).show();
+        }
+    })
 }
 
+// 确认收货 - sure
+function ok_receive( id ){
+    var pass = $('input[name=pay_passwd]').val();
+    $.ajax({
+        url:'<?php echo site_url('Easyshop/order/confirm_order')?>',
+        data:{pass:pass,id:id,tribe_id:tribe_id},
+        dataType:'json',
+        type:'post',
+        success:function(data){
+            if(data.status == 0){
+                $(".color-bg").hide();
+                $("#pay_bullet").hide();
+                
+                $('#order_message_'+id).text('订单完成');
+                $('#status_submit_'+id).empty();
+            }else if(data.status == 3){ 
+                $(".black_feds").text("密码错误，请重新输入").show();
+                setTimeout("prompt();", 1000);
+            }else if(data.status == 1){
+                $(".black_feds").text("订单错误").show();
+                setTimeout("prompt();", 1000);
+            }else{ 
+                $(".black_feds").text("服务器无响应").show();
+                setTimeout("prompt();", 1000);
+            }
+        },
+        error:function(){ 
+            $(".black_feds").text("操作失败").show();
+            setTimeout("prompt();", 1000);
+        }
+    })
+}
 
 // 取消订单 
 function cancel( id ){
@@ -277,7 +294,7 @@ function cancel( id ){
     }
     else
     {
-		url = "<?php echo site_url('easyshop/order/cancel_order')?>";
+		url = "<?php echo site_url('Easyshop/order/cancel_order')?>";
 		var is_sell = "<?php echo $is_sell?>";
 		$.ajax({ 
 	        url:url,
@@ -306,9 +323,9 @@ function cancel( id ){
 
 // 去支付
 $('#pay_submit').click(function(){
-	var url = "<?php echo site_url('easyshop/order/pay_check')?>";
+	var url = "<?php echo site_url('Easyshop/order/order_pay')?>";
 	var id = "<?php echo $order['id'];?>";
-	$.ajax({ 
+	$.ajax({
         url:url,
         type:'post',
         data:{id:id},
@@ -317,10 +334,10 @@ $('#pay_submit').click(function(){
             if(data.status){
 				$(".black_feds").text(data.errorMessage).show();
 			    setTimeout("prompt();", 3000);
-			    return false;
+			    return;
             }else{
-            	alert('去支付');
-            	return false;
+            	location.href = "<?php echo site_url('Easyshop/Payment/pay/index')?>"+'/'+id;
+            	return;
             }
         },
     })

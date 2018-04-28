@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/themes/C/default/js/ckeditor/plugins
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -44,10 +44,10 @@ dir
 magicline
 dir
 
-wsc
+pastefromword
 dir
 
-pastefromword
+wsc
 dir
 
 link
@@ -87,10 +87,10 @@ has-props
 
 10030
 
-dialog
+clipboard
 dir
 
-clipboard
+dialog
 dir
 
 tabletools

@@ -1570,7 +1570,7 @@ class Customer extends Account_Controller
         $this->customer_mdl->bankcard = $this->input->post('bankcard');//银行卡
         $this->customer_mdl->bankmobile = $this->input->post('bankmobile');//预留手机号码
         $this->customer_mdl->authenticationat = date("Y-m-d H:i:s");//认证时间
-        $this->customer_mdl->db1 = $this->load->database('A',true);//切换A库
+        $this->customer_mdl->db1 = $this->load->database('A',true);//切换A库 
         
         $row = $this->customer_mdl->update($customer_id);
         if($row){

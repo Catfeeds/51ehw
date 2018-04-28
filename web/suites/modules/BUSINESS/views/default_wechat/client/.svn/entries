@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/BUSINESS/views/default_wechat/client
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -25,40 +25,6 @@ xiankunkai
 
 
 e24ab575-a676-4291-aba5-8b869a83b07a
-
-needs_list.php
-file
-
-
-
-
-2018-04-23T06:16:02.000000Z
-3b29786270ad9d7c4cb050cbecc3357c
-2018-04-10T12:26:01.409172Z
-6050
-xiankunkai
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-12137
 
 choice_label.php
 file
@@ -93,6 +59,40 @@ wing
 
 
 15322
+
+needs_list.php
+file
+
+
+
+
+2018-04-23T06:16:02.000000Z
+3b29786270ad9d7c4cb050cbecc3357c
+2018-04-10T12:26:01.409172Z
+6050
+xiankunkai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12137
 
 choice_labe_xuan2.php
 file
@@ -196,40 +196,6 @@ jiangfeng
 
 623
 
-my_needs.php
-file
-
-
-
-
-2018-04-02T02:25:05.000000Z
-efb26bedb6cc1bd5ae9043b84ced603c
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5502
-
 needs_details.php
 file
 
@@ -263,6 +229,40 @@ xiankunkai
 
 
 11321
+
+my_needs.php
+file
+
+
+
+
+2018-04-02T02:25:05.000000Z
+efb26bedb6cc1bd5ae9043b84ced603c
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5502
 
 edit_requirement.php
 file
@@ -298,14 +298,14 @@ xiankunkai
 
 21613
 
-offer_details.php
+my_offer.php
 file
 
 
 
 
 2018-04-23T06:16:02.000000Z
-2b247ca3f1a6a03c9a6a095219afa3ab
+3f29f93e3c6e2009bfbe0464d72c8bca
 2018-04-10T12:26:01.409172Z
 6050
 xiankunkai
@@ -330,7 +330,7 @@ xiankunkai
 
 
 
-6262
+3008
 
 needs_manage.php
 file
@@ -366,14 +366,14 @@ wing
 
 1298
 
-my_offer.php
+offer_details.php
 file
 
 
 
 
 2018-04-23T06:16:02.000000Z
-3f29f93e3c6e2009bfbe0464d72c8bca
+2b247ca3f1a6a03c9a6a095219afa3ab
 2018-04-10T12:26:01.409172Z
 6050
 xiankunkai
@@ -398,7 +398,7 @@ xiankunkai
 
 
 
-3008
+6262
 
 index.php
 file

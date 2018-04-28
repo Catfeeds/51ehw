@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/CLIENT/views/default/corporate
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -27,9 +27,6 @@ fengxianming
 e24ab575-a676-4291-aba5-8b869a83b07a
 
 product
-dir
-
-finanial
 dir
 
 info.php
@@ -66,6 +63,9 @@ fengxianming
 
 7289
 
+finanial
+dir
+
 stored_value_card
 dir
 
@@ -76,6 +76,9 @@ activity
 dir
 
 branch
+dir
+
+customer
 dir
 
 list.php
@@ -111,9 +114,6 @@ wing
 
 
 7577
-
-customer
-dir
 
 comment
 dir

@@ -51,13 +51,10 @@ class Order extends Front_Controller {
 	// -----------------------------------------------------------------------------
 
     public function p(){
-        redirect('easyshop/order/index/11?pid=11&qty=11');
-        exit;
+        redirect('easyshop/order/index/6?pid=17&qty=11');
     }
     public function t(){
-        print_r( $this->easyshop_order_mdl->AfterEasyOrder(42,4) );
     }
-
 
 	/**
      *  确认订单页
@@ -68,8 +65,8 @@ class Order extends Front_Controller {
 
         $this->load->model('easyshop_address_mdl','address_mdl');
         
-        $product_id = (int)$this->input->get_post('pid');
-        $quantity = (int)$this->input->get_post('qty');
+        $product_id = (int)$this->input->get_post('pid');   // 购买的商品id
+        $quantity = (int)$this->input->get_post('qty');     // 购买的商品数量
 
         $product_id = $product_id?$product_id:$this->session->userdata('easy_pid');
         $quantity = $quantity?$quantity:$this->session->userdata('easy_qty');
@@ -83,17 +80,37 @@ class Order extends Front_Controller {
             else
             {
                 $address = $this->address_mdl->load($customer_id);
-                if(!$address)
-                    $address = $this->address_mdl->load_all($customer_id,1,0)[0];
             }
 
             // 验证数据
             $result = $this->firm_order($tribe_id,$product_id,$quantity);
 
+            // var_dump($result);exit;
             if($result['status'])
             {
                 echo "<script>alert('",$result['errorMessage'],"');history.back();</script>";
                 exit;
+            }
+
+            if(empty($result['easy_corp_id']))
+            {
+                echo "<script>alert('商品所属简易店不存在');history.back();</script>";
+                exit;
+            }
+            else
+            {
+                $sell_customer_id = $this->easyshop_order_mdl->get_where('easy_corporation',['id'=>$result['easy_corp_id']],'customer_id');
+                $where = [
+                    'customer_id'   =>  $sell_customer_id['customer_id'],
+                    'tribe_id'      =>  $tribe_id,
+                ];
+                // 店铺名(卖家姓名+手机号)
+                $sell_info = $this->easyshop_order_mdl->get_where('tribe_staff',$where,'member_name,mobile');
+                if(!$sell_info)
+                {
+                    echo "<script>alert('卖家信息错误');history.back();</script>";
+                    exit;                    
+                }
             }
 
             $this->session->set_userdata('easy_pid',$product_id);
@@ -108,12 +125,13 @@ class Order extends Front_Controller {
             $data['pid'] = $product_id;
             $data['qty'] = $quantity;
             $data['tribe_id'] = $tribe_id;
+            $data['sell_info'] = $sell_info;
 
             $this->load->view('head', $data);
             $this->load->view('_header', $data);
             $this->load->view('easyshop/order/firm_order', $data);
-            $this->load->view('_footer', $data);
-            $this->load->view('foot', $data);
+            // $this->load->view('_footer', $data);
+            // $this->load->view('foot', $data);
         }
         else
         {
@@ -133,7 +151,7 @@ class Order extends Front_Controller {
                 'status' => 1,
                 'errorMessage' => '参数错误'
             ];
-            return $result;            
+            return $result;
         }
 
         $customer_id = $this->session->userdata('user_id');
@@ -188,8 +206,10 @@ class Order extends Front_Controller {
                 'product_id'    => $product_info['id'],
                 'quantity'      => $quantity,
                 'product_name'  => $product_info['product_name'],
+                'product_pic'   => $product_info['path'],
                 'price'         => $product_info['price'],
                 'stock'         => $product_info['stock'],
+                'easy_corp_id'  => $product_info['easy_corp_id'],
             ];
             $result['total_price'] = $quantity * $product_info['price'];
             $result['status'] = 0;
@@ -209,6 +229,7 @@ class Order extends Front_Controller {
      * 保存订单
      */
     public function save(){
+        // echo json_encode(['status'=>0,'errorMessage'=>'test']);exit;
         $product_id = (int)$this->input->post('product_id');
         $quantity = (int)$this->input->post('quantity');
         $address_id = (int)$this->input->post('address_id');
@@ -343,9 +364,9 @@ class Order extends Front_Controller {
      * 订单列表
      * @is_sell true:卖 false:买
      */
-    public function order_list($tribe=0,$is_sell=false) {
+    public function order_list($tribe_id=0,$is_sell=false) {
 
-        if(!$tribe)
+        if(!$tribe_id)
         {
             echo "<script>history.back();</script>";
             exit;
@@ -354,11 +375,43 @@ class Order extends Front_Controller {
         $data['title'] = '我的订单列表';
         $data['foot_set'] = 1;
         $data['head_set'] = 2;
-        $data['tribe'] = $tribe;
+        $data['tribe_id'] = $tribe_id;
         $data['is_sell'] = $is_sell;
+
+        if($is_sell)
+        {
+            $where = ['customer_id'=>$this->session->userdata('user_id')];
+            $easy_corp = $this->easyshop_order_mdl->get_where('easy_corporation',$where,'id');
+            if(!$easy_corp)
+            {
+                echo "<script>history.back();</script>";
+                exit;
+            }            
+        }
+
+        // 取消超时未支付的订单
+        $this->load->helper('easy_autoscript');
+        AutoOrderCancel($this->session->userdata('user_id'));
         
         $this->load->view('head', $data);
         $this->load->view('_header', $data);
+
+        // H5弹窗
+        if (stristr($_SERVER['HTTP_USER_AGENT'], "Android") || stristr($_SERVER['HTTP_USER_AGENT'], "iPhone") || stristr($_SERVER['HTTP_USER_AGENT'], "wp")) {
+            //调用接口获取支付账户信息
+            $url  = $this->url_prefix.'Customer/load_pay_account';
+            $post['customer_id'] = $this->session->userdata('user_id');
+            $customer = json_decode($this->curl_post_result($url,$post),true);
+            if (empty($customer['pay_passwd']) || !$customer['pay_passwd']) {
+            
+                $data['bullet_set'] = '1';
+                $this->load->view('widget/bullet', $data);
+            } else {
+                $data['bullet_set'] = '3';
+                $this->load->view('widget/bullet', $data);
+            }
+        }
+
         $this->load->view('easyshop/order/order_list', $data);
         $this->load->view('_footer', $data);
         $this->load->view('foot', $data);
@@ -372,7 +425,7 @@ class Order extends Front_Controller {
         $customer_id = $this->session->userdata('user_id');
         $type = $this->input->post('type');
         $page = $this->input->post('page');
-        $tribe_id = $this->input->post('tribe');
+        $tribe_id = $this->input->post('tribe_id');
         $is_sell = $this->input->post('is_sell');
 
         if(0 == $page)
@@ -408,9 +461,13 @@ class Order extends Front_Controller {
                 break;
         }
 
-        $where = ['customer_id'=>$customer_id];
-        $easy_corp = $this->easyshop_order_mdl->get_where('easy_corporation',$where,'id');
-        $easy_corp_id = $easy_corp['id'];
+        $easy_corp_id = 0;
+        if($is_sell)
+        {
+            $where = ['customer_id'=>$customer_id];
+            $easy_corp = $this->easyshop_order_mdl->get_where('easy_corporation',$where,'id');
+            $easy_corp_id = $easy_corp['id'];
+        }
 
         $data['List'] = $this->easyshop_order_mdl->order_list($customer_id, $easy_corp_id, $tribe_id, $status_array, $limit, $offset,$is_sell);
 
@@ -422,7 +479,16 @@ class Order extends Front_Controller {
      * 订单详情
      * @param $is_sell  true:卖 false:买
      */
-    public function detail($tribe_id,$order_id,$is_sell=false){
+    public function detail($tribe_id=0,$order_id=0,$is_sell=false){
+
+        if($this->input->is_ajax_request())
+        {
+            $tribe_id = $this->input->get_post('tribe_id')?$this->input->get_post('tribe_id'):0;
+            $order_id = $this->input->get_post('order_id')?$this->input->get_post('order_id'):0;
+            $order = $this->easyshop_order_mdl->order_info($tribe_id,$order_id);
+            echo json_encode($order);
+            exit;
+        }
 
         if(!$tribe_id || !$order_id)
         {
@@ -435,6 +501,17 @@ class Order extends Front_Controller {
         // 订单详情
         $order = $this->easyshop_order_mdl->order_info($tribe_id,$order_id);
 
+        if($is_sell)
+        {
+            $where = ['customer_id'=>$customer_id];
+            $easy_corp = $this->easyshop_order_mdl->get_where('easy_corporation',$where,'id');
+            if( !$easy_corp || ( $easy_corp['id'] != $order['easy_corp_id'] ) )
+            {
+                echo "<script>history.back();</script>";
+                exit;
+            }
+        }
+
         if( !$order || ( !$is_sell && $order['customer_id']!=$customer_id ) )
         {
             redirect('home');
@@ -443,14 +520,28 @@ class Order extends Front_Controller {
 
         // 送货地址
         $order_delivery = $this->easyshop_order_mdl->get_where('easy_order_delivery',['order_id'=>$order['id']]);
+        if($order_delivery)
+        {
+            $order_delivery['province'] = $this->easyshop_order_mdl->get_where('region',['region_id'=>$order_delivery['province_id']],'region_name')['region_name'];
+            $order_delivery['city'] = $this->easyshop_order_mdl->get_where('region',['region_id'=>$order_delivery['city_id']],'region_name')['region_name'];
+            $order_delivery['district'] = $this->easyshop_order_mdl->get_where('region',['region_id'=>$order_delivery['district_id']],'region_name')['region_name'];
+        }
 
         // 订单日志
         $order_log = $this->easyshop_order_mdl->get_where('easy_order_log',['order_id'=>$order['id']],'*',true);
 
+        // 是否支付过
+        $is_pay = false;
+        foreach($order_log as $v){
+            if($v['status']==2)
+                $is_pay = true;
+        }
+
         $data['order'] = $order;
         $data['order_delivery'] = $order_delivery;
         $data['order_log'] = $order_log;
-        // print_r($data);exit;
+        $data['is_pay'] = $is_pay;
+
         $data['order_log_status'] = [
             1=>'下单时间',
             2=>'支付时间',
@@ -459,6 +550,8 @@ class Order extends Front_Controller {
             5=>'完成时间',
             6=>'订单取消原因',
             7=>'订单取消原因',
+            8=>'退款订单',
+            9=>'订单异常',
         ];
 
         $data['title'] = '订单详细';
@@ -470,6 +563,23 @@ class Order extends Front_Controller {
         
         $this->load->view('head', $data);
         $this->load->view('_header', $data);
+
+        // H5弹窗
+        if (stristr($_SERVER['HTTP_USER_AGENT'], "Android") || stristr($_SERVER['HTTP_USER_AGENT'], "iPhone") || stristr($_SERVER['HTTP_USER_AGENT'], "wp")) {
+            //调用接口获取支付账户信息
+            $url  = $this->url_prefix.'Customer/load_pay_account';
+            $post['customer_id'] = $this->session->userdata('user_id');
+            $customer = json_decode($this->curl_post_result($url,$post),true);
+            if (empty($customer['pay_passwd']) || !$customer['pay_passwd']) {
+            
+                $data['bullet_set'] = '1';
+                $this->load->view('widget/bullet', $data);
+            } else {
+                $data['bullet_set'] = '3';
+                $this->load->view('widget/bullet', $data);
+            }
+        }
+
         $this->load->view('easyshop/order/detail', $data);
         $this->load->view('_footer', $data);
         $this->load->view('foot', $data);
@@ -482,8 +592,9 @@ class Order extends Front_Controller {
     public function confirm_order(){
 
         $order_id = $this->input->post('id');
+        $tribe_id = $this->input->post('tribe_id');
         $order = $this->easyshop_order_mdl->order_info($tribe_id,$order_id);
-        $customer_id = $this->session->userdata('user_id');  
+        $customer_id = $this->session->userdata('user_id');
         
         if( !$order || $order['customer_id'] != $customer_id || $order['status']!=3 )
         {
@@ -495,27 +606,46 @@ class Order extends Front_Controller {
             exit;
         }
 
-        $this->db->trans_begin();
+        $pass = md5( $this->input->post('pass') );
+        $relation_id = $this->session->userdata ('pay_relation');
 
-        // 修改状态、添加日志
-        $res = $this->easyshop_order_mdl->AfterEasyOrder($order_id,4);
+        //接口-验证支付密码
+        $url = $this->url_prefix.'Customer/fortune/?relation_id='.$relation_id;
+        $pay_info = json_decode($this->curl_get_result($url),true);
 
-        if($res['status'])
+        if( $pay_info['pay_passwd'] == $pass )
         {
-            $this->db->trans_commit();
-            $result = [
-                'status' => 0,
-                'errorMessage' => '成功'
-            ];
+            $this->db->trans_begin();
+
+            // 修改状态、添加日志
+            $res = $this->easyshop_order_mdl->AfterEasyOrder($order_id,4);
+
+            if($res['status'])
+            {
+                $this->db->trans_commit();
+                $result = [
+                    'status' => 0,
+                    'errorMessage' => '成功'
+                ];
+            }
+            else
+            {
+                $this->db->trans_rollback();
+                $result = [
+                    'status' => 2,
+                    'errorMessage' => '失败'
+                ];
+            }           
         }
         else
         {
-            $this->db->trans_rollback();
             $result = [
-                'status' => 2,
-                'errorMessage' => '失败'
+                'status'    =>  3,
+                'errorMessage'  =>  '密码错误',
             ];
         }
+
+
         echo json_encode($result);
         exit;
     }
@@ -528,23 +658,44 @@ class Order extends Front_Controller {
 
         $order_id = $this->input->post('id');
         $is_sell = $this->input->post('is_sell');
+        $tribe_id = $this->input->post('tribe_id');
         $order = $this->easyshop_order_mdl->order_info($tribe_id,$order_id);
         $customer_id = $this->session->userdata('user_id');
 
-        if( !$order || $order['customer_id'] != $customer_id || !in_array($order['status'],[1,2]) )
+        if( !$order || (!$is_sell && $order['customer_id'] != $customer_id) || !in_array($order['status'],[1,2]) )
         {
             $result = [
                 'status' => 1,
-                'errorMessage' => '订单错误'
+                'errorMessage' => '订单错误(买)'
             ];
             echo json_encode($result);
             exit;
         }
 
+        if($is_sell)
+        {
+            $where = ['id'=>$order['easy_corp_id']];
+            $easy_corp = $this->easyshop_order_mdl->get_where('easy_corporation',$where,'customer_id');
+            if(!$easy_corp || $easy_corp['customer_id']!=$customer_id)
+            {
+                $result = [
+                    'status' => 3,
+                    'errorMessage' => '订单错误(卖)'
+                ];
+                echo json_encode($result);
+                exit;                
+            }
+        }
+
+        // 是否支付过
+        $data = ['order_id'=>$order_id,'status'=>2];
+        $is_pay = $this->easyshop_order_mdl->get_where('easy_order_log',$data,'id');
+        $status = $is_pay?7:6;
+
         $this->db->trans_begin();
 
-        // 修改订单状态为取消
-        $data = [ 'status'=>6 ];
+        // 修改订单状态为取消 （支付过的:7,未支付:6）
+        $data = [ 'status'=>$status ];
         $where = [ 'id'=>$order['id'] ];
         $order_res = $this->easyshop_order_mdl->update('easy_order',$data,$where);
 
@@ -598,14 +749,19 @@ class Order extends Front_Controller {
         $customer_id = $this->session->userdata('user_id');
         $order = $this->easyshop_order_mdl->order_info($tribe_id,$order_id);
 
+        if( !$order || $order['customer_id']!=$customer_id )
+        {
+            echo "<script>history.back();</script>";
+            exit;
+        }
+
         // 支付过的订单才能投诉
         $where = [
             'order_id'=>$order_id,
             'status'=>2,
         ];
         $order_log_pay = $this->easyshop_order_mdl->get_where('easy_order_log',$where,'id',true);
-
-        if( $order['customer_id']!=$customer_id || !$order_log_pay )
+        if( !$order_log_pay )
         {
             echo "<script>history.back();</script>";
             exit;
@@ -645,7 +801,8 @@ class Order extends Front_Controller {
             $order = $this->easyshop_order_mdl->get_where('easy_order',$where,'product_id');
             if(!$order)
             {
-                redirect('home');
+                $result = ['status'=>1];
+                echo json_encode($result);
                 exit;
             }
 
@@ -657,7 +814,8 @@ class Order extends Front_Controller {
             $order_pay = $this->easyshop_order_mdl->get_where('easy_order_log',$where,'id');
             if(!$order_pay)
             {
-                redirect('home');
+                $result = ['status'=>1];
+                echo json_encode($result);
                 exit;
             }
 
@@ -727,6 +885,11 @@ class Order extends Front_Controller {
             // 生成投诉
             $complain = $this->easyshop_order_mdl->create('easy_complain',$complain_data);
 
+            // 修改订单状态为异常
+            $data = [ 'status'=>9 ];
+            $where = [ 'id'=>$order_id ];
+            $order_res = $this->easyshop_order_mdl->update('easy_order',$data,$where);
+
             if($complain)
             {
                 $result = ['status'=>0];
@@ -750,63 +913,32 @@ class Order extends Front_Controller {
 
 
     /**
-     * 更改超时未付订单
+     * 去支付
      */
-    public function change_unpaid($tribe_id=0){
+    public function order_pay(){
+        $order_id = $this->input->post('id');
+        $customer_id = $this->session->userdata('user_id');
 
-        $time = date('Y-m-d H:i:s',time()-60*60*2);
-        $where = [
-            'customer_id'   =>  $this->session->userdata('user_id'),
-            'tribe_id'      =>  $tribe_id,
-            'status'        =>  1,
-            'created_at < ' =>  $time,
-        ];
-        // 未付订单
-        $orders = $this->easyshop_order_mdl->get_where('easy_order',$where,'id,product_id,quantity,created_at',true);
-        print_r($orders);exit;
-        if($orders)
+        $where = ['id'=>$order_id,'status'=>1];
+        $order = $this->easyshop_order_mdl->get_where('easy_order',$where);
+
+        if(!$order || $order['customer_id']!=$customer_id)
         {
-            $this->db->trans_begin();
-            $created_at = date('Y-m-d H:i:s');
-            foreach($orders as $v){
-
-                // 修改未付订单状态
-                $data = [ 'status'=>6 ];
-                $where = [ 'id'=>$v['id'] ];
-                $this->easyshop_order_mdl->update('easy_order',$data,$where);
-
-                // 加回库存
-                $this->easyshop_order_mdl->stock_goods($v['product_id'],$v['quantity']);
-
-                // 添加订单日志
-                $data = [
-                    'order_id'  =>  $v['id'],
-                    'status'    =>  6,
-                    'created_at'=>  $created_at,
-                    'remark'    =>  '超时未支付',
-                ];
-                $this->easyshop_order_mdl->create('easy_order_log',$data);
-            }
-
-            if($this->db->trans_status() === FALSE)
-            {
-                $this->db->trans_rollback();
-            }
-            else
-            {
-                $this->db->trans_commit();
-            }
+            $result = [
+                'status'        =>  1,
+                'errorMessage'  =>  '订单错误',
+            ];
+            echo json_encode($result);
+            exit;
         }
-    }
 
-
-    /**
-     * 自动收货
-     */
-    public function auto_receive(){
-        //
+        $result = [
+            'status'        =>  0,
+            'errorMessage'  =>  '成功',
+        ];
+        echo json_encode($result);
+        exit;
     }
-    
     
 
 }

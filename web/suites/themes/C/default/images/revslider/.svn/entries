@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/themes/C/default/images/revslider
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -502,14 +502,14 @@ has-props
 
 260
 
-boxed_bgtile.png
+timerdot.png
 file
 
 
 
 
 2018-04-02T02:24:52.000000Z
-9ee6f56fe8ba89e63b6dc4a4d3245473
+390a994e9945f467a33ed9c2ab02126b
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -534,7 +534,7 @@ has-props
 
 
 
-2746
+122
 
 bullet.png
 file
@@ -570,14 +570,14 @@ has-props
 
 2254
 
-timerdot.png
+boxed_bgtile.png
 file
 
 
 
 
 2018-04-02T02:24:52.000000Z
-390a994e9945f467a33ed9c2ab02126b
+9ee6f56fe8ba89e63b6dc4a4d3245473
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -602,7 +602,7 @@ has-props
 
 
 
-122
+2746
 
 arrowright.png
 file
@@ -740,40 +740,6 @@ has-props
 
 287
 
-gridtile_3x3.png
-file
-
-
-
-
-2018-04-02T02:24:52.000000Z
-32962e55384eb5f08af6d123119f98cf
-2017-07-04T04:59:52.697565Z
-9
-wing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-938
-
 grain.png
 file
 
@@ -807,6 +773,40 @@ has-props
 
 
 16323
+
+gridtile_3x3.png
+file
+
+
+
+
+2018-04-02T02:24:52.000000Z
+32962e55384eb5f08af6d123119f98cf
+2017-07-04T04:59:52.697565Z
+9
+wing
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+938
 
 transparent.png
 file
@@ -842,40 +842,6 @@ has-props
 
 934
 
-small_left_boxed.png
-file
-
-
-
-
-2018-04-02T02:24:52.000000Z
-f750ed4e89c4391ba1fb5d532a441467
-2017-07-04T04:59:52.697565Z
-9
-wing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-846
-
 gridtile_white.png
 file
 
@@ -910,14 +876,14 @@ has-props
 
 931
 
-large_left.png
+small_left_boxed.png
 file
 
 
 
 
 2018-04-02T02:24:52.000000Z
-c7d7eee3ae27c6eea078e5b6c30c8763
+f750ed4e89c4391ba1fb5d532a441467
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -942,7 +908,7 @@ has-props
 
 
 
-1517
+846
 
 arrow_left.png
 file
@@ -978,14 +944,14 @@ has-props
 
 807
 
-arrowleft.png
+large_left.png
 file
 
 
 
 
-2018-04-02T02:24:51.000000Z
-1601a090cc9c29f61903040cbff16f9b
+2018-04-02T02:24:52.000000Z
+c7d7eee3ae27c6eea078e5b6c30c8763
 2017-07-04T04:59:52.697565Z
 9
 wing
@@ -1010,7 +976,7 @@ has-props
 
 
 
-43543
+1517
 
 small_right.png
 file
@@ -1045,6 +1011,40 @@ has-props
 
 
 668
+
+arrowleft.png
+file
+
+
+
+
+2018-04-02T02:24:51.000000Z
+1601a090cc9c29f61903040cbff16f9b
+2017-07-04T04:59:52.697565Z
+9
+wing
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+43543
 
 small_arrows.psd
 file

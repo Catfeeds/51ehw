@@ -89,7 +89,11 @@ class Easyshop_mdl extends CI_Model
         {
             $this->db->limit((int) $count, (int) $offset);
         }
-        return $this->db->get()->result_array();
+        if(!empty($count) ){
+            return $this->db->get()->result_array();
+        }else{
+            return $this->db->get()->num_rows();
+        }
     }
     
     /*

@@ -33,17 +33,17 @@ class Pay extends Front_Controller {
 	/**
 	 * 发起支付
 	 */
-	public function Index() 
+	public function Index($obj_id=0) 
 	{
 	    $this->load->helper('order');
-	    
+	    // print_r($obj_id);exit;
 	    //接收支付价格-支付事件-支付方式等信息。
 // 	    $charge_info['amount'] = 10;//$this->input->get_post('amount');//充值金额
 	    $charge_info['obj_type'] = 1;//$this->input->get_post('charge_type');//1支付订单（简易店）。
 	    $charge_info['source'] = 2;//$this->input->get_post('charge_source');//1:PC支付 2:H5支付 3:安卓 4:IOS 5后台
 	    $charge_info['payment_id'] = 1;//$this->input->get_post('payment_id');//充值平台 1:微信H5 2:支付宝 3:银联
 	    $charge_info['customer_id'] = $this->customer_id; //用户ID
-	    $charge_info['obj_id'] = 27;//$this->input->post('obj_id');
+	    $charge_info['obj_id'] = $obj_id;//$this->input->post('obj_id');
 	   
         //根据不同的充值类型生成子选项。一或多。
         $item = $this->ChargeItem( $charge_info );

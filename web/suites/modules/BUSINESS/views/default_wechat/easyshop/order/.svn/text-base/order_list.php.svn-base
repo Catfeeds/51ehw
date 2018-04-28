@@ -114,17 +114,17 @@
 <script type="text/javascript">
 var page = 1;//默认第一页
 var type = 0;
-var tribe = "<?php echo $tribe?>";
+var tribe_id = "<?php echo $tribe_id?>";
 var is_sell = "<?php echo $is_sell?>";
 dropload = $('.tabBox').dropload({
 	scrollArea : window,
 	loadDownFn : function(me){
 		var result = "";
         $.ajax({
-            url:"<?php echo site_url("easyshop/order/ajax_order_list");?>",
+            url:"<?php echo site_url("Easyshop/order/ajax_order_list");?>",
             type:'post',
             dataType:'json',
-            data:{type:type,page:page,tribe:tribe,is_sell:is_sell},
+            data:{type:type,page:page,tribe_id:tribe_id,is_sell:is_sell},
             beforeSend:function (XMLHttpRequest) {
                 XMLHttpRequest.setRequestHeader("request_type","ajax");
             },
@@ -138,7 +138,7 @@ dropload = $('.tabBox').dropload({
                 }
                 if(data.List.length>0){ 
                     for(var i=0;i<data.List.length;i++){
-                        var url = '<?php echo site_url('easyshop/order/detail/');?>/'+tribe+'/'+data.List[i]['id']+'/'+is_sell;
+                        var url = '<?php echo site_url('Easyshop/order/detail/');?>/'+tribe_id+'/'+data.List[i]['id']+'/'+is_sell;
                         result += '<div class="order_list_title" >';
                         result += '<span class="fn-left "style="padding-right: 10px;font-size: 18px;"><em class="icon-shop"></em></span><span class="notice_word_big">'+data.List[i]['name']+' - '+data.List[i]['mobile']+'</span>';
                         result += '<a href=""><span class="ml-20"></span></a>';
@@ -260,40 +260,59 @@ function navigation(types){
 <!-- 订单操作事件 -->
 <script type="text/javascript">
 var tribe_id = "<?php echo $tribe_id?>";
-// 确认收货 
+var show_bullet_id = "<?php echo $bullet_set == 1? "skip_bullet":"pay_bullet";?>";
+
+// 确认收货 - show
 function receive( id ){
-    var tc = $('#tuichu_sub');
-    if(tc.attr('href')=='javascript:;')
-    {
-        $('.tuichu_ball_text span').text('是否确认收货？');
-        tc.attr('href','javascript:receive('+id+');');
-        $('.tuichu_ball').show();
-    }
-    else
-    {
-        $.ajax({
-            url:'<?php echo site_url('easyshop/order/confirm_order')?>',
-            data:{id:id,tribe_id:tribe_id},
-            dataType:'json',
-            type:'post',
-            success:function(data){console.log(data.status);
-                cane();
-                if(data.status){
-                    $(".black_feds").text("操作失败").show();
-                    setTimeout("prompt();", 1000);
-                }else{
-                    $('#order_message_'+id).text('订单完成');
-                    $('#status_submit_'+id).empty();
-                }
-            },
-            error:function(){ 
-                $(".black_feds").text("网络连接超时").show();
-                setTimeout("prompt();", 1000);
-                setTimeout(location.reload(), 2000);
-            }
-        })
-    }
+    $.ajax({ 
+        url:'<?php echo site_url('Easyshop/order/detail')?>',
+        data:{ order_id:id,tribe_id:tribe_id },
+        dataType:'json',
+        type:'post',
+        success:function(data){
+            $("#pay_").text("确认收货");
+            $('#pay_').attr('onclick','ok_receive("'+data.id+'")');
+            $('#order_sn').text(data.order_sn);
+            $('#price').text('￥ '+data.total_price);
+            $(".color-bg").show();
+            $("#"+show_bullet_id).show();
+        }
+    })
 }
+
+// 确认收货 - sure
+function ok_receive( id ){
+    var pass = $('input[name=pay_passwd]').val();
+    $.ajax({
+        url:'<?php echo site_url('Easyshop/order/confirm_order')?>',
+        data:{pass:pass,id:id,tribe_id:tribe_id},
+        dataType:'json',
+        type:'post',
+        success:function(data){
+            if(data.status == 0){
+                $(".color-bg").hide();
+                $("#pay_bullet").hide();
+                
+                $('#order_message_'+id).text('订单完成');
+                $('#status_submit_'+id).empty();
+            }else if(data.status == 3){ 
+                $(".black_feds").text("密码错误，请重新输入").show();
+                setTimeout("prompt();", 1000);
+            }else if(data.status == 1){
+                $(".black_feds").text("订单错误").show();
+                setTimeout("prompt();", 1000);
+            }else{ 
+                $(".black_feds").text("服务器无响应").show();
+                setTimeout("prompt();", 1000);
+            }
+        },
+        error:function(){ 
+            $(".black_feds").text("操作失败").show();
+            setTimeout("prompt();", 1000);
+        }
+    })
+}
+
 
 // 取消订单 
 function cancel( id ){
@@ -306,7 +325,7 @@ function cancel( id ){
     }
     else
     {
-        url = "<?php echo site_url('easyshop/order/cancel_order')?>";
+        url = "<?php echo site_url('Easyshop/order/cancel_order')?>";
         var is_sell = "<?php echo $is_sell?>";
         $.ajax({ 
             url:url,

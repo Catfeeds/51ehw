@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/BUSINESS/views/default/corporate
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -25,6 +25,9 @@ zhangliufei
 
 
 e24ab575-a676-4291-aba5-8b869a83b07a
+
+product
+dir
 
 navigation_goods.php
 file
@@ -60,7 +63,7 @@ jiangfeng
 
 1636
 
-product
+finanial
 dir
 
 info.php
@@ -97,9 +100,6 @@ zhangliufei
 
 7304
 
-finanial
-dir
-
 demand
 dir
 
@@ -107,9 +107,6 @@ activity
 dir
 
 logistics
-dir
-
-customer
 dir
 
 list.php
@@ -145,6 +142,9 @@ fengxianming
 
 
 7577
+
+customer
+dir
 
 comment
 dir

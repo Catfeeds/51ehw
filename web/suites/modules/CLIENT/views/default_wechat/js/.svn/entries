@@ -1,7 +1,7 @@
 10
 
 dir
-6183
+6225
 svn://liangdaojing@192.168.10.137/51ehw/web/suites/modules/CLIENT/views/default_wechat/js
 svn://liangdaojing@192.168.10.137/51ehw
 
@@ -60,40 +60,6 @@ wing
 
 93636
 
-jquery.wheelmenu.js
-file
-
-
-
-
-2018-04-02T02:25:19.000000Z
-6c05de98154c051830736b96347131a3
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7934
-
 iscroll.js
 file
 
@@ -127,6 +93,40 @@ wing
 
 
 45760
+
+jquery.wheelmenu.js
+file
+
+
+
+
+2018-04-02T02:25:19.000000Z
+6c05de98154c051830736b96347131a3
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7934
 
 jquery.charfirst.pinyin.js
 file
@@ -199,40 +199,6 @@ wing
 
 2569
 
-jquery-1.js
-file
-
-
-
-
-2018-04-02T02:25:19.000000Z
-0cf829fd2a1497259ba0f5e7b4e01ff0
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2182
-
 verificationCode.js
 file
 
@@ -266,6 +232,40 @@ wing
 
 
 3499
+
+jquery-1.js
+file
+
+
+
+
+2018-04-02T02:25:19.000000Z
+0cf829fd2a1497259ba0f5e7b4e01ff0
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2182
 
 jquery.js
 file
@@ -335,8 +335,39 @@ wing
 
 13825
 
-jquery.parsley
-dir
+swiper3.08.jquery.min.js
+file
+
+
+
+
+2018-04-02T02:25:19.000000Z
+ec0aeddf3054baabb928aaf43a44327f
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+54751
 
 modernizr.custom.js
 file
@@ -372,73 +403,8 @@ wing
 
 9003
 
-swiper3.08.jquery.min.js
-file
-
-
-
-
-2018-04-02T02:25:19.000000Z
-ec0aeddf3054baabb928aaf43a44327f
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-54751
-
-classie.js
-file
-
-
-
-
-2018-04-02T02:25:19.000000Z
-a9df1cfb76ce492afd9d13f3320272fd
-2017-07-04T04:59:52.697565Z
-9
-wing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1835
+jquery.parsley
+dir
 
 zepto.min.js
 file
@@ -473,6 +439,40 @@ wing
 
 
 24975
+
+classie.js
+file
+
+
+
+
+2018-04-02T02:25:19.000000Z
+a9df1cfb76ce492afd9d13f3320272fd
+2017-07-04T04:59:52.697565Z
+9
+wing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1835
 
 sort.js
 file

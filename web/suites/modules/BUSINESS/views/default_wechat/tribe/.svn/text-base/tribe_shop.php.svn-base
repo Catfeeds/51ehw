@@ -74,9 +74,9 @@
   <!-- 头部导航 -->
   <div class="essay_preview_nav tribe_shop_nav">
     <ul>
-        <li class="essay_classify"><a href="javascript:void(0);" id="essay_active_d" onclick="navigation(this,1);" class="essay_active_a">商城</i></a></li>
-        <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_e" onclick="navigation(this,2);">部落</a></li>
-        <li class="essay_sales"><a href="javascript:void(0);" id="essay_active_f" onclick="navigation(this,3);">企业展示</a></li>
+        <li class="essay_classify"><input type="button" onclick="navigation(this,1);" id="essay_active_d" class="essay_active_a" value="商城" >
+        <li class="essay_sales"><input type="button" onclick="navigation(this,2);" id="essay_active_e" class="essay_active_a" value="部落" >
+        <li class="essay_sales"><input type="button" onclick="navigation(this,3);" id="essay_active_f" class="essay_active_a" value="企业展示" >
     </ul>
   </div>
 
@@ -245,10 +245,11 @@ $(function () {
 					}else{
 						url = "<?php echo site_url("tribe/loading_goods_mall");?>";
 						}
-			console.log('url='+url);
+// 			console.log('url='+url);
     	    // 加载菜单一的数据
     	        var result = "";
     	        $.post(url,{tribe_id:tribe_id,type:types,page:page},function(data){
+    	        	console.log(555);
     	        	switch(types)
     	        	{
     	        	    case 3:
@@ -375,7 +376,6 @@ $(function () {
     	        	        break;
     	        	    case 2:
     	        	    	if(data["list"].length>0){
-        	        	    	console.log('进入');
             	            	image_url = "<?php echo IMAGE_URL;?>";
             	                for(var i=0;i<data["list"].length;i++){
                 	                if(types == 2){
@@ -407,7 +407,6 @@ $(function () {
             	                page++;
             	                me.resetload();
             	            }else{
-                	            console.log('退出');
             	            	// 锁定
             	                me.lock();
             	                // 无数据
@@ -418,6 +417,7 @@ $(function () {
     	        	        break;
     	        	    default:
     	        	    	if(data["list"].length>0){
+        	        	    	console.log(111);
             	            	image_url = "<?php echo IMAGE_URL;?>";
             	                for(var i=0;i<data["list"].length;i++){
             	                	result += '<div class="essay_classify_fuwu_list">';
@@ -425,7 +425,7 @@ $(function () {
             	                    result += '<div class="essay_classify_fuwu_list_img"><img src="'+(data["list"][i]["goods_thumb"]?image_url+data["list"][i]["goods_thumb"]:"images/default_img_s.jpg")+'" ></div>';
             	                    result += '<div class="essay_classify_fuwu_list_text">';
             	                    result += '<span class="essay-goods-title">'+data["list"][i]["name"]+'</span>';
-            	                    result += '<span class="essay-goods-monery">部落价：'+data["list"][i]["tribe_price"]+'</span>';
+            	                    result += '<span class="essay-goods-monery">'+data["list"][i]["tribe_price"]+'</span>';
             	                    result += '</div>';
             	                    result += '</a>';
             	                    result += '</div>';
@@ -433,6 +433,7 @@ $(function () {
             	                $('#style').attr("class","essay").append(result);
             	                var width = $("#style .good-img").width();
                                 $("#style .good-img").height(width);
+                                console.log(222);
             	                page++;
             	                me.resetload();
             	            }else{
@@ -451,8 +452,9 @@ $(function () {
 
 	//商品导航切换
 	function navigation(obj,type){
-
-		
+		$('#essay_active_d').attr("disabled",true); 
+		$('#essay_active_e').attr("disabled",true); 
+		$('#essay_active_f').attr("disabled",true); 
 		$("#style").empty();
 		navigate = type;
 		//特效
@@ -481,13 +483,18 @@ $(function () {
 	    	$("#corporationstyle").hide();
 			$("#Mall").show();
 		}
+// 		alert(111);
 		page = 1;//默认第一页
-		$("#style").empty();
 	    // 解锁
 	    dropload.unlock();
 	    dropload.noData(false);
 	    // 重置
 	    dropload.resetload();
+	    setTimeout(function(){
+	 	    $('#essay_active_d').attr("disabled",false); 
+	 		$('#essay_active_e').attr("disabled",false); 
+	 		$('#essay_active_f').attr("disabled",false); 
+	    },300);
 	    
 	}	
 
