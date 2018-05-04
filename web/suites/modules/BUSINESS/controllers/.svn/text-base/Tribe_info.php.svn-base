@@ -87,22 +87,22 @@ class Tribe_info extends Front_Controller
                 if($LastOrder){
                     switch ($LastOrder["status"]){
                         case "1":
-                            $orderstatus = "待支付";  
+                            $orderstatus = "";  
                             break;
                         case "2":
                             $orderstatus = "待发货";  
                             break;
                         case "3":
-                            $orderstatus = "已发货";
+                            $orderstatus = "";
                             break;
                         case "4":case "5":
-                            $orderstatus = "已完成";
+                            $orderstatus = "";
                             break;
                         case "6":
-                            $orderstatus = "订单取消";
+                            $orderstatus = "";
                             break;
                         case "7":
-                            $orderstatus = "已退款";
+                            $orderstatus = "";
                             break;
                     }
                 }
@@ -120,19 +120,19 @@ class Tribe_info extends Front_Controller
                     $Buyersstatus = "待支付";
                     break;
                 case "2":
-                    $Buyersstatus = "待发货";
+                    $Buyersstatus = "待收货";
                     break;
                 case "3":
-                    $Buyersstatus = "已发货";
+                    $Buyersstatus = "待收货";
                     break;
                 case "4":case "5":
-                    $Buyersstatus = "已完成";
+                    $Buyersstatus = "";
                     break;
                 case "6":
-                    $Buyersstatus = "订单取消";
+                    $Buyersstatus = "";
                     break;
                 case "7":
-                    $Buyersstatus = "已退款";
+                    $Buyersstatus = "";
                     break;
             }
         }

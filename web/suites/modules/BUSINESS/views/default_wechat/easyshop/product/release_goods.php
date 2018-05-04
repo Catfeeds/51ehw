@@ -11,7 +11,8 @@
  .img-box {padding-bottom: 0;border-bottom: 1px solid #ddd;}
  .introduction_xia {height: 45px;line-height: 45px;background-color:#ffd600; color:#333333;margin: 35px auto;}
  .z_photo{font-size: 0;white-space: nowrap; overflow-x: scroll;}
- .z_file_lo{float: none;display: inline-block;overflow: hidden;margin-top: 0.4rem!important;}
+ .z_file_lo{float: none;display: inline-block;margin-top: 0.2rem!important;}
+ .z_file .add-img {display: table;}
 </style>
 
 <!-- 发布宝贝 -->
